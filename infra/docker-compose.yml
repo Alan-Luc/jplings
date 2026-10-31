@@ -1,0 +1,44 @@
+# Local speech stack (handoff §8A). Both services bind to loopback only: the host
+# side of every published port is 127.0.0.1, so nothing is reachable off-machine.
+name: jplings
+
+services:
+  whisper:
+    image: ghcr.io/ggml-org/whisper.cpp:main-vulkan
+    container_name: jplings-whisper
+    # Vulkan build: libggml-vulkan.so + the RADV ICD are in the image, so the GPU
+    # needs only /dev/dri passed through.
+    devices:
+      - /dev/dri:/dev/dri
+    volumes:
+      # Models live on the host so they survive image changes and re-pulls.
+      - ./models:/models:ro
+    command:
+      - whisper-server
+      - --model
+      - /models/${WHISPER_MODEL:-ggml-small.bin}
+      - --host
+      - 0.0.0.0
+      - --port
+      - "8080"
+      - --language
+      - ja
+      - --threads
+      - "${WHISPER_THREADS:-4}"
+    ports:
+      - "127.0.0.1:8770:8080"
+    restart: unless-stopped
+
+  kokoro:
+    build: ./kokoro-onnx
+    image: jplings-kokoro-onnx:local
+    container_name: jplings-kokoro
+    environment:
+      KOKORO_MODEL: /models/${KOKORO_MODEL:-kokoro-v1.0.onnx}
+      KOKORO_VOICES: /models/voices-v1.0.bin
+      ORT_INTRA_OP_THREADS: "${ORT_INTRA_OP_THREADS:-4}"
+    volumes:
+      - ./models:/models:ro
+    ports:
+      - "127.0.0.1:8771:8880"
+    restart: unless-stopped

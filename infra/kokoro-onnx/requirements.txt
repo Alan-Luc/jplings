@@ -1,0 +1,6 @@
+kokoro-onnx
+onnxruntime
+misaki[ja]
+fastapi
+uvicorn
+numpy
