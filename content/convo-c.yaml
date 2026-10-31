@@ -1,0 +1,43 @@
+id: convo-c
+title: Restaurant ordering
+concepts:
+  - id: kudasai
+    label: をください — please give me
+  - id: sumimasen
+    label: すみません — excuse me
+lessons:
+  - id: c-order
+    title: Ordering at a restaurant
+    steps:
+      - id: c-order-1
+        kind: conversation
+        concepts: [kudasai, sumimasen]
+        prompt: Order water at a restaurant.
+        scenario:
+          turns:
+            - speaker: npc
+              line:
+                kanji: いらっしゃいませ
+                kana: いらっしゃいませ
+                romaji: irasshaimase
+            - speaker: learner
+              accept:
+                - kanji: 水をください
+                  kana: みずをください
+                  romaji: mizu o kudasai
+                - kanji: お水をください
+                  kana: おみずをください
+                  romaji: omizu o kudasai
+              hints:
+                - >-
+                  The polite prefix お is tolerated — お水をください is what you will
+                  usually hear. Dropping を still gets the point across but is
+                  reported as tolerated, not correct.
+            - speaker: npc
+              line:
+                kanji: はい、どうぞ
+                kana: はい、どうぞ
+                romaji: hai, douzo
+        explanation: >-
+          をください is the workhorse request pattern: object + を + ください.
+          Remove を and the sentence leans on context rather than grammar.

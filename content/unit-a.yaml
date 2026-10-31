@@ -1,0 +1,140 @@
+id: unit-a
+title: Basic sentences and particles
+concepts:
+  - id: particle-wa
+    label: は — topic marker
+  - id: particle-ga
+    label: が — subject marker
+  - id: particle-wo
+    label: を — object marker
+  - id: desu
+    label: です — polite copula
+  - id: desu-question
+    label: か — question particle
+lessons:
+  - id: a-topic
+    title: Marking the topic with は
+    steps:
+      - id: a-topic-1
+        kind: construction
+        concepts: [particle-wa, desu]
+        prompt: Say "I am a student."
+        accept:
+          - kanji: 私は学生です
+            kana: わたしはがくせいです
+            romaji: watashi wa gakusei desu
+        explanation: >-
+          は marks わたし as the topic — what the sentence is about. です closes the
+          sentence politely. Leaving は out makes わたしが学生です, which answers
+          "who is the student?" rather than introducing yourself.
+      - id: a-topic-2
+        kind: interpretation
+        concepts: [particle-wa, particle-ga]
+        prompt: Who is the student?
+        target:
+          kanji: 学生は田中さんです
+          kana: がくせいはたなかさんです
+          romaji: gakusei wa tanaka san desu
+        accept_meanings:
+          - The student is Tanaka.
+          - Tanaka is the student.
+        explanation: >-
+          は puts 学生 before the topic slot, so the sentence answers "as for the
+          student, that's Tanaka". With が the sentence would identify Tanaka
+          rather than answer about the student.
+
+  - id: a-object
+    title: Marking the object with を
+    steps:
+      - id: a-object-1
+        kind: transformation
+        concepts: [particle-wo]
+        prompt: Make "I eat sushi" into "I don't eat sushi."
+        target:
+          kanji: 寿司を食べます
+          kana: すしをたべます
+          romaji: sushi o tabemasu
+        accept:
+          - kanji: 寿司を食べません
+            kana: すしをたべません
+            romaji: sushi o tabemasen
+        explanation: >-
+          を marks 寿司 as the thing being eaten; negation changes the verb ending
+          to ません, not the particle.
+      - id: a-object-2
+        kind: transformation
+        concepts: [particle-wo, desu]
+        prompt: Make "I drink water" into "I want to drink water."
+        target:
+          kanji: 水を飲みます
+          kana: みずをのみます
+          romaji: mizu o nomimasu
+        accept:
+          - kanji: 水を飲みたいです
+            kana: みずをのみたいです
+            romaji: mizu o nomitai desu
+        off_target:
+          - text:
+              kanji: 水を飲めます
+              kana: みずをのめます
+              romaji: mizu o nomemasu
+            meaning: I can drink water — valid Japanese, but it says ability, not wanting.
+        explanation: >-
+          たい attaches to the verb stem 飲み. The form 飲めます is valid Japanese
+          but means "can drink", so it answers a different question.
+      - id: a-object-3
+        kind: completion
+        concepts: [particle-wo]
+        prompt: Fill the particle — "I read a book."
+        target:
+          kanji: 本＿読みます
+          kana: ほん＿よみます
+          romaji: hon _ yomimasu
+        accept:
+          - kanji: を
+            kana: を
+            romaji: o
+        explanation: を marks 本 as the object of 読みます.
+
+  - id: a-listen
+    title: Hearing the particles
+    steps:
+      - id: a-listen-1
+        kind: listening
+        concepts: [particle-wa, particle-ga]
+        prompt: Listen, then write what you heard.
+        audio: audio/unit-a/a-listen-1.opus
+        target:
+          kanji: 猫が好きです
+          kana: ねこがすきです
+          romaji: neko ga suki desu
+        accept:
+          - kanji: 猫が好きです
+            kana: ねこがすきです
+            romaji: neko ga suki desu
+        explanation: >-
+          すき takes が for the thing liked: 猫が好き. Using は here would make the
+          cat the topic rather than the liked thing.
+      - id: a-listen-2
+        kind: speaking
+        concepts: [particle-ga]
+        prompt: Say "I like cats." Speak after the prompt, then confirm the transcript.
+        accept:
+          - kanji: 猫が好きです
+            kana: ねこがすきです
+            romaji: neko ga suki desu
+        explanation: >-
+          が marks 猫 as the liked thing. A transcript that drops が will be shown
+          for confirmation before grading, so check it.
+
+  - id: a-produce
+    title: Producing your own sentence
+    steps:
+      - id: a-produce-1
+        kind: speaking
+        concepts: [particle-wa, particle-wo, desu]
+        prompt: Say something you want to eat, in Japanese.
+        rubric: >-
+          Does the sentence name a food, mark it with を, and use a wanting form
+          such as 〜たいです? Judge meaning, grammar, naturalness and register
+          separately.
