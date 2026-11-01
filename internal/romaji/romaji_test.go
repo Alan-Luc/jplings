@@ -91,3 +91,32 @@ func TestCompareReportsCombinedDistinction(t *testing.T) {
 		t.Fatalf("reason = %q, want gemination", reason)
 	}
 }
+
+// Regression from review: the katakana chōonpu used to be deleted in the pass that
+// awards credit, so ビル (building) was graded correct for ビール (beer).
+func TestKatakanaLongVowelNeverEarnsCredit(t *testing.T) {
+	tests := []struct{ input, accepted string }{
+		{"ビル", "ビール"},
+		{"コヒ", "コーヒー"},
+		{"ジュス", "ジュース"},
+	}
+	for _, tc := range tests {
+		verdict, reason := Compare(tc.input, []string{tc.accepted})
+		if verdict == Exact {
+			t.Fatalf("Compare(%q, %q) earned credit; a long vowel makes it a different word", tc.input, tc.accepted)
+		}
+		if verdict != Close {
+			t.Fatalf("Compare(%q, %q) = %v, want Close", tc.input, tc.accepted, verdict)
+		}
+		if reason != "vowel length" {
+			t.Fatalf("reason = %q, want vowel length", reason)
+		}
+	}
+}
+
+func TestExactStillAcceptsLongVowelSpellingConventions(t *testing.T) {
+	// Romaji sides of the same word must still match.
+	if got, _ := Compare("biiru", []string{"bīru"}); got != Exact {
+		t.Fatalf("Compare(biiru, bīru) = %v, want Exact", got)
+	}
+}

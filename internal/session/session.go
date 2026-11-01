@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"jplings/internal/content"
+	"jplings/internal/convo"
 	"jplings/internal/eval"
 	"jplings/internal/grade"
 	"jplings/internal/profile"
@@ -223,4 +224,24 @@ func (r *Runner) Speak(ctx context.Context, text string, play func([]byte) error
 		return speech.SpeakResult{Degraded: true}, nil
 	}
 	return speech.Speak(ctx, r.Client, text, r.language(), r.Voice, play)
+}
+
+// GradeConversationTurn records the outcome of one scripted turn. Only a matched
+// turn mints evidence: a tolerated turn is understood but warned about, and a
+// mismatch teaches nothing (D4).
+func (r *Runner) GradeConversationTurn(step *content.Step, response convo.Response) (Result, error) {
+	outcome := grade.Outcome{Explanation: step.Explanation}
+	switch response.Verdict {
+	case convo.Matched:
+		outcome.Correct = true
+	case convo.Tolerated:
+		outcome.Explanation = response.Hint + " " + step.Explanation
+	default:
+		outcome.Explanation = "That does not answer this turn. " + step.Explanation
+	}
+
+	if err := r.record(step, outcome, r.clock(), "spoken"); err != nil {
+		return Result{Outcome: outcome}, err
+	}
+	return Result{Outcome: outcome, MintedEvidence: outcome.Correct}, nil
 }

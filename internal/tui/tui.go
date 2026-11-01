@@ -17,6 +17,7 @@ import (
 
 	"jplings/internal/audio"
 	"jplings/internal/content"
+	"jplings/internal/convo"
 	"jplings/internal/session"
 	"jplings/internal/speech"
 )
@@ -73,6 +74,11 @@ type Model struct {
 	// typedFallback is set after two denied transcripts: the learner may type the
 	// answer instead, so progress never deadlocks on a bad transcription.
 	typedFallback bool
+	// conversation drives a scripted scenario; npcLines keeps the NPC turns passed
+	// automatically so the learner still sees the other side.
+	conversation     *convo.Conversation
+	conversationStep string
+	npcLines         []content.Text
 	// spokenStep records which step's audio has already been played, so re-renders
 	// do not re-synthesize the same line.
 	spokenStep string
@@ -91,6 +97,7 @@ func New(runner *session.Runner, units []*content.Unit) Model {
 			m.pos = resumed
 		}
 	}
+	m.syncConversation()
 	return m
 }
 
@@ -335,6 +342,39 @@ func needsSpeech(step *content.Step) bool {
 	return step.Kind == content.Speaking || step.Kind == content.Conversation
 }
 
+func (m *Model) syncConversation() {
+	_, _, step, ok := m.current()
+	if !ok || step.Kind != content.Conversation || step.Scenario == nil {
+		m.conversation = nil
+		m.conversationStep = ""
+		m.npcLines = nil
+		return
+	}
+	if m.conversationStep == step.ID && m.conversation != nil {
+		return
+	}
+	m.conversation = convo.New(step.Scenario)
+	m.conversationStep = step.ID
+	m.npcLines = nil
+	m.collectNpcTurns()
+}
+
+func (m *Model) collectNpcTurns() {
+	if m.conversation == nil {
+		return
+	}
+	for !m.conversation.Done() {
+		turn, ok := m.conversation.Current()
+		if !ok || turn.Speaker != "npc" {
+			return
+		}
+		if turn.Line != nil {
+			m.npcLines = append(m.npcLines, *turn.Line)
+		}
+		m.conversation.Advance()
+	}
+}
+
 func (m Model) submit(answer string) (tea.Model, tea.Cmd) {
 	_, _, step, ok := m.current()
 	if !ok {
@@ -342,7 +382,28 @@ func (m Model) submit(answer string) (tea.Model, tea.Cmd) {
 		return m, nil
 	}
 
-	result, err := m.runner.Submit(context.Background(), step, answer)
+	var result session.Result
+	var err error
+
+	if step.Kind == content.Conversation {
+		if m.conversation == nil {
+			m.syncConversation()
+		}
+		if m.conversation == nil {
+			m.err = "this conversation has no scenario"
+			return m, nil
+		}
+		// A scripted turn is interpreted by the scenario matcher, not by the answer
+		// graders, which have nothing to compare against for a conversation.
+		response := m.conversation.Respond(answer)
+		result, err = m.runner.GradeConversationTurn(step, response)
+		if err == nil && response.Verdict != convo.NoMatch {
+			m.conversation.Advance()
+			m.collectNpcTurns()
+		}
+	} else {
+		result, err = m.runner.Submit(context.Background(), step, answer)
+	}
 	if err != nil {
 		// A persistence failure must not silently drop the learner's answer, so the
 		// screen stays put and shows the error.
@@ -380,6 +441,7 @@ func (m *Model) advance() {
 	m.transcript = ""
 	m.spokenStep = ""
 	m.degraded = false
+	m.syncConversation()
 	m.typedFallback = false
 	m.err = ""
 	m.input.SetValue("")
@@ -441,6 +503,12 @@ func (m Model) View() string {
 	}
 
 	b.WriteString(titleStyle.Render(strings.ToUpper(string(step.Kind))) + "\n")
+	for _, line := range m.npcLines {
+		b.WriteString(dimStyle.Render(surface(line)) + "\n")
+	}
+	if len(m.npcLines) > 0 {
+		b.WriteString("\n")
+	}
 	b.WriteString(step.Prompt + "\n\n")
 
 	// Audio-first: a listening target is revealed only after the attempt.

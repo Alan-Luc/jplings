@@ -274,3 +274,69 @@ func TestSpacebarStopsRecording(t *testing.T) {
 		t.Fatal("the cancel handle should be cleared after stopping")
 	}
 }
+
+func conversationUnits() []*content.Unit {
+	return []*content.Unit{{ID: "u", Title: "Unit", Lessons: []content.Lesson{{ID: "l", Title: "L",
+		Steps: []content.Step{{
+			ID: "c1", Kind: content.Conversation, Concepts: []string{"kudasai"},
+			Prompt: "Order water at a restaurant.",
+			Scenario: &content.Scenario{Turns: []content.Turn{
+				{Speaker: "npc", Line: &content.Text{Kanji: "いらっしゃいませ", Kana: "いらっしゃいませ", Romaji: "irasshaimase"}},
+				{Speaker: "learner", Accept: []content.Text{
+					{Kanji: "水をください", Kana: "みずをください", Romaji: "mizu o kudasai"},
+				}},
+				{Speaker: "npc", Line: &content.Text{Kanji: "はい、どうぞ", Kana: "はい、どうぞ", Romaji: "hai douzo"}},
+			}},
+			Explanation: "をください is the request pattern.",
+		}},
+	}}}}
+}
+
+// Regression from review: a conversation step used to be graded by the answer
+// graders against an empty accept list, so content shipping a conversation could
+// never be completed.
+func TestConversationStepIsCompletable(t *testing.T) {
+	model, store := newModelWith(t, conversationUnits())
+
+	if !strings.Contains(model.View(), "いらっしゃいませ") {
+		t.Fatalf("the NPC's line should be shown:\n%s", model.View())
+	}
+
+	updated, _ := model.submit("水をください。")
+	after := updated.(Model)
+	if !after.correct {
+		t.Fatalf("an accepted conversation answer should earn credit, got %q", after.feedback)
+	}
+	if after.screen != screenFeedback {
+		t.Fatalf("expected the feedback screen, got %v", after.screen)
+	}
+
+	evidence, err := store.Evidence("kudasai")
+	if err != nil || len(evidence) != 1 {
+		t.Fatalf("a matched turn should mint evidence, got %+v err=%v", evidence, err)
+	}
+	if !strings.Contains(after.feedback, "をください") {
+		t.Fatalf("feedback should explain the pattern, got %q", after.feedback)
+	}
+
+	// The NPC's reply after the learner's turn is collected for the next render.
+	if len(after.npcLines) != 2 {
+		t.Fatalf("expected both NPC lines, got %d", len(after.npcLines))
+	}
+}
+
+func TestToleratedConversationTurnMintsNoEvidence(t *testing.T) {
+	model, store := newModelWith(t, conversationUnits())
+
+	updated, _ := model.submit("みずください")
+	after := updated.(Model)
+	if after.correct {
+		t.Fatal("a tolerated turn must not earn credit")
+	}
+	if after.feedback == "" {
+		t.Fatal("a tolerated turn must explain what was dropped")
+	}
+	if evidence, _ := store.Evidence("kudasai"); len(evidence) != 0 {
+		t.Fatalf("a tolerated turn must mint no evidence, got %+v", evidence)
+	}
+}

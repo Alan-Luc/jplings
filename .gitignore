@@ -2,4 +2,6 @@
 /jplings
 .harness/
 docs/references/handoff.md
-corpus/
+# Root data directory only: anchoring matters, an unanchored "corpus/" would also
+# match internal/corpus/ and silently exclude the importer's source from git.
+/corpus/

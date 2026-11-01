@@ -54,7 +54,6 @@ func NormalizeExact(s string) string {
 		}
 	}
 	s = strings.Join(fields, " ")
-	s = strings.ReplaceAll(s, "ー", "")
 	return spelling.Replace(s)
 }
 
@@ -63,14 +62,7 @@ func NormalizeExact(s string) string {
 func NormalizeClose(s string) string {
 	s = NormalizeExact(s)
 	s = collapseGemination(s)
-	previous := ""
-	for previous != s {
-		previous = s
-		for _, pair := range long {
-			s = strings.ReplaceAll(s, pair, pair[:1])
-		}
-	}
-	return s
+	return collapseVowelLength(s)
 }
 
 // collapseGemination removes doubled consonants and the kana sokuon, which is how
@@ -87,7 +79,10 @@ func collapseGemination(s string) string {
 	return s
 }
 
+// collapseVowelLength also strips the katakana chōonpu: ビール and ビル are different
+// words, so this belongs in the close pass, never in the one that awards credit.
 func collapseVowelLength(s string) string {
+	s = strings.ReplaceAll(s, "ー", "")
 	previous := ""
 	for previous != s {
 		previous = s
