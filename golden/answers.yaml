@@ -1706,3 +1706,219 @@
 - step: q1-8
   answer: 車をほしいです
   verdict: wrong
+- step: u7-l1-1
+  answer: I go to the airport.
+  verdict: correct
+- step: u7-l1-1
+  answer: I go from the airport.
+  verdict: wrong
+- step: u7-l1-2
+  answer: I exchange money at the airport.
+  verdict: correct
+- step: u7-l1-2
+  answer: I go to the airport to exchange money.
+  verdict: wrong
+- step: u7-l1-3
+  answer: I go from the airport to the station by train.
+  verdict: correct
+- step: u7-l1-3
+  answer: I walk from the airport to the station.
+  verdict: wrong
+- step: u7-l1-4
+  answer: kuukou de ryougae shimasu
+  verdict: correct
+- step: u7-l1-4
+  answer: kuukou ni ryougae shimasu
+  verdict: wrong
+- step: u7-l1-5
+  answer: eki kara arukimasu
+  verdict: correct
+- step: u7-l1-5
+  answer: eki made arukimasu
+  verdict: wrong
+- step: u7-l1-6
+  answer: kara
+  verdict: correct
+- step: u7-l1-6
+  answer: made
+  verdict: wrong
+- step: u7-l1-7
+  answer: de
+  verdict: correct
+- step: u7-l1-7
+  answer: ni
+  verdict: wrong
+- step: u7-l1-8
+  answer: kuukou kara eki made ikimasu
+  verdict: correct
+- step: u7-l1-8
+  answer: kuukou ni eki made ikimasu
+  verdict: wrong
+- step: u7-l1-9
+  answer: I go from the airport to the station by bus.
+  verdict: correct
+- step: u7-l1-9
+  answer: I go from the airport to the station by taxi.
+  verdict: wrong
+- step: u7-l1-10
+  answer: eki de kippu o kaimasu
+  verdict: correct
+- step: u7-l1-10
+  answer: eki ni kippu o kaimasu
+  verdict: wrong
+- step: u7-l1-11
+  answer: kara
+  verdict: correct
+- step: u7-l1-11
+  answer: made
+  verdict: wrong
+- step: u7-l2-1
+  answer: I get off the train.
+  verdict: correct
+- step: u7-l2-1
+  answer: I get on the train.
+  verdict: wrong
+- step: u7-l2-2
+  answer: I get on the train and get off at the next station.
+  verdict: correct
+- step: u7-l2-2
+  answer: I get on the train and get off at the airport.
+  verdict: wrong
+- step: u7-l2-3
+  answer: I change trains at Shinjuku.
+  verdict: correct
+- step: u7-l2-3
+  answer: I go to Shinjuku.
+  verdict: wrong
+- step: u7-l2-4
+  answer: densha o orimasu
+  verdict: correct
+- step: u7-l2-4
+  answer: densha ni orimasu
+  verdict: wrong
+- step: u7-l2-5
+  answer: shinjuku de norikaemasu
+  verdict: correct
+- step: u7-l2-5
+  answer: shinjuku ni norikaemasu
+  verdict: wrong
+- step: u7-l2-6
+  answer: shinjuku de yamanote sen ni norikaemasu
+  verdict: correct
+- step: u7-l2-6
+  answer: shinjuku ni yamanote sen o norikaemasu
+  verdict: wrong
+- step: u7-l2-7
+  answer: ni
+  verdict: correct
+- step: u7-l2-7
+  answer: o
+  verdict: wrong
+- step: u7-l2-8
+  answer: o
+  verdict: correct
+- step: u7-l2-8
+  answer: ni
+  verdict: wrong
+- step: u7-l2-9
+  answer: shinjuku de yamanote sen ni norikaemasu
+  verdict: correct
+- step: u7-l2-9
+  answer: shinjuku ni yamanote sen o norikaemasu
+  verdict: wrong
+- step: u7-l2-10
+  answer: Excuse me, which platform is this train?
+  verdict: correct
+- step: u7-l2-10
+  answer: Excuse me, what time is this train?
+  verdict: wrong
+- step: u7-l2-11
+  answer: sumimasen, basu wa nanbansen desu ka
+  verdict: correct
+- step: u7-l2-11
+  answer: sumimasen, basu wa nanji desu ka
+  verdict: wrong
+- step: u7-l2-12
+  answer: eki de basu ni norimasu
+  verdict: correct
+- step: u7-l2-12
+  answer: eki ni basu o norimasu
+  verdict: wrong
+- step: u7-l3-1
+  answer: How long does it take to the station?
+  verdict: correct
+- step: u7-l3-1
+  answer: How do I get to the station?
+  verdict: wrong
+- step: u7-l3-2
+  answer: It takes one hour from the airport to the station.
+  verdict: correct
+- step: u7-l3-2
+  answer: It takes one hour from the station to the airport.
+  verdict: wrong
+- step: u7-l3-3
+  answer: eki made dono kurai kakarimasu ka
+  verdict: correct
+- step: u7-l3-3
+  answer: eki made dono kurai ikimasu ka
+  verdict: wrong
+- step: u7-l3-4
+  answer: eki made dono kurai kakarimasu ka
+  verdict: correct
+- step: u7-l3-4
+  answer: eki made dono kurai kakarimashita ka
+  verdict: wrong
+- step: u7-l3-5
+  answer: kuukou kara eki made sanjuppun kakarimasu
+  verdict: correct
+- step: u7-l3-5
+  answer: kuukou kara eki made sanjuppun ikimasu
+  verdict: wrong
+- step: u7-l3-6
+  answer: de
+  verdict: correct
+- step: u7-l3-6
+  answer: ni
+  verdict: wrong
+- step: u7-l3-7
+  answer: kuukou kara eki made yonjuppun kakarimasu
+  verdict: correct
+- step: u7-l3-7
+  answer: kuukou kara eki made yonjuppun ikimasu
+  verdict: wrong
+- step: u7-l3-8
+  answer: kippu wa ikura desu ka
+  verdict: correct
+- step: u7-l3-8
+  answer: kippu wa itsu desu ka
+  verdict: wrong
+- step: u7-l3-9
+  answer: Forty minutes.
+  verdict: correct
+- step: u7-l3-9
+  answer: Fourteen minutes.
+  verdict: wrong
+- step: u7-l3-10
+  answer: basu de juppun kakarimasu
+  verdict: correct
+- step: u7-l3-10
+  answer: basu ni juppun kakarimasu
+  verdict: wrong
+- step: u7-l3-11
+  answer: It takes two and a half hours from Tokyo to Osaka by bullet train.
+  verdict: correct
+- step: u7-l3-11
+  answer: It takes two and a half hours from Osaka to Tokyo by bullet train.
+  verdict: wrong
+- step: u7-l3-12
+  answer: バスで十分かかります
+  verdict: correct
+- step: u7-l3-12
+  answer: バスでじゅっぷんかかります
+  verdict: correct
+- step: u7-l3-12
+  answer: basu de juppun kakarimasu
+  verdict: correct
+- step: u7-l3-12
+  answer: basu ni juppun kakarimasu
+  verdict: wrong

@@ -1,0 +1,896 @@
+id: unit-7
+title: 行き方 — getting from A to B
+taught: true
+concepts:
+  - id: journey-particles
+    label: に/で/から/まで — destination, activity place, means, journey ends
+  - id: noru-oriru-norikaeru
+    label: 乗る・降りる・乗り換える — the vehicle you board, leave and change
+  - id: dono-kurai-kakarimasu
+    label: どのくらいかかりますか — asking how long a journey takes
+lessons:
+  - id: u7-l1
+    title: に・で・から・まで — where you go, where you do it, where it starts and ends
+    objective: >-
+      Choose に for a destination, で for the place of an activity or the means,
+      and から/まで for the two ends of a journey, instead of treating them as a
+      list.
+    anchors:
+      - kanji: 空港に行きます
+        kana: くうこうにいきます
+        romaji: kuukou ni ikimasu
+      - kanji: 空港で両替します
+        kana: くうこうでりょうがえします
+        romaji: kuukou de ryougae shimasu
+      - kanji: 空港から駅まで
+        kana: くうこうからえきまで
+        romaji: kuukou kara eki made
+    teach:
+      - prose: >-
+          に marks the point you are heading to or the point something is at:
+          空港に行きます goes to the airport, 駅に着きます arrives at the station. で
+          marks where an activity happens: 空港で両替します exchanges money at the
+          airport, 駅で切符を買います buys a ticket at the station. Both can name the
+          same place, but they answer different questions: に asks "where to?", で
+          asks "where does it happen?".
+        examples:
+          - kanji: 空港に行きます
+            kana: くうこうにいきます
+            romaji: kuukou ni ikimasu
+          - kanji: 空港で両替します
+            kana: くうこうでりょうがえします
+            romaji: kuukou de ryougae shimasu
+          - kanji: 駅で切符を買います
+            kana: えきできっぷをかいます
+            romaji: eki de kippu o kaimasu
+      - prose: >-
+          から marks where a journey starts and まで marks where it ends:
+          空港から駅まで行きます goes from the airport to the station. Keep both ends
+          when the route matters, and use に alone when only the destination
+          matters. から is a starting point, not "from someone" in this pattern.
+        examples:
+          - kanji: 空港から駅まで行きます
+            kana: くうこうからえきまでいきます
+            romaji: kuukou kara eki made ikimasu
+          - kanji: 駅から歩きます
+            kana: えきからあるきます
+            romaji: eki kara arukimasu
+      - prose: >-
+          で also marks the means of travel: 電車で行きます goes by train, バスで
+          行きます goes by bus. The same particle has two jobs, so read the noun:
+          a vehicle with で is how you travel, a place with で is where the action
+          happens. A destination still takes に, and the two ends of the route still
+          take から and まで.
+        examples:
+          - kanji: 電車で行きます
+            kana: でんしゃでいきます
+            romaji: densha de ikimasu
+          - kanji: 空港から駅まで電車で行きます
+            kana: くうこうからえきまででんしゃでいきます
+            romaji: kuukou kara eki made densha de ikimasu
+    steps:
+      - id: u7-l1-1
+        kind: interpretation
+        concepts: [journey-particles]
+        prompt: >-
+          Two classmates write 空港に行きます and 空港で行きます for "I go to the
+          airport". Only one is correct. What does the correct one mean?
+        target:
+          kanji: 空港に行きます
+          kana: くうこうにいきます
+          romaji: kuukou ni ikimasu
+        accept_meanings:
+          - I go to the airport.
+          - I'm going to the airport.
+          - I go to the airport
+        hint: 行く takes に for the place you are heading to.
+        explanation: >-
+          空港に行きます marks the airport with に because 行く goes to a destination.
+          空港で行きます uses で, which would mark the airport as the place where the
+          going happens, not where you are going.
+      - id: u7-l1-2
+        kind: interpretation
+        concepts: [journey-particles]
+        prompt: >-
+          Two classmates write 空港で両替します and 空港に両替します for "I exchange
+          money at the airport". Only one is correct. What does the correct one
+          mean?
+        target:
+          kanji: 空港で両替します
+          kana: くうこうでりょうがえします
+          romaji: kuukou de ryougae shimasu
+        accept_meanings:
+          - I exchange money at the airport.
+          - I exchange money in the airport.
+          - I exchange money at the airport
+        hint: 両替する is an activity, so it needs the particle for where it happens.
+        explanation: >-
+          空港で両替します uses で because exchanging money is an activity that
+          happens at the airport. 空港に両替します marks the airport as a destination,
+          but 両替する does not go anywhere.
+      - id: u7-l1-3
+        kind: interpretation
+        concepts: [journey-particles]
+        prompt: What does this mean?
+        target:
+          kanji: 空港から駅まで電車で行きます
+          kana: くうこうからえきまででんしゃでいきます
+          romaji: kuukou kara eki made densha de ikimasu
+        accept_meanings:
+          - I go from the airport to the station by train.
+          - I go from the airport to the station on the train.
+          - I go by train from the airport to the station.
+        hint: から marks the start, まで the end, and で the means.
+        explanation: >-
+          空港から駅まで電車で行きます names both ends of the journey and the vehicle:
+          から starts at the airport, まで ends at the station, and で marks the train
+          as the means.
+      - id: u7-l1-4
+        kind: construction
+        concepts: [journey-particles]
+        prompt: >-
+          A classmate writes 空港に両替します for "I exchange money at the airport".
+          Write the sentence they meant.
+        accept:
+          - kanji: 空港で両替します
+            kana: くうこうでりょうがえします
+            romaji: kuukou de ryougae shimasu
+        hint: 両替 is an activity, so it needs the particle for where it happens.
+        explanation: >-
+          空港で両替します uses で for the place of the activity. 空港に両替します
+          marks a destination, but exchanging money does not go to a destination.
+      - id: u7-l1-5
+        kind: construction
+        concepts: [journey-particles]
+        prompt: >-
+          A classmate writes 駅まで歩きます for "I walk from the station". Write the
+          sentence they meant.
+        accept:
+          - kanji: 駅から歩きます
+            kana: えきからあるきます
+            romaji: eki kara arukimasu
+        hint: から marks where the walk starts.
+        explanation: >-
+          駅から歩きます uses から for the starting point. 駅まで歩きます would make
+          the station the endpoint, which is the opposite journey.
+      - id: u7-l1-6
+        kind: completion
+        concepts: [journey-particles]
+        prompt: Fill the particle — "I go from the airport to the station by train."
+        target:
+          kanji: 空港＿駅まで電車で行きます
+          kana: くうこう＿えきまででんしゃでいきます
+          romaji: kuukou _ eki made densha de ikimasu
+        accept:
+          - kanji: から
+            kana: から
+            romaji: kara
+        hint: The airport is where the journey starts.
+        explanation: >-
+          空港から駅まで電車で行きます needs から for the starting point; まで already
+          marks the station as the endpoint. に would only mark a destination, not a
+          starting point.
+      - id: u7-l1-7
+        kind: completion
+        concepts: [journey-particles]
+        prompt: Fill the particle — "I buy a ticket at the station."
+        target:
+          kanji: 駅＿切符を買います
+          kana: えき＿きっぷをかいます
+          romaji: eki _ kippu o kaimasu
+        accept:
+          - kanji: で
+            kana: で
+            romaji: de
+        hint: Buying is an activity, and it happens somewhere.
+        explanation: >-
+          駅で切符を買います uses で because buying happens at the station. 駅に would
+          mark the station as a destination, not as the place of the activity.
+      - id: u7-l1-8
+        kind: transformation
+        concepts: [journey-particles]
+        prompt: Make this sentence say that you travel from the airport to the station.
+        target:
+          kanji: 駅に行きます
+          kana: えきにいきます
+          romaji: eki ni ikimasu
+        accept:
+          - kanji: 空港から駅まで行きます
+            kana: くうこうからえきまでいきます
+            romaji: kuukou kara eki made ikimasu
+        hint: Add the starting point with から and keep the station as the endpoint with まで.
+        explanation: >-
+          空港から駅まで行きます names both ends of the journey. 駅に行きます names only
+          the destination, so it does not say where the journey starts.
+      - id: u7-l1-9
+        kind: listening
+        concepts: [journey-particles]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: 空港から駅までバスで行きます
+          kana: くうこうからえきまでバスでいきます
+          romaji: kuukou kara eki made basu de ikimasu
+        accept_meanings:
+          - I go from the airport to the station by bus.
+          - I go by bus from the airport to the station.
+          - I take the bus from the airport to the station.
+        hint: から and まで mark the two ends, and で marks the bus.
+        explanation: >-
+          空港から駅までバスで行きます says the journey runs from the airport to the
+          station and the bus is the means. で on バス marks how you travel, not where
+          anything happens.
+      - id: u7-l1-10
+        kind: construction
+        concepts: [journey-particles]
+        prompt: >-
+          A classmate writes 駅に切符を買います for "I buy a ticket at the station".
+          Write the sentence they meant.
+        accept:
+          - kanji: 駅で切符を買います
+            kana: えきできっぷをかいます
+            romaji: eki de kippu o kaimasu
+        hint: Buying is an activity, so the place takes で.
+        explanation: >-
+          駅で切符を買います uses で for where the buying happens. 駅に marks a
+          destination, which is not what 買います needs here.
+      - id: u7-l1-11
+        kind: completion
+        concepts: [journey-particles]
+        prompt: Fill the particle — "I go from Tokyo to Osaka by bullet train."
+        target:
+          kanji: 東京＿大阪まで新幹線で行きます
+          kana: とうきょう＿おおさかまでしんかんせんでいきます
+          romaji: toukyou _ oosaka made shinkansen de ikimasu
+        accept:
+          - kanji: から
+            kana: から
+            romaji: kara
+        hint: Tokyo is where the journey starts.
+        explanation: >-
+          東京から大阪まで新幹線で行きます needs から for the starting point. 新幹線
+          is new here, but で still marks it as the means of travel.
+
+  - id: u7-l2
+    title: 乗る・降りる・乗り換える — the vehicle you board, leave and change
+    objective: >-
+      Say you get on with に, get off with を, and change trains at a station with
+      で and to a line with に.
+    anchors:
+      - kanji: 電車に乗ります
+        kana: でんしゃにのります
+        romaji: densha ni norimasu
+      - kanji: 電車を降ります
+        kana: でんしゃをおります
+        romaji: densha o orimasu
+      - kanji: 新宿で乗り換えます
+        kana: しんじゅくでのりかえます
+        romaji: shinjuku de norikaemasu
+    teach:
+      - prose: >-
+          乗る takes に for the vehicle you board, and 降りる takes を for the vehicle
+          you leave: 電車に乗ります, 電車を降ります. The pair is not a reversal of the
+          particle by accident. に marks the point you get onto; を marks the vehicle
+          you move out of. Unit 5 showed に乗る; this is where を降りる completes the
+          pair.
+        examples:
+          - kanji: 電車に乗ります
+            kana: でんしゃにのります
+            romaji: densha ni norimasu
+          - kanji: 電車を降ります
+            kana: でんしゃをおります
+            romaji: densha o orimasu
+          - kanji: バスを降ります
+            kana: バスをおります
+            romaji: basu o orimasu
+      - prose: >-
+          乗り換える is the station task: 新宿で乗り換えます changes trains at Shinjuku.
+          で marks the station where the change happens, and に marks the line you
+          change to: 新宿で山手線に乗り換えます. を would mark the train you are
+          changing out of, not the line you change to.
+        examples:
+          - kanji: 新宿で乗り換えます
+            kana: しんじゅくでのりかえます
+            romaji: shinjuku de norikaemasu
+          - kanji: 新宿で山手線に乗り換えます
+            kana: しんじゅくでやまのてせんにのりかえます
+            romaji: shinjuku de yamanote sen ni norikaemasu
+      - prose: >-
+          何番線 asks for a platform number: この電車は何番線ですか. 切符 is the
+          ticket, and the platform is where you wait before boarding. Use で for the
+          station where you board, に for the vehicle or line, and を for the vehicle
+          you leave.
+        examples:
+          - kanji: この電車は何番線ですか
+            kana: このでんしゃはなんばんせんですか
+            romaji: kono densha wa nanbansen desu ka
+          - kanji: 駅でバスに乗ります
+            kana: えきでバスにのります
+            romaji: eki de basu ni norimasu
+    steps:
+      - id: u7-l2-1
+        kind: interpretation
+        concepts: [noru-oriru-norikaeru]
+        prompt: >-
+          Two classmates write 電車を降ります and 電車に降ります for "I get off the
+          train". Only one is correct. What does the correct one mean?
+        target:
+          kanji: 電車を降ります
+          kana: でんしゃをおります
+          romaji: densha o orimasu
+        accept_meanings:
+          - I get off the train.
+          - I'm getting off the train.
+          - I will get off the train.
+        hint: 降りる takes を for the vehicle you leave.
+        explanation: >-
+          電車を降ります marks the train with を because you leave it. 電車に降ります
+          borrows に from 乗る, but 降りる takes を for the vehicle you get off.
+      - id: u7-l2-2
+        kind: interpretation
+        concepts: [noru-oriru-norikaeru, journey-particles]
+        prompt: What does this mean?
+        target:
+          kanji: 電車に乗って、次の駅で降ります
+          kana: でんしゃにのって、つぎのえきでおります
+          romaji: densha ni notte, tsugi no eki de orimasu
+        accept_meanings:
+          - I get on the train and get off at the next station.
+          - I take the train and get off at the next station.
+          - I get on the train and get off at the next stop.
+        hint: に marks the train you board, and で marks the station where you get off.
+        explanation: >-
+          電車に乗って、次の駅で降ります uses に for boarding the train and で for the
+          station where the getting off happens. The vehicle 降りる leaves would take
+          を, but here the sentence names the station with で instead.
+      - id: u7-l2-3
+        kind: interpretation
+        concepts: [noru-oriru-norikaeru]
+        prompt: >-
+          Two classmates write 新宿で乗り換えます and 新宿に乗り換えます for "I change
+          trains at Shinjuku". Only one is correct. What does the correct one mean?
+        target:
+          kanji: 新宿で乗り換えます
+          kana: しんじゅくでのりかえます
+          romaji: shinjuku de norikaemasu
+        accept_meanings:
+          - I change trains at Shinjuku.
+          - I transfer at Shinjuku.
+          - I change at Shinjuku.
+        hint: で marks the station where the change happens.
+        explanation: >-
+          新宿で乗り換えます uses で because Shinjuku is where the transfer happens.
+          新宿に乗り換えます would mark Shinjuku as the line you change to, which is
+          not what the sentence means.
+      - id: u7-l2-4
+        kind: construction
+        concepts: [noru-oriru-norikaeru]
+        prompt: >-
+          A classmate writes 電車に降ります for "I get off the train". Write the
+          sentence they meant.
+        accept:
+          - kanji: 電車を降ります
+            kana: でんしゃをおります
+            romaji: densha o orimasu
+        hint: 降りる takes を for the vehicle you leave.
+        explanation: >-
+          電車を降ります uses を for the train being left. 電車に降ります uses the
+          particle that belongs to 乗る, not 降りる.
+      - id: u7-l2-5
+        kind: construction
+        concepts: [noru-oriru-norikaeru]
+        prompt: >-
+          A classmate writes 新宿に乗り換えます for "I change trains at Shinjuku".
+          Write the sentence they meant.
+        accept:
+          - kanji: 新宿で乗り換えます
+            kana: しんじゅくでのりかえます
+            romaji: shinjuku de norikaemasu
+        hint: The station where you change takes で.
+        explanation: >-
+          新宿で乗り換えます uses で for the station where the change happens.
+          新宿に乗り換えます marks Shinjuku as the line changed to, which is the wrong
+          role for a station.
+      - id: u7-l2-6
+        kind: construction
+        concepts: [noru-oriru-norikaeru]
+        prompt: >-
+          A classmate writes 新宿に山手線を乗り換えます for "I change to the Yamanote
+          line at Shinjuku". Write the sentence they meant.
+        accept:
+          - kanji: 新宿で山手線に乗り換えます
+            kana: しんじゅくでやまのてせんにのりかえます
+            romaji: shinjuku de yamanote sen ni norikaemasu
+        hint: で marks the station, and に marks the line you change to.
+        explanation: >-
+          新宿で山手線に乗り換えます uses で for the station and に for the line.
+          新宿に山手線を乗り換えます swaps the two particles, so the station becomes
+          the line and the line becomes the vehicle left.
+      - id: u7-l2-7
+        kind: completion
+        concepts: [noru-oriru-norikaeru]
+        prompt: Fill the particle — "I get on the bus."
+        target:
+          kanji: バス＿乗ります
+          kana: バス＿のります
+          romaji: basu _ norimasu
+        accept:
+          - kanji: に
+            kana: に
+            romaji: ni
+        hint: 乗る takes the particle for the vehicle you get onto.
+        explanation: >-
+          バスに乗ります marks the bus with に because 乗る puts you onto it. を would
+          be for a vehicle you leave with 降りる.
+      - id: u7-l2-8
+        kind: completion
+        concepts: [noru-oriru-norikaeru]
+        prompt: Fill the particle — "I get off the bus."
+        target:
+          kanji: バス＿降ります
+          kana: バス＿おります
+          romaji: basu _ orimasu
+        accept:
+          - kanji: を
+            kana: を
+            romaji: o
+        hint: 降りる takes the particle for the vehicle you leave.
+        explanation: >-
+          バスを降ります marks the bus with を because you leave it. に would be the
+          particle for boarding with 乗る, not for getting off.
+      - id: u7-l2-9
+        kind: transformation
+        concepts: [noru-oriru-norikaeru]
+        prompt: Make this sentence say that you change to the Yamanote line at Shinjuku.
+        target:
+          kanji: 新宿で乗り換えます
+          kana: しんじゅくでのりかえます
+          romaji: shinjuku de norikaemasu
+        accept:
+          - kanji: 新宿で山手線に乗り換えます
+            kana: しんじゅくでやまのてせんにのりかえます
+            romaji: shinjuku de yamanote sen ni norikaemasu
+        hint: Add the line with に, and keep Shinjuku with で.
+        explanation: >-
+          新宿で山手線に乗り換えます adds the line with に while keeping で on the
+          station. The station and the line have different roles, so they take
+          different particles.
+      - id: u7-l2-10
+        kind: listening
+        concepts: [noru-oriru-norikaeru]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: すみません、この電車は何番線ですか
+          kana: すみません、このでんしゃはなんばんせんですか
+          romaji: sumimasen, kono densha wa nanbansen desu ka
+        accept_meanings:
+          - Excuse me, which platform is this train?
+          - Excuse me, what platform is this train?
+          - Excuse me, which platform does this train leave from?
+        hint: 何番線 asks for a platform number.
+        explanation: >-
+          すみません、この電車は何番線ですか asks which platform the train uses. 何番線
+          is a platform number, not a time or a destination.
+      - id: u7-l2-11
+        kind: construction
+        concepts: [noru-oriru-norikaeru]
+        prompt: Ask which platform the bus leaves from.
+        accept:
+          - kanji: すみません、バスは何番線ですか
+            kana: すみません、バスはなんばんせんですか
+            romaji: sumimasen, basu wa nanbansen desu ka
+        hint: 何番線 asks for the platform; は marks the bus as the topic.
+        explanation: >-
+          すみません、バスは何番線ですか puts the bus in the topic slot and asks for
+          its platform with 何番線. 何番線 is the platform number.
+      - id: u7-l2-12
+        kind: construction
+        concepts: [noru-oriru-norikaeru, journey-particles]
+        prompt: >-
+          A classmate writes 駅にバスを乗ります for "I get on the bus at the station".
+          Write the sentence they meant.
+        accept:
+          - kanji: 駅でバスに乗ります
+            kana: えきでバスにのります
+            romaji: eki de basu ni norimasu
+        hint: The station takes で for where the action happens; 乗る takes に for the bus.
+        explanation: >-
+          駅でバスに乗ります uses で for the station where you board and に for the
+          bus. The classmate's 駅に marks the station as a destination, and バスを
+          uses the particle for leaving a vehicle.
+  - id: u7-l3
+    title: どのくらいかかりますか — asking how long it takes
+    objective: >-
+      Ask how long a journey takes with どのくらいかかりますか, answer with a
+      duration plus かかります, and ask a price with いくらですか.
+    anchors:
+      - kanji: どのくらいかかりますか
+        kana: どのくらいかかりますか
+        romaji: dono kurai kakarimasu ka
+      - kanji: 一時間かかります
+        kana: いちじかんかかります
+        romaji: ichijikan kakarimasu
+      - kanji: いくらですか
+        kana: いくらですか
+        romaji: ikura desu ka
+    teach:
+      - prose: >-
+          どのくらい asks for an amount, and かかります is the verb for time or money
+          a journey takes: 駅までどのくらいかかりますか. Answer with the duration and
+          かかります: 十分かかります, 一時間かかります. 行きます asks whether you go;
+          かかります asks how long it takes.
+        examples:
+          - kanji: 駅までどのくらいかかりますか
+            kana: えきまでどのくらいかかりますか
+            romaji: eki made dono kurai kakarimasu ka
+          - kanji: 十分かかります
+            kana: じゅっぷんかかります
+            romaji: juppun kakarimasu
+          - kanji: 一時間かかります
+            kana: いちじかんかかります
+            romaji: ichijikan kakarimasu
+      - prose: >-
+          Put the whole route before the duration when both ends matter:
+          空港から駅まで四十分かかります. から and まで mark the journey, and the
+          duration sits directly before かかります. The duration is not marked with
+          に; it is the thing かかります reports.
+        examples:
+          - kanji: 空港から駅まで四十分かかります
+            kana: くうこうからえきまでよんじゅっぷんかかります
+            romaji: kuukou kara eki made yonjuppun kakarimasu
+          - kanji: 電車で一時間かかります
+            kana: でんしゃでいちじかんかかります
+            romaji: densha de ichijikan kakarimasu
+      - prose: >-
+          For money, いくら asks the price: 切符はいくらですか. どのくらいかかりますか
+          can also ask a cost, but いくらですか is the direct price question. Keep the
+          two questions apart: どのくらい for duration or amount, いくら for the price
+          of a thing.
+        examples:
+          - kanji: 切符はいくらですか
+            kana: きっぷはいくらですか
+            romaji: kippu wa ikura desu ka
+          - kanji: 五百円です
+            kana: ごひゃくえんです
+            romaji: gohyaku en desu
+    steps:
+      - id: u7-l3-1
+        kind: interpretation
+        concepts: [dono-kurai-kakarimasu]
+        prompt: What does this mean?
+        target:
+          kanji: 駅までどのくらいかかりますか
+          kana: えきまでどのくらいかかりますか
+          romaji: eki made dono kurai kakarimasu ka
+        accept_meanings:
+          - How long does it take to the station?
+          - How long does it take to get to the station?
+          - How long does it take to reach the station?
+        hint: どのくらい asks for an amount, and かかります is "takes".
+        explanation: >-
+          駅までどのくらいかかりますか asks for the duration of the trip to the
+          station. どのくらい asks "how much", and かかります reports time or money.
+      - id: u7-l3-2
+        kind: interpretation
+        concepts: [dono-kurai-kakarimasu, journey-particles]
+        prompt: What does this mean?
+        target:
+          kanji: 空港から駅まで一時間かかります
+          kana: くうこうからえきまでいちじかんかかります
+          romaji: kuukou kara eki made ichijikan kakarimasu
+        accept_meanings:
+          - It takes one hour from the airport to the station.
+          - It takes an hour from the airport to the station.
+          - It takes one hour to get from the airport to the station.
+        hint: かかります reports the duration, and から/まで mark the journey.
+        explanation: >-
+          空港から駅まで一時間かかります says the trip from the airport to the station
+          takes one hour. The duration 一時間 sits before かかります; から and まで
+          mark the route.
+      - id: u7-l3-3
+        kind: construction
+        concepts: [dono-kurai-kakarimasu]
+        prompt: >-
+          A classmate writes 駅までどのくらい行きますか for "How long does it take to
+          the station?". Write the question they meant.
+        accept:
+          - kanji: 駅までどのくらいかかりますか
+            kana: えきまでどのくらいかかりますか
+            romaji: eki made dono kurai kakarimasu ka
+        hint: 行きます asks whether you go, not how long it takes.
+        explanation: >-
+          駅までどのくらいかかりますか uses かかります for the time a trip takes.
+          どのくらい行きますか asks "how much do you go", which is not the question.
+      - id: u7-l3-4
+        kind: construction
+        concepts: [dono-kurai-kakarimasu]
+        prompt: Ask how long it takes to get to the station.
+        accept:
+          - kanji: 駅までどのくらいかかりますか
+            kana: えきまでどのくらいかかりますか
+            romaji: eki made dono kurai kakarimasu ka
+        hint: Use どのくらい with かかります.
+        explanation: >-
+          駅までどのくらいかかりますか asks for the duration to the station. まで
+          marks the endpoint, and かかります asks how long the trip takes.
+      - id: u7-l3-5
+        kind: construction
+        concepts: [dono-kurai-kakarimasu, journey-particles]
+        prompt: >-
+          A classmate writes 空港から駅まで三十分行きます for "It takes thirty minutes
+          from the airport to the station". Write the sentence they meant.
+        accept:
+          - kanji: 空港から駅まで三十分かかります
+            kana: くうこうからえきまでさんじゅっぷんかかります
+            romaji: kuukou kara eki made sanjuppun kakarimasu
+        hint: A duration is reported with かかります, not 行きます.
+        explanation: >-
+          空港から駅まで三十分かかります uses かかります for the duration. 行きます
+          would say that someone travels for thirty minutes, not that the trip takes
+          thirty minutes.
+      - id: u7-l3-6
+        kind: completion
+        concepts: [dono-kurai-kakarimasu, journey-particles]
+        prompt: Fill the particle — "It takes an hour by train."
+        target:
+          kanji: 電車＿一時間かかります
+          kana: でんしゃ＿いちじかんかかります
+          romaji: densha _ ichijikan kakarimasu
+        accept:
+          - kanji: で
+            kana: で
+            romaji: de
+        hint: で marks the means of travel.
+        explanation: >-
+          電車で一時間かかります uses で for the train as the means. に would mark a
+          destination, but the train is how you travel, not where you go.
+      - id: u7-l3-7
+        kind: transformation
+        concepts: [dono-kurai-kakarimasu, journey-particles]
+        prompt: Make this sentence say that the trip takes forty minutes.
+        target:
+          kanji: 空港から駅まで行きます
+          kana: くうこうからえきまでいきます
+          romaji: kuukou kara eki made ikimasu
+        accept:
+          - kanji: 空港から駅まで四十分かかります
+            kana: くうこうからえきまでよんじゅっぷんかかります
+            romaji: kuukou kara eki made yonjuppun kakarimasu
+        hint: Replace 行きます with the duration and かかります.
+        explanation: >-
+          空港から駅まで四十分かかります replaces the going with the duration and
+          かかります. The route stays the same; the verb now reports how long it
+          takes.
+      - id: u7-l3-8
+        kind: construction
+        concepts: [dono-kurai-kakarimasu]
+        prompt: Ask how much the ticket is.
+        accept:
+          - kanji: 切符はいくらですか
+            kana: きっぷはいくらですか
+            romaji: kippu wa ikura desu ka
+        hint: いくら asks for a price.
+        explanation: >-
+          切符はいくらですか asks the price of the ticket. いくら asks how much money;
+          どのくらいかかりますか can also ask a cost, but いくらですか is the direct
+          price question.
+      - id: u7-l3-9
+        kind: listening
+        concepts: [dono-kurai-kakarimasu, journey-particles]
+        prompt: Listen to the answer, then say how long the trip takes.
+        target:
+          kanji: 空港から駅まで四十分かかります
+          kana: くうこうからえきまでよんじゅっぷんかかります
+          romaji: kuukou kara eki made yonjuppun kakarimasu
+        accept_meanings:
+          - It takes forty minutes from the airport to the station.
+          - Forty minutes.
+          - It takes forty minutes.
+          - 40 minutes.
+        hint: Listen for the number before 分.
+        explanation: >-
+          空港から駅まで四十分かかります says the trip takes forty minutes. 四十分 is
+          forty minutes, and かかります reports that duration.
+      - id: u7-l3-10
+        kind: construction
+        concepts: [dono-kurai-kakarimasu, journey-particles]
+        prompt: >-
+          A classmate writes バスに十分かかります for "It takes ten minutes by bus".
+          Write the sentence they meant.
+        accept:
+          - kanji: バスで十分かかります
+            kana: バスでじゅっぷんかかります
+            romaji: basu de juppun kakarimasu
+        hint: に marks a destination; here the bus is the means, so it takes で.
+        explanation: >-
+          バスで十分かかります uses で for the bus as the means of travel. バスに would
+          mark the bus as a destination or a point, not as how you travel.
+      - id: u7-l3-11
+        kind: interpretation
+        concepts: [dono-kurai-kakarimasu, journey-particles]
+        prompt: What does this mean?
+        target:
+          kanji: 東京から大阪まで新幹線で二時間半かかります
+          kana: とうきょうからおおさかまでしんかんせんでにじかんはんかかります
+          romaji: toukyou kara oosaka made shinkansen de nijikanhan kakarimasu
+        accept_meanings:
+          - It takes two and a half hours from Tokyo to Osaka by bullet train.
+          - It takes two and a half hours from Tokyo to Osaka on the bullet train.
+          - The bullet train takes two and a half hours from Tokyo to Osaka.
+        hint: 二時間半 is two and a half hours; 新幹線 is the bullet train.
+        explanation: >-
+          東京から大阪まで新幹線で二時間半かかります names the route and the means,
+          then reports the duration. 二時間半 is two and a half hours, and 新幹線 is
+          new vocabulary here.
+      - id: u7-l3-12
+        kind: speaking
+        concepts: [dono-kurai-kakarimasu, journey-particles]
+        prompt: Say that it takes ten minutes by bus.
+        accept:
+          - kanji: バスで十分かかります
+            kana: バスでじゅっぷんかかります
+            romaji: basu de juppun kakarimasu
+          - kana: バスでじゅっぷんかかります
+            romaji: basu de juppun kakarimasu
+        hint: で marks the bus as the means, and the duration sits before かかります.
+        explanation: >-
+          バスで十分かかります uses で for the bus and 十分 for ten minutes before
+          かかります. A transcriber may return the kanji or the kana form, so both are
+          accepted.
+  - id: u7-l4
+    title: 行き方 — putting it together at the station
+    objective: >-
+      Use the journey particles, the boarding and leaving pair, and the duration
+      question in a station conversation, then produce them without scaffolding.
+    teach:
+      - prose: >-
+          This lesson adds no new grammar. に marks a destination or the point you
+          get onto, で marks the place of an activity or the means, から and まで
+          mark the two ends of the journey, and を marks the vehicle you leave. 乗る
+          takes に, 降りる takes を for the vehicle, and 乗り換える takes で for the
+          station and に for the line. Ask duration with どのくらいかかりますか and
+          price with いくらですか.
+        examples:
+          - kanji: 新宿で山手線に乗り換えます
+            kana: しんじゅくでやまのてせんにのりかえます
+            romaji: shinjuku de yamanote sen ni norikaemasu
+          - kanji: 東京駅までどのくらいかかりますか
+            kana: とうきょうえきまでどのくらいかかりますか
+            romaji: toukyou eki made dono kurai kakarimasu ka
+      - prose: >-
+          Read the task before choosing the particle. Going somewhere takes に;
+          doing something somewhere takes で; starting and ending take から and まで;
+          boarding takes に; leaving the vehicle takes を; changing at a station takes
+          で and changing to a line takes に. For the trip itself, ask duration with
+          かかります and price with いくら.
+    steps:
+      - id: u7-l4-1
+        kind: conversation
+        concepts: [journey-particles, noru-oriru-norikaeru, dono-kurai-kakarimasu]
+        prompt: >-
+          You are at the airport station with a ticket to Tokyo Station. Ask which
+          platform, say where you change trains, ask how long it takes, and ask the
+          price.
+        scenario:
+          turns:
+            - speaker: npc
+              line:
+                kanji: すみません、どちらまで行きますか。
+                kana: すみません、どちらまでいきますか。
+                romaji: sumimasen, dochira made ikimasu ka
+            - speaker: learner
+              accept:
+                - kanji: 東京駅まで行きます。
+                  kana: とうきょうえきまでいきます。
+                  romaji: toukyou eki made ikimasu
+                - kanji: 東京駅までです。
+                  kana: とうきょうえきまでです。
+                  romaji: toukyou eki made desu
+                - kanji: 東京まで行きます。
+                  kana: とうきょうまでいきます。
+                  romaji: toukyou made ikimasu
+            - speaker: npc
+              line:
+                kanji: 東京駅ですね。新宿で乗り換えですよ。
+                kana: とうきょうえきですね。しんじゅくでのりかえですよ。
+                romaji: toukyou eki desu ne. shinjuku de norikae desu yo
+            - speaker: learner
+              accept:
+                - kanji: すみません、新宿で何番線に乗り換えますか。
+                  kana: すみません、しんじゅくでなんばんせんにのりかえますか。
+                  romaji: sumimasen, shinjuku de nanbansen ni norikaemasu ka
+                - kanji: すみません、何番線ですか。
+                  kana: すみません、なんばんせんですか。
+                  romaji: sumimasen, nanbansen desu ka
+                - kanji: 新宿で何番線ですか。
+                  kana: しんじゅくでなんばんせんですか。
+                  romaji: shinjuku de nanbansen desu ka
+            - speaker: npc
+              line:
+                kanji: 新宿では三番線です。山手線に乗り換えてください。
+                kana: しんじゅくではさんばんせんです。やまのてせんにのりかえてください。
+                romaji: shinjuku de wa sanbansen desu. yamanote sen ni norikaete kudasai
+            - speaker: learner
+              accept:
+                - kanji: はい、新宿で山手線に乗り換えます。
+                  kana: はい、しんじゅくでやまのてせんにのりかえます。
+                  romaji: hai, shinjuku de yamanote sen ni norikaemasu
+                - kanji: わかりました。新宿で乗り換えます。
+                  kana: わかりました。しんじゅくでのりかえます。
+                  romaji: wakarimashita. shinjuku de norikaemasu
+                - kanji: 新宿で乗り換えます。
+                  kana: しんじゅくでのりかえます。
+                  romaji: shinjuku de norikaemasu
+            - speaker: npc
+              line:
+                kanji: はい。切符はもう買いましたか。
+                kana: はい。きっぷはもうかいましたか。
+                romaji: hai. kippu wa mou kaimashita ka
+            - speaker: learner
+              accept:
+                - kanji: いいえ、まだです。切符はいくらですか。
+                  kana: いいえ、まだです。きっぷはいくらですか。
+                  romaji: iie, mada desu. kippu wa ikura desu ka
+                - kanji: 切符はいくらですか。
+                  kana: きっぷはいくらですか。
+                  romaji: kippu wa ikura desu ka
+                - kanji: いくらですか。
+                  kana: いくらですか。
+                  romaji: ikura desu ka
+            - speaker: npc
+              line:
+                kanji: 切符は五百円です。券売機で買ってください。
+                kana: きっぷはごひゃくえんです。けんばいきでかってください。
+                romaji: kippu wa gohyaku en desu. kenbaiki de katte kudasai
+            - speaker: learner
+              accept:
+                - kanji: 新宿までどのくらいかかりますか。
+                  kana: しんじゅくまでどのくらいかかりますか。
+                  romaji: shinjuku made dono kurai kakarimasu ka
+                - kanji: どのくらいかかりますか。
+                  kana: どのくらいかかりますか。
+                  romaji: dono kurai kakarimasu ka
+                - kanji: 何分かかりますか。
+                  kana: なんぷんかかりますか。
+                  romaji: nanpun kakarimasu ka
+            - speaker: npc
+              line:
+                kanji: 新宿まで四十分かかります。
+                kana: しんじゅくまでよんじゅっぷんかかります。
+                romaji: shinjuku made yonjuppun kakarimasu
+            - speaker: learner
+              accept:
+                - kanji: わかりました。ありがとうございます。
+                  kana: わかりました。ありがとうございます。
+                  romaji: wakarimashita. arigatou gozaimasu
+                - kanji: ありがとうございます。
+                  kana: ありがとうございます。
+                  romaji: arigatou gozaimasu
+                - kanji: はい、わかりました。
+                  kana: はい、わかりました。
+                  romaji: hai, wakarimashita
+        hint: >-
+          Use まで for the destination, で for the station where you change, に for
+          the line, 何番線 for the platform, いくら for the price and
+          どのくらいかかりますか for the duration.
+        explanation: >-
+          The conversation asks for the destination first, then changes trains at
+          Shinjuku. The learner asks the platform with 何番線, confirms the change to
+          the Yamanote line with で for the station and に for the line, asks the
+          ticket price with いくら, and asks the duration with
+          どのくらいかかりますか. The answers report the route with まで and the
+          duration with かかります.
+      - id: u7-l4-2
+        kind: speaking
+        concepts: [journey-particles, noru-oriru-norikaeru, dono-kurai-kakarimasu]
+        prompt: >-
+          You are at the airport station with a paper ticket to Shinjuku. Without
+          looking back at the lesson, ask which platform, say where you change
+          trains, ask how long the trip takes, and ask the price. Speak aloud.
+        rubric: >-
+          Does に mark the destination or the point you get onto, and で the place of
+          an activity or the means? Do から and まで mark the two ends of the
+          journey? Does 乗る take に and 降りる take を for the vehicle? Does
+          乗り換える take で for the station and に for the line? Does
+          どのくらいかかりますか ask the duration and いくらですか the price? Judge
+          meaning, grammar, naturalness and register separately. There is no model
+          answer.
