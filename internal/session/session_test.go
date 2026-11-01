@@ -309,17 +309,22 @@ func TestTranscribedJapaneseIsNotAMeaningAnswer(t *testing.T) {
 	}
 }
 
-func TestReviewScheduledOnCorrectAnswer(t *testing.T) {
+func TestCorrectAnswersCreateNoReviewCard(t *testing.T) {
 	runner, store := newRunner(t, nil)
-	if _, err := runner.Submit(context.Background(), productionStep("s1", "s1"), "mizu o kudasai"); err != nil {
-		t.Fatalf("Submit: %v", err)
+
+	for _, id := range []string{"s1", "s1", "s2"} {
+		if _, err := runner.Submit(context.Background(), productionStep(id, id), "mizu o kudasai"); err != nil {
+			t.Fatalf("Submit(%s): %v", id, err)
+		}
 	}
 
 	cards, err := store.Reviews()
-	if err != nil || len(cards) == 0 {
-		t.Fatalf("expected a scheduled review, got %+v err=%v", cards, err)
+	if err != nil {
+		t.Fatalf("Reviews: %v", err)
 	}
-	if cards[0].Kind != schedule.KindReview {
-		t.Fatalf("kind = %q, want review", cards[0].Kind)
+	for _, card := range cards {
+		if card.Kind == schedule.KindReview {
+			t.Fatalf("an answer is not a review and must not create a card, got %+v", card)
+		}
 	}
 }

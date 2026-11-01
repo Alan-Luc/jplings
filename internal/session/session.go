@@ -146,11 +146,6 @@ func (r *Runner) record(step *content.Step, outcome grade.Outcome, at time.Time,
 		if err := r.scheduleRetentionIfReady(conceptID, at); err != nil {
 			return err
 		}
-		if err := r.Store.ScheduleReview(schedule.Review(
-			schedule.Initial(conceptID, at), schedule.Good, at,
-		)); err != nil {
-			return err
-		}
 	}
 	return nil
 }
