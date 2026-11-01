@@ -1,0 +1,185 @@
+id: quiz-1
+title: Q1 — cumulative gate (units 1–6)
+lessons:
+  - id: q1
+    title: Q1 — cumulative gate
+    steps:
+      - id: q1-1
+        kind: interpretation
+        prompt: What does this mean?
+        target:
+          kanji: 私は学生じゃないです。
+          kana: わたしはがくせいじゃないです。
+          romaji: watashi wa gakusei ja nai desu
+        accept_meanings:
+          - I am not a student.
+          - I'm not a student.
+          - I am not a student
+        explanation: >-
+          学生じゃないです is the polite negative of 学生です, so the sentence says
+          you are not a student. 学生です would say you are one.
+      - id: q1-2
+        kind: interpretation
+        prompt: What does this mean?
+        target:
+          kanji: 田中さんはコーヒーが好きです。
+          kana: たなかさんはコーヒーがすきです。
+          romaji: tanaka san wa koohii ga suki desu
+        accept_meanings:
+          - Tanaka likes coffee.
+          - Tanaka likes coffee
+          - Tanaka-san likes coffee.
+        explanation: >-
+          は marks Tanaka as the topic and が marks coffee as the thing liked.
+          コーヒーは好きです would make coffee the topic instead, which is a different
+          focus.
+      - id: q1-3
+        kind: listening
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: 昨日は七時に起きました。
+          kana: きのうはしちじにおきました。
+          romaji: kinou wa shichiji ni okimashita
+        accept_meanings:
+          - I got up at seven yesterday.
+          - I got up at 7 yesterday.
+          - Yesterday I got up at seven.
+        explanation: >-
+          七時に marks the clock time with に, and 起きました is the past polite form of
+          起きます. で would mark where an action happens, not when.
+      - id: q1-4
+        kind: construction
+        prompt: Write politely that you do not want to eat.
+        accept:
+          - kanji: 食べたくないです。
+            kana: たべたくないです。
+            romaji: tabetakunai desu
+        explanation: >-
+          食べたくないです is 食べ + たくないです. 食べたいです says you do want to
+          eat, which is the opposite.
+      - id: q1-5
+        kind: speaking
+        prompt: Ask the person to get on the train.
+        accept:
+          - kanji: 電車に乗ってください。
+            kana: でんしゃにのってください。
+            romaji: densha ni notte kudasai
+        explanation: >-
+          乗る takes に for the vehicle, and ください follows the て form 乗って.
+          電車を乗ってください uses the wrong particle for 乗る.
+      - id: q1-6
+        kind: interpretation
+        prompt: What does this mean?
+        target:
+          kanji: 「のりば」って何ですか。
+          kana: 「のりば」ってなんですか。
+          romaji: noriba tte nan desu ka
+        accept_meanings:
+          - What does のりば mean?
+          - What does noriba mean?
+          - What is のりば?
+        explanation: >-
+          って quotes the word being asked about, so the question is about the meaning
+          of のりば. は would make it the topic and stop asking what the word means.
+      - id: q1-7
+        kind: interpretation
+        prompt: What does this mean?
+        target:
+          kanji: 田中さんも先生ですか。
+          kana: たなかさんもせんせいですか。
+          romaji: tanaka san mo sensei desu ka
+        accept_meanings:
+          - Is Tanaka a teacher too?
+          - Is Tanaka also a teacher?
+          - Is Tanaka a teacher as well?
+        explanation: >-
+          も replaces は and adds "also", and か makes the sentence a question. は would
+          ask about Tanaka alone, with no "too".
+      - id: q1-8
+        kind: speaking
+        prompt: Say that you want a car.
+        accept:
+          - kanji: 車がほしいです。
+            kana: くるまがほしいです。
+            romaji: kuruma ga hoshii desu
+        explanation: >-
+          ほしい describes a state, so the thing wanted takes が. 車をほしいです marks
+          it like the object of an action, which ほしい is not.
+      - id: q1-9
+        kind: speaking
+        prompt: Say politely that you do not watch movies.
+        accept:
+          - kanji: 映画を見ません。
+            kana: えいがをみません。
+            romaji: eiga o mimasen
+        explanation: >-
+          見ません is the polite negative of 見ます, with を marking the movie. 見ます
+          would say you do watch them.
+      - id: q1-10
+        kind: speaking
+        prompt: You are hot. Ask whether you should open the window.
+        accept:
+          - kanji: 窓を開けましょうか。
+            kana: まどをあけましょうか。
+            romaji: mado o akemashou ka
+        explanation: >-
+          ましょうか asks whether you should do it, while ましょう states the proposal
+          as a decision. The か is what makes this an offer put as a question.
+      - id: q1-11
+        kind: listening
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: 今、本を読んでいます。
+          kana: いま、ほんをよんでいます。
+          romaji: ima, hon o yonde imasu
+        accept_meanings:
+          - I am reading a book now.
+          - I'm reading a book now.
+          - I am reading a book right now.
+        explanation: >-
+          読んでいます is the て form 読んで plus います, so the action is in progress.
+          読みます would state that you read, not that you are reading now.
+      - id: q1-12
+        kind: speaking
+        prompt: The other person spoke too fast. Ask them to say it one more time.
+        accept:
+          - kanji: もう一度言ってください。
+            kana: もういちどいってください。
+            romaji: mou ichido itte kudasai
+        explanation: >-
+          言う takes the て form 言って before ください. 言いますください mixes the ます
+          form with ください and is not a form Japanese uses.
+      - id: q1-13
+        kind: construction
+        prompt: Write "I did not study Japanese at home yesterday."
+        accept:
+          - kanji: 昨日は家で日本語を勉強しませんでした。
+            kana: きのうはいえでにほんごをべんきょうしませんでした。
+            romaji: kinou wa ie de nihongo o benkyou shimasen deshita
+        explanation: >-
+          家で marks where the studying happened, and 勉強しませんでした is the past
+          negative. 勉強しました would say you did study.
+      - id: q1-14
+        kind: speaking
+        prompt: Say that you walk through the park.
+        accept:
+          - kanji: 公園を歩きます。
+            kana: こうえんをあるきます。
+            romaji: kouen o arukimasu
+        explanation: >-
+          歩く takes を for the space you move through. 公園に歩きます marks the park as
+          a destination instead of the ground covered.
+      - id: q1-15
+        kind: listening
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: すみません、ゆっくり言ってください。
+          kana: すみません、ゆっくりいってください。
+          romaji: sumimasen, yukkuri itte kudasai
+        accept_meanings:
+          - Excuse me, please speak more slowly.
+          - Excuse me, please speak slower.
+          - Excuse me, please speak slowly.
+        explanation: >-
+          ゆっくり asks for slower speech, and 言ってください asks them to say it.
+          もう一度言ってください asks for a repeat, not for slower speech.

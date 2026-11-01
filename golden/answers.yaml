@@ -1610,3 +1610,93 @@
 - step: u6-l4-1
   answer: chotto machimasu kudasai
   verdict: wrong
+- step: q1-1
+  answer: I am not a student.
+  verdict: correct
+- step: q1-1
+  answer: I am a student.
+  verdict: wrong
+- step: q1-2
+  answer: Tanaka likes coffee.
+  verdict: correct
+- step: q1-2
+  answer: Tanaka does not like coffee.
+  verdict: wrong
+- step: q1-3
+  answer: I got up at seven yesterday.
+  verdict: correct
+- step: q1-3
+  answer: I went to bed at seven yesterday.
+  verdict: wrong
+- step: q1-4
+  answer: tabetakunai desu
+  verdict: correct
+- step: q1-4
+  answer: tabetai desu
+  verdict: wrong
+- step: q1-5
+  answer: densha ni notte kudasai
+  verdict: correct
+- step: q1-5
+  answer: densha o notte kudasai
+  verdict: wrong
+- step: q1-6
+  answer: What does noriba mean?
+  verdict: correct
+- step: q1-6
+  answer: Where is noriba?
+  verdict: wrong
+- step: q1-7
+  answer: Is Tanaka a teacher too?
+  verdict: correct
+- step: q1-7
+  answer: Is Tanaka a student too?
+  verdict: wrong
+- step: q1-8
+  answer: kuruma ga hoshii desu
+  verdict: correct
+- step: q1-8
+  answer: kuruma o hoshii desu
+  verdict: wrong
+- step: q1-9
+  answer: eiga o mimasen
+  verdict: correct
+- step: q1-9
+  answer: eiga o mimasu
+  verdict: wrong
+- step: q1-10
+  answer: mado o akemashou ka
+  verdict: correct
+- step: q1-10
+  answer: mado o akemashou
+  verdict: wrong
+- step: q1-11
+  answer: I am reading a book now.
+  verdict: correct
+- step: q1-11
+  answer: I read a book yesterday.
+  verdict: wrong
+- step: q1-12
+  answer: mou ichido itte kudasai
+  verdict: correct
+- step: q1-12
+  answer: mou ichido iimasu kudasai
+  verdict: wrong
+- step: q1-13
+  answer: kinou wa ie de nihongo o benkyou shimasen deshita
+  verdict: correct
+- step: q1-13
+  answer: kinou wa ie de nihongo o benkyou shimashita
+  verdict: wrong
+- step: q1-14
+  answer: kouen o arukimasu
+  verdict: correct
+- step: q1-14
+  answer: kouen ni arukimasu
+  verdict: wrong
+- step: q1-15
+  answer: Excuse me, please speak more slowly.
+  verdict: correct
+- step: q1-15
+  answer: Excuse me, please say it one more time.
+  verdict: wrong
