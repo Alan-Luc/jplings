@@ -99,8 +99,14 @@ lessons:
         kind: speaking
         prompt: Say that you want a car.
         accept:
-          - kanji: 車がほしいです。
-            kana: くるまがほしいです。
+          - kanji: 車がほしいです
+            kana: くるまがほしいです
+            romaji: kuruma ga hoshii desu
+          - kanji: 車が欲しいです
+            kana: くるまがほしいです
+            romaji: kuruma ga hoshii desu
+          - kanji: くるまがほしいです
+            kana: くるまがほしいです
             romaji: kuruma ga hoshii desu
         explanation: >-
           ほしい describes a state, so the thing wanted takes が. 車をほしいです marks

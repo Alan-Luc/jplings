@@ -1700,3 +1700,9 @@
 - step: q1-15
   answer: Excuse me, please say it one more time.
   verdict: wrong
+- step: q1-8
+  answer: 車が欲しいです
+  verdict: correct
+- step: q1-8
+  answer: 車をほしいです
+  verdict: wrong
