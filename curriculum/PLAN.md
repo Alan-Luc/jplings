@@ -138,6 +138,12 @@ Rules that follow from the table:
 - **Difficulty ramps inside the unit**: L1 contrast, L2–3 guided, L4 transfer, last
   lesson scenario. Across the course the ramp is the same but the scaffolding
   disappears — by U15 nothing is shown on screen before responding.
+- **Every production item ends with the sound of the right answer.** After grading,
+  the accepted answer's audio plays alongside the written form, and his own recording
+  is never scored for pronunciation. He needs to hear the rendition he is being
+  compared against, and pointing the app's own voice at the accepted answer is the
+  speaking equivalent of rustlings' `solutions/` tree. It is not a pronunciation
+  score; it is the reference. Needs the audio path from P1.
 
 ## 6. Quizzes
 
@@ -152,6 +158,11 @@ stimulus with any lesson, and have no scaffold.
 
 Q3 is also the February benchmark: one run, reported twice, because a separate
 full-course quiz five days after a full-course benchmark measures fatigue.
+
+**Items are interleaved, not blocked.** Consecutive items come from different units —
+Q1 alternates U3 conjugation, U2 particles, U6 questions, U4 endings — because choosing
+the right form against competitors is the skill, and a block of たい items followed by a
+block of て items only practises retrieval in a queue it will never appear in.
 
 A quiz failure is not a retake loop. It is a signal that the week's fourth slot goes
 to the failed concepts, and Q1's concepts stay in the review queue at their normal

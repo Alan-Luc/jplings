@@ -70,6 +70,10 @@ meaning question on one word.
    when `Kind == Listening`.
 3. `schema.go`: allow `listening` (or an existing kind) to satisfy validation with
    `accept_meanings` in place of `accept`, and reject a step that has both grading paths.
+4. Play the accepted answer's audio after a miss, on every production kind. Same
+   synthesizer, no new field; the written answer is already shown, and the recording is
+   the reference he compares his own speech against. Pronunciation is never scored, so
+   this is a reference and not a penalty.
 
 Example unlocked content — audio comprehension, no romaji, no dictation:
 
