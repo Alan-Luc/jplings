@@ -756,3 +756,277 @@ lessons:
           に for clock times, で for the place of an action, を for what an action
           acts on, and ませんでした for one thing you did not do? Judge meaning,
           grammar, naturalness and register separately. There is no model answer.
+
+  - id: u3-l4
+    title: 四つの形を自分で作る
+    objective: >-
+      Produce ます, ません, ました and ませんでした for godan, ichidan and irregular
+      verbs, including verbs the unit has not shown.
+    teach:
+      - prose: >-
+          This lesson changes only the ending, never the stem. 飲む gives 飲みます,
+          飲みません, 飲みました, 飲みませんでした. 食べる gives 食べます, 食べません,
+          食べました, 食べませんでした. 来る gives 来ます, 来ません, 来ました,
+          来ませんでした. The group decides the stem; the ending decides time and
+          polarity.
+        examples:
+          - kanji: 飲みませんでした
+            kana: のみませんでした
+            romaji: nomimasen deshita
+          - kanji: 食べました
+            kana: たべました
+            romaji: tabemashita
+      - prose: >-
+          Read the meaning before choosing an ending. ました is past affirmative,
+          ません is present negative, and ませんでした is past negative. A verb you
+          have never seen still belongs to a group, so the same stem rule applies
+          to it.
+    steps:
+      - id: u3-l4-1
+        kind: interpretation
+        concepts: [verb-groups, masu-stem, past-negative]
+        prompt: >-
+          A classmate asks 昨日、来ましたか。 Two answers are on the board: 来ました
+          and 来ませんでした. What does 来ませんでした mean?
+        target:
+          kanji: 来ませんでした
+          kana: きませんでした
+          romaji: kimasen deshita
+        accept_meanings:
+          - I did not come.
+          - I didn't come.
+          - I did not come
+        hint: ませんでした is the past negative ending, and 来る is irregular; its stem is 来, read き.
+        explanation: >-
+          来ませんでした is the past negative: "I did not come". 来ました would answer
+          yes; the two forms differ only in the ending.
+      - id: u3-l4-2
+        kind: transformation
+        concepts: [masu-stem, past-negative]
+        prompt: Make 飲みます negative.
+        target:
+          kanji: 飲みます
+          kana: のみます
+          romaji: nomimasu
+        accept:
+          - kanji: 飲みません
+            kana: のみません
+            romaji: nomimasen
+        hint: Keep 飲み and replace ます with ません.
+        explanation: >-
+          飲みません is the present negative. The stem 飲み does not change; only
+          the ending does.
+      - id: u3-l4-3
+        kind: construction
+        concepts: [verb-groups, past-negative]
+        prompt: Write "I did not write."
+        accept:
+          - kanji: 書きませんでした
+            kana: かきませんでした
+            romaji: kakimasen deshita
+        hint: 書く is godan, so く becomes き; the past negative ending is ませんでした.
+        explanation: >-
+          書きませんでした joins the godan stem 書き with ませんでした. 書きました
+          would be the past affirmative.
+      - id: u3-l4-4
+        kind: completion
+        concepts: [verb-groups, masu-stem]
+        prompt: Fill the stem — "I rest."
+        target:
+          kanji: 休＿ます
+          kana: やす＿ます
+          romaji: yasu _ masu
+        accept:
+          - kanji: み
+            kana: み
+            romaji: mi
+        hint: 休む is godan, so its final む changes to the -i row.
+        explanation: >-
+          休む is godan: む changes to み, giving 休みます. This verb has not appeared
+          in the unit, but its group still decides the stem.
+      - id: u3-l4-5
+        kind: construction
+        concepts: [verb-groups, past-negative]
+        prompt: >-
+          A classmate writes 食べりませんでした to mean "I did not eat". Write the
+          sentence they meant.
+        accept:
+          - kanji: 食べませんでした
+            kana: たべませんでした
+            romaji: tabemasen deshita
+        hint: 食べる is ichidan; the stem 食べ takes ませんでした directly, with no り.
+        explanation: >-
+          食べませんでした is correct. 食べりませんでした adds a り as if the verb were
+          godan and changes the ichidan stem.
+      - id: u3-l4-6
+        kind: transformation
+        concepts: [masu-stem, past-negative]
+        prompt: Make 見ます past.
+        target:
+          kanji: 見ます
+          kana: みます
+          romaji: mimasu
+        accept:
+          - kanji: 見ました
+            kana: みました
+            romaji: mimashita
+        hint: Keep the stem 見 and replace ます with ました.
+        explanation: >-
+          見ました is the past affirmative. 見ませんでした would be the past negative.
+      - id: u3-l4-7
+        kind: construction
+        concepts: [verb-groups, masu-stem]
+        prompt: Write "I swim."
+        accept:
+          - kanji: 泳ぎます
+            kana: およぎます
+            romaji: oyogimasu
+        hint: 泳ぐ is godan; its final ぐ changes to ぎ.
+        explanation: >-
+          泳ぐ is godan, so ぐ becomes ぎ: 泳ぎます. The verb is new here, but the
+          godan rule is the same.
+      - id: u3-l4-8
+        kind: construction
+        concepts: [verb-groups, place-de, object-wo]
+        prompt: Write "I read a book at home."
+        accept:
+          - kanji: 家で本を読みます
+            kana: いえでほんをよみます
+            romaji: ie de hon o yomimasu
+        hint: 家 is where the action happens and 本 is what the action acts on; 読む is godan, so む becomes み.
+        explanation: >-
+          家で本を読みます uses で for home, を for the book, and the godan stem 読み.
+          読む is new here; its group still sets the stem.
+      - id: u3-l4-9
+        kind: transformation
+        concepts: [verb-groups, past-negative]
+        prompt: Make 会います past negative.
+        target:
+          kanji: 会います
+          kana: あいます
+          romaji: aimasu
+        accept:
+          - kanji: 会いませんでした
+            kana: あいませんでした
+            romaji: aimasen deshita
+        hint: 会う is godan; keep the stem 会い and replace ます with ませんでした.
+        explanation: >-
+          会いませんでした is the past negative of 会います. 会いました would be the
+          past affirmative; only the ending changes.
+
+  - id: u3-l5
+    title: 一日について話す — putting it together
+    objective: >-
+      Use the whole stem machine in a daily-routine conversation and produce the
+      polite forms without scaffolding.
+    teach:
+      - prose: >-
+          This lesson adds no new grammar. Choose the verb's group, build the stem,
+          then attach ます, ません, ました or ませんでした. A daily routine also needs
+          に for clock times, で for where an action happens, and を for what an
+          action acts on.
+        examples:
+          - kanji: 七時に起きます
+            kana: しちじにおきます
+            romaji: shichiji ni okimasu
+          - kanji: 朝ごはんを食べませんでした
+            kana: あさごはんをたべませんでした
+            romaji: asagohan o tabemasen deshita
+    steps:
+      - id: u3-l5-1
+        kind: conversation
+        concepts: [verb-groups, masu-stem, past-negative, time-ni, place-de, object-wo]
+        prompt: >-
+          Your host family asks about your day. Answer their questions, including a
+          follow-up about yesterday that you did not expect.
+        scenario:
+          turns:
+            - speaker: npc
+              line:
+                kanji: 毎日、何時に起きますか。
+                kana: まいにち、なんじにおきますか。
+                romaji: mainichi, nanji ni okimasu ka
+            - speaker: learner
+              accept:
+                - kanji: 六時に起きます。
+                  kana: ろくじにおきます。
+                  romaji: rokuji ni okimasu
+                - kanji: 七時に起きます。
+                  kana: しちじにおきます。
+                  romaji: shichiji ni okimasu
+                - kanji: 八時に起きます。
+                  kana: はちじにおきます。
+                  romaji: hachiji ni okimasu
+            - speaker: npc
+              line:
+                kanji: 朝ごはんは何を食べますか。
+                kana: あさごはんはなにをたべますか。
+                romaji: asagohan wa nani o tabemasu ka
+            - speaker: learner
+              accept:
+                - kanji: パンを食べます。
+                  kana: ぱんをたべます。
+                  romaji: pan o tabemasu
+                - kanji: ごはんを食べます。
+                  kana: ごはんをたべます。
+                  romaji: gohan o tabemasu
+                - kanji: 朝ごはんは食べません。
+                  kana: あさごはんはたべません。
+                  romaji: asagohan wa tabemasen
+            - speaker: npc
+              line:
+                kanji: 昨日は何をしましたか。
+                kana: きのうはなにをしましたか。
+                romaji: kinou wa nani o shimashita ka
+            - speaker: learner
+              accept:
+                - kanji: 図書館で勉強しました。
+                  kana: としょかんでべんきょうしました。
+                  romaji: toshokan de benkyou shimashita
+                - kanji: 映画を見ました。
+                  kana: えいがをみました。
+                  romaji: eiga o mimashita
+                - kanji: 家で休みました。
+                  kana: いえでやすみました。
+                  romaji: ie de yasumimashita
+            - speaker: npc
+              line:
+                kanji: そうですか。昨日、走りましたか。
+                kana: そうですか。きのう、はしりましたか。
+                romaji: sou desu ka. kinou, hashirimashita ka
+            - speaker: learner
+              accept:
+                - kanji: いいえ、走りませんでした。
+                  kana: いいえ、はしりませんでした。
+                  romaji: iie, hashirimasen deshita
+                - kanji: はい、走りました。
+                  kana: はい、はしりました。
+                  romaji: hai, hashirimashita
+            - speaker: npc
+              line:
+                kanji: なるほど。ありがとうございます。
+                kana: なるほど。ありがとうございます。
+                romaji: naruhodo. arigatou gozaimasu
+        hint: >-
+          Use に for clock times, で for the place, を for the object, and choose
+          ます, ません, ました or ませんでした from the question's time and polarity.
+        explanation: >-
+          The first questions stay in the present routine, then 昨日は何をしましたか
+          moves to the past, and 走りましたか is the unexpected follow-up. 走る is new,
+          but it is godan: 走りました and 走りませんでした. に marks clock times, で
+          marks the place, and を marks what is eaten, watched or studied.
+      - id: u3-l5-2
+        kind: speaking
+        concepts: [verb-groups, masu-stem, past-negative, time-ni, place-de, object-wo]
+        prompt: >-
+          Describe your normal day and yesterday in four or five sentences: when you
+          get up, what you eat, where you go or work, and one thing you did not do.
+          Include at least one verb this unit has not shown, and speak without
+          looking back at the lesson.
+        rubric: >-
+          Does it use the ます stem correctly for godan, ichidan and irregular verbs,
+          choose among ます, ません, ました and ませんでした by meaning and time, use に
+          for clock times, で for the place of an action and を for what an action
+          acts on, and apply the same stem rule to a verb not shown in the unit?
+          Judge meaning, grammar, naturalness and register separately. There is no
+          model answer.

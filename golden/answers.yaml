@@ -860,3 +860,57 @@
 - step: u3-l3-12
   answer: I watched a movie at home today.
   verdict: wrong
+- step: u3-l4-1
+  answer: I did not come.
+  verdict: correct
+- step: u3-l4-1
+  answer: I came.
+  verdict: wrong
+- step: u3-l4-2
+  answer: nomimasen
+  verdict: correct
+- step: u3-l4-2
+  answer: nomimasu
+  verdict: wrong
+- step: u3-l4-3
+  answer: kakimasen deshita
+  verdict: correct
+- step: u3-l4-3
+  answer: kakimashita
+  verdict: wrong
+- step: u3-l4-4
+  answer: mi
+  verdict: correct
+- step: u3-l4-4
+  answer: mu
+  verdict: wrong
+- step: u3-l4-5
+  answer: tabemasen deshita
+  verdict: correct
+- step: u3-l4-5
+  answer: taberimasen deshita
+  verdict: wrong
+- step: u3-l4-6
+  answer: mimashita
+  verdict: correct
+- step: u3-l4-6
+  answer: mimasen deshita
+  verdict: wrong
+- step: u3-l4-7
+  answer: oyogimasu
+  verdict: correct
+- step: u3-l4-7
+  answer: oyogimasen
+  verdict: wrong
+- step: u3-l4-8
+  answer: ie de hon o yomimasu
+  verdict: correct
+- step: u3-l4-8
+  answer: ie ni hon o yomimasu
+  verdict: wrong
+- step: u3-l4-9
+  answer: aimasen deshita
+  verdict: correct
+- step: u3-l4-9
+  answer: aimashita
+  verdict: wrong
