@@ -1,6 +1,7 @@
 package content
 
 import (
+	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
@@ -190,6 +191,73 @@ func TestRepoContentLints(t *testing.T) {
 	}
 	if len(issues) != 0 {
 		t.Fatalf("repo content has issues:\n%v", issues)
+	}
+}
+
+const listeningUnit = `
+id: u
+title: Unit
+concepts:
+  - id: c1
+lessons:
+  - id: l1
+    title: Lesson
+    steps:
+      - id: s1
+        kind: listening
+        concepts: [c1]
+        prompt: What is being said about the place?
+        target:
+          kanji: 駅の近くにコンビニがあります
+          kana: えきのちかくにコンビニがあります
+          romaji: eki no chikaku ni konbini ga arimasu
+%s        explanation: に marks where the thing exists.
+`
+
+func TestListeningGradesByDictationOrMeaning(t *testing.T) {
+	const accept = `        accept:
+          - kana: えきのちかくにコンビニがあります
+            romaji: eki no chikaku ni konbini ga arimasu
+`
+	const meaning = `        accept_meanings:
+          - There is a convenience store near the station.
+`
+
+	tests := []struct {
+		name string
+		body string
+		want string
+	}{
+		{name: "dictation", body: fmt.Sprintf(listeningUnit, accept)},
+		{name: "meaning", body: fmt.Sprintf(listeningUnit, meaning)},
+		{
+			name: "neither",
+			body: fmt.Sprintf(listeningUnit, ""),
+			want: "listening needs accepted answers or accept_meanings",
+		},
+		{
+			name: "both grading paths",
+			body: fmt.Sprintf(listeningUnit, accept+meaning),
+			want: "pick one grading path",
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			_, issues, err := Load(writeUnit(t, "u.yaml", tt.body))
+			if err != nil {
+				t.Fatalf("Load: %v", err)
+			}
+			if tt.want == "" {
+				if len(issues) != 0 {
+					t.Fatalf("expected no issues, got %v", issues)
+				}
+				return
+			}
+			if !hasIssue(issues, tt.want) {
+				t.Fatalf("expected an issue containing %q, got %v", tt.want, issues)
+			}
+		})
 	}
 }
 

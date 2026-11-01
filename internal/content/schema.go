@@ -215,6 +215,10 @@ func (s *Step) validate(where string, concepts map[string]bool, add func(path, f
 		}
 	}
 
+	if len(s.Accept) > 0 && len(s.AcceptMeanings) > 0 {
+		add(where, "step has both accept and accept_meanings; pick one grading path")
+	}
+
 	switch s.Kind {
 	case Construction:
 		s.requirePrompt(where, add)
@@ -235,7 +239,9 @@ func (s *Step) validate(where string, concepts map[string]bool, add func(path, f
 	case Listening:
 		s.requirePrompt(where, add)
 		s.requireTarget(where, add)
-		s.requireAccept(where, add)
+		if len(s.Accept) == 0 && len(s.AcceptMeanings) == 0 {
+			add(where, "listening needs accepted answers or accept_meanings")
+		}
 		s.requireExplanation(where, add)
 	case Speaking:
 		s.requirePrompt(where, add)

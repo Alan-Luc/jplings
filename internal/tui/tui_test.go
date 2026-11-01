@@ -109,6 +109,68 @@ func TestAudioTextOnlySpeaksListeningTargets(t *testing.T) {
 	}
 }
 
+func meaningUnits() []*content.Unit {
+	return []*content.Unit{{
+		ID:    "u",
+		Title: "Unit",
+		Lessons: []content.Lesson{{
+			ID:    "l",
+			Title: "Lesson",
+			Steps: []content.Step{{
+				ID: "s1", Kind: content.Listening, Concepts: []string{"c1"},
+				Prompt: "What is being said about the place?",
+				Target: &content.Text{
+					Kanji: "駅の近くにコンビニがあります", Kana: "えきのちかくにコンビニがあります",
+					Romaji: "eki no chikaku ni konbini ga arimasu",
+				},
+				AcceptMeanings: []string{"There is a convenience store near the station."},
+				Explanation:    "に marks where the thing exists.",
+			}},
+		}},
+	}}
+}
+
+func TestAudioTextSpeaksMeaningGradedTargets(t *testing.T) {
+	hearing := meaningUnits()[0].Lessons[0].Steps[0]
+	if got := audioText(&hearing); got != "駅の近くにコンビニがあります" {
+		t.Fatalf("audioText(graded by meaning) = %q, want the kanji target", got)
+	}
+
+	reading := readingUnits()[0].Lessons[0].Steps[0]
+	if got := audioText(&reading); got != "" {
+		t.Fatalf("audioText(transformation) = %q, want empty so the answer is not spoken", got)
+	}
+}
+
+func TestAudioTextSpeaksInterpretationTargets(t *testing.T) {
+	step := content.Step{
+		Kind:           content.Interpretation,
+		Target:         &content.Text{Kanji: "学生は田中さんです", Kana: "がくせいはたなかさんです", Romaji: "gakusei wa tanaka san desu"},
+		AcceptMeanings: []string{"The student is Tanaka."},
+	}
+	if got := audioText(&step); got != "学生は田中さんです" {
+		t.Fatalf("audioText(interpretation) = %q, want the kanji target as the reference", got)
+	}
+}
+
+func TestMissPlaysTheAcceptedAnswer(t *testing.T) {
+	model, _ := newModelWith(t, readingUnits())
+
+	updated, cmd := model.submit("mizu o kudasai desu")
+	after := updated.(Model)
+	if after.correct {
+		t.Fatalf("expected a miss, got %q", after.feedback)
+	}
+	if cmd == nil {
+		t.Fatal("a miss on a production step must play the accepted answer")
+	}
+
+	correct, _ := newModelWith(t, readingUnits())
+	if _, cmd := correct.submit("mizu o kudasai"); cmd != nil {
+		t.Fatal("a correct answer must not play the answer audio")
+	}
+}
+
 func TestPlayCurrentIsIdempotentPerStep(t *testing.T) {
 	model, _ := newModelWith(t, listeningUnits())
 

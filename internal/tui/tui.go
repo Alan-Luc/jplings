@@ -131,32 +131,37 @@ func (m Model) current() (*content.Unit, *content.Lesson, *content.Step, bool) {
 }
 
 func audioText(step *content.Step) string {
-	if step.Kind != content.Listening || step.Target == nil {
+	if step.Target == nil {
 		return ""
 	}
-	if step.Target.Kanji != "" {
-		return step.Target.Kanji
+	if step.Kind != content.Listening && len(step.AcceptMeanings) == 0 {
+		return ""
 	}
-	return step.Target.Kana
+	return surface(*step.Target)
 }
 
 func (m *Model) playCurrent() tea.Cmd {
-	unit, _, step, ok := m.current()
+	_, _, step, ok := m.current()
 	if !ok {
 		return nil
 	}
-	_ = unit
 	text := audioText(step)
 	if text == "" || m.spokenStep == step.ID {
 		return nil
 	}
 	m.spokenStep = step.ID
+	return m.speak(step.ID, text)
+}
 
-	client := m.runner.Client
-	player := m.player
-	voice := m.runner.Voice
-	stepID := step.ID
+func (m *Model) playAcceptedAnswer(step *content.Step) tea.Cmd {
+	if len(step.Accept) == 0 || content.Dimension(step.Kind) != "production" {
+		return nil
+	}
+	return m.speak(step.ID, surface(step.Accept[0]))
+}
 
+func (m *Model) speak(stepID, text string) tea.Cmd {
+	client, player, voice := m.runner.Client, m.player, m.runner.Voice
 	if client == nil {
 		return func() tea.Msg { return spokenMsg{stepID: stepID, degraded: true} }
 	}
@@ -458,7 +463,10 @@ func (m Model) submit(answer string) (tea.Model, tea.Cmd) {
 	m.feedback = result.Outcome.Explanation
 	m.correct = result.Outcome.Correct
 	m.screen = screenFeedback
-	return m, nil
+	if m.correct {
+		return m, nil
+	}
+	return m, m.playAcceptedAnswer(step)
 }
 
 func (m Model) transcribe(wav []byte) tea.Cmd {

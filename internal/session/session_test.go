@@ -256,6 +256,59 @@ func TestSpeakWithoutClientDegrades(t *testing.T) {
 	}
 }
 
+func hearingStep() *content.Step {
+	return &content.Step{
+		ID:       "s1",
+		Kind:     content.Listening,
+		Concepts: []string{"c1"},
+		Prompt:   "What is being said about the place?",
+		Target: &content.Text{
+			Kanji: "駅の近くにコンビニがあります", Kana: "えきのちかくにコンビニがあります",
+			Romaji: "eki no chikaku ni konbini ga arimasu",
+		},
+		AcceptMeanings: []string{
+			"There is a convenience store near the station.",
+			"Near the station there's a convenience store.",
+		},
+		Explanation: "に marks where the thing exists.",
+	}
+}
+
+func TestListeningWithMeaningsIsGradedByMeaning(t *testing.T) {
+	runner, store := newRunner(t, nil)
+
+	result, err := runner.Submit(context.Background(), hearingStep(), "there is a convenience store near the station")
+	if err != nil {
+		t.Fatalf("Submit: %v", err)
+	}
+	if !result.Outcome.Correct || !result.MintedEvidence {
+		t.Fatalf("a correct meaning must be credited, got %+v", result)
+	}
+
+	evidence, err := store.Evidence("c1")
+	if err != nil {
+		t.Fatalf("Evidence: %v", err)
+	}
+	if len(evidence) != 1 || evidence[0].Dimension != profile.Comprehension {
+		t.Fatalf("listening graded by meaning must credit comprehension, got %+v", evidence)
+	}
+}
+
+func TestTranscribedJapaneseIsNotAMeaningAnswer(t *testing.T) {
+	runner, _ := newRunner(t, nil)
+
+	result, err := runner.Submit(context.Background(), hearingStep(), "eki no chikaku ni konbini ga arimasu")
+	if err != nil {
+		t.Fatalf("Submit: %v", err)
+	}
+	if result.Outcome.Correct {
+		t.Fatalf("the transcription is not the meaning, got %+v", result.Outcome)
+	}
+	if result.Outcome.Explanation == "" {
+		t.Fatal("feedback must never be a bare incorrect")
+	}
+}
+
 func TestReviewScheduledOnCorrectAnswer(t *testing.T) {
 	runner, store := newRunner(t, nil)
 	if _, err := runner.Submit(context.Background(), productionStep("s1", "s1"), "mizu o kudasai"); err != nil {

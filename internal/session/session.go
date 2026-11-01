@@ -65,11 +65,11 @@ func (r *Runner) Submit(ctx context.Context, step *content.Step, answer string) 
 }
 
 func (r *Runner) deterministic(step *content.Step, answer string) grade.Outcome {
-	if step.Kind == content.Interpretation {
-		return grade.Meaning(step, answer)
-	}
 	if step.Kind == content.Speaking {
 		return grade.Spoken(step, answer)
+	}
+	if len(step.AcceptMeanings) > 0 {
+		return grade.Meaning(step, answer)
 	}
 	return grade.Written(step, answer)
 }
