@@ -9,6 +9,7 @@ import (
 	"jplings/internal/convo"
 	"jplings/internal/eval"
 	"jplings/internal/grade"
+	"jplings/internal/normalize"
 	"jplings/internal/profile"
 	"jplings/internal/schedule"
 	"jplings/internal/speech"
@@ -95,24 +96,50 @@ func evidenceSource(step *content.Step) string {
 }
 
 func (r *Runner) submitFreeForm(ctx context.Context, step *content.Step, answer string, at time.Time) (Result, error) {
-	if r.Evaluator == nil {
-		return r.saveUngraded(step, answer, at, "no evaluator configured")
+	outcome, reason, graded := r.freeFormOutcome(ctx, step, answer)
+	if !graded {
+		return r.saveUngraded(step, answer, at, reason)
 	}
 
-	rubric, err := r.Evaluator.Evaluate(ctx, step.Prompt, answer)
-	if err != nil {
-		return r.saveUngraded(step, answer, at, err.Error())
+	if reproducesTarget(step, answer) {
+		return Result{Outcome: outcome, AIGraded: true}, nil
 	}
-
-	outcome := grade.Outcome{
-		Correct:     rubric.Meaning >= 1 && rubric.Grammar >= 1,
-		Explanation: fmt.Sprintf("%s (AI-graded: meaning %d, grammar %d, naturalness %d, register %d)", rubric.Feedback, rubric.Meaning, rubric.Grammar, rubric.Naturalness, rubric.Register),
-	}
-
 	if err := r.record(step, outcome, at, "llm", answer); err != nil {
 		return Result{Outcome: outcome, AIGraded: true}, err
 	}
 	return Result{Outcome: outcome, AIGraded: true, MintedEvidence: outcome.Correct}, nil
+}
+
+func reproducesTarget(step *content.Step, answer string) bool {
+	if step.Target == nil {
+		return false
+	}
+	got := normalize.Surface(answer)
+	for _, form := range []string{step.Target.Kanji, step.Target.Kana, step.Target.Romaji} {
+		if form != "" && normalize.Surface(form) == got {
+			return true
+		}
+	}
+	return false
+}
+
+func (r *Runner) freeFormOutcome(ctx context.Context, step *content.Step, answer string) (grade.Outcome, string, bool) {
+	if step.Rubric == "" {
+		return grade.Outcome{}, "step has no rubric", false
+	}
+	if r.Evaluator == nil {
+		return grade.Outcome{}, "no evaluator configured", false
+	}
+
+	rubric, err := r.Evaluator.Evaluate(ctx, step.Prompt, step.Rubric, answer)
+	if err != nil {
+		return grade.Outcome{}, err.Error(), false
+	}
+
+	return grade.Outcome{
+		Correct:     rubric.Meaning >= 1 && rubric.Grammar >= 1,
+		Explanation: fmt.Sprintf("%s (AI-graded: meaning %d, grammar %d, naturalness %d, register %d)", rubric.Feedback, rubric.Meaning, rubric.Grammar, rubric.Naturalness, rubric.Register),
+	}, "", true
 }
 
 func (r *Runner) saveUngraded(step *content.Step, answer string, at time.Time, reason string) (Result, error) {
@@ -156,63 +183,14 @@ func (r *Runner) record(step *content.Step, outcome grade.Outcome, at time.Time,
 		if err != nil {
 			return err
 		}
+	}
 
-		if source == "guided" {
-			continue
-		}
-		if dimension == profile.Production {
-			if err := r.mintGeneralization(conceptID, step.ID, at, source); err != nil {
-				return err
-			}
-		}
-		if err := r.scheduleRetentionIfReady(conceptID, at); err != nil {
+	if outcome.Correct && source != "guided" && len(step.Concepts) > 0 {
+		if err := r.Store.EnsureCard(schedule.Initial(step.ID, step.Concepts[0], at)); err != nil {
 			return err
 		}
 	}
 	return nil
-}
-
-func (r *Runner) mintGeneralization(conceptID, stimulusID string, at time.Time, source string) error {
-	evidence, err := r.Store.Evidence(conceptID)
-	if err != nil {
-		return err
-	}
-
-	for _, existing := range evidence {
-		if existing.Dimension != profile.Production || !existing.Correct {
-			continue
-		}
-		if existing.StimulusID == "" || existing.StimulusID == stimulusID {
-			continue
-		}
-		return r.Store.Record(profile.Evidence{
-			ConceptID: conceptID, Dimension: profile.Generalization, Correct: true,
-			StimulusID: stimulusID, Source: source, At: at,
-		})
-	}
-	return nil
-}
-
-func (r *Runner) scheduleRetentionIfReady(conceptID string, at time.Time) error {
-	mastered, missing, err := r.Store.Mastered(conceptID)
-	if err != nil {
-		return err
-	}
-	if mastered {
-		return nil
-	}
-	for _, dimension := range missing {
-		if dimension == profile.Retention {
-			continue
-		}
-		return nil
-	}
-
-	exists, err := r.Store.HasRetentionCheck(conceptID)
-	if err != nil || exists {
-		return err
-	}
-	return r.Store.ScheduleReview(schedule.RetentionCard(conceptID, at))
 }
 
 func (r *Runner) Speak(ctx context.Context, text string, play func([]byte) error) (speech.SpeakResult, error) {
@@ -239,18 +217,31 @@ func (r *Runner) GradeConversationTurn(step *content.Step, response convo.Respon
 	return Result{Outcome: outcome, MintedEvidence: outcome.Correct}, nil
 }
 func (r *Runner) MaySkip(conceptID string) (bool, error) { return r.Store.CanSkip(conceptID) }
-func (r *Runner) DueRetention() ([]schedule.Card, error) {
-	return r.Store.DueRetention(r.clock())
+
+const dueBlockLimit = 12
+
+func (r *Runner) DueCards() ([]schedule.Card, error) {
+	return r.Store.DueCards(r.clock(), dueBlockLimit)
 }
-func (r *Runner) GradeRetention(step *content.Step, answer string) (Result, error) {
+
+// Review advances the card only when the learner actually answers it. Retention
+// credit requires a due card whose stimulus was not already answered this session.
+func (r *Runner) Review(card schedule.Card, step *content.Step, answer string, answeredThisSession bool) (Result, error) {
 	at := r.clock()
 	outcome := r.deterministic(step, answer)
+	quality := schedule.Again
+	if outcome.Correct {
+		quality = schedule.Good
+	}
 
 	for _, conceptID := range step.Concepts {
 		if !outcome.Correct {
 			if err := r.Store.AddError(conceptID, outcome.Explanation, at); err != nil {
 				return Result{Outcome: outcome}, err
 			}
+			continue
+		}
+		if answeredThisSession {
 			continue
 		}
 		err := r.Store.Record(profile.Evidence{
@@ -260,9 +251,45 @@ func (r *Runner) GradeRetention(step *content.Step, answer string) (Result, erro
 		if err != nil {
 			return Result{Outcome: outcome}, err
 		}
-		if err := r.Store.CompleteRetention(conceptID); err != nil {
-			return Result{Outcome: outcome}, err
+	}
+
+	if err := r.Store.UpdateCard(schedule.Update(card, quality, at)); err != nil {
+		return Result{Outcome: outcome}, err
+	}
+	return Result{Outcome: outcome, MintedEvidence: outcome.Correct && !answeredThisSession}, nil
+}
+
+func (r *Runner) RetryPending(ctx context.Context, lookup func(string) *content.Step) error {
+	pending, err := r.Store.PendingToRetry()
+	if err != nil {
+		return err
+	}
+	for _, p := range pending {
+		step := lookup(p.StepID)
+		if step == nil {
+			continue
+		}
+		outcome, _, graded := r.freeFormOutcome(ctx, step, p.Response)
+		if !graded {
+			if r.Evaluator != nil {
+				if err := r.Store.RetryPending(p.ID); err != nil {
+					return err
+				}
+			}
+			continue
+		}
+		if reproducesTarget(step, p.Response) {
+			if err := r.Store.ResolvePending(p.ID); err != nil {
+				return err
+			}
+			continue
+		}
+		if err := r.record(step, outcome, r.clock(), "llm", p.Response); err != nil {
+			return err
+		}
+		if err := r.Store.ResolvePending(p.ID); err != nil {
+			return err
 		}
 	}
-	return Result{Outcome: outcome, MintedEvidence: outcome.Correct}, nil
+	return nil
 }

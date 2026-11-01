@@ -39,7 +39,7 @@ func (r Rubric) Validate() error {
 }
 
 type Evaluator interface {
-	Evaluate(ctx context.Context, prompt, response string) (Rubric, error)
+	Evaluate(ctx context.Context, prompt, rubric, response string) (Rubric, error)
 }
 
 type Client struct {
@@ -95,7 +95,7 @@ type chatResponse struct {
 	} `json:"choices"`
 }
 
-func (c *Client) Evaluate(ctx context.Context, prompt, response string) (Rubric, error) {
+func (c *Client) Evaluate(ctx context.Context, prompt, rubricText, response string) (Rubric, error) {
 	if c.APIKey == "" {
 		return Rubric{}, fmt.Errorf("no API key configured")
 	}
@@ -104,7 +104,7 @@ func (c *Client) Evaluate(ctx context.Context, prompt, response string) (Rubric,
 	request.ResponseFormat.Type = "json_object"
 	request.Messages = []chatMessage{
 		{Role: "system", Content: systemPrompt},
-		{Role: "user", Content: fmt.Sprintf("Prompt given to the learner: %s\n\nLearner's response: %s", prompt, response)},
+		{Role: "user", Content: fmt.Sprintf("Prompt given to the learner: %s\n\nRubric for this response:\n%s\n\nLearner's response: %s", prompt, rubricText, response)},
 	}
 
 	payload, err := json.Marshal(request)

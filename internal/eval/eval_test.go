@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"net/http"
 	"net/http/httptest"
+	"strings"
 	"testing"
 )
 
@@ -26,22 +27,53 @@ func TestEvaluateValidatesRubric(t *testing.T) {
 		if got := r.Header.Get("Authorization"); got != "Bearer test-key" {
 			t.Errorf("authorization = %q", got)
 		}
-		var request map[string]any
-		json.NewDecoder(r.Body).Decode(&request)
-		if request["temperature"] != float64(0) {
-			t.Errorf("temperature = %v, want 0", request["temperature"])
+		var request struct {
+			Model       string  `json:"model"`
+			Temperature float64 `json:"temperature"`
+			Messages    []struct {
+				Role    string `json:"role"`
+				Content string `json:"content"`
+			} `json:"messages"`
+		}
+		if err := json.NewDecoder(r.Body).Decode(&request); err != nil {
+			t.Errorf("decode request: %v", err)
+		}
+		if request.Model != DefaultModel {
+			t.Errorf("model = %q, want %q", request.Model, DefaultModel)
+		}
+		if request.Temperature != 0 {
+			t.Errorf("temperature = %v, want 0", request.Temperature)
+		}
+		if len(request.Messages) != 2 {
+			t.Fatalf("messages = %+v", request.Messages)
+		}
+		user := request.Messages[1].Content
+		for _, want := range []string{"Say something", "Use a polite request", "すしをたべたいです"} {
+			if !strings.Contains(user, want) {
+				t.Errorf("user message missing %q: %s", want, user)
+			}
 		}
 		w.Write(envelope(t, `{"meaning":2,"grammar":1,"naturalness":1,"register":2,"feedback":"Good."}`))
 	}))
 	defer server.Close()
 
 	client := &Client{APIKey: "test-key", BaseURL: server.URL, Model: DefaultModel, HTTP: server.Client()}
-	rubric, err := client.Evaluate(context.Background(), "Say something", "すしをたべたいです")
+	rubric, err := client.Evaluate(context.Background(), "Say something", "Use a polite request", "すしをたべたいです")
 	if err != nil {
 		t.Fatalf("Evaluate: %v", err)
 	}
 	if rubric.Meaning != 2 || rubric.Feedback != "Good." {
 		t.Fatalf("rubric = %+v", rubric)
+	}
+}
+
+func TestEvaluateFailsWhenAPIIsDown(t *testing.T) {
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {}))
+	server.Close()
+
+	client := &Client{APIKey: "test-key", BaseURL: server.URL, Model: DefaultModel, HTTP: server.Client()}
+	if _, err := client.Evaluate(context.Background(), "Say something", "Use a polite request", "すし"); err == nil {
+		t.Fatal("expected a transport error so the caller saves the response ungraded")
 	}
 }
 
@@ -108,7 +140,7 @@ func TestEvaluateFailsClosed(t *testing.T) {
 			defer server.Close()
 
 			client := &Client{APIKey: tc.key, BaseURL: server.URL, Model: DefaultModel, HTTP: server.Client()}
-			if _, err := client.Evaluate(context.Background(), "Say something", "すし"); err == nil {
+			if _, err := client.Evaluate(context.Background(), "Say something", "Use a polite request", "すし"); err == nil {
 				t.Fatal("expected an error so the caller saves the response ungraded")
 			}
 		})

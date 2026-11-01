@@ -20,7 +20,7 @@ type fakeEvaluator struct {
 	err    error
 }
 
-func (f fakeEvaluator) Evaluate(context.Context, string, string) (eval.Rubric, error) {
+func (f fakeEvaluator) Evaluate(context.Context, string, string, string) (eval.Rubric, error) {
 	return f.rubric, f.err
 }
 
@@ -93,7 +93,7 @@ func TestRepeatingTheSameStimulusMintsNoGeneralization(t *testing.T) {
 	}
 }
 
-func TestDifferentStimulusMintsGeneralizationAndSchedulesRetention(t *testing.T) {
+func TestDifferentStimuliSatisfyProductionButNotRetention(t *testing.T) {
 	runner, store := newRunner(t, nil)
 
 	if _, err := runner.Submit(context.Background(), productionStep("s1", "s1"), "mizu o kudasai"); err != nil {
@@ -115,26 +115,157 @@ func TestDifferentStimulusMintsGeneralizationAndSchedulesRetention(t *testing.T)
 	}
 
 	cards, err := store.Reviews()
-	if err != nil {
-		t.Fatalf("Reviews: %v", err)
+	if err != nil || len(cards) != 2 {
+		t.Fatalf("expected a card per passed step, got %+v err=%v", cards, err)
 	}
-	var retention *schedule.Card
-	for i := range cards {
-		if cards[i].Kind == schedule.KindRetention {
-			retention = &cards[i]
+	for _, card := range cards {
+		if card.Reps != 0 || card.IntervalDays != 0 {
+			t.Fatalf("a lesson success must create the card unadvanced, got %+v", card)
 		}
 	}
-	if retention == nil {
-		t.Fatalf("expected a scheduled retention check, got %+v", cards)
+}
+
+func TestCardAdvancesAcrossSessionsWithoutResetting(t *testing.T) {
+	store, err := profile.Open(filepath.Join(t.TempDir(), "profile.db"))
+	if err != nil {
+		t.Fatalf("Open: %v", err)
 	}
-	nowValue := runner.Now()
-	due := retention.Due.Sub(nowValue)
-	if due < 48*time.Hour || due > 72*time.Hour {
-		t.Fatalf("retention scheduled %v out, want 48-72h", due)
+	defer store.Close()
+
+	clock := now
+	runner := &Runner{Store: store, Now: func() time.Time { return clock }}
+	step := productionStep("s1", "s1")
+	if _, err := runner.Submit(context.Background(), step, "mizu o kudasai"); err != nil {
+		t.Fatalf("Submit: %v", err)
+	}
+	clock = clock.AddDate(0, 0, 1)
+
+	wantIntervals := []int{1, 6, 16}
+	for session := 0; session < 3; session++ {
+		due, err := runner.DueCards()
+		if err != nil || len(due) != 1 {
+			t.Fatalf("session %d due cards = %+v err=%v", session, due, err)
+		}
+		result, err := runner.Review(due[0], step, "mizu o kudasai", false)
+		if err != nil {
+			t.Fatalf("session %d Review: %v", session, err)
+		}
+		if !result.Outcome.Correct || !result.MintedEvidence {
+			t.Fatalf("session %d expected retention credit, got %+v", session, result)
+		}
+
+		cards, _ := store.Reviews()
+		if len(cards) != 1 {
+			t.Fatalf("session %d cards = %+v", session, cards)
+		}
+		if cards[0].Reps != session+1 {
+			t.Fatalf("session %d reps = %d, want %d (card reset)", session, cards[0].Reps, session+1)
+		}
+		if cards[0].IntervalDays != wantIntervals[session] {
+			t.Fatalf("session %d interval = %d, want %d", session, cards[0].IntervalDays, wantIntervals[session])
+		}
+		clock = clock.AddDate(0, 0, cards[0].IntervalDays)
+	}
+}
+
+func TestReviewingASiblingAdvancesTheServedCard(t *testing.T) {
+	runner, store := newRunner(t, nil)
+	ctx := context.Background()
+
+	if _, err := runner.Submit(ctx, productionStep("s1", "s1"), "mizu o kudasai"); err != nil {
+		t.Fatalf("Submit: %v", err)
+	}
+	cards, _ := store.Reviews()
+	if err := store.UpdateCard(schedule.Update(cards[0], schedule.Good, now)); err != nil {
+		t.Fatalf("UpdateCard: %v", err)
 	}
 
-	if dueNow, _ := store.DueRetention(nowValue); len(dueNow) != 0 {
-		t.Fatalf("a retention check 60h out must not be due now: %+v", dueNow)
+	sibling := productionStep("s2", "s2")
+	if _, err := runner.Submit(ctx, sibling, "mizu o kudasai"); err != nil {
+		t.Fatalf("Submit sibling: %v", err)
+	}
+
+	served, _ := store.Reviews()
+	var card schedule.Card
+	for _, got := range served {
+		if got.StepID == "s1" {
+			card = got
+		}
+	}
+	if _, err := runner.Review(card, sibling, "mizu o kudasai", false); err != nil {
+		t.Fatalf("Review sibling: %v", err)
+	}
+
+	served, _ = store.Reviews()
+	for _, got := range served {
+		switch got.StepID {
+		case "s1":
+			if got.Reps != 2 || got.IntervalDays != 6 {
+				t.Fatalf("the served card did not advance: %+v", got)
+			}
+		case "s2":
+			if got.Reps != 0 {
+				t.Fatalf("the sibling's own card must not advance or rebuild: %+v", got)
+			}
+		}
+	}
+}
+
+func TestReviewInTheSameSessionMintsNoRetentionEvidence(t *testing.T) {
+	runner, store := newRunner(t, nil)
+	step := productionStep("s1", "s1")
+	if _, err := runner.Submit(context.Background(), step, "mizu o kudasai"); err != nil {
+		t.Fatalf("Submit: %v", err)
+	}
+	cards, _ := store.Reviews()
+
+	result, err := runner.Review(cards[0], step, "mizu o kudasai", true)
+	if err != nil {
+		t.Fatalf("Review: %v", err)
+	}
+	if !result.Outcome.Correct || result.MintedEvidence {
+		t.Fatalf("a same-session review must not mint retention evidence, got %+v", result)
+	}
+
+	evidence, _ := store.Evidence("c1")
+	for _, e := range evidence {
+		if e.Dimension == profile.Retention {
+			t.Fatalf("same-session review minted retention: %+v", evidence)
+		}
+	}
+	if cards, _ := store.Reviews(); cards[0].Reps != 1 {
+		t.Fatalf("the card should still advance when reviewed: %+v", cards[0])
+	}
+}
+
+func TestPendingRetryGradesAndResolvesTheSavedResponse(t *testing.T) {
+	step := &content.Step{
+		ID: "free", Kind: content.Speaking, Concepts: []string{"c1"},
+		Prompt: "Say something you want to eat.", Rubric: "judge it",
+	}
+	runner, store := newRunner(t, fakeEvaluator{
+		rubric: eval.Rubric{Meaning: 2, Grammar: 1, Naturalness: 1, Register: 2, Feedback: "Good."},
+	})
+	if _, err := store.EnqueuePending(step.ID, step.Prompt, "すしをたべたいです", now); err != nil {
+		t.Fatalf("EnqueuePending: %v", err)
+	}
+
+	lookup := func(id string) *content.Step {
+		if id == step.ID {
+			return step
+		}
+		return nil
+	}
+	if err := runner.RetryPending(context.Background(), lookup); err != nil {
+		t.Fatalf("RetryPending: %v", err)
+	}
+
+	evidence, _ := store.Evidence("c1")
+	if len(evidence) != 1 || evidence[0].Source != "llm" {
+		t.Fatalf("retry should grade the saved response, got %+v", evidence)
+	}
+	if retry, _ := store.PendingToRetry(); len(retry) != 0 {
+		t.Fatalf("a graded retry must leave the queue, got %+v", retry)
 	}
 }
 
@@ -227,6 +358,31 @@ func TestEvaluatorSuccessIsProvisionalLLMEvidence(t *testing.T) {
 	}
 }
 
+func TestVerbatimTargetEarnsNoProductionEvidence(t *testing.T) {
+	step := &content.Step{
+		ID: "free", Kind: content.Speaking, Concepts: []string{"c1"},
+		Prompt: "Ask for water.", Rubric: "judge it",
+		Target: &content.Text{Kanji: "水をください", Kana: "みずをください", Romaji: "mizu o kudasai"},
+	}
+	runner, store := newRunner(t, fakeEvaluator{
+		rubric: eval.Rubric{Meaning: 2, Grammar: 2, Naturalness: 2, Register: 2, Feedback: "Good."},
+	})
+
+	result, err := runner.Submit(context.Background(), step, "水をください。")
+	if err != nil {
+		t.Fatalf("Submit: %v", err)
+	}
+	if !result.AIGraded {
+		t.Fatal("a verbatim target is still graded")
+	}
+	if result.MintedEvidence {
+		t.Fatal("reproducing the target verbatim must not mint production evidence")
+	}
+	if evidence, _ := store.Evidence("c1"); len(evidence) != 0 {
+		t.Fatalf("verbatim target earned evidence: %+v", evidence)
+	}
+}
+
 func TestEvaluatorRejectsBrokenGrammarEvenWithGoodMeaning(t *testing.T) {
 	step := &content.Step{
 		ID: "free", Kind: content.Speaking, Concepts: []string{"c1"},
@@ -309,23 +465,21 @@ func TestTranscribedJapaneseIsNotAMeaningAnswer(t *testing.T) {
 	}
 }
 
-func TestCorrectAnswersCreateNoReviewCard(t *testing.T) {
+func TestCorrectAnswersCreateOneCardPerStep(t *testing.T) {
 	runner, store := newRunner(t, nil)
 
-	for _, id := range []string{"s1", "s1", "s2"} {
-		if _, err := runner.Submit(context.Background(), productionStep(id, id), "mizu o kudasai"); err != nil {
-			t.Fatalf("Submit(%s): %v", id, err)
+	for i := 0; i < 2; i++ {
+		if _, err := runner.Submit(context.Background(), productionStep("s1", "s1"), "mizu o kudasai"); err != nil {
+			t.Fatalf("Submit s1: %v", err)
 		}
+	}
+	if _, err := runner.Submit(context.Background(), productionStep("s2", "s2"), "mizu o kudasai"); err != nil {
+		t.Fatalf("Submit s2: %v", err)
 	}
 
 	cards, err := store.Reviews()
-	if err != nil {
-		t.Fatalf("Reviews: %v", err)
-	}
-	for _, card := range cards {
-		if card.Kind == schedule.KindReview {
-			t.Fatalf("an answer is not a review and must not create a card, got %+v", card)
-		}
+	if err != nil || len(cards) != 2 {
+		t.Fatalf("expected one card per passed step, got %+v err=%v", cards, err)
 	}
 }
 
@@ -432,14 +586,11 @@ func TestGuidedAttemptIsExcludedFromMasterySkippingAndRetention(t *testing.T) {
 	}
 	for _, dimension := range missing {
 		if dimension == profile.Production {
+			if cards, _ := store.Reviews(); len(cards) != 0 {
+				t.Fatalf("guided attempts must not create review cards, got %+v", cards)
+			}
 			return
 		}
 	}
 	t.Fatal("guided attempts must leave production missing")
-	cards, _ := store.Reviews()
-	for _, card := range cards {
-		if card.Kind == schedule.KindRetention {
-			t.Fatalf("guided attempts must not schedule retention, got %+v", card)
-		}
-	}
 }

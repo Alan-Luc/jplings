@@ -128,14 +128,14 @@ func TestLiveVerticalSlice(t *testing.T) {
 		}
 	}
 
-	retention, err := store.DueRetention(time.Now().Add(72 * time.Hour))
+	due, err := store.DueCards(time.Now().Add(72*time.Hour), 12)
 	if err != nil {
-		t.Fatalf("DueRetention: %v", err)
+		t.Fatalf("DueCards: %v", err)
 	}
-	if len(retention) == 0 {
-		t.Fatal("expected delayed retention checks to be scheduled")
+	if len(due) == 0 {
+		t.Fatal("expected passed steps to have review cards")
 	}
-	t.Logf("scheduled %d retention checks", len(retention))
+	t.Logf("scheduled %d review cards", len(due))
 }
 
 func answerFor(t *testing.T, step *content.Step) string {

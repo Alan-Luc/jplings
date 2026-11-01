@@ -1,6 +1,7 @@
 package tui
 
 import (
+	"context"
 	"path/filepath"
 	"strings"
 	"testing"
@@ -9,11 +10,18 @@ import (
 	tea "github.com/charmbracelet/bubbletea"
 
 	"jplings/internal/content"
+	"jplings/internal/eval"
 	"jplings/internal/profile"
 	"jplings/internal/schedule"
 	"jplings/internal/session"
 	"jplings/internal/speech"
 )
+
+type retryEvaluator struct{}
+
+func (retryEvaluator) Evaluate(context.Context, string, string, string) (eval.Rubric, error) {
+	return eval.Rubric{Meaning: 2, Grammar: 1, Feedback: "Good."}, nil
+}
 
 func listeningUnits() []*content.Unit {
 	return []*content.Unit{{
@@ -466,7 +474,7 @@ func TestProvisionalLLMEvidenceCannotUnlockSkipping(t *testing.T) {
 	}
 }
 
-func TestDueRetentionCheckIsAdministeredAndClearsMasteryGate(t *testing.T) {
+func TestDueReviewIsServedAndClearsMasteryGate(t *testing.T) {
 	store, err := profile.Open(filepath.Join(t.TempDir(), "profile.db"))
 	if err != nil {
 		t.Fatalf("Open: %v", err)
@@ -482,31 +490,25 @@ func TestDueRetentionCheckIsAdministeredAndClearsMasteryGate(t *testing.T) {
 			t.Fatalf("Record: %v", err)
 		}
 	}
-	if err := store.Record(profile.Evidence{
-		ConceptID: "c1", Dimension: profile.Generalization, Correct: true,
-		StimulusID: "s2", Source: "typed", At: now,
-	}); err != nil {
-		t.Fatalf("Record: %v", err)
-	}
-	if err := store.ScheduleReview(schedule.RetentionCard("c1", now.Add(-72*time.Hour))); err != nil {
-		t.Fatalf("ScheduleReview: %v", err)
+	if err := store.EnsureCard(schedule.Initial("s1", "c1", now.Add(-72*time.Hour))); err != nil {
+		t.Fatalf("EnsureCard: %v", err)
 	}
 	if mastered, _, _ := store.Mastered("c1"); mastered {
-		t.Fatal("mastery must be blocked before the retention check")
+		t.Fatal("mastery must be blocked before the review")
 	}
 
 	model := New(&session.Runner{Store: store}, readingUnits())
-	if model.retentionStep == nil {
-		t.Fatal("a due retention check should be administered at session start")
+	if len(model.reviews) != 1 {
+		t.Fatalf("a due card should open a review block, got %+v", model.reviews)
 	}
-	if model.retentionConcept != "c1" {
-		t.Fatalf("retention concept = %q, want c1", model.retentionConcept)
+	if model.reviews[0].card.StepID != "s1" {
+		t.Fatalf("served review carries card %q, want s1", model.reviews[0].card.StepID)
 	}
 
 	updated, _ := model.submit("mizu o kudasai")
 	after := updated.(Model)
 	if !after.correct {
-		t.Fatalf("the retention answer should be correct, got %q", after.feedback)
+		t.Fatalf("the review answer should be correct, got %q", after.feedback)
 	}
 
 	mastered, missing, err := store.Mastered("c1")
@@ -514,10 +516,137 @@ func TestDueRetentionCheckIsAdministeredAndClearsMasteryGate(t *testing.T) {
 		t.Fatalf("Mastered: %v", err)
 	}
 	if !mastered {
-		t.Fatalf("passing the retention check should clear mastery, missing=%v", missing)
+		t.Fatalf("passing the review should clear mastery, missing=%v", missing)
 	}
-	if due, _ := store.DueRetention(time.Now()); len(due) != 0 {
-		t.Fatalf("the retention check should not stay due: %+v", due)
+	if due, _ := store.DueCards(time.Now(), 12); len(due) != 0 {
+		t.Fatalf("the reviewed card should not stay due: %+v", due)
+	}
+}
+
+type blockingEvaluator struct {
+	entered chan struct{}
+	release chan struct{}
+}
+
+func (e *blockingEvaluator) Evaluate(ctx context.Context, _, _, _ string) (eval.Rubric, error) {
+	e.entered <- struct{}{}
+	select {
+	case <-e.release:
+		return eval.Rubric{Meaning: 2, Grammar: 1, Feedback: "Good."}, nil
+	case <-ctx.Done():
+		return eval.Rubric{}, ctx.Err()
+	}
+}
+
+func TestFreeFormGradingIsAsyncAndArrivesAsCommandResult(t *testing.T) {
+	units := []*content.Unit{{ID: "u", Title: "Unit", Lessons: []content.Lesson{{ID: "l", Title: "L",
+		Steps: []content.Step{{
+			ID: "free", Kind: content.Speaking, Concepts: []string{"c1"},
+			Prompt: "Say something you want to eat.", Rubric: "judge it",
+			Accept: []content.Text{{Kana: "すし", Romaji: "sushi"}},
+		}}}}}}
+
+	store, err := profile.Open(filepath.Join(t.TempDir(), "profile.db"))
+	if err != nil {
+		t.Fatalf("Open: %v", err)
+	}
+	defer store.Close()
+	evaluator := &blockingEvaluator{entered: make(chan struct{}, 1), release: make(chan struct{})}
+	model := New(&session.Runner{Store: store, Evaluator: evaluator}, units)
+
+	type submitted struct {
+		model tea.Model
+		cmd   tea.Cmd
+	}
+	done := make(chan submitted, 1)
+	go func() {
+		updated, cmd := model.submit("すしをたべたいです")
+		done <- submitted{model: updated, cmd: cmd}
+	}()
+
+	select {
+	case out := <-done:
+		pending := out.model.(Model)
+		if pending.screen != screenGrading {
+			t.Fatalf("submit must not wait for grading, screen = %v", pending.screen)
+		}
+		if !strings.Contains(pending.View(), "Saved for grading") {
+			t.Fatalf("pending view should say the answer was saved for grading:\n%s", pending.View())
+		}
+		if out.cmd == nil {
+			t.Fatal("grading should arrive as a command result")
+		}
+
+		close(evaluator.release)
+		updated, _ := pending.Update(out.cmd())
+		final := updated.(Model)
+		if final.screen != screenFeedback || !final.correct {
+			t.Fatalf("verdict should render as feedback, screen=%v correct=%v feedback=%q", final.screen, final.correct, final.feedback)
+		}
+	case <-time.After(time.Second):
+		close(evaluator.release)
+		t.Fatal("submit blocked on LLM grading")
+	}
+}
+
+func TestSessionStartGradesPendingResponses(t *testing.T) {
+	units := []*content.Unit{{ID: "u", Title: "Unit", Lessons: []content.Lesson{{ID: "l", Title: "L",
+		Steps: []content.Step{{
+			ID: "free", Kind: content.Speaking, Concepts: []string{"c1"},
+			Prompt: "Say something you want to eat.", Rubric: "judge it",
+			Accept: []content.Text{{Kana: "すし", Romaji: "sushi"}},
+		}}}}}}
+
+	store, err := profile.Open(filepath.Join(t.TempDir(), "profile.db"))
+	if err != nil {
+		t.Fatalf("Open: %v", err)
+	}
+	defer store.Close()
+	if _, err := store.EnqueuePending("free", "Say something you want to eat.", "すしをたべたいです", time.Now()); err != nil {
+		t.Fatalf("EnqueuePending: %v", err)
+	}
+
+	New(&session.Runner{Store: store, Evaluator: retryEvaluator{}}, units)
+
+	evidence, _ := store.Evidence("c1")
+	if len(evidence) != 1 || evidence[0].Source != "llm" {
+		t.Fatalf("session start should grade the pending response, got %+v", evidence)
+	}
+	if pending, _ := store.PendingToRetry(); len(pending) != 0 {
+		t.Fatalf("the graded retry should leave the queue, got %+v", pending)
+	}
+}
+
+func TestPassedDueStepIsServedAsAConceptSibling(t *testing.T) {
+	units := readingUnits()
+	first := units[0].Lessons[0].Steps[0]
+	second := first
+	second.ID = "s2"
+	second.Prompt = "Say it again."
+	units[0].Lessons[0].Steps = append(units[0].Lessons[0].Steps, second)
+
+	model, store := newModelWith(t, units)
+	if err := store.EnsureCard(schedule.Initial("s1", "c1", time.Now().Add(-time.Hour))); err != nil {
+		t.Fatalf("EnsureCard: %v", err)
+	}
+	model.passed["s1"] = true
+	model.startReviews()
+
+	if len(model.reviews) != 1 {
+		t.Fatalf("expected one review, got %+v", model.reviews)
+	}
+	if model.reviews[0].card.StepID != "s1" || model.reviews[0].step.ID != "s2" {
+		t.Fatalf("expected the s1 card served as sibling s2, got card=%q step=%q",
+			model.reviews[0].card.StepID, model.reviews[0].step.ID)
+	}
+
+	updated, _ := model.submit("mizu o kudasai")
+	if !updated.(Model).correct {
+		t.Fatal("the sibling answer should be correct")
+	}
+	cards, _ := store.Reviews()
+	if len(cards) != 1 || cards[0].StepID != "s1" || cards[0].Reps != 1 {
+		t.Fatalf("the sibling review should advance the s1 card only, got %+v", cards)
 	}
 }
 
@@ -666,10 +795,8 @@ func TestHintThenRevealThenRetry(t *testing.T) {
 		t.Fatal("a guided attempt must not satisfy mastery")
 	}
 	cards, _ := store.Reviews()
-	for _, card := range cards {
-		if card.Kind == schedule.KindRetention {
-			t.Fatalf("a guided attempt must not schedule retention, got %+v", card)
-		}
+	if len(cards) != 0 {
+		t.Fatalf("a guided attempt must not create review cards, got %+v", cards)
 	}
 }
 
@@ -716,7 +843,7 @@ func TestThirdMissRecordsAnOrdinaryWrongAttempt(t *testing.T) {
 	}
 }
 
-func TestRetentionStepDoesNotClobberTheResumedCursor(t *testing.T) {
+func TestReviewStepDoesNotClobberTheResumedCursor(t *testing.T) {
 	store, err := profile.Open(filepath.Join(t.TempDir(), "profile.db"))
 	if err != nil {
 		t.Fatalf("Open: %v", err)
@@ -727,20 +854,20 @@ func TestRetentionStepDoesNotClobberTheResumedCursor(t *testing.T) {
 	if err := store.SaveCursor("u", "l", 2, time.Now()); err != nil {
 		t.Fatalf("SaveCursor: %v", err)
 	}
-	if err := store.ScheduleReview(schedule.RetentionCard("c1", time.Now().Add(-72*time.Hour))); err != nil {
-		t.Fatalf("ScheduleReview: %v", err)
+	if err := store.EnsureCard(schedule.Initial("s1", "c1", time.Now().Add(-72*time.Hour))); err != nil {
+		t.Fatalf("EnsureCard: %v", err)
 	}
 
 	model := New(&session.Runner{Store: store}, units)
-	if model.pos.step != 2 || model.retentionStep == nil {
-		t.Fatalf("expected to resume at step 2 with a retention check, pos=%d retention=%v", model.pos.step, model.retentionStep)
+	if model.pos.step != 2 || len(model.reviews) != 1 {
+		t.Fatalf("expected to resume at step 2 with a review, pos=%d reviews=%v", model.pos.step, model.reviews)
 	}
 	updated, _ := model.handleKey(tea.KeyMsg{Type: tea.KeyRunes, Runes: []rune{'x'}})
 	_ = updated.(Model).View()
 
 	rebuilt := New(&session.Runner{Store: store}, units)
 	if rebuilt.pos.step != 2 {
-		t.Fatalf("a retention step must not overwrite the saved lesson cursor, resumed at %d", rebuilt.pos.step)
+		t.Fatalf("a review step must not overwrite the saved lesson cursor, resumed at %d", rebuilt.pos.step)
 	}
 }
 
