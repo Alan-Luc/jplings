@@ -4,7 +4,6 @@ import (
 	"strings"
 	"unicode"
 
-	"jplings/internal/kana"
 	"jplings/internal/romaji"
 )
 
@@ -30,36 +29,6 @@ func Surface(s string) string {
 	return strings.Join(fields, "")
 }
 
-// Kana folds Surface further so kana spellings and romaji can be compared.
-func Kana(s string) string {
-	runes := []rune(Surface(s))
-	var out strings.Builder
-
-	for i := 0; i < len(runes); {
-		if isKatakana(runes[i]) {
-			j := i
-			for j < len(runes) && isKatakana(runes[j]) {
-				j++
-			}
-			out.WriteString(katakanaToHiragana(runes[i:j]))
-			i = j
-			continue
-		}
-		if isRomaji(runes[i]) {
-			j := i
-			for j < len(runes) && isRomaji(runes[j]) {
-				j++
-			}
-			out.WriteString(romaji.ToKana(string(runes[i:j])))
-			i = j
-			continue
-		}
-		out.WriteRune(runes[i])
-		i++
-	}
-	return out.String()
-}
-
 func foldFullwidth(s string) string {
 	return strings.Map(func(r rune) rune {
 		switch {
@@ -71,34 +40,6 @@ func foldFullwidth(s string) string {
 			return r
 		}
 	}, s)
-}
-
-var hiraganaVowel = map[rune]rune{'a': 'あ', 'i': 'い', 'u': 'う', 'e': 'え', 'o': 'お'}
-
-func isKatakana(r rune) bool { return r >= 0x30A0 && r <= 0x30FF }
-
-func isRomaji(r rune) bool { return r >= 'a' && r <= 'z' }
-
-func katakanaToHiragana(runes []rune) string {
-	var out strings.Builder
-	var lastVowel rune
-
-	for _, r := range runes {
-		if r == 'ー' {
-			if lastVowel != 0 {
-				out.WriteRune(lastVowel)
-			}
-			continue
-		}
-		out.WriteString(kana.ToHiragana(string(r)))
-		if romajiText := kana.ToRomaji(string(r)); romajiText != "" {
-			last := rune(romajiText[len(romajiText)-1])
-			if strings.ContainsRune("aiueo", last) {
-				lastVowel = hiraganaVowel[last]
-			}
-		}
-	}
-	return out.String()
 }
 
 func isDigitRune(r rune) bool { return r >= '0' && r <= '9' }

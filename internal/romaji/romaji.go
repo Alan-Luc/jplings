@@ -12,61 +12,60 @@ const (
 
 type syllable struct {
 	romaji string
-	kana   string
 }
 
 var syllables = map[string]syllable{
-	"a": {"a", "あ"}, "i": {"i", "い"}, "u": {"u", "う"}, "e": {"e", "え"}, "o": {"o", "お"},
+	"a": {"a"}, "i": {"i"}, "u": {"u"}, "e": {"e"}, "o": {"o"},
 
-	"ka": {"ka", "か"}, "ki": {"ki", "き"}, "ku": {"ku", "く"}, "ke": {"ke", "け"}, "ko": {"ko", "こ"},
-	"kya": {"kya", "きゃ"}, "kyu": {"kyu", "きゅ"}, "kyo": {"kyo", "きょ"},
+	"ka": {"ka"}, "ki": {"ki"}, "ku": {"ku"}, "ke": {"ke"}, "ko": {"ko"},
+	"kya": {"kya"}, "kyu": {"kyu"}, "kyo": {"kyo"},
 
-	"sa": {"sa", "さ"}, "shi": {"shi", "し"}, "si": {"shi", "し"}, "su": {"su", "す"}, "se": {"se", "せ"}, "so": {"so", "そ"},
-	"sha": {"sha", "しゃ"}, "sya": {"sha", "しゃ"}, "shu": {"shu", "しゅ"}, "syu": {"shu", "しゅ"},
-	"sho": {"sho", "しょ"}, "syo": {"sho", "しょ"}, "she": {"she", "しぇ"},
+	"sa": {"sa"}, "shi": {"shi"}, "si": {"shi"}, "su": {"su"}, "se": {"se"}, "so": {"so"},
+	"sha": {"sha"}, "sya": {"sha"}, "shu": {"shu"}, "syu": {"shu"},
+	"sho": {"sho"}, "syo": {"sho"}, "she": {"she"},
 
-	"ta": {"ta", "た"}, "chi": {"chi", "ち"}, "ti": {"chi", "ち"}, "tsu": {"tsu", "つ"}, "tu": {"tsu", "つ"},
-	"te": {"te", "て"}, "to": {"to", "と"},
-	"cha": {"cha", "ちゃ"}, "tya": {"cha", "ちゃ"}, "cya": {"cha", "ちゃ"},
-	"chu": {"chu", "ちゅ"}, "tyu": {"chu", "ちゅ"}, "cyu": {"chu", "ちゅ"},
-	"cho": {"cho", "ちょ"}, "tyo": {"cho", "ちょ"}, "cyo": {"cho", "ちょ"}, "che": {"che", "ちぇ"},
-	"tsa": {"tsa", "つぁ"}, "tsi": {"tsi", "つぃ"}, "tse": {"tse", "つぇ"}, "tso": {"tso", "つぉ"},
+	"ta": {"ta"}, "chi": {"chi"}, "ti": {"chi"}, "tsu": {"tsu"}, "tu": {"tsu"},
+	"te": {"te"}, "to": {"to"},
+	"cha": {"cha"}, "tya": {"cha"}, "cya": {"cha"},
+	"chu": {"chu"}, "tyu": {"chu"}, "cyu": {"chu"},
+	"cho": {"cho"}, "tyo": {"cho"}, "cyo": {"cho"}, "che": {"che"},
+	"tsa": {"tsa"}, "tsi": {"tsi"}, "tse": {"tse"}, "tso": {"tso"},
 
-	"na": {"na", "な"}, "ni": {"ni", "に"}, "nu": {"nu", "ぬ"}, "ne": {"ne", "ね"}, "no": {"no", "の"},
-	"nya": {"nya", "にゃ"}, "nyu": {"nyu", "にゅ"}, "nyo": {"nyo", "にょ"}, "n": {"n", "ん"},
+	"na": {"na"}, "ni": {"ni"}, "nu": {"nu"}, "ne": {"ne"}, "no": {"no"},
+	"nya": {"nya"}, "nyu": {"nyu"}, "nyo": {"nyo"}, "n": {"n"},
 
-	"ha": {"ha", "は"}, "hi": {"hi", "ひ"}, "fu": {"fu", "ふ"}, "hu": {"fu", "ふ"}, "he": {"he", "へ"}, "ho": {"ho", "ほ"},
-	"hya": {"hya", "ひゃ"}, "hyu": {"hyu", "ひゅ"}, "hyo": {"hyo", "ひょ"},
+	"ha": {"ha"}, "hi": {"hi"}, "fu": {"fu"}, "hu": {"fu"}, "he": {"he"}, "ho": {"ho"},
+	"hya": {"hya"}, "hyu": {"hyu"}, "hyo": {"hyo"},
 
-	"ma": {"ma", "ま"}, "mi": {"mi", "み"}, "mu": {"mu", "む"}, "me": {"me", "め"}, "mo": {"mo", "も"},
-	"mya": {"mya", "みゃ"}, "myu": {"myu", "みゅ"}, "myo": {"myo", "みょ"},
+	"ma": {"ma"}, "mi": {"mi"}, "mu": {"mu"}, "me": {"me"}, "mo": {"mo"},
+	"mya": {"mya"}, "myu": {"myu"}, "myo": {"myo"},
 
-	"ya": {"ya", "や"}, "yu": {"yu", "ゆ"}, "yo": {"yo", "よ"},
+	"ya": {"ya"}, "yu": {"yu"}, "yo": {"yo"},
 
-	"ra": {"ra", "ら"}, "ri": {"ri", "り"}, "ru": {"ru", "る"}, "re": {"re", "れ"}, "ro": {"ro", "ろ"},
-	"rya": {"rya", "りゃ"}, "ryu": {"ryu", "りゅ"}, "ryo": {"ryo", "りょ"},
+	"ra": {"ra"}, "ri": {"ri"}, "ru": {"ru"}, "re": {"re"}, "ro": {"ro"},
+	"rya": {"rya"}, "ryu": {"ryu"}, "ryo": {"ryo"},
 
-	"wa": {"wa", "わ"}, "wi": {"wi", "うぃ"}, "we": {"we", "うぇ"}, "wo": {"wo", "を"},
+	"wa": {"wa"}, "wi": {"wi"}, "we": {"we"}, "wo": {"wo"},
 
-	"ga": {"ga", "が"}, "gi": {"gi", "ぎ"}, "gu": {"gu", "ぐ"}, "ge": {"ge", "げ"}, "go": {"go", "ご"},
-	"gya": {"gya", "ぎゃ"}, "gyu": {"gyu", "ぎゅ"}, "gyo": {"gyo", "ぎょ"},
+	"ga": {"ga"}, "gi": {"gi"}, "gu": {"gu"}, "ge": {"ge"}, "go": {"go"},
+	"gya": {"gya"}, "gyu": {"gyu"}, "gyo": {"gyo"},
 
-	"za": {"za", "ざ"}, "ji": {"ji", "じ"}, "zi": {"ji", "じ"}, "zu": {"zu", "ず"}, "ze": {"ze", "ぜ"}, "zo": {"zo", "ぞ"},
-	"ja": {"ja", "じゃ"}, "jya": {"ja", "じゃ"}, "zya": {"ja", "じゃ"},
-	"ju": {"ju", "じゅ"}, "jyu": {"ju", "じゅ"}, "zyu": {"ju", "じゅ"},
-	"jo": {"jo", "じょ"}, "jyo": {"jo", "じょ"}, "zyo": {"jo", "じょ"}, "je": {"je", "じぇ"},
+	"za": {"za"}, "ji": {"ji"}, "zi": {"ji"}, "zu": {"zu"}, "ze": {"ze"}, "zo": {"zo"},
+	"ja": {"ja"}, "jya": {"ja"}, "zya": {"ja"},
+	"ju": {"ju"}, "jyu": {"ju"}, "zyu": {"ju"},
+	"jo": {"jo"}, "jyo": {"jo"}, "zyo": {"jo"}, "je": {"je"},
 
-	"da": {"da", "だ"}, "di": {"di", "ぢ"}, "du": {"du", "づ"}, "de": {"de", "で"}, "do": {"do", "ど"},
-	"dyu": {"dyu", "でゅ"},
+	"da": {"da"}, "di": {"di"}, "du": {"du"}, "de": {"de"}, "do": {"do"},
+	"dyu": {"dyu"},
 
-	"ba": {"ba", "ば"}, "bi": {"bi", "び"}, "bu": {"bu", "ぶ"}, "be": {"be", "べ"}, "bo": {"bo", "ぼ"},
-	"bya": {"bya", "びゃ"}, "byu": {"byu", "びゅ"}, "byo": {"byo", "びょ"},
+	"ba": {"ba"}, "bi": {"bi"}, "bu": {"bu"}, "be": {"be"}, "bo": {"bo"},
+	"bya": {"bya"}, "byu": {"byu"}, "byo": {"byo"},
 
-	"pa": {"pa", "ぱ"}, "pi": {"pi", "ぴ"}, "pu": {"pu", "ぷ"}, "pe": {"pe", "ぺ"}, "po": {"po", "ぽ"},
-	"pya": {"pya", "ぴゃ"}, "pyu": {"pyu", "ぴゅ"}, "pyo": {"pyo", "ぴょ"},
+	"pa": {"pa"}, "pi": {"pi"}, "pu": {"pu"}, "pe": {"pe"}, "po": {"po"},
+	"pya": {"pya"}, "pyu": {"pyu"}, "pyo": {"pyo"},
 
-	"fa": {"fa", "ふぁ"}, "fi": {"fi", "ふぃ"}, "fe": {"fe", "ふぇ"}, "fo": {"fo", "ふぉ"},
-	"va": {"va", "ゔぁ"}, "vi": {"vi", "ゔぃ"}, "vu": {"vu", "ゔ"}, "ve": {"ve", "ゔぇ"}, "vo": {"vo", "ゔぉ"},
+	"fa": {"fa"}, "fi": {"fi"}, "fe": {"fe"}, "fo": {"fo"},
+	"va": {"va"}, "vi": {"vi"}, "vu": {"vu"}, "ve": {"ve"}, "vo": {"vo"},
 }
 
 var macrons = strings.NewReplacer("ā", "aa", "ī", "ii", "ū", "uu", "ē", "ee", "ō", "ou")
@@ -107,32 +106,6 @@ func normalizeRomaji(s string) string {
 		}
 		if key, next, ok := match(runes[i:]); ok {
 			out.WriteString(next.romaji)
-			i += len([]rune(key))
-			continue
-		}
-		out.WriteRune(runes[i])
-		i++
-	}
-	return out.String()
-}
-
-func ToKana(s string) string {
-	runes := []rune(macrons.Replace(strings.ToLower(strings.TrimSpace(s))))
-	var out strings.Builder
-
-	for i := 0; i < len(runes); {
-		if runes[i] == 'n' && i+1 < len(runes) && runes[i+1] == 'n' {
-			out.WriteRune('ん')
-			i++
-			continue
-		}
-		if i+1 < len(runes) && isConsonant(runes[i]) && runes[i] == runes[i+1] {
-			out.WriteRune('っ')
-			i++
-			continue
-		}
-		if key, next, ok := match(runes[i:]); ok {
-			out.WriteString(next.kana)
 			i += len([]rune(key))
 			continue
 		}

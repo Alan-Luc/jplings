@@ -19,31 +19,11 @@ func TestSurfaceFoldsPunctuationWhitespaceAndNumbers(t *testing.T) {
 	}
 }
 
-func TestKanaFoldsKatakanaAndRomaji(t *testing.T) {
-	tests := map[string]string{
-		"ビール":             "びいる",
-		"コーヒー":            "こおひい",
-		"mizu o kudasai":  "みずおください",
-		"mizu wo kudasai": "みずおください",
-		"mizuwo kudasai":  "みずをください",
-		"chu":             "ちゅ",
-		"hu":              "ふ",
-		"toukyou":         "とうきょう",
-		"tōkyō":           "とうきょう",
-		"８００円":            "八百円",
-	}
-	for input, want := range tests {
-		if got := Kana(input); got != want {
-			t.Fatalf("Kana(%q) = %q, want %q", input, got, want)
-		}
-	}
-}
-
-func TestSurfaceKeepsRomajiParticleBeforeKanaFolding(t *testing.T) {
+func TestSurfaceKeepsRomajiParticleUnfolded(t *testing.T) {
 	if got := Surface("mizu o tabemashita"); got != "mizuotabemashita" {
 		t.Fatalf("Surface(%q) = %q, want the romaji particle left as o", "mizu o tabemashita", got)
 	}
-	if got := Kana("mizu o tabemashita"); got != "みずおたべました" {
-		t.Fatalf("Kana(%q) = %q, want the particle folded to お", "mizu o tabemashita", got)
+	if got := Surface("mizu wo tabemashita"); got != "mizuotabemashita" {
+		t.Fatalf("Surface(%q) = %q, want wo folded to o without kana folding", "mizu wo tabemashita", got)
 	}
 }

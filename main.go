@@ -142,17 +142,7 @@ func importContent(args []string) error {
 		return err
 	}
 
-	cache := *cacheDir
-	if cache == "" {
-		base, err := os.UserCacheDir()
-		if err != nil {
-			return err
-		}
-		cache = filepath.Join(base, "jplings")
-	}
-
-	fmt.Fprintf(os.Stderr, "fetching sources into %s\n", cache)
-	files, err := corpus.Fetch(cache)
+	files, err := fetchCorpus(*cacheDir)
 	if err != nil {
 		return err
 	}
@@ -215,17 +205,7 @@ func candidateContent(args []string) error {
 		return err
 	}
 
-	cache := *cacheDir
-	if cache == "" {
-		base, err := os.UserCacheDir()
-		if err != nil {
-			return err
-		}
-		cache = filepath.Join(base, "jplings")
-	}
-
-	fmt.Fprintf(os.Stderr, "fetching sources into %s\n", cache)
-	files, err := corpus.Fetch(cache)
+	files, err := fetchCorpus(*cacheDir)
 	if err != nil {
 		return err
 	}
@@ -582,4 +562,18 @@ func readScore(reader *bufio.Reader, dimension string) (int, error) {
 		}
 		return value, nil
 	}
+}
+
+func fetchCorpus(cacheDir string) (corpus.Files, error) {
+	cache := cacheDir
+	if cache == "" {
+		base, err := os.UserCacheDir()
+		if err != nil {
+			return corpus.Files{}, err
+		}
+		cache = filepath.Join(base, "jplings")
+	}
+
+	fmt.Fprintf(os.Stderr, "fetching sources into %s\n", cache)
+	return corpus.Fetch(cache)
 }

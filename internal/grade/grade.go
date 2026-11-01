@@ -16,18 +16,6 @@ type Outcome struct {
 	Explanation string
 }
 
-func Dimension(kind content.Kind) string {
-	switch kind {
-	case content.Interpretation, content.Listening:
-		return "comprehension"
-	case content.Construction, content.Transformation, content.Completion,
-		content.Speaking, content.Conversation:
-		return "production"
-	default:
-		return ""
-	}
-}
-
 func Written(step *content.Step, answer string) Outcome {
 	if out, ok := offTarget(step, answer); ok {
 		return out

@@ -49,14 +49,3 @@ func TestEaseNeverDropsBelowFloor(t *testing.T) {
 		t.Fatalf("ease = %v, want >= 1.3", card.Ease)
 	}
 }
-
-func TestDueFiltersByClock(t *testing.T) {
-	cards := []Card{
-		{ConceptID: "past", Due: now.Add(-time.Hour)},
-		{ConceptID: "future", Due: now.Add(time.Hour)},
-	}
-	due := Due(cards, now)
-	if len(due) != 1 || due[0].ConceptID != "past" {
-		t.Fatalf("due = %+v, want only the past card", due)
-	}
-}

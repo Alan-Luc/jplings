@@ -469,7 +469,7 @@ func (m *Model) startReviews() {
 	for _, card := range due {
 		step := siblingStep(m.units, card.ConceptID, card.StepID)
 		if step == nil {
-			if own := findStepByID(m.units, card.StepID); own != nil && eligibleReviewStep(own) {
+			if own := findStepByID(m.units, card.StepID); own != nil && session.Reviewable(own) {
 				step = own
 			}
 		}
@@ -481,10 +481,6 @@ func (m *Model) startReviews() {
 	if len(m.reviews) > 0 {
 		m.screen = screenPrompt
 	}
-}
-
-func eligibleReviewStep(step *content.Step) bool {
-	return step.Rubric == "" && step.Scenario == nil && content.Dimension(step.Kind) != ""
 }
 
 func findStepByID(units []*content.Unit, stepID string) *content.Step {
@@ -507,7 +503,7 @@ func siblingStep(units []*content.Unit, conceptID, excludeID string) *content.St
 		for li := range unit.Lessons {
 			for si := range unit.Lessons[li].Steps {
 				step := &unit.Lessons[li].Steps[si]
-				if step.ID == excludeID || !eligibleReviewStep(step) {
+				if step.ID == excludeID || !session.Reviewable(step) {
 					continue
 				}
 				for _, concept := range step.Concepts {

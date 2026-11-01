@@ -58,13 +58,3 @@ func Update(card Card, quality Quality, now time.Time) Card {
 	card.Due = now.AddDate(0, 0, card.IntervalDays)
 	return card
 }
-
-func Due(cards []Card, now time.Time) []Card {
-	var due []Card
-	for _, card := range cards {
-		if !card.Due.After(now) {
-			due = append(due, card)
-		}
-	}
-	return due
-}

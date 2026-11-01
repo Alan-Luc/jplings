@@ -169,7 +169,7 @@ func (r *Runner) freeFormOutcome(ctx context.Context, step *content.Step, answer
 }
 
 func (r *Runner) record(step *content.Step, outcome grade.Outcome, at time.Time, source, answer string) error {
-	dimension := grade.Dimension(step.Kind)
+	dimension := content.Dimension(step.Kind)
 	if dimension == "" {
 		return nil
 	}
@@ -197,7 +197,7 @@ func (r *Runner) record(step *content.Step, outcome grade.Outcome, at time.Time,
 		}
 	}
 
-	if outcome.Correct && source != "guided" && reviewable(step) && len(concepts) > 0 {
+	if outcome.Correct && source != "guided" && Reviewable(step) && len(concepts) > 0 {
 		if err := r.Store.EnsureCard(schedule.Initial(step.ID, concepts[0], at)); err != nil {
 			return err
 		}
@@ -205,10 +205,11 @@ func (r *Runner) record(step *content.Step, outcome grade.Outcome, at time.Time,
 	return nil
 }
 
-// A card must be answerable by the deterministic graders. A scenario or a rubric step
-// would come back every session as a prompt nothing can pass.
-func reviewable(step *content.Step) bool {
-	return step.Scenario == nil && step.Rubric == ""
+// Reviewable reports whether the deterministic graders can answer this step, which is
+// also the condition for giving it a review card: a scenario or rubric step would come
+// back every session as a prompt nothing can pass.
+func Reviewable(step *content.Step) bool {
+	return step.Scenario == nil && step.Rubric == "" && content.Dimension(step.Kind) != ""
 }
 
 func (r *Runner) Speak(ctx context.Context, text string, play func([]byte) error) (speech.SpeakResult, error) {
