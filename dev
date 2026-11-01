@@ -13,6 +13,7 @@ usage: ./dev <command>
   run      start or resume a session in the TUI
   doctor   check host prerequisites and the speech stack
   lint     validate content YAML
+  coverage report how deeply each concept is exercised
   test     hermetic test suite (no containers needed)
   live     integration tests against the running containers
   build    build ./jplings
@@ -23,6 +24,7 @@ case "${1:-}" in
   run)    go run . ;;
   doctor) go run . doctor ;;
   lint)   go run . lint content/ ;;
+  coverage) go run . coverage ;;
   test)   go test ./... ;;
   live)   go test -tags live ./internal/speech/ ./internal/session/ ;;
   build)  go build -o jplings . && echo "built ./jplings" ;;

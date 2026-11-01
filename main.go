@@ -37,6 +37,8 @@ func run(args []string) error {
 		return runDoctor()
 	case "grade":
 		return gradePending(args[1:])
+	case "coverage":
+		return reportCoverage(args[1:])
 	case "help", "-h", "--help":
 		usage()
 		return nil
@@ -54,6 +56,7 @@ Usage:
   jplings lint [path...]  validate content YAML (default: content/)
   jplings doctor          check host prerequisites
   jplings grade --pending grade saved responses by hand
+  jplings coverage        report how deeply each concept is exercised
 `)
 }
 
@@ -105,6 +108,46 @@ func startSession() error {
 	}
 
 	return tui.Run(runner, units)
+}
+
+func reportCoverage(paths []string) error {
+	if len(paths) == 0 {
+		paths = []string{"content"}
+	}
+	units, issues, err := content.Load(paths...)
+	if err != nil {
+		return err
+	}
+	if len(issues) > 0 {
+		return fmt.Errorf("content has %d issue(s); run jplings lint first", len(issues))
+	}
+
+	coverage := content.CoverageOf(units)
+	w := tabwriter.NewWriter(os.Stdout, 0, 0, 2, ' ', 0)
+
+	currentUnit := ""
+	complete, total := 0, 0
+	for _, entry := range coverage {
+		if entry.UnitID != currentUnit {
+			currentUnit = entry.UnitID
+			fmt.Fprintf(w, "\n%s\n", entry.UnitID)
+		}
+		total++
+		state := "ok"
+		if entry.Complete() {
+			complete++
+		} else {
+			state = "THIN"
+		}
+		fmt.Fprintf(w, "  %s\tcomprehension %d\tproduction %d\t%s\n",
+			entry.ConceptID, entry.Comprehension, entry.Production, state)
+	}
+	if err := w.Flush(); err != nil {
+		return err
+	}
+
+	fmt.Printf("\n%d/%d concepts deeply exercised\n", complete, total)
+	return nil
 }
 
 func lint(paths []string) error {
