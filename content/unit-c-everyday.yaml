@@ -1,0 +1,215 @@
+id: unit-c-everyday
+title: Everyday sentences
+concepts:
+  - id: sentence-everyday
+    label: Everyday spoken sentences built from は, を, の and か
+lessons:
+  - id: c-listen
+    title: Hearing whole sentences
+    steps:
+      - id: c-listen-1
+        kind: listening
+        concepts: [sentence-everyday]
+        prompt: Listen and type what you hear.
+        target:
+          kanji: 今日はとても暑い
+          kana: きょうはとてもあつい
+          romaji: kyoo wa totemo atsui
+        accept:
+          - kanji: 今日はとても暑い
+            kana: きょうはとてもあつい
+            romaji: kyoo wa totemo atsui
+          - kanji: 今日はとても暑い
+            kana: きょうはとてもあつい
+            romaji: kyou wa totemo atsui
+        source:
+          corpus: tatoeba
+          id: "5092"
+          license: CC BY 2.0 FR
+          attribution: Tatoeba contributors
+        explanation: >-
+          は marks 今日 as the topic, so the sentence reports on today rather than
+          identifying something. とても intensifies the adjective, and 暑い is an
+          i-adjective that ends the sentence without です in casual speech.
+
+      - id: c-listen-2
+        kind: listening
+        concepts: [sentence-everyday]
+        prompt: Listen and type what you hear.
+        target:
+          kanji: 明日はどうですか
+          kana: あしたはどうですか
+          romaji: ashita wa doo desu ka
+        accept:
+          - kanji: 明日はどうですか
+            kana: あしたはどうですか
+            romaji: ashita wa doo desu ka
+          - kanji: 明日はどうですか
+            kana: あしたはどうですか
+            romaji: ashita wa dou desu ka
+        source:
+          corpus: tatoeba
+          id: "75696"
+          license: CC BY 2.0 FR
+          attribution: Tatoeba contributors
+        explanation: >-
+          どうですか asks how something is. か turns it into a question, so the
+          whole thing is "how about tomorrow?" — the は puts 明日 in the topic slot
+          it is asking about.
+
+      - id: c-listen-3
+        kind: listening
+        concepts: [sentence-everyday]
+        prompt: Listen and type what you hear.
+        target:
+          kanji: 和食は好きですか
+          kana: わしょくはすきですか
+          romaji: washoku wa suki desu ka
+        accept:
+          - kanji: 和食は好きですか
+            kana: わしょくはすきですか
+            romaji: washoku wa suki desu ka
+        source:
+          corpus: tatoeba
+          id: "77212"
+          license: CC BY 2.0 FR
+          attribution: Tatoeba contributors
+        explanation: >-
+          すき normally takes が for the thing liked, as in 猫が好き. Here は makes
+          和食 the topic instead, which is what you do when asking someone's
+          opinion rather than reporting a fact.
+
+      - id: c-listen-4
+        kind: listening
+        concepts: [sentence-everyday]
+        prompt: Listen and type what you hear.
+        target:
+          kanji: 夕食の時間ですよ
+          kana: ゆうしょくのじかんですよ
+          romaji: yuushoku no jikan desu yo
+        accept:
+          - kanji: 夕食の時間ですよ
+            kana: ゆうしょくのじかんですよ
+            romaji: yuushoku no jikan desu yo
+          - kanji: 夕食の時間ですよ
+            kana: ゆうしょくのじかんですよ
+            romaji: yuushoku no jikan desu yo
+        source:
+          corpus: tatoeba
+          id: "79098"
+          license: CC BY 2.0 FR
+          attribution: Tatoeba contributors
+        explanation: >-
+          の links two nouns, so 夕食の時間 is "dinner's time". The final よ asserts
+          information the listener does not have yet — this is a reminder, not a
+          neutral statement.
+
+  - id: c-meaning
+    title: Understanding whole sentences
+    steps:
+      - id: c-meaning-1
+        kind: interpretation
+        concepts: [sentence-everyday]
+        prompt: What does this mean?
+        target:
+          kanji: 財布をなくしたの
+          kana: さいふをなくしたの
+          romaji: saifu o nakushita no
+        accept_meanings:
+          - I have lost my wallet.
+          - I lost my wallet.
+        source:
+          corpus: tatoeba
+          id: "5069"
+          license: CC BY 2.0 FR
+          attribution: Tatoeba contributors
+        explanation: >-
+          を marks 財布 as the thing lost, and なくした is the past of なくす. The
+          final の with a rising tone asks for an explanation or confirmation, which
+          is why this sounds like someone seeking help rather than a flat statement.
+
+      - id: c-meaning-2
+        kind: interpretation
+        concepts: [sentence-everyday]
+        prompt: What does this mean?
+        target:
+          kanji: もう好きじゃない
+          kana: もうすきじゃない
+          romaji: moo suki ja nai
+        accept_meanings:
+          - I don't like you anymore.
+          - I don't like it anymore.
+        source:
+          corpus: tatoeba
+          id: "4852"
+          license: CC BY 2.0 FR
+          attribution: Tatoeba contributors
+        explanation: >-
+          もう with a negative means "no longer", not "already". じゃない is the
+          casual negative of です. Note this is the opposite pairing from まだ,
+          which with a negative means "not yet".
+
+  - id: c-produce
+    title: Producing the same sentences
+    steps:
+      - id: c-produce-1
+        kind: construction
+        concepts: [sentence-everyday]
+        prompt: Say "It is very hot today."
+        accept:
+          - kanji: 今日はとても暑い
+            kana: きょうはとてもあつい
+            romaji: kyoo wa totemo atsui
+          - kanji: 今日はとても暑い
+            kana: きょうはとてもあつい
+            romaji: kyou wa totemo atsui
+        source:
+          corpus: tatoeba
+          id: "5092"
+          license: CC BY 2.0 FR
+          attribution: Tatoeba contributors
+        explanation: >-
+          今日は puts today in the topic slot, とても goes before the adjective, and
+          the sentence ends on 暑い. Adding です would make it polite.
+
+      - id: c-produce-2
+        kind: construction
+        concepts: [sentence-everyday]
+        prompt: Ask "Do you like Japanese food?"
+        accept:
+          - kanji: 和食は好きですか
+            kana: わしょくはすきですか
+            romaji: washoku wa suki desu ka
+        source:
+          corpus: tatoeba
+          id: "77212"
+          license: CC BY 2.0 FR
+          attribution: Tatoeba contributors
+        explanation: >-
+          和食は makes Japanese food the topic, 好き describes the liking, です keeps
+          it polite, and か makes it a question. Dropping か leaves a statement.
+
+      - id: c-produce-3
+        kind: transformation
+        concepts: [sentence-everyday]
+        prompt: Make this casual sentence polite — 「もう好きじゃない」。
+        target:
+          kanji: もう好きじゃない
+          kana: もうすきじゃない
+          romaji: moo suki ja nai
+        accept:
+          - kanji: もう好きじゃありません
+            kana: もうすきじゃありません
+            romaji: moo suki ja arimasen
+          - kanji: もう好きではない
+            kana: もうすきではない
+            romaji: moo suki de wa nai
+        source:
+          corpus: tatoeba
+          id: "4852"
+          license: CC BY 2.0 FR
+          attribution: Tatoeba contributors
+        explanation: >-
+          じゃない is casual. じゃありません is its polite form, and ではない is the
+          written form. All three are negative, so もう keeps meaning "no longer"
+          rather than "already".

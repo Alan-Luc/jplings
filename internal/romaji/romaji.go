@@ -30,14 +30,15 @@ var (
 
 func NormalizeExact(s string) string {
 	s = strings.ToLower(strings.TrimSpace(s))
-	s = strings.Join(strings.Fields(s), " ")
 	fields := strings.Fields(s)
 	for i, field := range fields {
 		if field == "wo" {
 			fields[i] = "o"
 		}
 	}
-	s = strings.Join(fields, " ")
+	// Spacing is not phonemic, and imports emit per-morpheme romaji ("nomi masu")
+	// while authored answers are often unspaced ("nomimasu"), so both sides drop it.
+	s = strings.Join(fields, "")
 	return spelling.Replace(s)
 }
 

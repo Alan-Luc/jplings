@@ -104,3 +104,27 @@ def speech(request: SpeechRequest):
             "X-Audio-Seconds": f"{len(samples) / sample_rate:.3f}",
         },
     )
+
+
+class ReadingRequest(BaseModel):
+    text: str
+
+
+@app.post("/reading")
+def reading(request: ReadingRequest):
+    import pyopenjtalk
+
+    feats = pyopenjtalk.run_frontend(request.text)
+    return JSONResponse(
+        {
+            "morphemes": [
+                {
+                    "string": feature.get("string", ""),
+                    "read": feature.get("read", ""),
+                    "pron": feature.get("pron", ""),
+                    "pos": feature.get("pos", ""),
+                }
+                for feature in feats
+            ]
+        }
+    )

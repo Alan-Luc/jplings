@@ -11,6 +11,8 @@ import (
 
 type Sentence struct {
 	Japanese string `yaml:"japanese"`
+	Kana     string `yaml:"kana,omitempty"`
+	Romaji   string `yaml:"romaji,omitempty"`
 	English  string `yaml:"english"`
 	ID       string `yaml:"tatoeba_id"`
 }

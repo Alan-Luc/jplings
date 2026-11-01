@@ -110,3 +110,14 @@ func TestExactStillAcceptsLongVowelSpellingConventions(t *testing.T) {
 		t.Fatalf("Compare(biiru, bīru) = %v, want Exact", got)
 	}
 }
+
+func TestSpacingIsNotSignificant(t *testing.T) {
+	for _, input := range []string{"mizu o kudasai", "mizuokudasai", "mizu  o   kudasai"} {
+		if got, _ := Compare(input, []string{"mizu o kudasai"}); got != Exact {
+			t.Fatalf("Compare(%q) = %v, want Exact", input, got)
+		}
+	}
+	if got, _ := Compare("nomi masu", []string{"nomimasu"}); got != Exact {
+		t.Fatalf("per-morpheme romaji must match an unspaced answer, got %v", got)
+	}
+}

@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"context"
 	"flag"
 	"fmt"
 	"io"
@@ -240,7 +241,13 @@ func importSentences(files corpus.Files, limit int, minRunes int, require map[st
 		return nil, err
 	}
 	usable := corpus.Filter(joined, corpus.FilterOptions{MinRunes: minRunes, Require: require})
-	return corpus.SelectShort(usable, limit), nil
+	selected := corpus.SelectShort(usable, limit)
+
+	enriched, err := corpus.Enrich(context.Background(), corpus.NewReader(), selected)
+	if err != nil {
+		return nil, fmt.Errorf("attach readings (is the speech stack running?): %w", err)
+	}
+	return enriched, nil
 }
 
 func readWordList(path string) (map[string]bool, error) {
