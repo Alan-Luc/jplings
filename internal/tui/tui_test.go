@@ -171,6 +171,20 @@ func TestMissPlaysTheAcceptedAnswer(t *testing.T) {
 	}
 }
 
+func TestListeningMissPlaysNoAnswerAudio(t *testing.T) {
+	dictation := listeningUnits()
+	model, _ := newModelWith(t, dictation)
+
+	updated, cmd := model.submit("roppyaku en desu")
+	after := updated.(Model)
+	if after.correct {
+		t.Fatalf("expected a miss, got %q", after.feedback)
+	}
+	if cmd != nil {
+		t.Fatal("a listening step is graded for comprehension; its answer audio must not play on a miss")
+	}
+}
+
 func TestPlayCurrentIsIdempotentPerStep(t *testing.T) {
 	model, _ := newModelWith(t, listeningUnits())
 
