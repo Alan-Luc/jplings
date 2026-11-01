@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"jplings/internal/content"
+	"jplings/internal/normalize"
 )
 
 type Verdict int
@@ -50,10 +51,10 @@ func (c *Conversation) Respond(text string) Response {
 		return Response{Verdict: NoMatch}
 	}
 
-	got := normalize(text)
+	got := normalize.Surface(text)
 	for _, accepted := range turn.Accept {
 		for _, surface := range surfaces(accepted) {
-			if got == normalize(surface) {
+			if got == normalize.Surface(surface) {
 				return Response{Verdict: Matched}
 			}
 		}
@@ -61,7 +62,7 @@ func (c *Conversation) Respond(text string) Response {
 
 	for _, accepted := range turn.Accept {
 		for _, surface := range surfaces(accepted) {
-			if hint, ok := tolerate(got, normalize(surface)); ok {
+			if hint, ok := tolerate(got, normalize.Surface(surface)); ok {
 				return Response{Verdict: Tolerated, Hint: hint}
 			}
 		}
@@ -97,10 +98,4 @@ func surfaces(t content.Text) []string {
 		out = append(out, t.Kanji)
 	}
 	return out
-}
-
-func normalize(s string) string {
-	s = strings.TrimSpace(s)
-	s = strings.NewReplacer("。", "", "、", "", " ", "", "　", "", "！", "", "？", "", "?", "").Replace(s)
-	return s
 }

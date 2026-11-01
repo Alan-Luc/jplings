@@ -5,6 +5,7 @@ import (
 	"testing"
 
 	"jplings/internal/content"
+	"jplings/internal/normalize"
 )
 
 func constructionStep() *content.Step {
@@ -75,6 +76,14 @@ func TestWrittenWrongAlwaysExplains(t *testing.T) {
 	}
 }
 
+func TestMeaningWithNoAcceptedMeaningsDoesNotPanic(t *testing.T) {
+	step := &content.Step{Kind: content.Interpretation, Explanation: "No meanings were authored."}
+	out := Meaning(step, "anything")
+	if out.Correct || out.Explanation == "" {
+		t.Fatalf("Meaning with no accepted meanings = %+v, want an explained miss", out)
+	}
+}
+
 func TestMeaning(t *testing.T) {
 	step := &content.Step{
 		Kind:           content.Interpretation,
@@ -142,8 +151,8 @@ func TestNumberCanonicalization(t *testing.T) {
 		"3500":  "三千五百",
 	}
 	for input, want := range tests {
-		if got := normalizeJapan(input); got != want {
-			t.Fatalf("normalizeJapan(%q) = %q, want %q", input, got, want)
+		if got := normalize.Surface(input); got != want {
+			t.Fatalf("Surface(%q) = %q, want %q", input, got, want)
 		}
 	}
 }

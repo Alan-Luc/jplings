@@ -63,6 +63,41 @@ func TestCompareNeverAwardsCreditForDifferentWord(t *testing.T) {
 	}
 }
 
+func TestNormalizeExactDoesNotCorruptChSyllables(t *testing.T) {
+	tests := map[string]string{
+		"chu":   "chu",
+		"cha":   "cha",
+		"cho":   "cho",
+		"chizu": "chizu",
+		"hu":    "fu",
+		"huzi":  "fuji",
+	}
+	for input, want := range tests {
+		if got := NormalizeExact(input); got != want {
+			t.Fatalf("NormalizeExact(%q) = %q, want %q", input, got, want)
+		}
+	}
+}
+
+func TestCompareAcceptsChAndHuSpellings(t *testing.T) {
+	for _, tc := range []struct{ input, accepted string }{
+		{"chu", "chu"},
+		{"chizu", "chizu"},
+		{"hu", "fu"},
+		{"huzi", "fuji"},
+	} {
+		if got, _ := Compare(tc.input, []string{tc.accepted}); got != Exact {
+			t.Fatalf("Compare(%q, %q) = %v, want Exact", tc.input, tc.accepted, got)
+		}
+	}
+}
+
+func TestExactUnitesHepburnOWithWapuroOu(t *testing.T) {
+	if got, _ := Compare("toukyou", []string{"tōkyō"}); got != Exact {
+		t.Fatalf("Compare(toukyou, tōkyō) = %v, want Exact", got)
+	}
+}
+
 func TestCompareMatchesAnyAcceptedAnswer(t *testing.T) {
 	accepted := []string{"mizu o kudasai", "omizu o kudasai"}
 	if got, _ := Compare("omizu wo kudasai", accepted); got != Exact {
