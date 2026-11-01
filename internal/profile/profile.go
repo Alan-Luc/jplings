@@ -83,13 +83,11 @@ CREATE TABLE IF NOT EXISTS session_cursor (
 );
 `
 
-// Store is the learner profile database.
 type Store struct {
 	db   *sql.DB
 	path string
 }
 
-// Evidence is one demonstrated (or failed) dimension of one concept.
 type Evidence struct {
 	ConceptID  string
 	Dimension  string
@@ -99,7 +97,6 @@ type Evidence struct {
 	At         time.Time
 }
 
-// Open opens or creates the profile database.
 func Open(path string) (*Store, error) {
 	if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil {
 		return nil, err
@@ -117,10 +114,8 @@ func Open(path string) (*Store, error) {
 	return &Store{db: db, path: path}, nil
 }
 
-// Close releases the database.
 func (s *Store) Close() error { return s.db.Close() }
 
-// Record stores one piece of evidence.
 func (s *Store) Record(e Evidence) error {
 	correct := 0
 	if e.Correct {
@@ -134,7 +129,6 @@ func (s *Store) Record(e Evidence) error {
 	return err
 }
 
-// Evidence returns everything recorded for a concept, oldest first.
 func (s *Store) Evidence(conceptID string) ([]Evidence, error) {
 	rows, err := s.db.Query(
 		`SELECT concept_id, dimension, correct, stimulus_id, source, at
@@ -258,7 +252,6 @@ func (s *Store) CanSkip(conceptID string) (bool, error) {
 	return len(stimuli) >= 2, rows.Err()
 }
 
-// AddError appends to the weak-concept error log.
 func (s *Store) AddError(conceptID, detail string, at time.Time) error {
 	_, err := s.db.Exec(
 		`INSERT INTO errors (concept_id, detail, at) VALUES (?, ?, ?)`,
@@ -267,7 +260,6 @@ func (s *Store) AddError(conceptID, detail string, at time.Time) error {
 	return err
 }
 
-// Errors returns the error log for a concept, oldest first.
 func (s *Store) Errors(conceptID string) ([]string, error) {
 	rows, err := s.db.Query(
 		`SELECT detail FROM errors WHERE concept_id = ? ORDER BY at, id`, conceptID)
@@ -287,7 +279,6 @@ func (s *Store) Errors(conceptID string) ([]string, error) {
 	return out, rows.Err()
 }
 
-// ScheduleReview stores a concept's updated review state.
 func (s *Store) ScheduleReview(card schedule.Card) error {
 	kind := card.Kind
 	if kind == "" {
@@ -306,17 +297,14 @@ func (s *Store) ScheduleReview(card schedule.Card) error {
 	return err
 }
 
-// Reviews returns every stored review card.
 func (s *Store) Reviews() ([]schedule.Card, error) {
 	return s.cardsWhere(`1 = 1`)
 }
 
-// DueRetention returns concepts whose delayed retention check is due at now.
 func (s *Store) DueRetention(now time.Time) ([]schedule.Card, error) {
 	return s.cardsWhere(fmt.Sprintf(`kind = '%s' AND due_at <= %d`, schedule.KindRetention, now.Unix()))
 }
 
-// HasRetentionCheck reports whether a retention check is already scheduled.
 func (s *Store) HasRetentionCheck(conceptID string) (bool, error) {
 	var count int
 	err := s.db.QueryRow(
@@ -368,12 +356,10 @@ func (s *Store) EnqueuePending(stepID, prompt, response string, at time.Time) (i
 	return result.LastInsertId()
 }
 
-// PendingToRetry returns responses still eligible for automatic retry.
 func (s *Store) PendingToRetry() ([]Pending, error) {
 	return s.pendingWhere(`status = 'pending' AND retries < 2`)
 }
 
-// PendingNeedsManual returns responses that failed twice and need human grading.
 func (s *Store) PendingNeedsManual() ([]Pending, error) {
 	return s.pendingWhere(`status = 'pending' AND retries >= 2`)
 }
@@ -398,13 +384,11 @@ func (s *Store) pendingWhere(condition string) ([]Pending, error) {
 	return out, rows.Err()
 }
 
-// RetryPending records one failed retry.
 func (s *Store) RetryPending(id int64) error {
 	_, err := s.db.Exec(`UPDATE pending SET retries = retries + 1 WHERE id = ?`, id)
 	return err
 }
 
-// ResolvePending closes a pending response after it has been graded.
 func (s *Store) ResolvePending(id int64) error {
 	_, err := s.db.Exec(`UPDATE pending SET status = 'graded' WHERE id = ?`, id)
 	return err
@@ -425,7 +409,6 @@ func (s *Store) SaveCursor(unitID, lessonID string, stepIndex int, at time.Time)
 	return err
 }
 
-// Cursor returns the saved session position, if any.
 func (s *Store) Cursor() (unitID, lessonID string, stepIndex int, ok bool, err error) {
 	err = s.db.QueryRow(
 		`SELECT unit_id, lesson_id, step_index FROM session_cursor WHERE id = 1`,

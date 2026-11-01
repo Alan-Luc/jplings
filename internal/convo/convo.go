@@ -13,7 +13,6 @@ import (
 	"jplings/internal/content"
 )
 
-// Verdict is how a learner's turn was understood.
 type Verdict int
 
 const (
@@ -25,7 +24,6 @@ const (
 	Tolerated
 )
 
-// Response is the outcome of one learner turn.
 type Response struct {
 	Verdict Verdict
 	// Hint explains a tolerated turn, naming what was dropped.
@@ -34,18 +32,15 @@ type Response struct {
 
 var particles = []string{"を", "は", "が", "に", "で", "へ", "と", "も", "の"}
 
-// Conversation walks a scripted scenario.
 type Conversation struct {
 	scenario *content.Scenario
 	turn     int
 }
 
-// New starts a scenario at its first turn.
 func New(scenario *content.Scenario) *Conversation {
 	return &Conversation{scenario: scenario}
 }
 
-// Current returns the turn awaiting action, and whether the scenario has one.
 func (c *Conversation) Current() (content.Turn, bool) {
 	if c.scenario == nil || c.turn >= len(c.scenario.Turns) {
 		return content.Turn{}, false
@@ -53,15 +48,12 @@ func (c *Conversation) Current() (content.Turn, bool) {
 	return c.scenario.Turns[c.turn], true
 }
 
-// Advance moves to the next turn.
 func (c *Conversation) Advance() { c.turn++ }
 
-// Done reports whether the scenario has finished.
 func (c *Conversation) Done() bool {
 	return c.scenario == nil || c.turn >= len(c.scenario.Turns)
 }
 
-// Respond interprets a learner's answer against the current learner turn.
 func (c *Conversation) Respond(text string) Response {
 	turn, ok := c.Current()
 	if !ok || turn.Speaker != "learner" {

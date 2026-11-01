@@ -7,7 +7,6 @@ package speech
 
 import "context"
 
-// Transcription is what the app heard, plus what it knows about its own uncertainty.
 type Transcription struct {
 	Text string
 	// Confidence is Whisper's average log probability for the segment. It is a

@@ -12,7 +12,6 @@ type Turn struct {
 	Denials int
 }
 
-// Decision is what the app may do next with a spoken turn.
 type Decision struct {
 	// Grade means the confirmed transcript becomes the graded text.
 	Grade bool
@@ -20,7 +19,6 @@ type Decision struct {
 	OfferFallback bool
 }
 
-// Confirm accepts the transcript as the learner's answer.
 func (t *Turn) Confirm() Decision {
 	return Decision{Grade: true}
 }
@@ -31,7 +29,6 @@ func (t *Turn) Deny() Decision {
 	return Decision{OfferFallback: t.Denials >= 2}
 }
 
-// SpeakResult reports how a prompt was delivered.
 type SpeakResult struct {
 	// Degraded means audio could not be produced and the written prompt was revealed.
 	Degraded bool

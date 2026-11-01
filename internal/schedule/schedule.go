@@ -25,7 +25,6 @@ const (
 	KindRetention = "retention"
 )
 
-// Card is one concept's review state.
 type Card struct {
 	ConceptID    string
 	Ease         float64
@@ -35,12 +34,10 @@ type Card struct {
 	Kind         string
 }
 
-// Initial is a concept's starting review state, due immediately.
 func Initial(conceptID string, now time.Time) Card {
 	return Card{ConceptID: conceptID, Ease: 2.5, IntervalDays: 0, Reps: 0, Due: now, Kind: KindReview}
 }
 
-// Review applies SM-2 to a card and returns its new state.
 func Review(card Card, quality Quality, now time.Time) Card {
 	if card.Ease == 0 {
 		card.Ease = 2.5
@@ -76,15 +73,12 @@ func Review(card Card, quality Quality, now time.Time) Card {
 // of that window is used so the check lands on a different day without drifting out.
 const RetentionDelay = 60 * time.Hour
 
-// RetentionDue is when a concept's different-context retention check becomes due.
 func RetentionDue(now time.Time) time.Time { return now.Add(RetentionDelay) }
 
-// RetentionCard schedules the one-off delayed retention check for a concept.
 func RetentionCard(conceptID string, now time.Time) Card {
 	return Card{ConceptID: conceptID, Ease: 2.5, Due: RetentionDue(now), Kind: KindRetention}
 }
 
-// Due returns the concepts whose review is due at now, earliest first.
 func Due(cards []Card, now time.Time) []Card {
 	var due []Card
 	for _, card := range cards {

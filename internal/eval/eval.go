@@ -18,12 +18,10 @@ import (
 
 const (
 	// DefaultModel is pinned so a grading change is a deliberate act, not a drift.
-	DefaultModel = "deepseek-chat"
-	// DefaultBaseURL is the DeepSeek chat completion endpoint.
+	DefaultModel   = "deepseek-chat"
 	DefaultBaseURL = "https://api.deepseek.com/chat/completions"
 )
 
-// Rubric is the four independently-scored dimensions plus feedback.
 type Rubric struct {
 	Meaning     int    `json:"meaning"`
 	Grammar     int    `json:"grammar"`
@@ -49,7 +47,6 @@ func (r Rubric) Validate() error {
 	return nil
 }
 
-// Evaluator grades a free-form response against a prompt.
 type Evaluator interface {
 	Evaluate(ctx context.Context, prompt, response string) (Rubric, error)
 }
@@ -62,7 +59,6 @@ type Client struct {
 	HTTP    *http.Client
 }
 
-// NewClient builds a client for the given key.
 func NewClient(apiKey string) *Client {
 	return &Client{
 		APIKey:  apiKey,

@@ -13,7 +13,6 @@ import (
 	"jplings/internal/romaji"
 )
 
-// Outcome is one grading result.
 type Outcome struct {
 	// Correct earns credit and may mint evidence.
 	Correct bool
@@ -25,7 +24,6 @@ type Outcome struct {
 	Explanation string
 }
 
-// Dimension is the profile evidence dimension an exercise kind can mint.
 func Dimension(kind content.Kind) string {
 	switch kind {
 	case content.Interpretation, content.Listening:
@@ -65,7 +63,6 @@ func Written(step *content.Step, answer string) Outcome {
 	}
 }
 
-// Meaning grades an interpretation exercise against authored English meanings.
 func Meaning(step *content.Step, answer string) Outcome {
 	got := normalizeMeaning(answer)
 	if got == "" {
@@ -163,7 +160,6 @@ func offTargetSpeech(step *content.Step, transcript string) (Outcome, bool) {
 	return Outcome{}, false
 }
 
-// surfaces lists every written surface of a text: romaji, kana, and kanji when present.
 func surfaces(t content.Text) []string {
 	out := []string{t.Romaji, t.Kana}
 	if t.Kanji != "" {
@@ -224,7 +220,6 @@ func normalizeJapan(s string) string {
 	return digitsToKanji(s)
 }
 
-// digitsToKanji rewrites runs of ASCII digits as kanji numerals.
 func digitsToKanji(s string) string {
 	var out strings.Builder
 	runes := []rune(s)

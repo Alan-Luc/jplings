@@ -38,35 +38,30 @@ const (
 	screenDone
 )
 
-// position is where the learner is in the content tree.
 type position struct {
 	unit, lesson, step int
 }
 
-// spokenMsg reports the result of trying to play a prompt.
 type spokenMsg struct {
 	stepID   string
 	degraded bool
 	err      error
 }
 
-// recordResult carries a finished push-to-talk recording.
 type recordResult struct {
 	wav []byte
 	err error
 }
 
 type Model struct {
-	runner *session.Runner
-	units  []*content.Unit
-	pos    position
-	input  textinput.Model
-	screen screen
-	// feedback is the explanation shown after an answer.
+	runner   *session.Runner
+	units    []*content.Unit
+	pos      position
+	input    textinput.Model
+	screen   screen
 	feedback string
 	correct  bool
 
-	// Speech state for the confirmation step (R4).
 	transcript   string
 	ambiguous    bool
 	turn         speech.Turn
@@ -84,7 +79,6 @@ type Model struct {
 	err        string
 }
 
-// New builds the session model, resuming from the stored cursor when possible.
 func New(runner *session.Runner, units []*content.Unit) Model {
 	input := textinput.New()
 	input.Placeholder = "romaji, kana or kanji"
@@ -146,7 +140,6 @@ func audioText(step *content.Step) string {
 	return step.Target.Kana
 }
 
-// playCurrent synthesizes and plays the current step's audio once.
 func (m *Model) playCurrent() tea.Cmd {
 	unit, _, step, ok := m.current()
 	if !ok {
@@ -256,7 +249,6 @@ func (m Model) handleKey(msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 		return m, nil
 	}
 
-	// screenPrompt
 	unit, lesson, step, ok := m.current()
 	if !ok {
 		m.screen = screenDone
@@ -504,7 +496,6 @@ func surface(t content.Text) string {
 	return t.Kana
 }
 
-// Run starts the session UI.
 func Run(runner *session.Runner, units []*content.Unit) error {
 	_, err := tea.NewProgram(New(runner, units), tea.WithAltScreen()).Run()
 	return err

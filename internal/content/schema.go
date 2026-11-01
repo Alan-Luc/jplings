@@ -66,18 +66,17 @@ type Step struct {
 	Target   *Text    `yaml:"target,omitempty"`
 	// Audio overrides the synthesized prompt. Listening exercises synthesize their
 	// target at runtime unless a pre-recorded clip is supplied here.
-	Audio            string      `yaml:"audio,omitempty"`
-	AudioSource      string      `yaml:"audio_source,omitempty"`
-	AudioLicense     string      `yaml:"audio_license,omitempty"`
-	AudioAttribution string      `yaml:"audio_attribution,omitempty"`
-	Accept           []Text      `yaml:"accept,omitempty"`
-	AcceptMeanings   []string    `yaml:"accept_meanings,omitempty"`
-	OffTarget        []OffTarget `yaml:"off_target,omitempty"`
-	Rubric           string      `yaml:"rubric,omitempty"`
-	Explanation      string      `yaml:"explanation,omitempty"`
-	Scenario         *Scenario   `yaml:"scenario,omitempty"`
-	// Source credits imported corpus data used by this step.
-	Source *Attribution `yaml:"source,omitempty"`
+	Audio            string       `yaml:"audio,omitempty"`
+	AudioSource      string       `yaml:"audio_source,omitempty"`
+	AudioLicense     string       `yaml:"audio_license,omitempty"`
+	AudioAttribution string       `yaml:"audio_attribution,omitempty"`
+	Accept           []Text       `yaml:"accept,omitempty"`
+	AcceptMeanings   []string     `yaml:"accept_meanings,omitempty"`
+	OffTarget        []OffTarget  `yaml:"off_target,omitempty"`
+	Rubric           string       `yaml:"rubric,omitempty"`
+	Explanation      string       `yaml:"explanation,omitempty"`
+	Scenario         *Scenario    `yaml:"scenario,omitempty"`
+	Source           *Attribution `yaml:"source,omitempty"`
 }
 
 // Attribution records where a step's language data came from, so a licensed corpus

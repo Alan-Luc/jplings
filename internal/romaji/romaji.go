@@ -9,7 +9,6 @@ package romaji
 
 import "strings"
 
-// Verdict is the outcome of comparing one answer against accepted answers.
 type Verdict int
 
 const (
@@ -36,7 +35,6 @@ var spelling = strings.NewReplacer(
 	"cya", "cha", "cyu", "chu", "cyo", "cho",
 )
 
-// consonants whose doubling is gemination, and long-vowel spellings.
 var (
 	doubled = []string{"kk", "ss", "tt", "pp", "cc", "dd", "gg", "bb", "rr", "hh", "ff", "jj", "zz", "vv", "yy", "ww"}
 	long    = []string{"aa", "ii", "uu", "ee", "oo", "ou", "ei", "nn"}
@@ -89,7 +87,6 @@ func collapseGemination(s string) string {
 	return s
 }
 
-// collapseVowelLength collapses long-vowel spellings only.
 func collapseVowelLength(s string) string {
 	previous := ""
 	for previous != s {
@@ -101,8 +98,6 @@ func collapseVowelLength(s string) string {
 	return s
 }
 
-// Compare reports how near input is to the accepted answers, and — for a close
-// miss — which phonetic feature it differs by.
 func Compare(input string, accepted []string) (Verdict, string) {
 	exact := NormalizeExact(input)
 	for _, want := range accepted {

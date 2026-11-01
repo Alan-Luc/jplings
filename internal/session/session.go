@@ -15,7 +15,6 @@ import (
 	"jplings/internal/speech"
 )
 
-// Runner grades steps and persists their consequences.
 type Runner struct {
 	Store     *profile.Store
 	Client    speech.Client
@@ -34,7 +33,6 @@ func (r *Runner) clock() time.Time {
 	return time.Now()
 }
 
-// Clock exposes the runner's current time so callers persist cursors consistently.
 func (r *Runner) Clock() time.Time { return r.clock() }
 
 func (r *Runner) language() string {
@@ -44,7 +42,6 @@ func (r *Runner) language() string {
 	return r.Language
 }
 
-// Result reports what one submission did.
 type Result struct {
 	Outcome grade.Outcome
 	// Ungraded means no grader could score it and it was saved for later.
@@ -132,7 +129,6 @@ func (r *Runner) saveUngraded(step *content.Step, answer string, at time.Time, r
 	}, nil
 }
 
-// record writes evidence or an error for every concept the step teaches.
 func (r *Runner) record(step *content.Step, outcome grade.Outcome, at time.Time, source string) error {
 	dimension := grade.Dimension(step.Kind)
 	if dimension == "" {

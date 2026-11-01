@@ -12,7 +12,6 @@ import (
 	"path/filepath"
 )
 
-// Recorder captures microphone audio with pw-record (PipeWire).
 type Recorder struct {
 	// Binary defaults to pw-record.
 	Binary string
@@ -73,7 +72,6 @@ func (r Recorder) Record(ctx context.Context) ([]byte, error) {
 	return data, nil
 }
 
-// Player plays WAV audio with mpv.
 type Player struct {
 	// Binary defaults to mpv.
 	Binary string

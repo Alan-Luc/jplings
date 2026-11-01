@@ -11,14 +11,12 @@ import (
 	"time"
 )
 
-// HTTPClient talks to the local whisper.cpp and Kokoro containers over loopback.
 type HTTPClient struct {
 	STTURL string
 	TTSURL string
 	HTTP   *http.Client
 }
 
-// NewHTTPClient targets the compose stack's fixed endpoints.
 func NewHTTPClient() *HTTPClient {
 	return &HTTPClient{
 		STTURL: "http://" + STTAddr + "/inference",
@@ -37,8 +35,6 @@ type whisperResponse struct {
 	Segments []whisperSegment `json:"segments"`
 }
 
-// Transcribe sends recorded audio to whisper.cpp and reports what it heard plus how
-// confident it was about hearing it.
 func (c *HTTPClient) Transcribe(ctx context.Context, wav []byte, language string) (Transcription, error) {
 	var body bytes.Buffer
 	form := multipart.NewWriter(&body)
@@ -94,7 +90,6 @@ func (c *HTTPClient) Transcribe(ctx context.Context, wav []byte, language string
 	return result, nil
 }
 
-// Synthesize renders text to WAV audio.
 func (c *HTTPClient) Synthesize(ctx context.Context, text, language, voice string) ([]byte, error) {
 	if voice == "" {
 		voice = "jf_alpha"
@@ -139,7 +134,6 @@ type Mock struct {
 	Synthesized []string
 }
 
-// Transcribe returns the configured transcription.
 func (m *Mock) Transcribe(_ context.Context, wav []byte, language string) (Transcription, error) {
 	m.Transcribed = append(m.Transcribed, language)
 	if m.TranscribeErr != nil {
@@ -148,7 +142,6 @@ func (m *Mock) Transcribe(_ context.Context, wav []byte, language string) (Trans
 	return m.Transcription, nil
 }
 
-// Synthesize returns the configured audio.
 func (m *Mock) Synthesize(_ context.Context, text, language, voice string) ([]byte, error) {
 	m.Synthesized = append(m.Synthesized, text)
 	if m.SynthErr != nil {

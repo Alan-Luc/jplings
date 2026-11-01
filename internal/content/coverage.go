@@ -16,7 +16,6 @@ type Coverage struct {
 // give it: at least one comprehension step and at least two production steps.
 func (c Coverage) Complete() bool { return c.Comprehension >= 1 && c.Production >= 2 }
 
-// Dimension maps an exercise kind to the evidence dimension it can demonstrate.
 func Dimension(kind Kind) string {
 	switch kind {
 	case Interpretation, Listening:
@@ -28,7 +27,6 @@ func Dimension(kind Kind) string {
 	}
 }
 
-// CoverageOf counts, per unit and concept, how each concept is exercised.
 func CoverageOf(units []*Unit) []Coverage {
 	var out []Coverage
 
@@ -75,7 +73,6 @@ func CoverageOf(units []*Unit) []Coverage {
 	return out
 }
 
-// SummaryLine renders one coverage row for a report.
 func (c Coverage) SummaryLine() string {
 	state := "ok"
 	if !c.Complete() {

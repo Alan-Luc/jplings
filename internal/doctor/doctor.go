@@ -10,7 +10,6 @@ import (
 	"jplings/internal/speech"
 )
 
-// Status is the outcome of one prerequisite check.
 type Status string
 
 const (
@@ -46,7 +45,6 @@ func Default() Deps {
 	}
 }
 
-// Run probes every prerequisite.
 func Run(d Deps) []Check {
 	return []Check{
 		requireBinary(d, "mpv", "audio playback"),
@@ -58,7 +56,6 @@ func Run(d Deps) []Check {
 	}
 }
 
-// Failures returns the required checks that did not pass.
 func Failures(checks []Check) []Check {
 	var failed []Check
 	for _, c := range checks {

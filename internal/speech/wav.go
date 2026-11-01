@@ -40,7 +40,6 @@ func HasSpeech(wav []byte, floor float64) (bool, float64, error) {
 // Conversational speech is far above this; room tone and digital silence are below.
 const SilenceFloor = 0.005
 
-// pcm16Samples extracts interleaved 16-bit samples from a RIFF/WAVE payload.
 func pcm16Samples(wav []byte) ([]int16, error) {
 	if len(wav) < 12 || string(wav[0:4]) != "RIFF" || string(wav[8:12]) != "WAVE" {
 		return nil, ErrNotPCM
@@ -91,7 +90,6 @@ func pcm16Samples(wav []byte) ([]int16, error) {
 	return samples, nil
 }
 
-// EncodeWAV builds a 16-bit mono WAV from int16 samples.
 func EncodeWAV(samples []int16, sampleRate int) []byte {
 	var buffer bytes.Buffer
 	dataLen := len(samples) * 2
