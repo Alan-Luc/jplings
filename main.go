@@ -126,6 +126,8 @@ func contentCommand(args []string) error {
 	outDir := flags.String("out", "corpus", "where to write vocab.yaml and sentences.yaml")
 	wordsPath := flags.String("words", filepath.Join("content", "words.txt"), "word list to look up in JMdict")
 	limit := flags.Int("sentences", 200, "how many sentence pairs to export")
+	minRunes := flags.Int("min-length", 6, "reject sentences shorter than this many characters")
+	onlyKnown := flags.Bool("require-known", true, "keep only sentences containing curated vocabulary")
 	cacheDir := flags.String("cache", "", "download cache (default: user cache dir)")
 	if err := flags.Parse(args[1:]); err != nil {
 		return err
@@ -150,9 +152,15 @@ func contentCommand(args []string) error {
 		return err
 	}
 
-	if want, err := readWordList(*wordsPath); err != nil {
+	want, err := readWordList(*wordsPath)
+	if err != nil {
 		return err
-	} else if len(want) > 0 {
+	}
+	require := want
+	if !*onlyKnown {
+		require = nil
+	}
+	if len(want) > 0 {
 		jmdict, err := corpus.OpenJMdict(files.JMdict)
 		if err != nil {
 			return err
@@ -184,7 +192,7 @@ func contentCommand(args []string) error {
 		}
 	}
 
-	pairs, err := importSentences(files, *limit)
+	pairs, err := importSentences(files, *limit, *minRunes, require)
 	if err != nil {
 		return err
 	}
@@ -198,7 +206,7 @@ func contentCommand(args []string) error {
 	return nil
 }
 
-func importSentences(files corpus.Files, limit int) ([]corpus.Sentence, error) {
+func importSentences(files corpus.Files, limit int, minRunes int, require map[string]bool) ([]corpus.Sentence, error) {
 	japanese, err := corpus.OpenBzip2(files.Japanese)
 	if err != nil {
 		return nil, err
@@ -233,7 +241,8 @@ func importSentences(files corpus.Files, limit int) ([]corpus.Sentence, error) {
 	if err := corpus.Validate(joined); err != nil {
 		return nil, err
 	}
-	return corpus.SelectShort(joined, limit), nil
+	usable := corpus.Filter(joined, corpus.FilterOptions{MinRunes: minRunes, Require: require})
+	return corpus.SelectShort(usable, limit), nil
 }
 
 func readWordList(path string) (map[string]bool, error) {
