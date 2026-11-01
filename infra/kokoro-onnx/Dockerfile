@@ -7,11 +7,11 @@ RUN apt-get update \
 
 WORKDIR /app
 COPY requirements.txt .
-# misaki's Japanese G2P needs a unidic dictionary. The full `unidic` package ships
-# without one and fails at runtime, while unidic-lite bundles it, so drop the former.
+# misaki's Japanese G2P tokenizes with a unidic dictionary. unidic-lite is a reduced
+# dictionary that mis-segments geminated digraphs (はっぴゃく became "haʔpʲi ja"),
+# producing the wrong word, so the full dictionary is downloaded at build time.
 RUN pip install --no-cache-dir -r requirements.txt \
- && pip uninstall -y unidic \
- && pip install --no-cache-dir unidic-lite
+ && python -m unidic download
 
 COPY server.py .
 
