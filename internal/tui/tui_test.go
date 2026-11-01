@@ -6,6 +6,8 @@ import (
 	"testing"
 	"time"
 
+	tea "github.com/charmbracelet/bubbletea"
+
 	"jplings/internal/content"
 	"jplings/internal/profile"
 	"jplings/internal/session"
@@ -203,5 +205,72 @@ func TestCursorResumesPosition(t *testing.T) {
 	model := New(&session.Runner{Store: store}, units)
 	if model.pos.step != 1 {
 		t.Fatalf("expected to resume at step 1, got %d", model.pos.step)
+	}
+}
+
+// Regression: replay used to be bound to the letter "a", which silently swallowed
+// every "a" typed into a romaji answer.
+func TestTypingALetterInsertsItInsteadOfTriggeringAHotkey(t *testing.T) {
+	for _, letter := range []rune{'a', 'r', 'w', 's'} {
+		model, _ := newModelWith(t, readingUnits())
+
+		updated, _ := model.handleKey(tea.KeyMsg{Type: tea.KeyRunes, Runes: []rune{letter}})
+		got := updated.(Model).input.Value()
+
+		if got != string(letter) {
+			t.Fatalf("typing %q produced %q in the input", string(letter), got)
+		}
+	}
+}
+
+func TestTypingAFullAnswerWorks(t *testing.T) {
+	model, _ := newModelWith(t, readingUnits())
+
+	for _, letter := range "watashi wa gakusei desu" {
+		if letter == ' ' {
+			updated, _ := model.handleKey(tea.KeyMsg{Type: tea.KeySpace, Runes: []rune{' '}})
+			model = updated.(Model)
+			continue
+		}
+		updated, _ := model.handleKey(tea.KeyMsg{Type: tea.KeyRunes, Runes: []rune{letter}})
+		model = updated.(Model)
+	}
+
+	if got := model.input.Value(); got != "watashi wa gakusei desu" {
+		t.Fatalf("typed answer = %q", got)
+	}
+}
+
+// Regression: the spacebar arrives as a space rune, so matching the literal string
+// "space" never matched and recording could not be stopped.
+func TestSpacebarIsRecognised(t *testing.T) {
+	if !isSpace(tea.KeyMsg{Type: tea.KeySpace, Runes: []rune{' '}}) {
+		t.Fatal("a space key press must be recognised")
+	}
+	if isSpace(tea.KeyMsg{Type: tea.KeyRunes, Runes: []rune{'a'}}) {
+		t.Fatal("the letter a is not a space")
+	}
+}
+
+func speakingUnits() []*content.Unit {
+	return []*content.Unit{{ID: "u", Title: "Unit", Lessons: []content.Lesson{{ID: "l", Title: "Lesson",
+		Steps: []content.Step{{ID: "s1", Kind: content.Speaking, Concepts: []string{"c1"},
+			Prompt: "Say it.", Accept: []content.Text{{Kana: "みず", Romaji: "mizu"}},
+			Explanation: "because"}}}}}}
+}
+
+func TestSpacebarStopsRecording(t *testing.T) {
+	model, _ := newModelWith(t, speakingUnits())
+
+	stopped := false
+	model.recording = true
+	model.cancelRecord = func() { stopped = true }
+
+	updated, _ := model.handleKey(tea.KeyMsg{Type: tea.KeySpace, Runes: []rune{' '}})
+	if !stopped {
+		t.Fatal("pressing space during recording must cancel it")
+	}
+	if updated.(Model).cancelRecord != nil {
+		t.Fatal("the cancel handle should be cleared after stopping")
 	}
 }

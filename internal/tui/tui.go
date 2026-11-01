@@ -266,11 +266,6 @@ func (m Model) handleKey(msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 		m.err = err.Error()
 	}
 
-	if msg.String() == "a" {
-		// Replay: forget that this step was played so the next call speaks again.
-		m.spokenStep = ""
-		return m, m.playCurrent()
-	}
 	if msg.String() == "esc" {
 		m.advance()
 		return m, m.playCurrent()
@@ -293,8 +288,8 @@ func (m Model) handleKey(msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 			return m, cmd
 		}
 
-		switch msg.String() {
-		case "r":
+		switch {
+		case msg.String() == "r":
 			if m.recording {
 				return m, nil
 			}
@@ -307,13 +302,21 @@ func (m Model) handleKey(msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 				wav, err := recorder.Record(ctx)
 				return recordResult{wav: wav, err: err}
 			}
-		case "space":
+		case isSpace(msg):
 			if m.recording && m.cancelRecord != nil {
 				m.cancelRecord()
+				m.cancelRecord = nil
 			}
 			return m, nil
 		}
 		return m, nil
+	}
+
+	// Replay is bound to ctrl+r rather than a letter, so typing a romaji answer is
+	// never interrupted by a stray hotkey.
+	if msg.String() == "ctrl+r" && audioText(step) != "" {
+		m.spokenStep = ""
+		return m, m.playCurrent()
 	}
 
 	if msg.String() == "enter" {
@@ -328,6 +331,12 @@ func (m Model) handleKey(msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 	var cmd tea.Cmd
 	m.input, cmd = m.input.Update(msg)
 	return m, cmd
+}
+
+// isSpace reports whether the key is the spacebar. Bubble Tea represents it as a
+// space rune, not the literal string "space".
+func isSpace(msg tea.KeyMsg) bool {
+	return msg.Type == tea.KeySpace || msg.String() == " " || msg.String() == "space"
 }
 
 func needsSpeech(step *content.Step) bool {
@@ -455,7 +464,7 @@ func (m Model) View() string {
 			}
 			b.WriteString("\n")
 		} else {
-			b.WriteString(dimStyle.Render("listen — press a to replay") + "\n\n")
+			b.WriteString(dimStyle.Render("listen — ctrl+r to replay") + "\n\n")
 		}
 	}
 
@@ -470,12 +479,12 @@ func (m Model) View() string {
 		}
 		switch {
 		case m.recording:
-			b.WriteString(badStyle.Render("● recording") + dimStyle.Render(" — press space to stop") + "\n")
+			b.WriteString(badStyle.Render("● recording") + dimStyle.Render(" — press SPACE to stop") + "\n")
 		case m.err != "":
 			b.WriteString(badStyle.Render(m.err) + "\n")
 			b.WriteString(dimStyle.Render("r to record, esc to skip") + "\n")
 		default:
-			b.WriteString(dimStyle.Render("r to record, then space to stop · esc to skip") + "\n")
+			b.WriteString(dimStyle.Render("r to record, then SPACE to stop · esc to skip") + "\n")
 		}
 		return b.String()
 	}

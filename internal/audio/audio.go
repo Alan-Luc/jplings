@@ -35,7 +35,7 @@ func (r Recorder) Record(ctx context.Context) ([]byte, error) {
 	_ = os.Remove(path)
 	defer os.Remove(path)
 
-	cmd := exec.CommandContext(ctx, binary,
+	cmd := exec.Command(binary,
 		"--rate", fmt.Sprint(rate),
 		"--channels", "1",
 		"--format", "s16",
@@ -45,15 +45,29 @@ func (r Recorder) Record(ctx context.Context) ([]byte, error) {
 		return nil, fmt.Errorf("start %s: %w", binary, err)
 	}
 
-	// Cancelling ctx (key release) stops the capture; wait returns after it exits.
-	<-ctx.Done()
-	_ = cmd.Wait()
+	// Ending a turn interrupts rather than kills the recorder: SIGINT lets pw-record
+	// finalise the WAV header, while a hard kill can leave the file truncated.
+	done := make(chan struct{})
+	go func() {
+		select {
+		case <-ctx.Done():
+			if cmd.Process != nil {
+				_ = cmd.Process.Signal(os.Interrupt)
+			}
+		case <-done:
+		}
+	}()
+	waitErr := cmd.Wait()
+	close(done)
 
 	data, err := os.ReadFile(path)
 	if err != nil {
 		return nil, fmt.Errorf("read recording: %w", err)
 	}
 	if len(data) == 0 {
+		if waitErr != nil {
+			return nil, fmt.Errorf("recording failed: %w", waitErr)
+		}
 		return nil, fmt.Errorf("recording is empty")
 	}
 	return data, nil
