@@ -261,6 +261,139 @@ func TestListeningGradesByDictationOrMeaning(t *testing.T) {
 	}
 }
 
+const taughtUnit = `
+id: u
+title: Unit
+taught: true
+placement: true
+concepts:
+  - id: c1
+  - id: wa
+lessons:
+  - id: l1
+    title: Lesson
+    objective: Say where something exists.
+    anchors:
+      - kanji: ここはどこですか
+        kana: ここはどこですか
+        romaji: koko wa doko desu ka
+    teach:
+      - prose: に marks where a thing exists.
+        examples:
+          - kanji: 駅にあります
+            kana: えきにあります
+            romaji: eki ni arimasu
+    steps:
+      - id: s1
+        kind: construction
+        concepts: [c1]
+        prompt: Say it.
+        hint: Think about the particle.
+        accept:
+          - kana: すしはたべません
+            romaji: sushi wa tabemasen
+            concepts: [wa]
+        explanation: because
+`
+
+func TestTaughtUnitDecodesLearnFields(t *testing.T) {
+	units, issues, err := Load(writeUnit(t, "u.yaml", taughtUnit))
+	if err != nil {
+		t.Fatalf("Load: %v", err)
+	}
+	if len(issues) != 0 {
+		t.Fatalf("expected no issues, got %v", issues)
+	}
+	unit := units[0]
+	if !unit.Taught || !unit.Placement {
+		t.Fatalf("unit flags = taught:%v placement:%v", unit.Taught, unit.Placement)
+	}
+	lesson := unit.Lessons[0]
+	if lesson.Objective != "Say where something exists." {
+		t.Fatalf("objective = %q", lesson.Objective)
+	}
+	if len(lesson.Anchors) != 1 || lesson.Anchors[0].Romaji != "koko wa doko desu ka" {
+		t.Fatalf("anchors = %+v", lesson.Anchors)
+	}
+	if len(lesson.Teach) != 1 || lesson.Teach[0].Prose != "に marks where a thing exists." {
+		t.Fatalf("teach = %+v", lesson.Teach)
+	}
+	if len(lesson.Teach[0].Examples) != 1 || lesson.Teach[0].Examples[0].Kana != "えきにあります" {
+		t.Fatalf("teach examples = %+v", lesson.Teach[0].Examples)
+	}
+	step := lesson.Steps[0]
+	if step.Hint != "Think about the particle." {
+		t.Fatalf("hint = %q", step.Hint)
+	}
+	if len(step.Accept) != 1 || len(step.Accept[0].Concepts) != 1 || step.Accept[0].Concepts[0] != "wa" {
+		t.Fatalf("accept concepts = %+v", step.Accept)
+	}
+}
+
+func TestTaughtUnitRequiresObjectiveAndTeach(t *testing.T) {
+	body := strings.NewReplacer(
+		"    objective: Say where something exists.\n", "",
+		"    anchors:\n      - kanji: ここはどこですか\n        kana: ここはどこですか\n        romaji: koko wa doko desu ka\n", "",
+		"    teach:\n      - prose: に marks where a thing exists.\n        examples:\n          - kanji: 駅にあります\n            kana: えきにあります\n            romaji: eki ni arimasu\n", "",
+	).Replace(taughtUnit)
+	_, issues, err := Load(writeUnit(t, "u.yaml", body))
+	if err != nil {
+		t.Fatalf("Load: %v", err)
+	}
+	if !hasIssue(issues, "lesson needs an objective") {
+		t.Fatalf("expected a missing objective issue, got %v", issues)
+	}
+	if !hasIssue(issues, "lesson needs at least one teach entry") {
+		t.Fatalf("expected a missing teach issue, got %v", issues)
+	}
+}
+
+func TestLearnFieldsValidate(t *testing.T) {
+	tests := []struct {
+		name    string
+		oldText string
+		newText string
+		want    string
+	}{
+		{
+			name:    "teach entry without prose",
+			oldText: "      - prose: に marks where a thing exists.\n        examples:\n",
+			newText: "      - examples:\n",
+			want:    "needs prose",
+		},
+		{
+			name:    "teach example without kana",
+			oldText: "            kana: えきにあります\n",
+			newText: "",
+			want:    "missing kana reading",
+		},
+		{
+			name:    "anchor without romaji",
+			oldText: "        romaji: koko wa doko desu ka\n",
+			newText: "",
+			want:    "missing authored romaji",
+		},
+		{
+			name:    "accept concept undeclared",
+			oldText: "            concepts: [wa]",
+			newText: "            concepts: [nope]",
+			want:    `undeclared concept "nope"`,
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			_, issues, err := Load(writeUnit(t, "u.yaml", strings.Replace(taughtUnit, tc.oldText, tc.newText, 1)))
+			if err != nil {
+				t.Fatalf("Load: %v", err)
+			}
+			if !hasIssue(issues, tc.want) {
+				t.Fatalf("expected an issue containing %q, got %v", tc.want, issues)
+			}
+		})
+	}
+}
+
 func hasIssue(issues []Issue, want string) bool {
 	for _, issue := range issues {
 		if strings.Contains(issue.String(), want) {

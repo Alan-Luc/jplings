@@ -328,3 +328,118 @@ func TestCorrectAnswersCreateNoReviewCard(t *testing.T) {
 		}
 	}
 }
+
+func TestMatchedAcceptCreditsOnlyItsOwnConcepts(t *testing.T) {
+	runner, store := newRunner(t, nil)
+	step := &content.Step{
+		ID:       "s1",
+		Kind:     content.Construction,
+		Concepts: []string{"polite"},
+		Prompt:   "Say \"I do not eat sushi.\"",
+		Accept: []content.Text{
+			{Kanji: "寿司は食べません", Kana: "すしはたべません", Romaji: "sushi wa tabemasen", Concepts: []string{"wa"}},
+			{Kanji: "寿司を食べません", Kana: "すしをたべません", Romaji: "sushi o tabemasen", Concepts: []string{"wo"}},
+		},
+		Explanation: "は makes sushi the topic; を makes it the object.",
+	}
+
+	result, err := runner.Submit(context.Background(), step, "sushi wa tabemasen")
+	if err != nil {
+		t.Fatalf("Submit: %v", err)
+	}
+	if !result.Outcome.Correct || !result.MintedEvidence {
+		t.Fatalf("expected credit, got %+v", result)
+	}
+
+	for concept, want := range map[string]int{"wa": 1, "wo": 0, "polite": 0} {
+		evidence, err := store.Evidence(concept)
+		if err != nil {
+			t.Fatalf("Evidence(%s): %v", concept, err)
+		}
+		if len(evidence) != want {
+			t.Fatalf("concept %s evidence = %+v, want %d", concept, evidence, want)
+		}
+	}
+}
+
+func TestUnannotatedAcceptStillCreditsStepConcepts(t *testing.T) {
+	runner, store := newRunner(t, nil)
+
+	if _, err := runner.Submit(context.Background(), productionStep("s1", "s1"), "mizu o kudasai"); err != nil {
+		t.Fatalf("Submit: %v", err)
+	}
+
+	evidence, _ := store.Evidence("c1")
+	if len(evidence) != 1 {
+		t.Fatalf("an accept without concepts must credit the step concepts, got %+v", evidence)
+	}
+}
+
+func TestSpokenAcceptCreditsItsOwnConcepts(t *testing.T) {
+	runner, store := newRunner(t, nil)
+	step := &content.Step{
+		ID:       "s1",
+		Kind:     content.Speaking,
+		Concepts: []string{"price"},
+		Prompt:   "Say the price aloud.",
+		Accept: []content.Text{
+			{Kanji: "六百円", Kana: "ろっぴゃくえん", Romaji: "roppyaku en", Concepts: []string{"rendaku"}},
+		},
+		Explanation: "ろっぴゃく is the rendaku reading of 六百.",
+	}
+
+	if _, err := runner.Submit(context.Background(), step, "六百円"); err != nil {
+		t.Fatalf("Submit: %v", err)
+	}
+
+	if evidence, _ := store.Evidence("rendaku"); len(evidence) != 1 {
+		t.Fatalf("the matched spoken accept must credit rendaku, got %+v", evidence)
+	}
+	if evidence, _ := store.Evidence("price"); len(evidence) != 0 {
+		t.Fatalf("the step concept must not be credited when the matched accept names concepts, got %+v", evidence)
+	}
+}
+
+func TestGuidedAttemptIsExcludedFromMasterySkippingAndRetention(t *testing.T) {
+	runner, store := newRunner(t, nil)
+
+	for _, id := range []string{"s1", "s2"} {
+		result, err := runner.SubmitGuided(context.Background(), productionStep(id, id), "mizu o kudasai")
+		if err != nil {
+			t.Fatalf("SubmitGuided(%s): %v", id, err)
+		}
+		if !result.Outcome.Correct || !result.MintedEvidence {
+			t.Fatalf("a guided correct answer should still be recorded, got %+v", result)
+		}
+	}
+
+	evidence, err := store.Evidence("c1")
+	if err != nil || len(evidence) != 2 {
+		t.Fatalf("expected two guided attempts, got %+v err=%v", evidence, err)
+	}
+	for _, e := range evidence {
+		if e.Source != "guided" {
+			t.Fatalf("guided attempt source = %q, want guided", e.Source)
+		}
+	}
+
+	if can, _ := store.CanSkip("c1"); can {
+		t.Fatal("guided attempts must not unlock skipping")
+	}
+	mastered, missing, _ := store.Mastered("c1")
+	if mastered {
+		t.Fatal("guided attempts must not satisfy mastery")
+	}
+	for _, dimension := range missing {
+		if dimension == profile.Production {
+			return
+		}
+	}
+	t.Fatal("guided attempts must leave production missing")
+	cards, _ := store.Reviews()
+	for _, card := range cards {
+		if card.Kind == schedule.KindRetention {
+			t.Fatalf("guided attempts must not schedule retention, got %+v", card)
+		}
+	}
+}

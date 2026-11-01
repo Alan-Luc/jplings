@@ -23,9 +23,24 @@ var kinds = map[Kind]bool{
 }
 
 type Text struct {
-	Kanji  string `yaml:"kanji,omitempty"`
-	Kana   string `yaml:"kana"`
-	Romaji string `yaml:"romaji"`
+	Kanji    string   `yaml:"kanji,omitempty"`
+	Kana     string   `yaml:"kana"`
+	Romaji   string   `yaml:"romaji"`
+	Concepts []string `yaml:"concepts,omitempty"`
+}
+
+type Teach struct {
+	Prose    string `yaml:"prose"`
+	Examples []Text `yaml:"examples,omitempty"`
+}
+
+func (t *Teach) validate(where string, add func(path, format string, args ...any)) {
+	if t.Prose == "" {
+		add(where, "needs prose")
+	}
+	for i := range t.Examples {
+		t.Examples[i].validate(path(where, fmt.Sprintf("examples[%d]", i)), add)
+	}
 }
 
 type OffTarget struct {
@@ -59,6 +74,7 @@ type Step struct {
 	OffTarget        []OffTarget  `yaml:"off_target,omitempty"`
 	Rubric           string       `yaml:"rubric,omitempty"`
 	Explanation      string       `yaml:"explanation,omitempty"`
+	Hint             string       `yaml:"hint,omitempty"`
 	Scenario         *Scenario    `yaml:"scenario,omitempty"`
 	Source           *Attribution `yaml:"source,omitempty"`
 }
@@ -76,16 +92,21 @@ type Concept struct {
 }
 
 type Lesson struct {
-	ID    string `yaml:"id"`
-	Title string `yaml:"title"`
-	Steps []Step `yaml:"steps"`
+	ID        string  `yaml:"id"`
+	Title     string  `yaml:"title"`
+	Objective string  `yaml:"objective,omitempty"`
+	Teach     []Teach `yaml:"teach,omitempty"`
+	Anchors   []Text  `yaml:"anchors,omitempty"`
+	Steps     []Step  `yaml:"steps"`
 }
 
 type Unit struct {
-	ID       string    `yaml:"id"`
-	Title    string    `yaml:"title"`
-	Concepts []Concept `yaml:"concepts,omitempty"`
-	Lessons  []Lesson  `yaml:"lessons"`
+	ID        string    `yaml:"id"`
+	Title     string    `yaml:"title"`
+	Taught    bool      `yaml:"taught,omitempty"`
+	Placement bool      `yaml:"placement,omitempty"`
+	Concepts  []Concept `yaml:"concepts,omitempty"`
+	Lessons   []Lesson  `yaml:"lessons"`
 }
 
 type Issue struct {
@@ -141,6 +162,18 @@ func (u *Unit) Validate() []Issue {
 		if lesson.Title == "" {
 			add(path(lesson.ID, "title"), "missing title")
 		}
+		if u.Taught && lesson.Objective == "" {
+			add(path(lesson.ID, "objective"), "lesson needs an objective")
+		}
+		if u.Taught && len(lesson.Teach) == 0 {
+			add(lp, "lesson needs at least one teach entry")
+		}
+		for i := range lesson.Teach {
+			lesson.Teach[i].validate(path(lesson.ID, fmt.Sprintf("teach[%d]", i)), add)
+		}
+		for i := range lesson.Anchors {
+			lesson.Anchors[i].validate(path(lesson.ID, fmt.Sprintf("anchors[%d]", i)), add)
+		}
 		if len(lesson.Steps) == 0 {
 			add(lp, "has no steps")
 		}
@@ -174,7 +207,13 @@ func (s *Step) validate(where string, concepts map[string]bool, add func(path, f
 		}
 	}
 	for i := range s.Accept {
-		s.Accept[i].validate(path(where, fmt.Sprintf("accept[%d]", i)), add)
+		ap := path(where, fmt.Sprintf("accept[%d]", i))
+		s.Accept[i].validate(ap, add)
+		for j, id := range s.Accept[i].Concepts {
+			if !concepts[id] {
+				add(path(ap, fmt.Sprintf("concepts[%d]", j)), "undeclared concept %q", id)
+			}
+		}
 	}
 	for i, ot := range s.OffTarget {
 		otp := path(where, fmt.Sprintf("off_target[%d]", i))
@@ -201,7 +240,7 @@ func (s *Step) validate(where string, concepts map[string]bool, add func(path, f
 		}
 	}
 	if s.Scenario != nil {
-		s.Scenario.validate(path(where, "scenario"), add)
+		s.Scenario.validate(path(where, "scenario"), concepts, add)
 	}
 	if s.Source != nil {
 		for name, value := range map[string]string{
@@ -259,7 +298,7 @@ func (s *Step) validate(where string, concepts map[string]bool, add func(path, f
 	}
 }
 
-func (s *Scenario) validate(where string, add func(path, format string, args ...any)) {
+func (s *Scenario) validate(where string, concepts map[string]bool, add func(path, format string, args ...any)) {
 	if s == nil {
 		return
 	}
@@ -281,7 +320,13 @@ func (s *Scenario) validate(where string, add func(path, format string, args ...
 				add(tp, "learner turn needs at least one accepted answer")
 			}
 			for j := range t.Accept {
-				t.Accept[j].validate(path(tp, fmt.Sprintf("accept[%d]", j)), add)
+				ap := path(tp, fmt.Sprintf("accept[%d]", j))
+				t.Accept[j].validate(ap, add)
+				for k, id := range t.Accept[j].Concepts {
+					if !concepts[id] {
+						add(path(ap, fmt.Sprintf("concepts[%d]", k)), "undeclared concept %q", id)
+					}
+				}
 			}
 		default:
 			add(tp, "speaker must be \"npc\" or \"learner\", got %q", t.Speaker)

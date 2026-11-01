@@ -54,7 +54,7 @@ func (r *Runner) Submit(ctx context.Context, step *content.Step, answer string) 
 	}
 
 	outcome := r.deterministic(step, answer)
-	if err := r.record(step, outcome, at, evidenceSource(step)); err != nil {
+	if err := r.record(step, outcome, at, evidenceSource(step), answer); err != nil {
 		return Result{Outcome: outcome}, err
 	}
 
@@ -62,6 +62,19 @@ func (r *Runner) Submit(ctx context.Context, step *content.Step, answer string) 
 		Outcome:        outcome,
 		MintedEvidence: outcome.Correct,
 	}, nil
+}
+
+func (r *Runner) SubmitGuided(ctx context.Context, step *content.Step, answer string) (Result, error) {
+	at := r.clock()
+	outcome := r.deterministic(step, answer)
+	if err := r.record(step, outcome, at, "guided", answer); err != nil {
+		return Result{Outcome: outcome}, err
+	}
+	return Result{Outcome: outcome, MintedEvidence: outcome.Correct}, nil
+}
+
+func (r *Runner) Grade(step *content.Step, answer string) grade.Outcome {
+	return r.deterministic(step, answer)
 }
 
 func (r *Runner) deterministic(step *content.Step, answer string) grade.Outcome {
@@ -96,7 +109,7 @@ func (r *Runner) submitFreeForm(ctx context.Context, step *content.Step, answer 
 		Explanation: fmt.Sprintf("%s (AI-graded: meaning %d, grammar %d, naturalness %d, register %d)", rubric.Feedback, rubric.Meaning, rubric.Grammar, rubric.Naturalness, rubric.Register),
 	}
 
-	if err := r.record(step, outcome, at, "llm"); err != nil {
+	if err := r.record(step, outcome, at, "llm", answer); err != nil {
 		return Result{Outcome: outcome, AIGraded: true}, err
 	}
 	return Result{Outcome: outcome, AIGraded: true, MintedEvidence: outcome.Correct}, nil
@@ -116,13 +129,19 @@ func (r *Runner) saveUngraded(step *content.Step, answer string, at time.Time, r
 	}, nil
 }
 
-func (r *Runner) record(step *content.Step, outcome grade.Outcome, at time.Time, source string) error {
+func (r *Runner) record(step *content.Step, outcome grade.Outcome, at time.Time, source, answer string) error {
 	dimension := grade.Dimension(step.Kind)
 	if dimension == "" {
 		return nil
 	}
 
-	for _, conceptID := range step.Concepts {
+	concepts := step.Concepts
+	if outcome.Correct {
+		if matched := grade.MatchedConcepts(step, answer); len(matched) > 0 {
+			concepts = matched
+		}
+	}
+	for _, conceptID := range concepts {
 		if !outcome.Correct {
 			if err := r.Store.AddError(conceptID, outcome.Explanation, at); err != nil {
 				return err
@@ -138,6 +157,9 @@ func (r *Runner) record(step *content.Step, outcome grade.Outcome, at time.Time,
 			return err
 		}
 
+		if source == "guided" {
+			continue
+		}
 		if dimension == profile.Production {
 			if err := r.mintGeneralization(conceptID, step.ID, at, source); err != nil {
 				return err
@@ -211,7 +233,7 @@ func (r *Runner) GradeConversationTurn(step *content.Step, response convo.Respon
 		outcome.Explanation = "That does not answer this turn. " + step.Explanation
 	}
 
-	if err := r.record(step, outcome, r.clock(), "spoken"); err != nil {
+	if err := r.record(step, outcome, r.clock(), "spoken", ""); err != nil {
 		return Result{Outcome: outcome}, err
 	}
 	return Result{Outcome: outcome, MintedEvidence: outcome.Correct}, nil
