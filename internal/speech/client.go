@@ -46,7 +46,6 @@ func (c *HTTPClient) Transcribe(ctx context.Context, wav []byte, language string
 	if _, err := part.Write(wav); err != nil {
 		return Transcription{}, err
 	}
-	// verbose_json is requested because it carries the confidence fields.
 	for _, field := range [][2]string{
 		{"language", language},
 		{"response_format", "verbose_json"},
@@ -122,8 +121,6 @@ func (c *HTTPClient) Synthesize(ctx context.Context, text, language, voice strin
 	return io.ReadAll(response.Body)
 }
 
-// Mock is a controllable client for tests. It records what the app asked for so
-// tests can assert on behaviour rather than on audio.
 type Mock struct {
 	Transcription Transcription
 	TranscribeErr error

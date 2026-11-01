@@ -68,7 +68,6 @@ func TestProfilePersistsAcrossReopen(t *testing.T) {
 	}
 }
 
-// R6: recognizing or remembering something is not mastery.
 func TestMasteredRequiresProductionGeneralizationAndRetention(t *testing.T) {
 	store := open(t)
 
@@ -99,7 +98,6 @@ func TestMasteredRequiresProductionGeneralizationAndRetention(t *testing.T) {
 	}
 }
 
-// D3: LLM-graded evidence is provisional until the audit promotes it.
 func TestProvisionalLLMEvidenceCannotClearMastery(t *testing.T) {
 	store := open(t)
 	for _, dimension := range []string{Production, Generalization, Retention} {
@@ -130,7 +128,6 @@ func TestProvisionalLLMEvidenceCannotClearMastery(t *testing.T) {
 	}
 }
 
-// R6: skipping needs two demonstrations on different stimuli.
 func TestSkipGateRequiresTwoDifferentStimuli(t *testing.T) {
 	store := open(t)
 
@@ -221,7 +218,6 @@ func TestBackupProducesVerifiedSnapshotAndPrunes(t *testing.T) {
 		t.Fatalf("backup snapshot failed integrity check: %v", err)
 	}
 
-	// A restored copy must be a usable profile, not just a byte-identical file.
 	restored, err := Open(first)
 	if err != nil {
 		t.Fatalf("open backup: %v", err)

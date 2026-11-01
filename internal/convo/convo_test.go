@@ -19,7 +19,7 @@ func scenario() *content.Scenario {
 
 func TestMatchedTurnEarnsCredit(t *testing.T) {
 	c := New(scenario())
-	c.Advance() // past the greeting
+	c.Advance()
 
 	if got := c.Respond("水をください。").Verdict; got != Matched {
 		t.Fatalf("verdict = %v, want Matched", got)
@@ -29,8 +29,6 @@ func TestMatchedTurnEarnsCredit(t *testing.T) {
 	}
 }
 
-// The plan's worked example: dropping を still communicates, but must teach and
-// must not pass silently.
 func TestDroppedParticleIsToleratedAndHinted(t *testing.T) {
 	c := New(scenario())
 	c.Advance()

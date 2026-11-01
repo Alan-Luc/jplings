@@ -72,7 +72,6 @@ func TestCorrectAnswerMintsProductionEvidence(t *testing.T) {
 	}
 }
 
-// R6: repeating the same sentence teaches nothing, so it must not mint transfer.
 func TestRepeatingTheSameStimulusMintsNoGeneralization(t *testing.T) {
 	runner, store := newRunner(t, nil)
 	step := productionStep("s1", "s1")
@@ -94,7 +93,6 @@ func TestRepeatingTheSameStimulusMintsNoGeneralization(t *testing.T) {
 	}
 }
 
-// A correct answer on a different stimulus is the transfer evidence R6 wants.
 func TestDifferentStimulusMintsGeneralizationAndSchedulesRetention(t *testing.T) {
 	runner, store := newRunner(t, nil)
 
@@ -135,7 +133,6 @@ func TestDifferentStimulusMintsGeneralizationAndSchedulesRetention(t *testing.T)
 		t.Fatalf("retention scheduled %v out, want 48-72h", due)
 	}
 
-	// It is scheduled for the future, so it must not be due yet.
 	if dueNow, _ := store.DueRetention(nowValue); len(dueNow) != 0 {
 		t.Fatalf("a retention check 60h out must not be due now: %+v", dueNow)
 	}
@@ -164,7 +161,6 @@ func TestCloseAnswerMintsNothingAndLogsAnError(t *testing.T) {
 	}
 }
 
-// D3: every evaluator failure saves the response ungraded and mints nothing.
 func TestEvaluatorFailureSavesUngraded(t *testing.T) {
 	step := &content.Step{
 		ID: "free", Kind: content.Speaking, Concepts: []string{"c1"},
@@ -226,7 +222,6 @@ func TestEvaluatorSuccessIsProvisionalLLMEvidence(t *testing.T) {
 	if len(evidence) != 1 || evidence[0].Source != "llm" {
 		t.Fatalf("evidence = %+v", evidence)
 	}
-	// Provisional: it is visible but cannot clear a mastery gate on its own.
 	if mastered, _, _ := store.Mastered("c1"); mastered {
 		t.Fatal("provisional LLM evidence must not clear mastery")
 	}

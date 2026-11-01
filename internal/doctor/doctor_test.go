@@ -6,7 +6,6 @@ import (
 	"time"
 )
 
-// host builds Deps that all pass, then applies overrides.
 func host(overrides ...func(*Deps)) Deps {
 	d := Deps{
 		LookPath: func(string) (string, error) { return "/bin/tool", nil },

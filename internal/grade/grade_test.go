@@ -102,7 +102,6 @@ func spokenStep() *content.Step {
 	}
 }
 
-// Digits, kanji numerals and kana spellings all name the same amount.
 func TestSpokenAcceptsEveryNumeralSpelling(t *testing.T) {
 	step := spokenStep()
 	for _, transcript := range []string{"600円", "六百円", "６００円", "600 円"} {
@@ -112,7 +111,6 @@ func TestSpokenAcceptsEveryNumeralSpelling(t *testing.T) {
 	}
 }
 
-// omitting the counter is a specific error, not a correct answer.
 func TestSpokenRequiresTheCounter(t *testing.T) {
 	out := Spoken(spokenStep(), "600")
 	if out.Correct {

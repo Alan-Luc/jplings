@@ -19,7 +19,7 @@ func TestPlayerReportsMissingBinary(t *testing.T) {
 
 func TestRecordFailsCleanlyWhenBinaryMissing(t *testing.T) {
 	ctx, cancel := context.WithCancel(context.Background())
-	cancel() // an already-cancelled turn must not hang
+	cancel()
 
 	recorder := Recorder{Binary: "definitely-not-a-real-recorder"}
 	if _, err := recorder.Record(ctx); err == nil {

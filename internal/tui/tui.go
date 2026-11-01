@@ -1,9 +1,3 @@
-// Package tui is the Bubble Tea interface (D1).
-//
-// The screens are deliberately plain: a prompt, the exercise, feedback that names
-// what went wrong, and for speech the confirmation step that stands between a
-// transcript and a grade. Listening exercises are audio-first — the written target
-// stays hidden until the learner has answered.
 package tui
 
 import (
@@ -63,26 +57,22 @@ type Model struct {
 	feedback string
 	correct  bool
 
-	transcript   string
-	ambiguous    bool
-	turn         speech.Turn
-	recorder     audio.Recorder
-	player       audio.Player
-	recording    bool
-	cancelRecord context.CancelFunc
-	degraded     bool
-	// typedFallback is set after two denied transcripts: the learner may type the
-	// answer instead, so progress never deadlocks on a bad transcription.
-	typedFallback bool
-	// conversation drives a scripted scenario; npcLines keeps the NPC turns passed
-	// automatically so the learner still sees the other side.
+	transcript       string
+	ambiguous        bool
+	turn             speech.Turn
+	recorder         audio.Recorder
+	player           audio.Player
+	recording        bool
+	cancelRecord     context.CancelFunc
+	degraded         bool
+	typedFallback    bool
 	conversation     *convo.Conversation
 	conversationStep string
 	npcLines         []content.Text
-	// spokenStep records which step's audio has already been played, so re-renders
-	// do not re-synthesize the same line.
-	spokenStep string
-	err        string
+	retentionStep    *content.Step
+	retentionConcept string
+	spokenStep       string
+	err              string
 }
 
 func New(runner *session.Runner, units []*content.Unit) Model {
@@ -98,6 +88,7 @@ func New(runner *session.Runner, units []*content.Unit) Model {
 		}
 	}
 	m.syncConversation()
+	m.startRetention()
 	return m
 }
 
@@ -121,6 +112,10 @@ func findPosition(units []*content.Unit, unitID, lessonID string, step int) (pos
 func (m Model) Init() tea.Cmd { return m.playCurrent() }
 
 func (m Model) current() (*content.Unit, *content.Lesson, *content.Step, bool) {
+	if m.retentionStep != nil && m.pos.unit < len(m.units) {
+		unit := m.units[m.pos.unit]
+		return unit, &content.Lesson{ID: "retention", Title: "Retention check"}, m.retentionStep, true
+	}
 	if m.pos.unit >= len(m.units) {
 		return nil, nil, nil, false
 	}
@@ -135,8 +130,6 @@ func (m Model) current() (*content.Unit, *content.Lesson, *content.Step, bool) {
 	return unit, lesson, &lesson.Steps[m.pos.step], true
 }
 
-// audioText is the line that should be spoken for a step. Only listening exercises
-// speak their target: a speaking prompt must not play the answer.
 func audioText(step *content.Step) string {
 	if step.Kind != content.Listening || step.Target == nil {
 		return ""
@@ -227,8 +220,6 @@ func (m Model) handleKey(msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 			decision := m.turn.Deny()
 			m.transcript = ""
 			if decision.OfferFallback {
-				// Two consecutive denials: offer a typed fallback or a no-evidence
-				// advance rather than deadlocking progress.
 				m.screen = screenPrompt
 				m.typedFallback = true
 				m.feedback = "Transcription denied twice. Type your answer instead, or press Esc to move on without evidence."
@@ -272,8 +263,6 @@ func (m Model) handleKey(msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 
 	if needsSpeech(step) {
 		if m.typedFallback {
-			// The typed fallback is a production answer without pronunciation
-			// evidence, and it is graded the same way any other written answer is.
 			if msg.String() == "enter" {
 				answer := strings.TrimSpace(m.input.Value())
 				if answer == "" {
@@ -311,8 +300,10 @@ func (m Model) handleKey(msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 		return m, nil
 	}
 
-	// Replay is bound to ctrl+r rather than a letter, so typing a romaji answer is
-	// never interrupted by a stray hotkey.
+	if msg.String() == "ctrl+s" {
+		return m.skipCurrent()
+	}
+
 	if msg.String() == "ctrl+r" && audioText(step) != "" {
 		m.spokenStep = ""
 		return m, m.playCurrent()
@@ -332,14 +323,49 @@ func (m Model) handleKey(msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 	return m, cmd
 }
 
-// isSpace reports whether the key is the spacebar. Bubble Tea represents it as a
-// space rune, not the literal string "space".
 func isSpace(msg tea.KeyMsg) bool {
 	return msg.Type == tea.KeySpace || msg.String() == " " || msg.String() == "space"
 }
 
 func needsSpeech(step *content.Step) bool {
 	return step.Kind == content.Speaking || step.Kind == content.Conversation
+}
+
+func (m *Model) startRetention() {
+	due, err := m.runner.DueRetention()
+	if err != nil || len(due) == 0 {
+		return
+	}
+	for _, card := range due {
+		if step := findRetentionStep(m.units, card.ConceptID); step != nil {
+			m.retentionConcept = card.ConceptID
+			m.retentionStep = step
+			m.screen = screenPrompt
+			return
+		}
+	}
+}
+
+// findRetentionStep prefers the latest gradable step for a concept, so the check runs
+// in a different context than the exercise that first proved production.
+func findRetentionStep(units []*content.Unit, conceptID string) *content.Step {
+	var found *content.Step
+	for _, unit := range units {
+		for li := range unit.Lessons {
+			for si := range unit.Lessons[li].Steps {
+				step := &unit.Lessons[li].Steps[si]
+				if step.Rubric != "" || step.Scenario != nil || content.Dimension(step.Kind) == "" {
+					continue
+				}
+				for _, concept := range step.Concepts {
+					if concept == conceptID {
+						found = step
+					}
+				}
+			}
+		}
+	}
+	return found
 }
 
 func (m *Model) syncConversation() {
@@ -375,6 +401,28 @@ func (m *Model) collectNpcTurns() {
 	}
 }
 
+func (m Model) skipCurrent() (tea.Model, tea.Cmd) {
+	_, _, step, ok := m.current()
+	if !ok {
+		return m, nil
+	}
+	for _, conceptID := range step.Concepts {
+		can, err := m.runner.MaySkip(conceptID)
+		if err != nil {
+			m.err = err.Error()
+			return m, nil
+		}
+		if !can {
+			m.err = fmt.Sprintf(
+				"Cannot skip %s yet: skipping needs two production demonstrations on different exercises.", conceptID)
+			return m, nil
+		}
+	}
+	m.err = ""
+	m.advance()
+	return m, m.playCurrent()
+}
+
 func (m Model) submit(answer string) (tea.Model, tea.Cmd) {
 	_, _, step, ok := m.current()
 	if !ok {
@@ -385,7 +433,9 @@ func (m Model) submit(answer string) (tea.Model, tea.Cmd) {
 	var result session.Result
 	var err error
 
-	if step.Kind == content.Conversation {
+	if m.retentionStep != nil {
+		result, err = m.runner.GradeRetention(step, answer)
+	} else if step.Kind == content.Conversation {
 		if m.conversation == nil {
 			m.syncConversation()
 		}
@@ -393,8 +443,6 @@ func (m Model) submit(answer string) (tea.Model, tea.Cmd) {
 			m.err = "this conversation has no scenario"
 			return m, nil
 		}
-		// A scripted turn is interpreted by the scenario matcher, not by the answer
-		// graders, which have nothing to compare against for a conversation.
 		response := m.conversation.Respond(answer)
 		result, err = m.runner.GradeConversationTurn(step, response)
 		if err == nil && response.Verdict != convo.NoMatch {
@@ -405,8 +453,6 @@ func (m Model) submit(answer string) (tea.Model, tea.Cmd) {
 		result, err = m.runner.Submit(context.Background(), step, answer)
 	}
 	if err != nil {
-		// A persistence failure must not silently drop the learner's answer, so the
-		// screen stays put and shows the error.
 		m.err = err.Error()
 		return m, nil
 	}
@@ -420,7 +466,6 @@ func (m Model) submit(answer string) (tea.Model, tea.Cmd) {
 func (m Model) transcribe(wav []byte) tea.Cmd {
 	client := m.runner.Client
 	return func() tea.Msg {
-		// Silence is decided from the waveform: the recogniser invents text for it.
 		if hasSpeech, _, err := speech.HasSpeech(wav, speech.SilenceFloor); err == nil && !hasSpeech {
 			return speech.Transcription{Text: "", Ambiguous: true}
 		}
@@ -436,6 +481,16 @@ func (m Model) transcribe(wav []byte) tea.Cmd {
 }
 
 func (m *Model) advance() {
+	if m.retentionStep != nil {
+		m.retentionStep = nil
+		m.retentionConcept = ""
+		m.screen = screenPrompt
+		m.feedback = ""
+		m.transcript = ""
+		m.err = ""
+		m.input.SetValue("")
+		return
+	}
 	m.screen = screenPrompt
 	m.feedback = ""
 	m.transcript = ""
@@ -511,7 +566,6 @@ func (m Model) View() string {
 	}
 	b.WriteString(step.Prompt + "\n\n")
 
-	// Audio-first: a listening target is revealed only after the attempt.
 	if step.Target != nil && step.Kind != content.Listening {
 		b.WriteString(japaneseStyle.Render(surface(*step.Target)) + "\n")
 		b.WriteString(dimStyle.Render(step.Target.Romaji) + "\n\n")

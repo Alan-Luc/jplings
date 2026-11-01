@@ -106,8 +106,6 @@ func startSession() error {
 		Client: speech.NewHTTPClient(),
 		Voice:  "jf_alpha",
 	}
-	// A missing key is a warning, not a blocker: free-form responses then save
-	// ungraded instead of failing the session (D3).
 	if key := os.Getenv("DEEPSEEK_API_KEY"); key != "" {
 		runner.Evaluator = eval.NewClient(key)
 	} else {
@@ -367,8 +365,6 @@ func status(c doctor.Check) string {
 	}
 }
 
-// gradePending applies the same four-dimension rubric by hand, so a DeepSeek outage
-// delays speaking evidence but never blocks it (D3).
 func gradePending(args []string) error {
 	if len(args) == 0 || args[0] != "--pending" {
 		return fmt.Errorf("usage: jplings grade --pending")
@@ -412,8 +408,6 @@ func gradePending(args []string) error {
 		feedback, _ := reader.ReadString('\n')
 		feedback = strings.TrimSpace(feedback)
 
-		// Human grading is ordinary evidence, so it counts immediately: the audit
-		// gate exists for model output, not for Alan's own judgement.
 		for _, conceptID := range []string{item.StepID} {
 			if err := store.Record(profile.Evidence{
 				ConceptID: conceptID, Dimension: profile.Production,
@@ -452,7 +446,6 @@ func readScore(reader *bufio.Reader, dimension string) (int, error) {
 	}
 }
 
-// sortedKeys returns map keys in a stable order so reports are reproducible.
 func sortedKeys(set map[string]bool) []string {
 	keys := make([]string, 0, len(set))
 	for key := range set {

@@ -12,10 +12,6 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-// Load reads every unit under paths (files or directories), validating each one.
-// It returns all units it could parse plus every issue found, so a lint run
-// reports the whole content tree at once instead of stopping at the first typo.
-// Only unreadable paths are a hard error.
 func Load(paths ...string) ([]*Unit, []Issue, error) {
 	files, err := collect(paths)
 	if err != nil {
@@ -44,8 +40,6 @@ func Load(paths ...string) ([]*Unit, []Issue, error) {
 	return units, issues, nil
 }
 
-// decode parses one YAML file strictly, so a misspelled field is an error rather
-// than a silently ignored setting in hand-authored content.
 func decode(file string) (*Unit, error) {
 	f, err := os.Open(file)
 	if err != nil {

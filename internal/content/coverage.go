@@ -2,9 +2,6 @@ package content
 
 import "fmt"
 
-// Coverage says, for one concept, how many steps exercise it as comprehension and
-// how many as production. A concept that is only ever read about is not learnable,
-// and one that is produced only once cannot show transfer, so both counts matter.
 type Coverage struct {
 	UnitID        string
 	ConceptID     string
@@ -12,8 +9,6 @@ type Coverage struct {
 	Production    int
 }
 
-// Complete reports whether a concept has the minimum evidence surface a unit must
-// give it: at least one comprehension step and at least two production steps.
 func (c Coverage) Complete() bool { return c.Comprehension >= 1 && c.Production >= 2 }
 
 func Dimension(kind Kind) string {
@@ -61,8 +56,6 @@ func CoverageOf(units []*Unit) []Coverage {
 			out = append(out, *index[conceptID])
 		}
 
-		// Declared but never exercised is the worst case: the unit promises to teach
-		// something it never tests.
 		for _, concept := range unit.Concepts {
 			if _, ok := index[concept.ID]; !ok {
 				out = append(out, Coverage{UnitID: unit.ID, ConceptID: concept.ID})

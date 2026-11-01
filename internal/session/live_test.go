@@ -1,8 +1,5 @@
 //go:build live
 
-// End-to-end vertical slice against the real speech stack and the real content.
-//
-//	go test -tags live ./internal/session/ -run TestLiveVerticalSlice
 package session
 
 import (
@@ -51,8 +48,6 @@ func TestLiveVerticalSlice(t *testing.T) {
 				step := &lesson.Steps[i]
 				steps++
 
-				// Conversations are interpreted by the scripted matcher, not by the
-				// answer graders, so drive them through their own path.
 				if step.Kind == content.Conversation {
 					conversation := convo.New(step.Scenario)
 					for !conversation.Done() {
@@ -73,8 +68,6 @@ func TestLiveVerticalSlice(t *testing.T) {
 
 				answer := answerFor(t, step)
 
-				// A spoken step goes through the real stack: synthesize the target,
-				// hear it back, then grade the confirmed transcript.
 				if step.Kind == content.Speaking && step.Rubric == "" {
 					source := step.Accept[0].Kanji
 					if source == "" {
@@ -98,8 +91,6 @@ func TestLiveVerticalSlice(t *testing.T) {
 				if err != nil {
 					t.Fatalf("%s: submit: %v", step.ID, err)
 				}
-				// Without a DEEPSEEK_API_KEY the free-form step must be saved ungraded
-				// rather than passed or failed.
 				if step.Kind == content.Speaking && step.Rubric != "" {
 					if !result.Ungraded {
 						t.Fatalf("%s: expected an ungraded save with no evaluator, got %+v", step.ID, result)
@@ -122,8 +113,6 @@ func TestLiveVerticalSlice(t *testing.T) {
 	}
 	t.Logf("exercised %d steps (%d saved ungraded)", steps, ungraded)
 
-	// R6: a completed run still cannot be "mastered", because no wall-clock
-	// retention check has happened. The gate must hold even for a perfect learner.
 	for _, unit := range units {
 		for _, concept := range unit.Concepts {
 			mastered, missing, err := store.Mastered(concept.ID)
@@ -139,8 +128,6 @@ func TestLiveVerticalSlice(t *testing.T) {
 		}
 	}
 
-	// Retention checks should have been queued for concepts that reached
-	// production and generalization.
 	retention, err := store.DueRetention(time.Now().Add(72 * time.Hour))
 	if err != nil {
 		t.Fatalf("DueRetention: %v", err)
@@ -151,7 +138,6 @@ func TestLiveVerticalSlice(t *testing.T) {
 	t.Logf("scheduled %d retention checks", len(retention))
 }
 
-// answerFor produces a correct answer from the authored content.
 func answerFor(t *testing.T, step *content.Step) string {
 	t.Helper()
 	switch step.Kind {

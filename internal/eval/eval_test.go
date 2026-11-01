@@ -45,8 +45,6 @@ func TestEvaluateValidatesRubric(t *testing.T) {
 	}
 }
 
-// Every failure mode must be an error, so the caller saves the response ungraded
-// instead of inventing a score (D3).
 func TestEvaluateFailsClosed(t *testing.T) {
 	tests := []struct {
 		name    string

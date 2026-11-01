@@ -37,7 +37,6 @@ func TestLoadJMdictKeepsOnlyRequestedWords(t *testing.T) {
 	if _, ok := lookup["水"]; !ok {
 		t.Fatal("水 should be present by kanji form")
 	}
-	// A word list may name the kana form; the entry must still resolve.
 	if _, ok := lookup["のむ"]; !ok {
 		t.Fatal("のむ should be present by kana form")
 	}
@@ -47,7 +46,6 @@ func TestLoadJMdictKeepsOnlyRequestedWords(t *testing.T) {
 }
 
 func TestLoadJMdictHandlesDTDEntities(t *testing.T) {
-	// JMdict declares named entities in an inline DTD that encoding/xml ignores.
 	_, err := LoadJMdict(strings.NewReader(jmdictFixture), map[string]bool{"水": true})
 	if err != nil {
 		t.Fatalf("named entities must not stop the parser: %v", err)
@@ -87,7 +85,6 @@ func TestReadSentencesAndLinks(t *testing.T) {
 }
 
 func TestPairsJoinsOnlyCompleteMatches(t *testing.T) {
-	// A link whose English half is missing must be dropped, not half-filled.
 	pairs := Pairs(
 		map[string]string{"1": "水をください。", "2": "猫が好きです。"},
 		map[string]string{"10": "Water, please."},
@@ -127,7 +124,6 @@ func TestSelectShortPrefersShortSentences(t *testing.T) {
 			t.Fatalf("the longest sentence should be dropped: %+v", got)
 		}
 	}
-	// Output order is stable by id, not by length.
 	if got[0].ID != "1" || got[1].ID != "2" {
 		t.Fatalf("output should be ordered by id: %+v", got)
 	}
@@ -154,7 +150,6 @@ func TestWriteVocabCarriesLicence(t *testing.T) {
 	}
 }
 
-// Tatoeba's shortest sentences include insults; a learning corpus must not.
 func TestFilterRejectsBlockedTerms(t *testing.T) {
 	pairs := []Sentence{
 		{Japanese: "死ね！", English: "Fuck you!", ID: "1"},

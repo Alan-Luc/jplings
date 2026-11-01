@@ -1,8 +1,3 @@
-// Package profile is the persistent learner record (R5, D5).
-//
-// Progress must survive a crash mid-session, so it lives in SQLite rather than a
-// JSON file. The honest-gating rules from R6 are implemented here, in code, so that
-// neither the learner nor a future feature can skip past them.
 package profile
 
 import (
@@ -18,8 +13,6 @@ import (
 	"jplings/internal/schedule"
 )
 
-// Evidence dimensions. A concept is only mastered when production, generalization
-// and retention have each been demonstrated.
 const (
 	Recognition    = "recognition"
 	Comprehension  = "comprehension"
@@ -93,7 +86,7 @@ type Evidence struct {
 	Dimension  string
 	Correct    bool
 	StimulusID string
-	Source     string // typed, spoken, llm, human
+	Source     string
 	At         time.Time
 }
 
@@ -101,7 +94,6 @@ func Open(path string) (*Store, error) {
 	if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil {
 		return nil, err
 	}
-	// WAL with a busy timeout keeps a mid-session crash from corrupting the record.
 	dsn := fmt.Sprintf("file:%s?_pragma=busy_timeout(5000)&_pragma=journal_mode(WAL)", path)
 	db, err := sql.Open("sqlite", dsn)
 	if err != nil {
@@ -153,8 +145,6 @@ func (s *Store) Evidence(conceptID string) ([]Evidence, error) {
 	return out, rows.Err()
 }
 
-// SetLLMTrust records whether LLM-graded evidence for a dimension may count toward
-// mastery: provisional, trusted, or withdrawn (D3 audit gate).
 func (s *Store) SetLLMTrust(conceptID, dimension, status string) error {
 	_, err := s.db.Exec(
 		`INSERT INTO llm_trust (concept_id, dimension, status) VALUES (?, ?, ?)
@@ -179,9 +169,6 @@ func (s *Store) llmTrusted(conceptID, dimension string) (bool, error) {
 	return status == "trusted", nil
 }
 
-// Mastered applies the R6 gate. A concept is mastered only with production,
-// generalization and delayed retention evidence, and LLM-graded evidence counts only
-// once the audit has promoted that dimension to trusted.
 func (s *Store) Mastered(conceptID string) (bool, []string, error) {
 	satisfied := map[string]bool{}
 	for _, dimension := range []string{Production, Generalization, Retention} {
@@ -221,7 +208,6 @@ func (s *Store) dimensionSatisfied(conceptID, dimension string) (bool, error) {
 		if err := rows.Scan(&source); err != nil {
 			return false, err
 		}
-		// Provisional LLM evidence is visible but cannot alone clear a mastery gate.
 		if source != "llm" || trusted {
 			return true, nil
 		}
@@ -229,11 +215,14 @@ func (s *Store) dimensionSatisfied(conceptID, dimension string) (bool, error) {
 	return false, rows.Err()
 }
 
-// CanSkip applies the R6 pre-knowledge gate: skipping requires two production
-// demonstrations on different stimuli, so repeating one sentence never counts.
 func (s *Store) CanSkip(conceptID string) (bool, error) {
+	trusted, err := s.llmTrusted(conceptID, Production)
+	if err != nil {
+		return false, err
+	}
+
 	rows, err := s.db.Query(
-		`SELECT DISTINCT stimulus_id FROM evidence
+		`SELECT DISTINCT stimulus_id, source FROM evidence
 		 WHERE concept_id = ? AND dimension = ? AND correct = 1 AND stimulus_id <> ''`,
 		conceptID, Production)
 	if err != nil {
@@ -241,13 +230,16 @@ func (s *Store) CanSkip(conceptID string) (bool, error) {
 	}
 	defer rows.Close()
 
-	var stimuli []string
+	stimuli := map[string]bool{}
 	for rows.Next() {
-		var stimulus string
-		if err := rows.Scan(&stimulus); err != nil {
+		var stimulus, source string
+		if err := rows.Scan(&stimulus, &source); err != nil {
 			return false, err
 		}
-		stimuli = append(stimuli, stimulus)
+		if source == "llm" && !trusted {
+			continue
+		}
+		stimuli[stimulus] = true
 	}
 	return len(stimuli) >= 2, rows.Err()
 }
@@ -335,7 +327,6 @@ func (s *Store) cardsWhere(condition string) ([]schedule.Card, error) {
 	return out, rows.Err()
 }
 
-// Pending is a response saved for grading when the evaluator was unavailable (D3).
 type Pending struct {
 	ID       int64
 	StepID   string
@@ -344,7 +335,6 @@ type Pending struct {
 	Retries  int
 }
 
-// EnqueuePending saves a response that could not be graded. It is never auto-passed.
 func (s *Store) EnqueuePending(stepID, prompt, response string, at time.Time) (int64, error) {
 	result, err := s.db.Exec(
 		`INSERT INTO pending (step_id, prompt, response, at) VALUES (?, ?, ?, ?)`,
@@ -394,7 +384,6 @@ func (s *Store) ResolvePending(id int64) error {
 	return err
 }
 
-// SaveCursor persists the exact position of a session so it resumes mid-unit.
 func (s *Store) SaveCursor(unitID, lessonID string, stepIndex int, at time.Time) error {
 	_, err := s.db.Exec(
 		`INSERT INTO session_cursor (id, unit_id, lesson_id, step_index, updated_at)
@@ -422,8 +411,6 @@ func (s *Store) Cursor() (unitID, lessonID string, stepIndex int, ok bool, err e
 	return unitID, lessonID, stepIndex, true, nil
 }
 
-// Backup writes a consistent snapshot beside the live database and verifies it.
-// A corruption is therefore found at backup time rather than weeks later.
 func (s *Store) Backup(dir string, keep int) (string, error) {
 	if err := os.MkdirAll(dir, 0o755); err != nil {
 		return "", err
@@ -433,7 +420,6 @@ func (s *Store) Backup(dir string, keep int) (string, error) {
 	if _, err := os.Stat(path); err == nil {
 		return "", fmt.Errorf("backup %s already exists", path)
 	}
-	// VACUUM INTO produces a single consistent file even while WAL is active.
 	if _, err := s.db.Exec(`VACUUM INTO ?`, path); err != nil {
 		return "", err
 	}
@@ -479,4 +465,10 @@ func prune(dir string, keep int) error {
 		}
 	}
 	return nil
+}
+func (s *Store) CompleteRetention(conceptID string) error {
+	_, err := s.db.Exec(
+		`DELETE FROM reviews WHERE concept_id = ? AND kind = ?`,
+		conceptID, schedule.KindRetention)
+	return err
 }

@@ -1,6 +1,3 @@
-// Package schedule implements SM-2-style spaced review plus the separate delayed
-// retention queue (D6). The clock is always passed in, so retention gates are
-// testable without waiting wall-clock time.
 package schedule
 
 import (
@@ -8,8 +5,6 @@ import (
 	"time"
 )
 
-// Quality is the learner's outcome on a review, on a 0-2 scale matching the rest of
-// the app: wrong, understandable but flawed, good.
 type Quality int
 
 const (
@@ -18,8 +13,6 @@ const (
 	Good
 )
 
-// Card kinds. Ordinary reviews follow SM-2; a retention check is the separate
-// delayed, different-context gate from R6 and D6.
 const (
 	KindReview    = "review"
 	KindRetention = "retention"
@@ -43,7 +36,6 @@ func Review(card Card, quality Quality, now time.Time) Card {
 		card.Ease = 2.5
 	}
 
-	// SM-2's 0-5 scale, mapped from this app's three outcomes.
 	sm2 := map[Quality]float64{Again: 0, Hard: 3, Good: 5}[quality]
 
 	card.Ease = math.Max(1.3, card.Ease+0.1-(5-sm2)*(0.08+(5-sm2)*0.02))
@@ -68,9 +60,6 @@ func Review(card Card, quality Quality, now time.Time) Card {
 	return card
 }
 
-// RetentionDelay is how long after first clearing production and generalization the
-// delayed retention check is scheduled. The plan's window is 48-72 hours; the middle
-// of that window is used so the check lands on a different day without drifting out.
 const RetentionDelay = 60 * time.Hour
 
 func RetentionDue(now time.Time) time.Time { return now.Add(RetentionDelay) }

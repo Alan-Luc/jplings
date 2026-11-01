@@ -15,8 +15,6 @@ type Sentence struct {
 	ID       string `yaml:"tatoeba_id"`
 }
 
-// ReadSentences parses a Tatoeba per-language sentence export
-// (id TAB language TAB text).
 func ReadSentences(r io.Reader) (map[string]string, error) {
 	sentences := map[string]string{}
 	scanner := bufio.NewScanner(r)
@@ -32,7 +30,6 @@ func ReadSentences(r io.Reader) (map[string]string, error) {
 	return sentences, scanner.Err()
 }
 
-// ReadLinks parses a Tatoeba language-pair link export (jpn_id TAB eng_id).
 func ReadLinks(r io.Reader) ([][2]string, error) {
 	var links [][2]string
 	scanner := bufio.NewScanner(r)
@@ -67,9 +64,6 @@ func Pairs(japanese, english map[string]string, links [][2]string) []Sentence {
 	return pairs
 }
 
-// blockedTerms are excluded from imports. Tatoeba is a general corpus and its
-// shortest sentences include insults; a language course must not hand those to a
-// learner as practice material.
 var blockedTerms = []string{
 	"死ね", "死ぬ", "殺す", "殺し", "殺せ", "殺した",
 	"クソ", "くそ", "クソッ", "うざい", "ウザい", "きもい", "キモい", "むかつく", "ムカつく",
@@ -77,17 +71,9 @@ var blockedTerms = []string{
 	"ぶっ殺す", "消えろ", "うせろ",
 }
 
-// FilterOptions controls which imported sentences are usable as material.
-//
-// FilterOptions zero value keeps everything that is not blocked, which is the right
-// default for a reference export; teaching material should also set MinRunes and
-// Require so the sentences are substantial and drawn from curated vocabulary.
 type FilterOptions struct {
-	// MinRunes rejects one-word interjections, which teach nothing on their own.
 	MinRunes int
-	// Require keeps only sentences containing at least one of these forms, so the
-	// material stays inside vocabulary the curriculum actually teaches.
-	Require map[string]bool
+	Require  map[string]bool
 }
 
 func Filter(pairs []Sentence, options FilterOptions) []Sentence {
@@ -121,8 +107,6 @@ func Usable(pair Sentence, options FilterOptions) bool {
 	return true
 }
 
-// SelectShort returns the shortest usable pairs, then orders them by id for stable
-// output. Short sentences are the right starting material for a beginner.
 func SelectShort(pairs []Sentence, limit int) []Sentence {
 	sorted := append([]Sentence(nil), pairs...)
 	sort.SliceStable(sorted, func(i, j int) bool {
@@ -148,8 +132,6 @@ func numericLess(a, b string) bool {
 	return a < b
 }
 
-// Validate reports pairs that cannot be used as content, so a bad download fails
-// loudly instead of producing empty exercises.
 func Validate(pairs []Sentence) error {
 	if len(pairs) == 0 {
 		return fmt.Errorf("no sentence pairs found; check the language exports")

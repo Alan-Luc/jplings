@@ -29,15 +29,12 @@ func TestCompareAcceptsSpellingConventions(t *testing.T) {
 	}
 }
 
-// A learner typo like kowai->koai must not be smuggled through by the wo->o fold.
 func TestCompareDoesNotMangleWordsContainingWo(t *testing.T) {
 	if got, _ := Compare("koai", []string{"kowai"}); got == Exact {
 		t.Fatal("kowai must not be normalized to koai")
 	}
 }
 
-// The whole point of the two-pass design: length and gemination change the word, so
-// they must never earn credit even though they are recognized as a near miss.
 func TestCompareNeverAwardsCreditForDifferentWord(t *testing.T) {
 	tests := []struct {
 		name       string
@@ -50,9 +47,6 @@ func TestCompareNeverAwardsCreditForDifferentWord(t *testing.T) {
 		{"gemination", "hasen", "hassen", Close, "gemination"},
 		{"kana gemination", "はせん", "はっせん", Close, "gemination"},
 		{"unrelated", "neko", "inu", Wrong, ""},
-		// Kana long vowels are not written as a doubled character, so they cannot be
-		// detected without a morphology parser. Content supplies the explanation for
-		// these; the matcher refuses rather than guessing.
 		{"kana vowel length is not guessed", "おばさん", "おばあさん", Wrong, ""},
 	}
 
@@ -86,14 +80,11 @@ func TestNormalizeExactKeepsDifferentWordsApart(t *testing.T) {
 }
 
 func TestCompareReportsCombinedDistinction(t *testing.T) {
-	// Both vowel length and a doubled consonant differ from the target.
 	if _, reason := Compare("kite", []string{"kitte"}); reason != "gemination" {
 		t.Fatalf("reason = %q, want gemination", reason)
 	}
 }
 
-// Regression from review: the katakana chōonpu used to be deleted in the pass that
-// awards credit, so ビル (building) was graded correct for ビール (beer).
 func TestKatakanaLongVowelNeverEarnsCredit(t *testing.T) {
 	tests := []struct{ input, accepted string }{
 		{"ビル", "ビール"},
@@ -115,7 +106,6 @@ func TestKatakanaLongVowelNeverEarnsCredit(t *testing.T) {
 }
 
 func TestExactStillAcceptsLongVowelSpellingConventions(t *testing.T) {
-	// Romaji sides of the same word must still match.
 	if got, _ := Compare("biiru", []string{"bīru"}); got != Exact {
 		t.Fatalf("Compare(biiru, bīru) = %v, want Exact", got)
 	}

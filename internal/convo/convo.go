@@ -1,9 +1,3 @@
-// Package convo interprets scripted conversations (D4).
-//
-// Scenarios are authored, not generated: predictable, testable, and honest. Matching
-// tolerates the variations a learner will actually produce — dropped particles,
-// politeness prefixes, です/ます — but a tolerated turn is reported with a hint and
-// mints no correct evidence.
 package convo
 
 import (
@@ -16,18 +10,14 @@ import (
 type Verdict int
 
 const (
-	// NoMatch is not a recognizable response to this turn.
 	NoMatch Verdict = iota
-	// Matched is an accepted response and earns credit.
 	Matched
-	// Tolerated was understood but dropped or added something. No credit.
 	Tolerated
 )
 
 type Response struct {
 	Verdict Verdict
-	// Hint explains a tolerated turn, naming what was dropped.
-	Hint string
+	Hint    string
 }
 
 var particles = []string{"を", "は", "が", "に", "で", "へ", "と", "も", "の"}
@@ -69,7 +59,6 @@ func (c *Conversation) Respond(text string) Response {
 		}
 	}
 
-	// A dropped particle or prefix still communicates; report it and mint nothing.
 	for _, accepted := range turn.Accept {
 		for _, surface := range surfaces(accepted) {
 			if hint, ok := tolerate(got, normalize(surface)); ok {
@@ -80,8 +69,6 @@ func (c *Conversation) Respond(text string) Response {
 	return Response{Verdict: NoMatch}
 }
 
-// tolerate reports whether got is base with a particle or politeness prefix removed,
-// and names what went missing so the feedback can teach.
 func tolerate(got, base string) (string, bool) {
 	for _, particle := range particles {
 		if strings.Contains(base, particle) && strings.ReplaceAll(base, particle, "") == got {
@@ -96,7 +83,6 @@ func tolerate(got, base string) (string, bool) {
 		}
 	}
 
-	// です/ます can be elided in speech without changing what was asked.
 	for _, ending := range []string{"です", "ます"} {
 		if strings.HasSuffix(base, ending) && strings.TrimSuffix(base, ending) == got {
 			return fmt.Sprintf("Understood, though %s keeps the register polite.", ending), true

@@ -1,10 +1,3 @@
-// Package corpus imports licensed reference data: JMdict for vocabulary and
-// Tatoeba for example sentences (D9).
-//
-// It deliberately does not generate curriculum. Readings and romanisation of full
-// sentences cannot be derived reliably from these sources without a morphological
-// parser, which the MVP does not have, so the importer supplies correct words,
-// glosses and authentic sentences and a human authors the exercises around them.
 package corpus
 
 import (
@@ -23,17 +16,10 @@ type Word struct {
 	Seq     string   `yaml:"seq"`
 }
 
-// Lookup indexes every written form of a word, so a word list can be resolved by
-// kanji or by kana.
 type Lookup map[string]*Word
 
-// LoadJMdict streams the JMdict XML, keeping entries whose kanji or kana form is in
-// want. Streaming matters: the file is tens of megabytes and we need a small slice.
 func LoadJMdict(r io.Reader, want map[string]bool) (Lookup, error) {
 	decoder := xml.NewDecoder(r)
-	// JMdict declares its 249 named entities in an inline DTD, which encoding/xml does
-	// not process. Non-strict mode leaves them as literal text so parsing continues;
-	// they appear in part-of-speech and field tags, which posTag trims.
 	decoder.Strict = false
 
 	lookup := Lookup{}
@@ -133,7 +119,6 @@ func keep(word *Word, want map[string]bool, lookup Lookup) {
 	}
 }
 
-// addPos records a part of speech once: JMdict repeats the tag for every sense.
 func (w *Word) addPos(tag string) {
 	for _, existing := range w.Pos {
 		if existing == tag {

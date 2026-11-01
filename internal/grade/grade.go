@@ -1,8 +1,3 @@
-// Package grade holds the deterministic graders (R3, D3).
-//
-// Every grader returns feedback that names what went wrong. None of them awards
-// credit for a near miss: a close-only match, a tolerated conversation variant, and
-// an off-target-but-valid form all mint no correct evidence.
 package grade
 
 import (
@@ -14,13 +9,9 @@ import (
 )
 
 type Outcome struct {
-	// Correct earns credit and may mint evidence.
-	Correct bool
-	// Close is a near miss differing only in vowel length or gemination. No credit.
-	Close bool
-	// OffTarget is valid Japanese answering a different question. No credit.
-	OffTarget bool
-	// Explanation always names the specific issue, never bare correct/incorrect.
+	Correct     bool
+	Close       bool
+	OffTarget   bool
 	Explanation string
 }
 
@@ -36,9 +27,6 @@ func Dimension(kind content.Kind) string {
 	}
 }
 
-// Written grades a typed answer for the Japanese-answer kinds. The learner types
-// romaji by default, but an IME produces kana or kanji, so those surfaces are
-// accepted too (D7).
 func Written(step *content.Step, answer string) Outcome {
 	if out, ok := offTarget(step, answer); ok {
 		return out
@@ -81,9 +69,6 @@ func Meaning(step *content.Step, answer string) Outcome {
 	}
 }
 
-// Spoken grades a confirmed speech transcript. Pronunciation quality is never
-// scored, but word identity always is: naming a different word is a wrong answer
-// with a specific explanation (R4, S1.6).
 func Spoken(step *content.Step, transcript string) Outcome {
 	if out, ok := offTargetSpeech(step, transcript); ok {
 		return out
@@ -91,7 +76,6 @@ func Spoken(step *content.Step, transcript string) Outcome {
 
 	got := normalizeJapan(transcript)
 
-	// A required counter may not be dropped: 六百 without 円 is not 六百円.
 	if suffix := requiredSuffix(step.Accept); suffix != "" && !strings.Contains(got, suffix) {
 		return Outcome{
 			Explanation: fmt.Sprintf(
@@ -109,7 +93,6 @@ func Spoken(step *content.Step, transcript string) Outcome {
 		}
 	}
 
-	// Close-but-different still names the distinction rather than a bare refusal.
 	verdict, reason := romaji.Compare(transcript, textVariants(step.Accept))
 	if verdict == romaji.Close {
 		return Outcome{
@@ -176,9 +159,6 @@ func textVariants(texts []content.Text) []string {
 	return out
 }
 
-// requiredSuffix returns the trailing counter in an accepted answer, such as 円.
-// It reads the kanji surface because kana spelling cannot separate a numeral from
-// its counter without a morphological parser.
 func requiredSuffix(accepted []content.Text) string {
 	if len(accepted) == 0 || accepted[0].Kanji == "" {
 		return ""
@@ -197,7 +177,6 @@ func requiredSuffix(accepted []content.Text) string {
 
 func isKanjiRune(r rune) bool { return r >= 0x4E00 && r <= 0x9FFF }
 
-// isNumeralKanji keeps the numeral part of an amount out of the counter suffix.
 func isNumeralKanji(r rune) bool {
 	return strings.ContainsRune("一二三四五六七八九十百千万億零", r)
 }
@@ -211,8 +190,6 @@ func normalizeMeaning(s string) string {
 	return strings.Join(strings.Fields(s), " ")
 }
 
-// normalizeJapan folds digit and kanji-numeral spellings of the same amount so
-// 600円, 六百円 and ６００円 compare equal, while counters are preserved.
 func normalizeJapan(s string) string {
 	s = strings.ReplaceAll(s, "　", "")
 	s = expandFullwidthDigits(s)
@@ -256,8 +233,6 @@ var kanjiUnits = []struct {
 	{10000, "万"}, {1000, "千"}, {100, "百"}, {10, "十"},
 }
 
-// numberToKanji renders a decimal digit string as a kanji numeral, so that typed
-// and spoken amounts share one canonical form.
 func numberToKanji(digits string) string {
 	digits = strings.TrimLeft(digits, "0")
 	if digits == "" {

@@ -8,16 +8,9 @@ import (
 	"math"
 )
 
-// ErrNotPCM marks audio this app cannot analyse: the energy gate needs 16-bit PCM.
 var ErrNotPCM = errors.New("audio is not 16-bit PCM WAV")
 
-// HasSpeech reports whether a recording contains energy above the silence floor, and
-// returns the measured RMS.
-//
-// This gate is deliberately independent of the recogniser. Measured on this machine,
-// three seconds of digital silence produced "(音楽)" from Whisper at avg_logprob
-// -0.001 — fluent, confident, entirely invented. Silence must therefore be detected
-// from the waveform, never from the model's confidence.
+// Reads the waveform, never the model: three seconds of digital silence made Whisper emit fluent invented text at avg_logprob -0.001.
 func HasSpeech(wav []byte, floor float64) (bool, float64, error) {
 	samples, err := pcm16Samples(wav)
 	if err != nil {
@@ -36,8 +29,6 @@ func HasSpeech(wav []byte, floor float64) (bool, float64, error) {
 	return rms >= floor, rms, nil
 }
 
-// SilenceFloor is the default RMS threshold under which a clip counts as silent.
-// Conversational speech is far above this; room tone and digital silence are below.
 const SilenceFloor = 0.005
 
 func pcm16Samples(wav []byte) ([]int16, error) {

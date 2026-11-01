@@ -1,9 +1,3 @@
-// Package eval is the free-form grader (D3).
-//
-// It exists only because no deterministic grader can score open-ended production.
-// Any failure — missing key, non-200, unparseable body, out-of-range score — behaves
-// identically: the caller saves the response ungraded for the pending queue. It is
-// never auto-passed and never crashes a session.
 package eval
 
 import (
@@ -17,7 +11,6 @@ import (
 )
 
 const (
-	// DefaultModel is pinned so a grading change is a deliberate act, not a drift.
 	DefaultModel   = "deepseek-chat"
 	DefaultBaseURL = "https://api.deepseek.com/chat/completions"
 )
@@ -30,8 +23,6 @@ type Rubric struct {
 	Feedback    string `json:"feedback"`
 }
 
-// Validate rejects anything the model was not asked to produce, so a malformed
-// answer becomes an ungraded save rather than a bogus score.
 func (r Rubric) Validate() error {
 	for name, score := range map[string]int{
 		"meaning": r.Meaning, "grammar": r.Grammar,
@@ -51,7 +42,6 @@ type Evaluator interface {
 	Evaluate(ctx context.Context, prompt, response string) (Rubric, error)
 }
 
-// Client calls DeepSeek directly. There is no agent loop and no separate service.
 type Client struct {
 	APIKey  string
 	BaseURL string
@@ -105,8 +95,6 @@ type chatResponse struct {
 	} `json:"choices"`
 }
 
-// Evaluate grades one response. Any failure is returned as an error so the caller can
-// save it ungraded.
 func (c *Client) Evaluate(ctx context.Context, prompt, response string) (Rubric, error) {
 	if c.APIKey == "" {
 		return Rubric{}, fmt.Errorf("no API key configured")

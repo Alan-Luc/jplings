@@ -13,9 +13,7 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-// Upstream locations and the licences they are used under. JMdict's licence requires
-// attribution and a procedure for keeping the data current, so both travel with the
-// exported files rather than living only in this source file.
+// JMdict's licence obliges attribution and a way to keep the data current, so both travel with the exported files.
 const (
 	JMdictURL  = "http://ftp.edrdg.org/pub/Nihongo/JMdict_e.gz"
 	JMdictName = "JMdict"
@@ -30,7 +28,6 @@ const (
 	TatoebaAttr = "Tatoeba contributors — https://tatoeba.org"
 )
 
-// Files are the local paths of the downloaded sources.
 type Files struct {
 	JMdict   string
 	Japanese string
@@ -38,9 +35,6 @@ type Files struct {
 	English  string
 }
 
-// Fetch returns the local paths for each source, downloading anything missing into
-// cacheDir. Re-running is how the data is kept current, which the JMdict licence
-// requires.
 func Fetch(cacheDir string) (Files, error) {
 	if err := os.MkdirAll(cacheDir, 0o755); err != nil {
 		return Files{}, err
@@ -97,7 +91,6 @@ func download(path, url string) error {
 	return os.Rename(partial, path)
 }
 
-// OpenJMdict decompresses the JMdict dump.
 func OpenJMdict(path string) (io.ReadCloser, error) {
 	file, err := os.Open(path)
 	if err != nil {
@@ -111,7 +104,6 @@ func OpenJMdict(path string) (io.ReadCloser, error) {
 	return &combinedCloser{Reader: reader, closers: []io.Closer{reader, file}}, nil
 }
 
-// OpenBzip2 decompresses a Tatoeba export.
 func OpenBzip2(path string) (io.ReadCloser, error) {
 	file, err := os.Open(path)
 	if err != nil {
@@ -134,7 +126,6 @@ func (c *combinedCloser) Close() error {
 	return nil
 }
 
-// VocabFile is the exported vocabulary reference.
 type VocabFile struct {
 	Corpus      string  `yaml:"corpus"`
 	License     string  `yaml:"license"`
@@ -143,7 +134,6 @@ type VocabFile struct {
 	Words       []*Word `yaml:"words"`
 }
 
-// SentencesFile is the exported sentence reference.
 type SentencesFile struct {
 	Corpus      string     `yaml:"corpus"`
 	License     string     `yaml:"license"`
@@ -152,7 +142,6 @@ type SentencesFile struct {
 	Sentences   []Sentence `yaml:"sentences"`
 }
 
-// WriteVocab exports words with their provenance attached.
 func WriteVocab(w io.Writer, words []*Word) error {
 	return encode(w, VocabFile{
 		Corpus: JMdictName, License: JMdictLic, Attribution: JMdictAttr,
@@ -160,7 +149,6 @@ func WriteVocab(w io.Writer, words []*Word) error {
 	})
 }
 
-// WriteSentences exports pairs with their provenance attached.
 func WriteSentences(w io.Writer, sentences []Sentence) error {
 	return encode(w, SentencesFile{
 		Corpus: TatoebaName, License: TatoebaLic, Attribution: TatoebaAttr,

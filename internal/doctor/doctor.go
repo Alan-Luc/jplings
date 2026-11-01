@@ -1,6 +1,3 @@
-// Package doctor checks the host prerequisites the app needs before a session can
-// start, so a missing runtime is a clean startup error rather than a mid-lesson
-// failure (S1.1).
 package doctor
 
 import (
@@ -18,8 +15,6 @@ const (
 	Warn    Status = "warn"
 )
 
-// Check is one prerequisite result. Required failures block startup; Warn records
-// a degraded capability the app can run without.
 type Check struct {
 	Name     string
 	Detail   string
@@ -27,7 +22,6 @@ type Check struct {
 	Required bool
 }
 
-// Deps are the host probes, injected so the checks are testable without the host.
 type Deps struct {
 	LookPath func(string) (string, error)
 	Glob     func(string) ([]string, error)
@@ -35,7 +29,6 @@ type Deps struct {
 	Getenv   func(string) string
 }
 
-// Default wires Deps to the real host.
 func Default() Deps {
 	return Deps{
 		LookPath: execLookPath,

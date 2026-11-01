@@ -10,6 +10,7 @@ import (
 
 	"jplings/internal/content"
 	"jplings/internal/profile"
+	"jplings/internal/schedule"
 	"jplings/internal/session"
 	"jplings/internal/speech"
 )
@@ -64,8 +65,6 @@ func newModelWith(t *testing.T, units []*content.Unit) (Model, *profile.Store) {
 	return New(runner, units), store
 }
 
-// A listening exercise is audio-first: the answer must not be on screen before the
-// attempt, or the exercise measures reading instead of listening.
 func TestListeningTargetIsHiddenUntilAnswered(t *testing.T) {
 	model, _ := newModelWith(t, listeningUnits())
 
@@ -86,7 +85,6 @@ func TestListeningTargetIsHiddenUntilAnswered(t *testing.T) {
 	}
 }
 
-// A reading exercise still shows its target immediately.
 func TestReadingTargetIsAlwaysVisible(t *testing.T) {
 	model, _ := newModelWith(t, readingUnits())
 	if !strings.Contains(model.View(), "水をください") {
@@ -111,7 +109,6 @@ func TestAudioTextOnlySpeaksListeningTargets(t *testing.T) {
 	}
 }
 
-// Each step speaks once; a re-render must not re-synthesize the same line.
 func TestPlayCurrentIsIdempotentPerStep(t *testing.T) {
 	model, _ := newModelWith(t, listeningUnits())
 
@@ -208,8 +205,6 @@ func TestCursorResumesPosition(t *testing.T) {
 	}
 }
 
-// Regression: replay used to be bound to the letter "a", which silently swallowed
-// every "a" typed into a romaji answer.
 func TestTypingALetterInsertsItInsteadOfTriggeringAHotkey(t *testing.T) {
 	for _, letter := range []rune{'a', 'r', 'w', 's'} {
 		model, _ := newModelWith(t, readingUnits())
@@ -241,8 +236,6 @@ func TestTypingAFullAnswerWorks(t *testing.T) {
 	}
 }
 
-// Regression: the spacebar arrives as a space rune, so matching the literal string
-// "space" never matched and recording could not be stopped.
 func TestSpacebarIsRecognised(t *testing.T) {
 	if !isSpace(tea.KeyMsg{Type: tea.KeySpace, Runes: []rune{' '}}) {
 		t.Fatal("a space key press must be recognised")
@@ -292,9 +285,6 @@ func conversationUnits() []*content.Unit {
 	}}}}
 }
 
-// Regression from review: a conversation step used to be graded by the answer
-// graders against an empty accept list, so content shipping a conversation could
-// never be completed.
 func TestConversationStepIsCompletable(t *testing.T) {
 	model, store := newModelWith(t, conversationUnits())
 
@@ -319,7 +309,6 @@ func TestConversationStepIsCompletable(t *testing.T) {
 		t.Fatalf("feedback should explain the pattern, got %q", after.feedback)
 	}
 
-	// The NPC's reply after the learner's turn is collected for the next render.
 	if len(after.npcLines) != 2 {
 		t.Fatalf("expected both NPC lines, got %d", len(after.npcLines))
 	}
@@ -338,5 +327,119 @@ func TestToleratedConversationTurnMintsNoEvidence(t *testing.T) {
 	}
 	if evidence, _ := store.Evidence("kudasai"); len(evidence) != 0 {
 		t.Fatalf("a tolerated turn must mint no evidence, got %+v", evidence)
+	}
+}
+
+// Regression from review: the R6 skip gate was implemented but unreachable, so a
+// learner could pass over any step with no demonstrations at all.
+func TestSkipIsGatedOnTwoDifferentStimuli(t *testing.T) {
+	model, store := newModelWith(t, readingUnits())
+
+	updated, _ := model.handleKey(tea.KeyMsg{Type: tea.KeyCtrlS})
+	blocked := updated.(Model)
+	if blocked.pos.step != model.pos.step {
+		t.Fatal("a concept with no evidence must not be skippable")
+	}
+	if blocked.err == "" {
+		t.Fatal("a refused skip must say why")
+	}
+
+	// Two production demonstrations on the same stimulus still do not count.
+	for i := 0; i < 2; i++ {
+		if err := store.Record(profile.Evidence{
+			ConceptID: "c1", Dimension: profile.Production, Correct: true,
+			StimulusID: "same", Source: "typed", At: time.Now(),
+		}); err != nil {
+			t.Fatalf("Record: %v", err)
+		}
+	}
+	updated, _ = model.handleKey(tea.KeyMsg{Type: tea.KeyCtrlS})
+	if updated.(Model).pos.step != model.pos.step {
+		t.Fatal("one repeated stimulus must not unlock skipping")
+	}
+
+	if err := store.Record(profile.Evidence{
+		ConceptID: "c1", Dimension: profile.Production, Correct: true,
+		StimulusID: "different", Source: "typed", At: time.Now(),
+	}); err != nil {
+		t.Fatalf("Record: %v", err)
+	}
+	updated, _ = model.handleKey(tea.KeyMsg{Type: tea.KeyCtrlS})
+	if updated.(Model).pos == model.pos && updated.(Model).screen != screenDone {
+		t.Fatal("two different stimuli should unlock skipping")
+	}
+}
+
+func TestProvisionalLLMEvidenceCannotUnlockSkipping(t *testing.T) {
+	model, store := newModelWith(t, readingUnits())
+
+	for _, stimulus := range []string{"one", "two"} {
+		if err := store.Record(profile.Evidence{
+			ConceptID: "c1", Dimension: profile.Production, Correct: true,
+			StimulusID: stimulus, Source: "llm", At: time.Now(),
+		}); err != nil {
+			t.Fatalf("Record: %v", err)
+		}
+	}
+
+	updated, _ := model.handleKey(tea.KeyMsg{Type: tea.KeyCtrlS})
+	if updated.(Model).pos.step != model.pos.step {
+		t.Fatal("provisional LLM evidence must not clear the skip gate")
+	}
+}
+
+func TestDueRetentionCheckIsAdministeredAndClearsMasteryGate(t *testing.T) {
+	store, err := profile.Open(filepath.Join(t.TempDir(), "profile.db"))
+	if err != nil {
+		t.Fatalf("Open: %v", err)
+	}
+	defer store.Close()
+
+	now := time.Now()
+	for _, stimulus := range []string{"s1", "s2"} {
+		if err := store.Record(profile.Evidence{
+			ConceptID: "c1", Dimension: profile.Production, Correct: true,
+			StimulusID: stimulus, Source: "typed", At: now,
+		}); err != nil {
+			t.Fatalf("Record: %v", err)
+		}
+	}
+	if err := store.Record(profile.Evidence{
+		ConceptID: "c1", Dimension: profile.Generalization, Correct: true,
+		StimulusID: "s2", Source: "typed", At: now,
+	}); err != nil {
+		t.Fatalf("Record: %v", err)
+	}
+	// A retention check whose window has already passed.
+	if err := store.ScheduleReview(schedule.RetentionCard("c1", now.Add(-72*time.Hour))); err != nil {
+		t.Fatalf("ScheduleReview: %v", err)
+	}
+	if mastered, _, _ := store.Mastered("c1"); mastered {
+		t.Fatal("mastery must be blocked before the retention check")
+	}
+
+	model := New(&session.Runner{Store: store}, readingUnits())
+	if model.retentionStep == nil {
+		t.Fatal("a due retention check should be administered at session start")
+	}
+	if model.retentionConcept != "c1" {
+		t.Fatalf("retention concept = %q, want c1", model.retentionConcept)
+	}
+
+	updated, _ := model.submit("mizu o kudasai")
+	after := updated.(Model)
+	if !after.correct {
+		t.Fatalf("the retention answer should be correct, got %q", after.feedback)
+	}
+
+	mastered, missing, err := store.Mastered("c1")
+	if err != nil {
+		t.Fatalf("Mastered: %v", err)
+	}
+	if !mastered {
+		t.Fatalf("passing the retention check should clear mastery, missing=%v", missing)
+	}
+	if due, _ := store.DueRetention(time.Now()); len(due) != 0 {
+		t.Fatalf("the retention check should not stay due: %+v", due)
 	}
 }

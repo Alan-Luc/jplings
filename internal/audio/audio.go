@@ -1,7 +1,3 @@
-// Package audio records push-to-talk microphone audio and plays synthesized speech.
-//
-// Both are thin wrappers over the host tools the doctor checks for, so the rest of
-// the app never shells out directly.
 package audio
 
 import (
@@ -13,13 +9,10 @@ import (
 )
 
 type Recorder struct {
-	// Binary defaults to pw-record.
-	Binary string
-	// SampleRate defaults to 16000, which is what Whisper wants.
+	Binary     string
 	SampleRate int
 }
 
-// Record captures audio until ctx is cancelled, which is how push-to-talk ends a turn.
 func (r Recorder) Record(ctx context.Context) ([]byte, error) {
 	binary := r.Binary
 	if binary == "" {
@@ -44,8 +37,7 @@ func (r Recorder) Record(ctx context.Context) ([]byte, error) {
 		return nil, fmt.Errorf("start %s: %w", binary, err)
 	}
 
-	// Ending a turn interrupts rather than kills the recorder: SIGINT lets pw-record
-	// finalise the WAV header, while a hard kill can leave the file truncated.
+	// Interrupt, never kill: SIGINT lets pw-record finalise the WAV header, a kill truncates it.
 	done := make(chan struct{})
 	go func() {
 		select {
@@ -73,12 +65,9 @@ func (r Recorder) Record(ctx context.Context) ([]byte, error) {
 }
 
 type Player struct {
-	// Binary defaults to mpv.
 	Binary string
 }
 
-// Play writes the audio to a temporary file and plays it. mpv is used rather than a
-// library so playback never blocks the TUI's event loop.
 func (p Player) Play(wav []byte) error {
 	binary := p.Binary
 	if binary == "" {

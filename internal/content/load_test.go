@@ -166,8 +166,6 @@ func TestLoadRejectsDuplicateUnitIDsAcrossFiles(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Load: %v", err)
 	}
-	// Two files declaring the same unit id must be caught before the engine
-	// sees two profiles' worth of progress pointing at one id.
 	write("a.yaml")
 	write("b.yaml")
 	_, issues, err = Load(dir)
@@ -185,8 +183,6 @@ func TestLoadMissingPathIsHardError(t *testing.T) {
 	}
 }
 
-// TestRepoContentLints is the build check D7 asks for: authored content must stay
-// schema-valid, so content errors break the build rather than a session.
 func TestRepoContentLints(t *testing.T) {
 	_, issues, err := Load(filepath.Join("..", "..", "content"))
 	if err != nil {

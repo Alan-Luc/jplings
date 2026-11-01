@@ -1,5 +1,3 @@
-// Package session runs a learning session: grade one step, record what it proved,
-// schedule what comes next (R1, R5, R6).
 package session
 
 import (
@@ -20,11 +18,9 @@ type Runner struct {
 	Store     *profile.Store
 	Client    speech.Client
 	Evaluator eval.Evaluator
-	// Now is injectable so retention and review scheduling are testable.
-	Now   func() time.Time
-	Voice string
-	// Language defaults to ja.
-	Language string
+	Now       func() time.Time
+	Voice     string
+	Language  string
 }
 
 func (r *Runner) clock() time.Time {
@@ -44,17 +40,12 @@ func (r *Runner) language() string {
 }
 
 type Result struct {
-	Outcome grade.Outcome
-	// Ungraded means no grader could score it and it was saved for later.
-	Ungraded bool
-	// MintedEvidence is true only when real credit was recorded.
+	Outcome        grade.Outcome
+	Ungraded       bool
 	MintedEvidence bool
-	// AIGraded marks feedback that came from the evaluator.
-	AIGraded bool
+	AIGraded       bool
 }
 
-// Submit grades one answer and records its consequences. It never auto-passes: a
-// grading failure saves the response for the pending queue instead.
 func (r *Runner) Submit(ctx context.Context, step *content.Step, answer string) (Result, error) {
 	at := r.clock()
 
@@ -78,7 +69,6 @@ func (r *Runner) deterministic(step *content.Step, answer string) grade.Outcome 
 		return grade.Meaning(step, answer)
 	}
 	if step.Kind == content.Speaking {
-		// A confirmed transcript: word identity is graded, pronunciation is not.
 		return grade.Spoken(step, answer)
 	}
 	return grade.Written(step, answer)
@@ -91,8 +81,6 @@ func evidenceSource(step *content.Step) string {
 	return "typed"
 }
 
-// submitFreeForm grades open-ended production through the evaluator, and saves the
-// response ungraded if that is unavailable for any reason.
 func (r *Runner) submitFreeForm(ctx context.Context, step *content.Step, answer string, at time.Time) (Result, error) {
 	if r.Evaluator == nil {
 		return r.saveUngraded(step, answer, at, "no evaluator configured")
@@ -104,8 +92,6 @@ func (r *Runner) submitFreeForm(ctx context.Context, step *content.Step, answer 
 	}
 
 	outcome := grade.Outcome{
-		// Understandable meaning plus usable grammar is the bar for credit; the two
-		// dimensions stay independent so a right idea with broken grammar is not a pass.
 		Correct:     rubric.Meaning >= 1 && rubric.Grammar >= 1,
 		Explanation: fmt.Sprintf("%s (AI-graded: meaning %d, grammar %d, naturalness %d, register %d)", rubric.Feedback, rubric.Meaning, rubric.Grammar, rubric.Naturalness, rubric.Register),
 	}
@@ -169,8 +155,6 @@ func (r *Runner) record(step *content.Step, outcome grade.Outcome, at time.Time,
 	return nil
 }
 
-// mintGeneralization treats production on a *different* stimulus as evidence of
-// transfer. Repeating one sentence teaches nothing new, so it never counts.
 func (r *Runner) mintGeneralization(conceptID, stimulusID string, at time.Time, source string) error {
 	evidence, err := r.Store.Evidence(conceptID)
 	if err != nil {
@@ -192,8 +176,6 @@ func (r *Runner) mintGeneralization(conceptID, stimulusID string, at time.Time, 
 	return nil
 }
 
-// scheduleRetentionIfReady queues the delayed, different-context check once both
-// production and generalization are demonstrated (R6).
 func (r *Runner) scheduleRetentionIfReady(conceptID string, at time.Time) error {
 	mastered, missing, err := r.Store.Mastered(conceptID)
 	if err != nil {
@@ -202,8 +184,6 @@ func (r *Runner) scheduleRetentionIfReady(conceptID string, at time.Time) error 
 	if mastered {
 		return nil
 	}
-	// Only production and generalization matter for scheduling; retention is what
-	// this call is about to add.
 	for _, dimension := range missing {
 		if dimension == profile.Retention {
 			continue
@@ -218,7 +198,6 @@ func (r *Runner) scheduleRetentionIfReady(conceptID string, at time.Time) error 
 	return r.Store.ScheduleReview(schedule.RetentionCard(conceptID, at))
 }
 
-// Speak delivers a prompt line, degrading to the written prompt when audio fails.
 func (r *Runner) Speak(ctx context.Context, text string, play func([]byte) error) (speech.SpeakResult, error) {
 	if r.Client == nil {
 		return speech.SpeakResult{Degraded: true}, nil
@@ -226,9 +205,6 @@ func (r *Runner) Speak(ctx context.Context, text string, play func([]byte) error
 	return speech.Speak(ctx, r.Client, text, r.language(), r.Voice, play)
 }
 
-// GradeConversationTurn records the outcome of one scripted turn. Only a matched
-// turn mints evidence: a tolerated turn is understood but warned about, and a
-// mismatch teaches nothing (D4).
 func (r *Runner) GradeConversationTurn(step *content.Step, response convo.Response) (Result, error) {
 	outcome := grade.Outcome{Explanation: step.Explanation}
 	switch response.Verdict {
@@ -242,6 +218,34 @@ func (r *Runner) GradeConversationTurn(step *content.Step, response convo.Respon
 
 	if err := r.record(step, outcome, r.clock(), "spoken"); err != nil {
 		return Result{Outcome: outcome}, err
+	}
+	return Result{Outcome: outcome, MintedEvidence: outcome.Correct}, nil
+}
+func (r *Runner) MaySkip(conceptID string) (bool, error) { return r.Store.CanSkip(conceptID) }
+func (r *Runner) DueRetention() ([]schedule.Card, error) {
+	return r.Store.DueRetention(r.clock())
+}
+func (r *Runner) GradeRetention(step *content.Step, answer string) (Result, error) {
+	at := r.clock()
+	outcome := r.deterministic(step, answer)
+
+	for _, conceptID := range step.Concepts {
+		if !outcome.Correct {
+			if err := r.Store.AddError(conceptID, outcome.Explanation, at); err != nil {
+				return Result{Outcome: outcome}, err
+			}
+			continue
+		}
+		err := r.Store.Record(profile.Evidence{
+			ConceptID: conceptID, Dimension: profile.Retention, Correct: true,
+			StimulusID: step.ID, Source: evidenceSource(step), At: at,
+		})
+		if err != nil {
+			return Result{Outcome: outcome}, err
+		}
+		if err := r.Store.CompleteRetention(conceptID); err != nil {
+			return Result{Outcome: outcome}, err
+		}
 	}
 	return Result{Outcome: outcome, MintedEvidence: outcome.Correct}, nil
 }

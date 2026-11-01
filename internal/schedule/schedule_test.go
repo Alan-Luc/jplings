@@ -28,7 +28,6 @@ func TestSecondGoodReviewSchedulesSixDays(t *testing.T) {
 	}
 }
 
-// A wrong answer resets the streak, which is the whole point of an honest schedule.
 func TestAgainResetsProgress(t *testing.T) {
 	card := Review(Initial("c", now), Good, now)
 	card = Review(card, Good, now)
@@ -62,7 +61,6 @@ func TestDueFiltersByClock(t *testing.T) {
 	}
 }
 
-// The retention check must be a different day than the teaching session.
 func TestRetentionDelayLandsInsideThePlanWindow(t *testing.T) {
 	due := RetentionDue(now)
 	if due.Before(now.Add(48*time.Hour)) || due.After(now.Add(72*time.Hour)) {

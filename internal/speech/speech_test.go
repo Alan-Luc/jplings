@@ -24,8 +24,6 @@ func silence(samples int) []byte {
 	return EncodeWAV(make([]int16, samples), 24000)
 }
 
-// The plan's central speech-safety claim, pinned as a test: silence must be caught
-// from the waveform, because the recogniser will happily invent text for it.
 func TestHasSpeechRejectsSilence(t *testing.T) {
 	hasSpeech, rms, err := HasSpeech(silence(24000), SilenceFloor)
 	if err != nil {
@@ -52,7 +50,6 @@ func TestHasSpeechRejectsNonPCM(t *testing.T) {
 	}
 }
 
-// Two consecutive denials must offer the fallback rather than trapping the learner.
 func TestTwoDenialsOfferFallback(t *testing.T) {
 	var turn Turn
 
@@ -114,8 +111,6 @@ func TestSpeakSucceedsWithoutDegrading(t *testing.T) {
 	}
 }
 
-// The HTTP client must read confidence out of the real response shape, so the
-// low-confidence branch is driven by the server rather than assumed.
 func TestHTTPClientTranscribeReadsConfidence(t *testing.T) {
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if err := r.ParseMultipartForm(1 << 20); err != nil {

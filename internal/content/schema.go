@@ -1,7 +1,3 @@
-// Package content defines the declarative curriculum schema and its validation.
-//
-// Content files are read-only to the engine: they declare units, lessons and
-// steps, and the engine owns no pedagogy (D7, R2).
 package content
 
 import (
@@ -9,7 +5,6 @@ import (
 	"strings"
 )
 
-// Kind is an exercise kind (R3).
 type Kind string
 
 const (
@@ -27,45 +22,34 @@ var kinds = map[Kind]bool{
 	Interpretation: true, Listening: true, Speaking: true, Conversation: true,
 }
 
-// Text is an authored Japanese string. Kana and romaji are always authored, never
-// generated: the romaji rung of the modality ladder is content, not romanization (D7).
 type Text struct {
 	Kanji  string `yaml:"kanji,omitempty"`
 	Kana   string `yaml:"kana"`
 	Romaji string `yaml:"romaji"`
 }
 
-// OffTarget is valid Japanese that answers a different question, such as 飲めない
-// for "negative of 飲む". It earns no credit and is reported as a meaning error (D3).
 type OffTarget struct {
 	Text    Text   `yaml:"text"`
 	Meaning string `yaml:"meaning"`
 }
 
-// Turn is one line of a scripted conversation (D4).
 type Turn struct {
-	Speaker string   `yaml:"speaker"` // "npc" or "learner"
+	Speaker string   `yaml:"speaker"`
 	Line    *Text    `yaml:"line,omitempty"`
 	Accept  []Text   `yaml:"accept,omitempty"`
 	Hints   []string `yaml:"hints,omitempty"`
 }
 
-// Scenario is a scripted multi-turn conversation with bounded variation (D4).
 type Scenario struct {
 	Turns []Turn `yaml:"turns"`
 }
 
-// Step is one exercise. The fields are a union rather than one type per kind so
-// that lint can report every authoring mistake at once; Validate enforces the
-// fields each kind actually requires.
 type Step struct {
-	ID       string   `yaml:"id"`
-	Kind     Kind     `yaml:"kind"`
-	Concepts []string `yaml:"concepts,omitempty"`
-	Prompt   string   `yaml:"prompt,omitempty"`
-	Target   *Text    `yaml:"target,omitempty"`
-	// Audio overrides the synthesized prompt. Listening exercises synthesize their
-	// target at runtime unless a pre-recorded clip is supplied here.
+	ID               string       `yaml:"id"`
+	Kind             Kind         `yaml:"kind"`
+	Concepts         []string     `yaml:"concepts,omitempty"`
+	Prompt           string       `yaml:"prompt,omitempty"`
+	Target           *Text        `yaml:"target,omitempty"`
 	Audio            string       `yaml:"audio,omitempty"`
 	AudioSource      string       `yaml:"audio_source,omitempty"`
 	AudioLicense     string       `yaml:"audio_license,omitempty"`
@@ -79,8 +63,6 @@ type Step struct {
 	Source           *Attribution `yaml:"source,omitempty"`
 }
 
-// Attribution records where a step's language data came from, so a licensed corpus
-// is credited at the point of use (D9).
 type Attribution struct {
 	Corpus      string `yaml:"corpus"`
 	ID          string `yaml:"id,omitempty"`
@@ -88,20 +70,17 @@ type Attribution struct {
 	Attribution string `yaml:"attribution"`
 }
 
-// Concept is a trackable idea: the unit of evidence and mastery (R5, R6).
 type Concept struct {
 	ID    string `yaml:"id"`
 	Label string `yaml:"label,omitempty"`
 }
 
-// Lesson groups steps that teach one thread.
 type Lesson struct {
 	ID    string `yaml:"id"`
 	Title string `yaml:"title"`
 	Steps []Step `yaml:"steps"`
 }
 
-// Unit is one content file's top-level curriculum piece.
 type Unit struct {
 	ID       string    `yaml:"id"`
 	Title    string    `yaml:"title"`
@@ -109,7 +88,6 @@ type Unit struct {
 	Lessons  []Lesson  `yaml:"lessons"`
 }
 
-// Issue is one lint finding, anchored to the smallest path that names it.
 type Issue struct {
 	Path string
 	Msg  string
@@ -117,7 +95,6 @@ type Issue struct {
 
 func (i Issue) String() string { return i.Path + ": " + i.Msg }
 
-// Validate reports every schema violation in the unit.
 func (u *Unit) Validate() []Issue {
 	var issues []Issue
 	add := func(path, format string, args ...any) {
@@ -209,8 +186,6 @@ func (s *Step) validate(where string, concepts map[string]bool, add func(path, f
 	if s.Target != nil {
 		s.Target.validate(path(where, "target"), add)
 	}
-	// Authentic clips must carry their provenance: an unlicensed clip may never be
-	// reused outside its source (handoff §8A and the §9 Q9 disposition).
 	if s.AudioSource != "" || s.AudioLicense != "" || s.AudioAttribution != "" {
 		if s.Audio == "" {
 			add(where, "audio provenance given without an audio file")
@@ -264,9 +239,6 @@ func (s *Step) validate(where string, concepts map[string]bool, add func(path, f
 		s.requireExplanation(where, add)
 	case Speaking:
 		s.requirePrompt(where, add)
-		// A spoken turn is graded deterministically from accepted answers
-		// (numbers, prices) or by the rubric evaluator (free form) — exactly one,
-		// so grading responsibility is never ambiguous (D3, D7).
 		switch {
 		case len(s.Accept) > 0 && s.Rubric != "":
 			add(where, "speaking has both accept and rubric; pick one grading path")
@@ -347,8 +319,6 @@ func (s *Step) requireExplanation(where string, add func(string, string, ...any)
 	}
 }
 
-// path joins a lesson/step locator with a field, skipping empties, so findings
-// point at the smallest thing that names them.
 func path(base, field string) string {
 	switch {
 	case base == "":
