@@ -14,6 +14,10 @@ concepts:
     label: が — identifies who
   - id: mo-also
     label: も — also, replacing は or が
+  - id: question-ka
+    label: か — turns a statement into a question
+  - id: repair
+    label: ききかえし — asking someone to repeat or slow down
 lessons:
   - id: u1-l1
     title: です and じゃないです
@@ -505,3 +509,363 @@ lessons:
         explanation: >-
           For example: 私は学生です。田中さんも学生です。The second sentence uses も in
           place of は to add Tanaka to the same statement.
+
+  - id: u1-l3
+    title: か questions and ききかえし
+    objective: >-
+      Ask a question with か, ask who with 誰が, and ask someone to repeat or slow
+      down when you miss something.
+    anchors:
+      - kanji: 誰ですか
+        kana: だれですか
+        romaji: dare desu ka
+      - kanji: もう一度
+        kana: もういちど
+        romaji: mou ichido
+      - kanji: ゆっくり
+        kana: ゆっくり
+        romaji: yukkuri
+    teach:
+      - prose: >-
+          か at the end of a polite sentence turns it into a question. 学生です is
+          "I am a student"; 学生ですか is "Are you a student?". Written Japanese does
+          not need a question mark when か is there.
+        examples:
+          - kanji: 学生ですか
+            kana: がくせいですか
+            romaji: gakusei desu ka
+          - kanji: 田中さんは先生ですか
+            kana: たなかさんはせんせいですか
+            romaji: tanaka san wa sensei desu ka
+      - prose: >-
+          誰 asks "who". When 誰 is the subject it takes が: 誰が学生ですか asks "who
+          is the student?". 先生は誰ですか puts 誰 after the topic and asks "who is the
+          teacher?". 誰ですか by itself means "Who is it?".
+        examples:
+          - kanji: 誰が学生ですか
+            kana: だれががくせいですか
+            romaji: dare ga gakusei desu ka
+          - kanji: 先生は誰ですか
+            kana: せんせいはだれですか
+            romaji: sensei wa dare desu ka
+      - prose: >-
+          The four repair phrases carry most of a beginner's recovery. すみません
+          gets attention, もう一度お願いします asks for a repeat, ゆっくりお願いします asks
+          for slower speech, and わかりません says you do not understand.
+        examples:
+          - kanji: すみません、もう一度お願いします
+            kana: すみません、もういちどおねがいします
+            romaji: sumimasen, mou ichido onegai shimasu
+          - kanji: ゆっくりお願いします
+            kana: ゆっくりおねがいします
+            romaji: yukkuri onegai shimasu
+    steps:
+      - id: u1-l3-1
+        kind: interpretation
+        concepts: [question-ka, drop-watashi, desu-copula]
+        prompt: A new classmate looks at you and asks 学生ですか. What are they asking?
+        target:
+          kanji: 学生ですか
+          kana: がくせいですか
+          romaji: gakusei desu ka
+        accept_meanings:
+          - Are you a student?
+        hint: The final か is the part that makes this a question.
+        explanation: >-
+          か turns 学生です into a question. In a self-introduction the subject is
+          understood, so 学生ですか asks about you: "Are you a student?".
+      - id: u1-l3-2
+        kind: construction
+        concepts: [question-ka, wa-topic, desu-copula]
+        prompt: Ask whether Tanaka is a teacher.
+        accept:
+          - kanji: 田中さんは先生ですか
+            kana: たなかさんはせんせいですか
+            romaji: tanaka san wa sensei desu ka
+        off_target:
+          - text:
+              kanji: 田中さんは先生です
+              kana: たなかさんはせんせいです
+              romaji: tanaka san wa sensei desu
+            meaning: it states that Tanaka is a teacher instead of asking
+        hint: Keep the statement 田中さんは先生です and add the question particle.
+        explanation: >-
+          か at the end asks the question: 田中さんは先生ですか. Without か the sentence
+          only states that Tanaka is a teacher.
+      - id: u1-l3-3
+        kind: completion
+        concepts: [question-ka]
+        prompt: Fill the question particle — "Is Tanaka a student?"
+        target:
+          kanji: 田中さんは学生です＿
+          kana: たなかさんはがくせいです＿
+          romaji: tanaka san wa gakusei desu _
+        accept:
+          - kanji: か
+            kana: か
+            romaji: ka
+        hint: A polite statement becomes a question with one particle at the end.
+        explanation: >-
+          か closes the question: 田中さんは学生ですか. です alone leaves it as a
+          statement, so the classmate would not know you were asking.
+      - id: u1-l3-4
+        kind: interpretation
+        concepts: [question-ka, ga-subject]
+        prompt: What does this mean?
+        target:
+          kanji: 誰が学生ですか
+          kana: だれががくせいですか
+          romaji: dare ga gakusei desu ka
+        accept_meanings:
+          - Who is the student?
+          - Who is a student?
+        hint: 誰 asks "who", and が marks the person being identified.
+        explanation: >-
+          誰が学生ですか asks which person is the student. が is the particle that
+          goes with the question word 誰.
+      - id: u1-l3-5
+        kind: construction
+        concepts: [question-ka, ga-subject]
+        prompt: Ask who the teacher is.
+        accept:
+          - kanji: 誰が先生ですか
+            kana: だれがせんせいですか
+            romaji: dare ga sensei desu ka
+        hint: Put 誰 first, mark it with が, and close with ですか.
+        explanation: >-
+          誰が先生ですか asks "who is the teacher?". 誰は先生ですか is not how the
+          question is built, because question words take が.
+      - id: u1-l3-6
+        kind: transformation
+        concepts: [question-ka]
+        prompt: Make "Tanaka is a student" into "Is Tanaka a student?"
+        target:
+          kanji: 田中さんは学生です
+          kana: たなかさんはがくせいです
+          romaji: tanaka san wa gakusei desu
+        accept:
+          - kanji: 田中さんは学生ですか
+            kana: たなかさんはがくせいですか
+            romaji: tanaka san wa gakusei desu ka
+        hint: The words stay the same; add the particle that asks a question.
+        explanation: >-
+          Add か after です: 田中さんは学生ですか. Nothing else changes, because か only
+          turns the statement into a question.
+      - id: u1-l3-7
+        kind: construction
+        concepts: [question-ka]
+        prompt: >-
+          A classmate wrote 田中さんは学生です to ask whether Tanaka is a student. Write
+          what they should have written.
+        accept:
+          - kanji: 田中さんは学生ですか
+            kana: たなかさんはがくせいですか
+            romaji: tanaka san wa gakusei desu ka
+        off_target:
+          - text:
+              kanji: 田中さんは学生です
+              kana: たなかさんはがくせいです
+              romaji: tanaka san wa gakusei desu
+            meaning: it states that Tanaka is a student instead of asking
+        hint: A statement needs one extra particle before it can ask a question.
+        explanation: >-
+          です states; ですか asks. Adding か gives 田中さんは学生ですか, which is the
+          question the classmate meant.
+      - id: u1-l3-8
+        kind: interpretation
+        concepts: [repair]
+        prompt: What does this mean?
+        target:
+          kanji: もう一度お願いします
+          kana: もういちどおねがいします
+          romaji: mou ichido onegai shimasu
+        accept_meanings:
+          - One more time, please.
+          - Once more, please.
+          - Please say that again.
+        hint: もう一度 means "one more time".
+        explanation: >-
+          もう一度お願いします asks the other person to repeat what they said. It is
+          the polite way to recover when you missed a word.
+      - id: u1-l3-9
+        kind: construction
+        concepts: [repair]
+        prompt: Ask the person to speak more slowly.
+        accept:
+          - kanji: ゆっくりお願いします
+            kana: ゆっくりおねがいします
+            romaji: yukkuri onegai shimasu
+        hint: ゆっくり is "slowly"; お願いします makes it a polite request.
+        explanation: >-
+          ゆっくりお願いします asks for slower speech. もう一度お願いします asks for a
+          repeat instead, which is a different request.
+      - id: u1-l3-10
+        kind: construction
+        concepts: [repair]
+        prompt: You did not understand. Say so politely.
+        accept:
+          - kanji: わかりません
+            kana: わかりません
+            romaji: wakarimasen
+        hint: The polite negative of わかります is わかりません.
+        explanation: >-
+          わかりません means "I do not understand". It is honest and polite, and it
+          gives the other person a chance to explain again.
+      - id: u1-l3-11
+        kind: listening
+        concepts: [repair]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: すみません、もう一度お願いします
+          kana: すみません、もういちどおねがいします
+          romaji: sumimasen, mou ichido onegai shimasu
+        accept_meanings:
+          - Excuse me, one more time, please.
+          - Excuse me, please say that again.
+        hint: すみません gets attention before the request to repeat.
+        explanation: >-
+          すみません、もう一度お願いします is the full repair: excuse me, please say that
+          again. すみません alone gets attention; もう一度 carries the repeat.
+      - id: u1-l3-12
+        kind: construction
+        concepts: [repair]
+        prompt: >-
+          A classmate answers ゆっくりお願いします, but you need them to repeat what they
+          said, not slow down. Write what you should say.
+        accept:
+          - kanji: もう一度お願いします
+            kana: もういちどおねがいします
+            romaji: mou ichido onegai shimasu
+        hint: Ask for the same words again rather than for slower speech.
+        explanation: >-
+          もう一度お願いします asks for a repeat. ゆっくりお願いします would ask them to
+          slow down, which is not what you need here.
+
+  - id: u1-l4
+    title: はじめまして — putting it together
+    objective: >-
+      Introduce yourself, ask a question back, and recover when you miss something.
+    teach:
+      - prose: >-
+          This lesson adds no new grammar. Use です and じゃないです to introduce
+          yourself, か to ask a question, and ききかえし when the answer is too fast.
+          Nothing is shown before you answer.
+    steps:
+      - id: u1-l4-1
+        kind: conversation
+        concepts: [desu-copula, ja-nai-desu, drop-watashi, wa-topic, mo-also, question-ka, repair]
+        prompt: >-
+          Meet another student at a language exchange. Introduce yourself, answer
+          their questions, and ask for a repeat when you miss something.
+        scenario:
+          turns:
+            - speaker: npc
+              line:
+                kanji: はじめまして。田中です。学生ですか。
+                kana: はじめまして。たなかです。がくせいですか。
+                romaji: hajimemashite. tanaka desu. gakusei desu ka
+            - speaker: learner
+              accept:
+                - kanji: はい、学生です。
+                  kana: はい、がくせいです。
+                  romaji: hai, gakusei desu
+                - kanji: 学生です。
+                  kana: がくせいです。
+                  romaji: gakusei desu
+                - kanji: はい、私は学生です。
+                  kana: はい、わたしはがくせいです。
+                  romaji: hai, watashi wa gakusei desu
+            - speaker: npc
+              line:
+                kanji: 私も学生です。お名前は何ですか。
+                kana: わたしもがくせいです。おなまえはなんですか。
+                romaji: watashi mo gakusei desu. onamae wa nan desu ka
+            - speaker: learner
+              accept:
+                - kanji: リーです。
+                  kana: りーです。
+                  romaji: rii desu
+                - kanji: 私はリーです。
+                  kana: わたしはりーです。
+                  romaji: watashi wa rii desu
+                - kanji: 名前はリーです。
+                  kana: なまえはりーです。
+                  romaji: namae wa rii desu
+            - speaker: npc
+              line:
+                kanji: リーさんも学生ですか。
+                kana: りーさんもがくせいですか。
+                romaji: rii san mo gakusei desu ka
+            - speaker: learner
+              accept:
+                - kanji: はい、私も学生です。
+                  kana: はい、わたしもがくせいです。
+                  romaji: hai, watashi mo gakusei desu
+                - kanji: はい、学生です。
+                  kana: はい、がくせいです。
+                  romaji: hai, gakusei desu
+                - kanji: 学生です。
+                  kana: がくせいです。
+                  romaji: gakusei desu
+            - speaker: npc
+              line:
+                kanji: リーさんは先生ですか。
+                kana: りーさんはせんせいですか。
+                romaji: rii san wa sensei desu ka
+            - speaker: learner
+              accept:
+                - kanji: いいえ、先生じゃないです。学生です。
+                  kana: いいえ、せんせいじゃないです。がくせいです。
+                  romaji: iie, sensei ja nai desu. gakusei desu
+                - kanji: いいえ、学生です。
+                  kana: いいえ、がくせいです。
+                  romaji: iie, gakusei desu
+            - speaker: npc
+              line:
+                kanji: そうですか。じゃあ、リーさんは何歳ですか。
+                kana: そうですか。じゃあ、りーさんはなんさいですか。
+                romaji: sou desu ka. jaa, rii san wa nansai desu ka
+            - speaker: learner
+              accept:
+                - kanji: すみません、もう一度お願いします。
+                  kana: すみません、もういちどおねがいします。
+                  romaji: sumimasen, mou ichido onegai shimasu
+                - kanji: すみません、ゆっくりお願いします。
+                  kana: すみません、ゆっくりおねがいします。
+                  romaji: sumimasen, yukkuri onegai shimasu
+                - kanji: すみません、わかりません。
+                  kana: すみません、わかりません。
+                  romaji: sumimasen, wakarimasen
+            - speaker: npc
+              line:
+                kanji: 何歳ですか。
+                kana: なんさいですか。
+                romaji: nansai desu ka
+            - speaker: learner
+              accept:
+                - kanji: わかりません。すみません。
+                  kana: わかりません。すみません。
+                  romaji: wakarimasen. sumimasen
+                - kanji: すみません、わかりません。
+                  kana: すみません、わかりません。
+                  romaji: sumimasen, wakarimasen
+            - speaker: npc
+              line:
+                kanji: あ、そうですか。大丈夫です。また今度。
+                kana: あ、そうですか。だいじょうぶです。またこんど。
+                romaji: a, sou desu ka. daijoubu desu. mata kondo
+        explanation: >-
+          The conversation asks you to introduce yourself, use も, answer a negative
+          question with じゃないです, and repair the breakdown when 何歳ですか comes too
+          fast. Repair keeps the conversation alive even when you cannot answer.
+      - id: u1-l4-2
+        kind: speaking
+        concepts: [desu-copula, drop-watashi, question-ka, repair]
+        prompt: >-
+          Introduce yourself to a new classmate in three sentences: give your name,
+          say whether you are a student, and ask them one question. If their answer
+          is too fast, ask them to repeat it. Speak aloud.
+        rubric: >-
+          Does it introduce you with です, ask a real question with か, and use a
+          repair phrase if the answer breaks down? Judge meaning, grammar,
+          naturalness and register separately. There is no model answer.

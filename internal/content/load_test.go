@@ -286,13 +286,39 @@ lessons:
     steps:
       - id: s1
         kind: construction
-        concepts: [c1]
+        concepts: [c1, wa]
         prompt: Say it.
         hint: Think about the particle.
         accept:
           - kana: すしはたべません
             romaji: sushi wa tabemasen
             concepts: [wa]
+        explanation: because
+      - id: s2
+        kind: interpretation
+        concepts: [c1, wa]
+        prompt: What does it mean?
+        target:
+          kana: すしはたべません
+          romaji: sushi wa tabemasen
+        accept_meanings:
+          - I do not eat sushi.
+        explanation: because
+      - id: s3
+        kind: construction
+        concepts: [c1, wa]
+        prompt: Say it.
+        accept:
+          - kana: すしはたべません
+            romaji: sushi wa tabemasen
+        explanation: because
+      - id: s4
+        kind: construction
+        concepts: [c1, wa]
+        prompt: Say it.
+        accept:
+          - kana: すしはたべません
+            romaji: sushi wa tabemasen
         explanation: because
 `
 

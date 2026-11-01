@@ -1,0 +1,676 @@
+id: unit-2
+title: 何が好きですか — likes, dislikes and wants
+taught: true
+concepts:
+  - id: suki-kirai-ga
+    label: 好き・きらい + が — what you like and dislike
+  - id: hoshii-ga
+    label: ほしい + が — wanting a thing
+  - id: wa-vs-ga-suki
+    label: は vs が with すき — neutral statement or topic
+  - id: degree-adverbs
+    label: とても・あまり・ぜんぜん — how much
+  - id: no-link
+    label: の — linking two nouns
+lessons:
+  - id: u2-l1
+    title: 好き and きらい
+    objective: >-
+      Say what you like and dislike with 好き/きらい + が, ask whether someone likes
+      something, and fix the common を error.
+    anchors:
+      - kanji: 好き
+        kana: すき
+        romaji: suki
+      - kanji: 大好き
+        kana: だいすき
+        romaji: daisuki
+      - kanji: 何が好き
+        kana: なにがすき
+        romaji: nani ga suki
+    teach:
+      - prose: >-
+          好き and きらい describe what you like and dislike, and the thing itself takes
+          が: 音楽が好きです. を marks the object of an action, but 好き is not an
+          action, so 音楽を好きです is wrong.
+        examples:
+          - kanji: 音楽が好きです
+            kana: おんがくがすきです
+            romaji: ongaku ga suki desu
+          - kanji: コーヒーが好きです
+            kana: コーヒーがすきです
+            romaji: koohii ga suki desu
+      - prose: >-
+          The polite negative is 好きじゃないです and the question is 好きですか.
+          きらい is a blunt word; あまり好きじゃないです is the softer way to say you do
+          not like something.
+        examples:
+          - kanji: 田中さんはスポーツがきらいです
+            kana: たなかさんはスポーツがきらいです
+            romaji: tanaka san wa supootsu ga kirai desu
+          - kanji: 音楽が好きですか
+            kana: おんがくがすきですか
+            romaji: ongaku ga suki desu ka
+    steps:
+      - id: u2-l1-1
+        kind: interpretation
+        concepts: [suki-kirai-ga]
+        prompt: >-
+          Two classmates write 音楽が好きです and 音楽を好きです. Only one is correct.
+          What does the correct one mean?
+        target:
+          kanji: 音楽が好きです
+          kana: おんがくがすきです
+          romaji: ongaku ga suki desu
+        accept_meanings:
+          - I like music.
+          - I like music
+        hint: The thing you like is marked with the same particle that identifies it.
+        explanation: >-
+          が marks 音楽 as the thing liked: 音楽が好きです. を would mark music as the
+          object of an action, so 音楽を好きです is the wrong particle.
+      - id: u2-l1-2
+        kind: construction
+        concepts: [suki-kirai-ga]
+        prompt: >-
+          A classmate writes 音楽を好きです. Write the sentence they meant.
+        accept:
+          - kanji: 音楽が好きです
+            kana: おんがくがすきです
+            romaji: ongaku ga suki desu
+        hint: Replace only the particle before 好き.
+        explanation: >-
+          好き takes が, not を: 音楽が好きです. を belongs with an action verb such as
+          食べます, which is why the sentence is wrong.
+      - id: u2-l1-3
+        kind: construction
+        concepts: [suki-kirai-ga]
+        prompt: Write "I like coffee."
+        accept:
+          - kanji: コーヒーが好きです
+            kana: コーヒーがすきです
+            romaji: koohii ga suki desu
+          - kanji: 私はコーヒーが好きです
+            kana: わたしはコーヒーがすきです
+            romaji: watashi wa koohii ga suki desu
+        hint: Keep the thing liked before 好き and mark it with が.
+        explanation: >-
+          コーヒーが好きです is the plain statement. Adding 私は is fine, but コーヒー
+          still takes が because が marks the thing liked.
+      - id: u2-l1-4
+        kind: interpretation
+        concepts: [suki-kirai-ga]
+        prompt: What does this mean?
+        target:
+          kanji: 田中さんはスポーツがきらいです
+          kana: たなかさんはスポーツがきらいです
+          romaji: tanaka san wa supootsu ga kirai desu
+        accept_meanings:
+          - Tanaka doesn't like sports.
+          - Tanaka does not like sports.
+          - Tanaka dislikes sports.
+        hint: きらい is the negative side of 好き.
+        explanation: >-
+          きらい says Tanaka does not like sports, and が marks sports as the thing
+          disliked. 田中さんは is the topic, so the sentence is about him.
+      - id: u2-l1-5
+        kind: construction
+        concepts: [suki-kirai-ga]
+        prompt: Write "Tanaka dislikes movies."
+        accept:
+          - kanji: 田中さんは映画がきらいです
+            kana: たなかさんはえいががきらいです
+            romaji: tanaka san wa eiga ga kirai desu
+        hint: 映画 is えいが — topic first, then the thing disliked with が.
+        explanation: >-
+          田中さんは makes Tanaka the topic and 映画が marks the thing disliked:
+          田中さんは映画がきらいです. Replacing が with を would be the same particle
+          error as before.
+      - id: u2-l1-6
+        kind: completion
+        concepts: [suki-kirai-ga]
+        prompt: Fill the particle — "I like coffee."
+        target:
+          kanji: 私はコーヒー＿好きです
+          kana: わたしはコーヒー＿すきです
+          romaji: watashi wa koohii _ suki desu
+        accept:
+          - kanji: が
+            kana: が
+            romaji: ga
+        hint: 私は is the topic; the coffee is the thing liked.
+        explanation: >-
+          が marks コーヒー as the thing liked: 私はコーヒーが好きです. は after コーヒー
+          would make the coffee the topic instead, which is a different emphasis.
+      - id: u2-l1-7
+        kind: listening
+        concepts: [suki-kirai-ga]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: 私は音楽が好きじゃないです
+          kana: わたしはおんがくがすきじゃないです
+          romaji: watashi wa ongaku ga suki ja nai desu
+        accept_meanings:
+          - I don't like music.
+          - I do not like music.
+        hint: じゃないです makes the liking negative.
+        explanation: >-
+          好きじゃないです is the polite negative of 好きです, so this says "I don't
+          like music". The が on 音楽 stays; only the ending turns negative.
+      - id: u2-l1-8
+        kind: construction
+        concepts: [suki-kirai-ga]
+        prompt: >-
+          A classmate says 音楽が好きです. Ask them whether they like music.
+        accept:
+          - kanji: 音楽が好きですか
+            kana: おんがくがすきですか
+            romaji: ongaku ga suki desu ka
+        hint: Keep the statement and add the question particle.
+        explanation: >-
+          か turns 音楽が好きです into the question 音楽が好きですか. The particle on
+          音楽 stays が, because it still marks the thing liked.
+      - id: u2-l1-9
+        kind: construction
+        concepts: [suki-kirai-ga]
+        prompt: Write "I like dogs."
+        accept:
+          - kanji: 犬が好きです
+            kana: いぬがすきです
+            romaji: inu ga suki desu
+        hint: 犬 is いぬ — the pattern is the same as with 音楽.
+        explanation: >-
+          犬が好きです follows the same rule: が marks the animal you like. A new noun
+          does not change the particle.
+  - id: u2-l2
+    title: ほしい, and linking with の
+    objective: >-
+      Say what you want with ほしい + が, ask what someone wants, and link two nouns
+      with の.
+    teach:
+      - prose: >-
+          ほしい says you want a thing, and the thing takes が: 水がほしいです.
+          水をほしいです is wrong because ほしい describes a state, not an action that
+          you do to the water.
+        examples:
+          - kanji: 水がほしいです
+            kana: みずがほしいです
+            romaji: mizu ga hoshii desu
+          - kanji: 車がほしいです
+            kana: くるまがほしいです
+            romaji: kuruma ga hoshii desu
+      - prose: >-
+          何がほしいですか asks what someone wants. The negative is ほしくないです:
+          水はほしくないです means you do not want water.
+        examples:
+          - kanji: 何がほしいですか
+            kana: なにがほしいですか
+            romaji: nani ga hoshii desu ka
+          - kanji: 水はほしくないです
+            kana: みずはほしくないです
+            romaji: mizu wa hoshikunai desu
+      - prose: >-
+          の links two nouns: 私の名前 is "my name" and 日本の映画 is "Japanese movies".
+          が marks a subject, not a possessor, so 私が名前です is not "my name".
+        examples:
+          - kanji: 私の名前です
+            kana: わたしのなまえです
+            romaji: watashi no namae desu
+          - kanji: 日本の映画が好きです
+            kana: にほんのえいががすきです
+            romaji: nihon no eiga ga suki desu
+    steps:
+      - id: u2-l2-1
+        kind: interpretation
+        concepts: [hoshii-ga]
+        prompt: What does this mean?
+        target:
+          kanji: 水がほしいです
+          kana: みずがほしいです
+          romaji: mizu ga hoshii desu
+        accept_meanings:
+          - I want water.
+          - I'd like water.
+          - I would like water.
+        hint: ほしい is the word for wanting a thing.
+        explanation: >-
+          水がほしいです says you want water, with が marking the thing wanted. Ending
+          the sentence with です keeps it polite.
+      - id: u2-l2-2
+        kind: construction
+        concepts: [hoshii-ga]
+        prompt: >-
+          A classmate writes 水をほしいです. Write the sentence they meant.
+        accept:
+          - kanji: 水がほしいです
+            kana: みずがほしいです
+            romaji: mizu ga hoshii desu
+        hint: ほしい takes the same particle as 好き.
+        explanation: >-
+          ほしい takes が, not を: 水がほしいです. を marks what an action is done to,
+          but wanting is a state, not an action.
+      - id: u2-l2-3
+        kind: construction
+        concepts: [hoshii-ga]
+        prompt: Write "I want a car."
+        accept:
+          - kanji: 車がほしいです
+            kana: くるまがほしいです
+            romaji: kuruma ga hoshii desu
+        hint: 車 is くるま; mark it with が.
+        explanation: >-
+          車がほしいです marks the car with が because it is the thing wanted. Adding
+          私は is optional, but the が stays.
+      - id: u2-l2-4
+        kind: completion
+        concepts: [hoshii-ga]
+        prompt: Fill the particle — "I want a car."
+        target:
+          kanji: 車＿ほしいです
+          kana: くるま＿ほしいです
+          romaji: kuruma _ hoshii desu
+        accept:
+          - kanji: が
+            kana: が
+            romaji: ga
+        hint: A thing wanted is marked like a thing liked.
+        explanation: >-
+          車がほしいです. が marks the thing wanted, just as it marks the thing liked
+          in 音楽が好きです.
+      - id: u2-l2-5
+        kind: interpretation
+        concepts: [hoshii-ga]
+        prompt: What does this mean?
+        target:
+          kanji: 何がほしいですか
+          kana: なにがほしいですか
+          romaji: nani ga hoshii desu ka
+        accept_meanings:
+          - What do you want?
+          - What would you like?
+        hint: 何 asks "what", and か makes it a question.
+        explanation: >-
+          何がほしいですか asks what the other person wants. 何 takes が, and か closes
+          the question.
+      - id: u2-l2-6
+        kind: construction
+        concepts: [hoshii-ga]
+        prompt: Ask Tanaka what he wants.
+        accept:
+          - kanji: 田中さんは何がほしいですか
+            kana: たなかさんはなにがほしいですか
+            romaji: tanaka san wa nani ga hoshii desu ka
+        hint: Make Tanaka the topic, then ask what he wants.
+        explanation: >-
+          田中さんは何がほしいですか puts Tanaka first as the topic and asks what he
+          wants. 何が carries the question, and か ends it.
+      - id: u2-l2-7
+        kind: interpretation
+        concepts: [no-link]
+        prompt: What does this mean?
+        target:
+          kanji: 日本の映画が好きです
+          kana: にほんのえいががすきです
+          romaji: nihon no eiga ga suki desu
+        accept_meanings:
+          - I like Japanese movies.
+          - I like Japanese films.
+        hint: の connects 日本 and 映画 — Japanese movies, not Japan and movies.
+        explanation: >-
+          日本の映画 is "Japanese movies": の links the two nouns. The が after 映画
+          still marks the thing liked.
+      - id: u2-l2-8
+        kind: construction
+        concepts: [no-link]
+        prompt: Write "Japanese music."
+        accept:
+          - kanji: 日本の音楽
+            kana: にほんのおんがく
+            romaji: nihon no ongaku
+        hint: Put 日本 before 音楽 and join them with の.
+        explanation: >-
+          日本の音楽 joins the two nouns with の. Without の, 日本音楽 is not how the
+          phrase is built.
+      - id: u2-l2-9
+        kind: construction
+        concepts: [no-link]
+        prompt: >-
+          A classmate writes 私が名前です to mean "It is my name". Write it correctly.
+        accept:
+          - kanji: 私の名前です
+            kana: わたしのなまえです
+            romaji: watashi no namae desu
+        hint: A possessor takes の, not the particle that marks a subject.
+        explanation: >-
+          の marks the owner: 私の名前です, "it is my name". が would mark me as the
+          subject of the sentence, which is not what "my name" means.
+      - id: u2-l2-10
+        kind: construction
+        concepts: [no-link, hoshii-ga]
+        prompt: Write "I want a Japanese car."
+        accept:
+          - kanji: 日本の車がほしいです
+            kana: にほんのくるまがほしいです
+            romaji: nihon no kuruma ga hoshii desu
+        hint: Link 日本 and 車 with の, then mark the whole thing as what you want.
+        explanation: >-
+          日本の車 is the car you want, so の links Japan to car and が marks the
+          phrase as the thing wanted: 日本の車がほしいです.
+      - id: u2-l2-11
+        kind: construction
+        concepts: [hoshii-ga]
+        prompt: Write "I don't want water."
+        accept:
+          - kanji: 水はほしくないです
+            kana: みずはほしくないです
+            romaji: mizu wa hoshikunai desu
+          - kanji: 水がほしくないです
+            kana: みずがほしくないです
+            romaji: mizu ga hoshikunai desu
+        hint: ほしい becomes ほしくない for the negative.
+        explanation: >-
+          ほしい is an い-adjective, so its negative is ほしくない. With a negative,
+          水はほしくないです is the natural topic form; 水がほしくないです is also used.
+      - id: u2-l2-12
+        kind: construction
+        concepts: [hoshii-ga]
+        prompt: Write "I want a game."
+        accept:
+          - kanji: ゲームがほしいです
+            kana: ゲームがほしいです
+            romaji: geemu ga hoshii desu
+        hint: ゲーム is a katakana word; the particle does not change.
+        explanation: >-
+          ゲームがほしいです applies the same rule to a new noun: が marks the thing
+          wanted.
+  - id: u2-l3
+    title: は vs が with すき, and how much
+    objective: >-
+      Use が for the neutral statement and は when the thing is the topic or a
+      contrast, and say how much with とても, あまり and ぜんぜん.
+    teach:
+      - prose: >-
+          好き takes が for the thing liked. 猫が好きです is the neutral way to say "I
+          like cats". 猫を好きです is wrong, because を marks the object of an action.
+        examples:
+          - kanji: 猫が好きです
+            kana: ねこがすきです
+            romaji: neko ga suki desu
+          - kanji: コーヒーが好きです
+            kana: コーヒーがすきです
+            romaji: koohii ga suki desu
+      - prose: >-
+          は is not wrong. 猫は好きです makes cats the topic or a contrast: asked
+          犬は好きですか, answering 猫は好きです means "cats, yes" and says nothing good
+          about dogs. Use が for the plain statement, は when the thing is already the
+          topic or you are contrasting it.
+        examples:
+          - kanji: 猫は好きです
+            kana: ねこはすきです
+            romaji: neko wa suki desu
+          - kanji: 犬は好きですか
+            kana: いぬはすきですか
+            romaji: inu wa suki desu ka
+      - prose: >-
+          とても goes with a positive; あまり and ぜんぜん go with a negative. とても
+          好きです is "I like it a lot", あまり好きじゃないです is "I don't like it
+          much", and ぜんぜん好きじゃないです is "I don't like it at all".
+        examples:
+          - kanji: コーヒーはとても好きです
+            kana: コーヒーはとてもすきです
+            romaji: koohii wa totemo suki desu
+          - kanji: 映画はぜんぜん好きじゃないです
+            kana: えいがはぜんぜんすきじゃないです
+            romaji: eiga wa zenzen suki ja nai desu
+    steps:
+      - id: u2-l3-1
+        kind: interpretation
+        concepts: [wa-vs-ga-suki]
+        prompt: What does this mean?
+        target:
+          kanji: 猫が好きです
+          kana: ねこがすきです
+          romaji: neko ga suki desu
+        accept_meanings:
+          - I like cats.
+          - I like the cat.
+        hint: が marks the thing liked in a plain statement.
+        explanation: >-
+          猫が好きです is the neutral statement "I like cats": が marks the thing
+          liked. It is the default form when nothing has been contrasted yet.
+      - id: u2-l3-2
+        kind: interpretation
+        concepts: [wa-vs-ga-suki]
+        prompt: >-
+          Someone asks 犬は好きですか. You answer 猫は好きです. What does your answer
+          mean?
+        target:
+          kanji: 猫は好きです
+          kana: ねこはすきです
+          romaji: neko wa suki desu
+        accept_meanings:
+          - As for cats, I like them.
+          - Cats, I like.
+          - I like cats.
+        hint: は makes the cat the topic of this answer.
+        explanation: >-
+          は makes cats the topic, so this answers the question about cats while
+          leaving dogs aside — "cats, I like them". It is natural Japanese, not a
+          mistake; 猫が好きです would instead be the plain statement that you like cats.
+      - id: u2-l3-3
+        kind: construction
+        concepts: [wa-vs-ga-suki]
+        prompt: >-
+          A classmate answers 犬が好きです to the question 犬は好きですか. Write the
+          answer that makes dogs the topic, as the question did.
+        accept:
+          - kanji: 犬は好きです
+            kana: いぬはすきです
+            romaji: inu wa suki desu
+        hint: The question used は on dogs, so the answer takes the same topic marker.
+        explanation: >-
+          犬は好きです takes up the topic the question set: dogs. 犬が好きです is a
+          plain statement about what you like, which does not answer the topic question
+          as directly.
+      - id: u2-l3-4
+        kind: interpretation
+        concepts: [degree-adverbs, wa-vs-ga-suki]
+        prompt: What does this mean?
+        target:
+          kanji: コーヒーはとても好きです
+          kana: コーヒーはとてもすきです
+          romaji: koohii wa totemo suki desu
+        accept_meanings:
+          - I like coffee a lot.
+          - I really like coffee.
+          - As for coffee, I like it a lot.
+        hint: とても makes the liking strong.
+        explanation: >-
+          とても strengthens 好き, so this says you like coffee a lot. は makes coffee
+          the topic; コーヒーがとても好きです is the plain-statement version.
+      - id: u2-l3-5
+        kind: interpretation
+        concepts: [degree-adverbs]
+        prompt: What does this mean?
+        target:
+          kanji: 音楽はあまり好きじゃないです
+          kana: おんがくはあまりすきじゃないです
+          romaji: ongaku wa amari suki ja nai desu
+        accept_meanings:
+          - I don't like music much.
+          - I don't like music very much.
+          - I do not like music much.
+        hint: あまり works together with the negative ending.
+        explanation: >-
+          あまり with 好きじゃないです means "not much": I don't like music much.
+          あまり without a negative would not make sense.
+      - id: u2-l3-6
+        kind: construction
+        concepts: [degree-adverbs]
+        prompt: Write "I don't like movies at all."
+        accept:
+          - kanji: 映画はぜんぜん好きじゃないです
+            kana: えいがはぜんぜんすきじゃないです
+            romaji: eiga wa zenzen suki ja nai desu
+          - kanji: 映画がぜんぜん好きじゃないです
+            kana: えいががぜんぜんすきじゃないです
+            romaji: eiga ga zenzen suki ja nai desu
+        hint: For "at all" with a negative, use ぜんぜん, not とても.
+        explanation: >-
+          ぜんぜん plus the negative means "not at all": 映画はぜんぜん好きじゃないです.
+          とても cannot carry that meaning with a negative.
+      - id: u2-l3-7
+        kind: construction
+        concepts: [degree-adverbs]
+        prompt: >-
+          A classmate writes とても好きじゃないです to mean "I don't like it much".
+          Write the sentence they meant.
+        accept:
+          - kanji: あまり好きじゃないです
+            kana: あまりすきじゃないです
+            romaji: amari suki ja nai desu
+        hint: For "not much", use the adverb that goes with a negative.
+        explanation: >-
+          あまり好きじゃないです means "I don't like it much". とても belongs with a
+          positive, so とても好きじゃないです is not how the negative is built.
+      - id: u2-l3-8
+        kind: construction
+        concepts: [degree-adverbs, wa-vs-ga-suki]
+        prompt: Write "I like music very much."
+        accept:
+          - kanji: 音楽がとても好きです
+            kana: おんがくがとてもすきです
+            romaji: ongaku ga totemo suki desu
+          - kanji: 音楽はとても好きです
+            kana: おんがくはとてもすきです
+            romaji: ongaku wa totemo suki desu
+        hint: とても goes before 好き, and the thing liked takes が or the topic marker.
+        explanation: >-
+          音楽がとても好きです is the plain statement; 音楽はとても好きです makes music
+          the topic. Both are grammatical, and とても makes the liking strong.
+      - id: u2-l3-9
+        kind: construction
+        concepts: [wa-vs-ga-suki]
+        prompt: Ask whether Tanaka likes music.
+        accept:
+          - kanji: 田中さんは音楽が好きですか
+            kana: たなかさんはおんがくがすきですか
+            romaji: tanaka san wa ongaku ga suki desu ka
+          - kanji: 田中さんは音楽は好きですか
+            kana: たなかさんはおんがくはすきですか
+            romaji: tanaka san wa ongaku wa suki desu ka
+        hint: Tanaka is the topic, music is the thing liked, and か asks.
+        explanation: >-
+          田中さんは音楽が好きですか asks whether Tanaka likes music. 音楽は好きですか
+          is also possible when music is already the topic of the conversation.
+      - id: u2-l3-10
+        kind: conversation
+        concepts: [suki-kirai-ga, hoshii-ga, wa-vs-ga-suki, degree-adverbs, no-link]
+        prompt: >-
+          You are chatting with a classmate about hobbies and presents. Answer their
+          questions, follow the topic shifts, and say what you want.
+        scenario:
+          turns:
+            - speaker: npc
+              line:
+                kanji: 何が好きですか。
+                kana: なにがすきですか。
+                romaji: nani ga suki desu ka
+            - speaker: learner
+              accept:
+                - kanji: 音楽が好きです。
+                  kana: おんがくがすきです。
+                  romaji: ongaku ga suki desu
+                - kanji: 私は音楽が好きです。
+                  kana: わたしはおんがくがすきです。
+                  romaji: watashi wa ongaku ga suki desu
+                - kanji: コーヒーが好きです。
+                  kana: コーヒーがすきです。
+                  romaji: koohii ga suki desu
+            - speaker: npc
+              line:
+                kanji: そうですか。コーヒーは好きですか。
+                kana: そうですか。コーヒーはすきですか。
+                romaji: sou desu ka. koohii wa suki desu ka
+            - speaker: learner
+              accept:
+                - kanji: はい、コーヒーは好きです。
+                  kana: はい、コーヒーはすきです。
+                  romaji: hai, koohii wa suki desu
+                - kanji: はい、好きです。
+                  kana: はい、すきです。
+                  romaji: hai, suki desu
+                - kanji: コーヒーはとても好きです。
+                  kana: コーヒーはとてもすきです。
+                  romaji: koohii wa totemo suki desu
+            - speaker: npc
+              line:
+                kanji: 日本の音楽は好きですか。
+                kana: にほんのおんがくはすきですか。
+                romaji: nihon no ongaku wa suki desu ka
+            - speaker: learner
+              accept:
+                - kanji: はい、日本の音楽が好きです。
+                  kana: はい、にほんのおんがくがすきです。
+                  romaji: hai, nihon no ongaku ga suki desu
+                - kanji: はい、日本の音楽は好きです。
+                  kana: はい、にほんのおんがくはすきです。
+                  romaji: hai, nihon no ongaku wa suki desu
+                - kanji: あまり好きじゃないです。
+                  kana: あまりすきじゃないです。
+                  romaji: amari suki ja nai desu
+            - speaker: npc
+              line:
+                kanji: 映画は好きですか。
+                kana: えいがはすきですか。
+                romaji: eiga wa suki desu ka
+            - speaker: learner
+              accept:
+                - kanji: いいえ、映画はあまり好きじゃないです。
+                  kana: いいえ、えいがはあまりすきじゃないです。
+                  romaji: iie, eiga wa amari suki ja nai desu
+                - kanji: いいえ、ぜんぜん好きじゃないです。
+                  kana: いいえ、ぜんぜんすきじゃないです。
+                  romaji: iie, zenzen suki ja nai desu
+                - kanji: はい、映画はとても好きです。
+                  kana: はい、えいがはとてもすきです。
+                  romaji: hai, eiga wa totemo suki desu
+            - speaker: npc
+              line:
+                kanji: そうですか。じゃあ、何がほしいですか。
+                kana: そうですか。じゃあ、なにがほしいですか。
+                romaji: sou desu ka. jaa, nani ga hoshii desu ka
+            - speaker: learner
+              accept:
+                - kanji: 車がほしいです。
+                  kana: くるまがほしいです。
+                  romaji: kuruma ga hoshii desu
+                - kanji: 日本の車がほしいです。
+                  kana: にほんのくるまがほしいです。
+                  romaji: nihon no kuruma ga hoshii desu
+                - kanji: ゲームがほしいです。
+                  kana: ゲームがほしいです。
+                  romaji: geemu ga hoshii desu
+            - speaker: npc
+              line:
+                kanji: いいですね。ありがとうございました。
+                kana: いいですね。ありがとうございました。
+                romaji: ii desu ne. arigatou gozaimashita
+        hint: >-
+          Use が for a plain statement, は when the other person has just named the
+          thing, and ほしい + が for what you want.
+        explanation: >-
+          The conversation starts with a plain 何が好きですか, switches to は when the
+          classmate takes up coffee, music and movies as topics, and closes with an
+          unexpected 何がほしいですか that needs ほしい + が.
+      - id: u2-l3-11
+        kind: speaking
+        concepts: [suki-kirai-ga, hoshii-ga, wa-vs-ga-suki, degree-adverbs, no-link]
+        prompt: >-
+          Tell a new classmate what you like, what you do not like much, and one thing
+          you want. Speak without looking back at the lesson.
+        rubric: >-
+          Does it state likes with 好き + が, use は where the thing is a topic or
+          contrast, use あまり or ぜんぜん with a negative, and state a want with
+          ほしい + が? Judge meaning, grammar, naturalness and register separately.
+          There is no model answer.

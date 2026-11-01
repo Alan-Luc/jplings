@@ -193,6 +193,15 @@ func (u *Unit) Validate() []Issue {
 		}
 	}
 
+	if u.Taught {
+		for _, coverage := range CoverageOf([]*Unit{u}) {
+			if !coverage.Complete() {
+				add(path("", "concepts"), "%s is below the coverage floor: comprehension=%d production=%d, need at least 1 and 3",
+					coverage.ConceptID, coverage.Comprehension, coverage.Production)
+			}
+		}
+	}
+
 	return issues
 }
 

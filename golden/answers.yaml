@@ -359,3 +359,294 @@
 - step: u1-l2-14
   answer: tanaka san wa namae desu
   verdict: wrong
+- step: u1-l3-1
+  answer: Are you a student?
+  verdict: correct
+- step: u1-l3-1
+  answer: You are a student.
+  verdict: wrong
+- step: u1-l3-2
+  answer: tanaka san wa sensei desu ka
+  verdict: correct
+- step: u1-l3-2
+  answer: tanaka san wa sensei desu
+  verdict: wrong
+- step: u1-l3-3
+  answer: ka
+  verdict: correct
+- step: u1-l3-3
+  answer: desu
+  verdict: wrong
+- step: u1-l3-4
+  answer: Who is the student?
+  verdict: correct
+- step: u1-l3-4
+  answer: Who is the teacher?
+  verdict: wrong
+- step: u1-l3-5
+  answer: dare ga sensei desu ka
+  verdict: correct
+- step: u1-l3-5
+  answer: dare wa sensei desu ka
+  verdict: wrong
+- step: u1-l3-6
+  answer: tanaka san wa gakusei desu ka
+  verdict: correct
+- step: u1-l3-6
+  answer: tanaka san wa gakusei desu
+  verdict: wrong
+- step: u1-l3-7
+  answer: 田中さんは学生ですか
+  verdict: correct
+- step: u1-l3-7
+  answer: 田中さんは学生です
+  verdict: wrong
+- step: u1-l3-8
+  answer: One more time, please.
+  verdict: correct
+- step: u1-l3-8
+  answer: Please speak more slowly.
+  verdict: wrong
+- step: u1-l3-9
+  answer: yukkuri onegai shimasu
+  verdict: correct
+- step: u1-l3-9
+  answer: mou ichido onegai shimasu
+  verdict: wrong
+- step: u1-l3-10
+  answer: wakarimasen
+  verdict: correct
+- step: u1-l3-10
+  answer: wakarimasu
+  verdict: wrong
+- step: u1-l3-11
+  answer: Excuse me, one more time, please.
+  verdict: correct
+- step: u1-l3-11
+  answer: Excuse me, I understand.
+  verdict: wrong
+- step: u1-l3-12
+  answer: mou ichido onegai shimasu
+  verdict: correct
+- step: u1-l3-12
+  answer: yukkuri onegai shimasu
+  verdict: wrong
+- step: u2-l1-1
+  answer: I like music.
+  verdict: correct
+- step: u2-l1-1
+  answer: I like coffee.
+  verdict: wrong
+- step: u2-l1-2
+  answer: ongaku ga suki desu
+  verdict: correct
+- step: u2-l1-2
+  answer: 音楽が好きです
+  verdict: correct
+- step: u2-l1-2
+  answer: ongaku o suki desu
+  verdict: wrong
+- step: u2-l1-3
+  answer: koohii ga suki desu
+  verdict: correct
+- step: u2-l1-3
+  answer: コーヒーが好きです
+  verdict: correct
+- step: u2-l1-3
+  answer: koohii o suki desu
+  verdict: wrong
+- step: u2-l1-4
+  answer: Tanaka doesn't like sports.
+  verdict: correct
+- step: u2-l1-4
+  answer: Tanaka likes sports.
+  verdict: wrong
+- step: u2-l1-5
+  answer: tanaka san wa eiga ga kirai desu
+  verdict: correct
+- step: u2-l1-5
+  answer: tanaka san wa eiga o kirai desu
+  verdict: wrong
+- step: u2-l1-6
+  answer: ga
+  verdict: correct
+- step: u2-l1-6
+  answer: が
+  verdict: correct
+- step: u2-l1-6
+  answer: wa
+  verdict: wrong
+- step: u2-l1-7
+  answer: I don't like music.
+  verdict: correct
+- step: u2-l1-7
+  answer: I like music.
+  verdict: wrong
+- step: u2-l1-8
+  answer: ongaku ga suki desu ka
+  verdict: correct
+- step: u2-l1-8
+  answer: ongaku ga suki desu
+  verdict: wrong
+- step: u2-l1-9
+  answer: inu ga suki desu
+  verdict: correct
+- step: u2-l1-9
+  answer: inu o suki desu
+  verdict: wrong
+- step: u2-l2-1
+  answer: I want water.
+  verdict: correct
+- step: u2-l2-1
+  answer: I don't want water.
+  verdict: wrong
+- step: u2-l2-2
+  answer: mizu ga hoshii desu
+  verdict: correct
+- step: u2-l2-2
+  answer: 水がほしいです
+  verdict: correct
+- step: u2-l2-2
+  answer: mizu o hoshii desu
+  verdict: wrong
+- step: u2-l2-3
+  answer: kuruma ga hoshii desu
+  verdict: correct
+- step: u2-l2-3
+  answer: kuruma o hoshii desu
+  verdict: wrong
+- step: u2-l2-4
+  answer: ga
+  verdict: correct
+- step: u2-l2-4
+  answer: o
+  verdict: wrong
+- step: u2-l2-5
+  answer: What do you want?
+  verdict: correct
+- step: u2-l2-5
+  answer: What do you like?
+  verdict: wrong
+- step: u2-l2-6
+  answer: tanaka san wa nani ga hoshii desu ka
+  verdict: correct
+- step: u2-l2-6
+  answer: tanaka san wa nani o hoshii desu ka
+  verdict: wrong
+- step: u2-l2-7
+  answer: I like Japanese movies.
+  verdict: correct
+- step: u2-l2-7
+  answer: I like Japanese music.
+  verdict: wrong
+- step: u2-l2-8
+  answer: nihon no ongaku
+  verdict: correct
+- step: u2-l2-8
+  answer: 日本の音楽
+  verdict: correct
+- step: u2-l2-8
+  answer: nihon ongaku
+  verdict: wrong
+- step: u2-l2-9
+  answer: watashi no namae desu
+  verdict: correct
+- step: u2-l2-9
+  answer: watashi ga namae desu
+  verdict: wrong
+- step: u2-l2-10
+  answer: nihon no kuruma ga hoshii desu
+  verdict: correct
+- step: u2-l2-10
+  answer: nihon no kuruma o hoshii desu
+  verdict: wrong
+- step: u2-l2-11
+  answer: mizu wa hoshikunai desu
+  verdict: correct
+- step: u2-l2-11
+  answer: mizu ga hoshikunai desu
+  verdict: correct
+- step: u2-l2-11
+  answer: mizu wa hoshii desu
+  verdict: wrong
+- step: u2-l2-12
+  answer: geemu ga hoshii desu
+  verdict: correct
+- step: u2-l2-12
+  answer: geemu o hoshii desu
+  verdict: wrong
+- step: u2-l3-1
+  answer: I like cats.
+  verdict: correct
+- step: u2-l3-1
+  answer: I don't like cats.
+  verdict: wrong
+- step: u2-l3-2
+  answer: As for cats, I like them.
+  verdict: correct
+- step: u2-l3-2
+  answer: Cats, I like.
+  verdict: correct
+- step: u2-l3-2
+  answer: I like cats.
+  verdict: correct
+- step: u2-l3-2
+  answer: I don't like cats.
+  verdict: wrong
+- step: u2-l3-3
+  answer: inu wa suki desu
+  verdict: correct
+- step: u2-l3-3
+  answer: 犬は好きです
+  verdict: correct
+- step: u2-l3-3
+  answer: inu ga suki desu
+  verdict: wrong
+- step: u2-l3-4
+  answer: I like coffee a lot.
+  verdict: correct
+- step: u2-l3-4
+  answer: I don't like coffee much.
+  verdict: wrong
+- step: u2-l3-5
+  answer: I don't like music much.
+  verdict: correct
+- step: u2-l3-5
+  answer: I like music a lot.
+  verdict: wrong
+- step: u2-l3-6
+  answer: eiga wa zenzen suki ja nai desu
+  verdict: correct
+- step: u2-l3-6
+  answer: eiga ga zenzen suki ja nai desu
+  verdict: correct
+- step: u2-l3-6
+  answer: eiga wa totemo suki ja nai desu
+  verdict: wrong
+- step: u2-l3-7
+  answer: amari suki ja nai desu
+  verdict: correct
+- step: u2-l3-7
+  answer: あまり好きじゃないです
+  verdict: correct
+- step: u2-l3-7
+  answer: totemo suki ja nai desu
+  verdict: wrong
+- step: u2-l3-8
+  answer: ongaku ga totemo suki desu
+  verdict: correct
+- step: u2-l3-8
+  answer: ongaku wa totemo suki desu
+  verdict: correct
+- step: u2-l3-8
+  answer: ongaku wa totemo suki ja nai desu
+  verdict: wrong
+- step: u2-l3-9
+  answer: tanaka san wa ongaku ga suki desu ka
+  verdict: correct
+- step: u2-l3-9
+  answer: tanaka san wa ongaku wa suki desu ka
+  verdict: correct
+- step: u2-l3-9
+  answer: tanaka san wa ongaku ga suki desu
+  verdict: wrong

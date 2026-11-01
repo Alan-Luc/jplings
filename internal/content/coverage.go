@@ -9,7 +9,7 @@ type Coverage struct {
 	Production    int
 }
 
-func (c Coverage) Complete() bool { return c.Comprehension >= 1 && c.Production >= 2 }
+func (c Coverage) Complete() bool { return c.Comprehension >= 1 && c.Production >= 3 }
 
 func Dimension(kind Kind) string {
 	switch kind {
