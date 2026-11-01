@@ -8,7 +8,6 @@ import (
 	"io"
 	"os"
 	"path/filepath"
-	"sort"
 	"strconv"
 	"strings"
 	"text/tabwriter"
@@ -65,6 +64,7 @@ Usage:
   jplings grade --pending grade saved responses by hand
   jplings coverage        report how deeply each concept is exercised
   jplings content import  fetch JMdict + Tatoeba reference data
+  jplings content candidates  write a ranked authoring shortlist to corpus/drafts
 `)
 }
 
@@ -117,10 +117,20 @@ func startSession() error {
 }
 
 func contentCommand(args []string) error {
-	if len(args) == 0 || args[0] != "import" {
-		return fmt.Errorf("usage: jplings content import [--out dir] [--words file] [--sentences n]")
+	if len(args) == 0 {
+		return fmt.Errorf("usage: jplings content import|candidates [flags]")
 	}
+	switch args[0] {
+	case "import":
+		return importContent(args[1:])
+	case "candidates":
+		return candidateContent(args[1:])
+	default:
+		return fmt.Errorf("usage: jplings content import|candidates [flags]")
+	}
+}
 
+func importContent(args []string) error {
 	flags := flag.NewFlagSet("import", flag.ContinueOnError)
 	outDir := flags.String("out", "corpus", "where to write vocab.yaml and sentences.yaml")
 	wordsPath := flags.String("words", filepath.Join("content", "words.txt"), "word list to look up in JMdict")
@@ -128,7 +138,7 @@ func contentCommand(args []string) error {
 	minRunes := flags.Int("min-length", 6, "reject sentences shorter than this many characters")
 	onlyKnown := flags.Bool("require-known", true, "keep only sentences containing curated vocabulary")
 	cacheDir := flags.String("cache", "", "download cache (default: user cache dir)")
-	if err := flags.Parse(args[1:]); err != nil {
+	if err := flags.Parse(args); err != nil {
 		return err
 	}
 
@@ -164,31 +174,17 @@ func contentCommand(args []string) error {
 		if err != nil {
 			return err
 		}
-		lookup, err := corpus.LoadJMdict(jmdict, want)
+		_, words, err := corpus.ResolveWords(jmdict, want)
 		jmdict.Close()
 		if err != nil {
 			return err
 		}
-		words := lookup.Words()
 		if err := writeFile(filepath.Join(*outDir, "vocab.yaml"), func(w io.Writer) error {
 			return corpus.WriteVocab(w, words)
 		}); err != nil {
 			return err
 		}
-		matched := map[string]bool{}
-		for _, word := range words {
-			for _, form := range append(append([]string{}, word.Kanji...), word.Kana...) {
-				if want[form] {
-					matched[form] = true
-				}
-			}
-		}
-		fmt.Printf("vocab: %d entries covering %d of %d requested words\n", len(words), len(matched), len(want))
-		for _, form := range sortedKeys(want) {
-			if !matched[form] {
-				fmt.Fprintf(os.Stderr, "  not in JMdict: %s\n", form)
-			}
-		}
+		fmt.Printf("vocab: %d entries covering %d of %d requested words\n", len(words), len(want), len(want))
 	}
 
 	pairs, err := importSentences(files, *limit, *minRunes, require)
@@ -205,7 +201,148 @@ func contentCommand(args []string) error {
 	return nil
 }
 
+func candidateContent(args []string) error {
+	flags := flag.NewFlagSet("candidates", flag.ContinueOnError)
+	outDir := flags.String("out", filepath.Join("corpus", "drafts"), "where to write candidates.yaml")
+	wordsPath := flags.String("words", filepath.Join("content", "words.txt"), "word list to look up in JMdict")
+	limit := flags.Int("limit", 30, "how many candidates to shortlist")
+	sourceLimit := flags.Int("sentences", 200, "how many source sentence pairs to rank")
+	minRunes := flags.Int("min-length", 6, "reject sentences shorter than this many characters")
+	onlyKnown := flags.Bool("require-known", true, "keep only sentences containing curated vocabulary")
+	contentDir := flags.String("content", "content", "existing content to dedupe against")
+	cacheDir := flags.String("cache", "", "download cache (default: user cache dir)")
+	if err := flags.Parse(args); err != nil {
+		return err
+	}
+
+	cache := *cacheDir
+	if cache == "" {
+		base, err := os.UserCacheDir()
+		if err != nil {
+			return err
+		}
+		cache = filepath.Join(base, "jplings")
+	}
+
+	fmt.Fprintf(os.Stderr, "fetching sources into %s\n", cache)
+	files, err := corpus.Fetch(cache)
+	if err != nil {
+		return err
+	}
+
+	want, err := readWordList(*wordsPath)
+	if err != nil {
+		return err
+	}
+	require := want
+	if !*onlyKnown {
+		require = nil
+	}
+
+	known := corpus.Lookup{}
+	if len(want) > 0 {
+		jmdict, err := corpus.OpenJMdict(files.JMdict)
+		if err != nil {
+			return err
+		}
+		lookup, _, err := corpus.ResolveWords(jmdict, want)
+		jmdict.Close()
+		if err != nil {
+			return err
+		}
+		for form := range want {
+			known[form] = lookup[form]
+		}
+	}
+
+	units, issues, err := content.Load(*contentDir)
+	if err != nil {
+		return err
+	}
+	if len(issues) > 0 {
+		return fmt.Errorf("content has %d issue(s); run jplings lint first", len(issues))
+	}
+
+	pairs, err := selectSentences(files, *sourceLimit, *minRunes, require)
+	if err != nil {
+		return err
+	}
+	candidates := corpus.RankCandidates(pairs, known, contentTexts(units), *limit)
+	if len(candidates) == 0 {
+		return fmt.Errorf("no candidates survived selection")
+	}
+
+	sentences := make([]corpus.Sentence, len(candidates))
+	for i := range candidates {
+		sentences[i] = candidates[i].Sentence
+	}
+	enriched, err := corpus.Enrich(context.Background(), corpus.NewReader(), sentences)
+	if err != nil {
+		return fmt.Errorf("attach readings (is the speech stack running?): %w", err)
+	}
+	for i := range candidates {
+		candidates[i].Sentence = enriched[i]
+	}
+
+	if err := os.MkdirAll(*outDir, 0o755); err != nil {
+		return err
+	}
+	path := filepath.Join(*outDir, "candidates.yaml")
+	if err := writeFile(path, func(w io.Writer) error {
+		return corpus.WriteCandidates(w, candidates)
+	}); err != nil {
+		return err
+	}
+	fmt.Printf("candidates: %d shortlisted in %s\n", len(candidates), path)
+	return nil
+}
+
+func contentTexts(units []*content.Unit) []string {
+	var texts []string
+	add := func(text *content.Text) {
+		if text != nil && text.Kanji != "" {
+			texts = append(texts, text.Kanji)
+		}
+	}
+	for _, unit := range units {
+		for _, lesson := range unit.Lessons {
+			for _, step := range lesson.Steps {
+				add(step.Target)
+				for i := range step.Accept {
+					add(&step.Accept[i])
+				}
+				for i := range step.OffTarget {
+					add(&step.OffTarget[i].Text)
+				}
+				if step.Scenario != nil {
+					for i := range step.Scenario.Turns {
+						turn := &step.Scenario.Turns[i]
+						add(turn.Line)
+						for j := range turn.Accept {
+							add(&turn.Accept[j])
+						}
+					}
+				}
+			}
+		}
+	}
+	return texts
+}
+
 func importSentences(files corpus.Files, limit int, minRunes int, require map[string]bool) ([]corpus.Sentence, error) {
+	selected, err := selectSentences(files, limit, minRunes, require)
+	if err != nil {
+		return nil, err
+	}
+
+	enriched, err := corpus.Enrich(context.Background(), corpus.NewReader(), selected)
+	if err != nil {
+		return nil, fmt.Errorf("attach readings (is the speech stack running?): %w", err)
+	}
+	return enriched, nil
+}
+
+func selectSentences(files corpus.Files, limit int, minRunes int, require map[string]bool) ([]corpus.Sentence, error) {
 	japanese, err := corpus.OpenBzip2(files.Japanese)
 	if err != nil {
 		return nil, err
@@ -241,13 +378,7 @@ func importSentences(files corpus.Files, limit int, minRunes int, require map[st
 		return nil, err
 	}
 	usable := corpus.Filter(joined, corpus.FilterOptions{MinRunes: minRunes, Require: require})
-	selected := corpus.SelectShort(usable, limit)
-
-	enriched, err := corpus.Enrich(context.Background(), corpus.NewReader(), selected)
-	if err != nil {
-		return nil, fmt.Errorf("attach readings (is the speech stack running?): %w", err)
-	}
-	return enriched, nil
+	return corpus.SelectShort(usable, limit), nil
 }
 
 func readWordList(path string) (map[string]bool, error) {
@@ -451,13 +582,4 @@ func readScore(reader *bufio.Reader, dimension string) (int, error) {
 		}
 		return value, nil
 	}
-}
-
-func sortedKeys(set map[string]bool) []string {
-	keys := make([]string, 0, len(set))
-	for key := range set {
-		keys = append(keys, key)
-	}
-	sort.Strings(keys)
-	return keys
 }
