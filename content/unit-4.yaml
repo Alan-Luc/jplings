@@ -1,0 +1,855 @@
+id: unit-4
+title: 〜たい・〜ない — what you want and do not want
+taught: true
+concepts:
+  - id: tai-want
+    label: たい — wanting to do something
+  - id: nai-negative
+    label: ない vs ません — plain and polite negatives
+  - id: mashou-invitation
+    label: ましょう・ましょうか — proposal and offer
+  - id: wo-vs-ga-want
+    label: を vs が with たい and ほしい
+lessons:
+  - id: u4-l1
+    title: たい — what you want to do
+    objective: >-
+      Attach たい to the ます stem to say what you want to do, and negate it with
+      たくないです.
+    anchors:
+      - kanji: 飲みたい
+        kana: のみたい
+        romaji: nomitai
+      - kanji: 食べたい
+        kana: たべたい
+        romaji: tabetai
+      - kanji: 買いたい
+        kana: かいたい
+        romaji: kaitai
+    teach:
+      - prose: >-
+          たい attaches to the ます stem you already build in Unit 3. 飲みます becomes
+          飲みたいです, 食べます becomes 食べたいです, 買います becomes 買いたいです, and
+          泳ぎます becomes 泳ぎたいです. The stem does not change; only the ending does.
+          Attaching たい to the dictionary form instead gives 飲むたい and 食べるたい,
+          which Japanese does not use.
+        examples:
+          - kanji: 飲みたいです
+            kana: のみたいです
+            romaji: nomitai desu
+          - kanji: 食べたいです
+            kana: たべたいです
+            romaji: tabetai desu
+      - prose: >-
+          たい behaves like an i-adjective. The polite negative is 〜たくないです:
+          飲みたくないです "I do not want to drink" and 休みたくないです "I do not want
+          to rest". ます never appears together with たい, so 飲みたいます is wrong. The
+          question is 飲みたいですか.
+        examples:
+          - kanji: 飲みたくないです
+            kana: のみたくないです
+            romaji: nomitakunai desu
+          - kanji: 飲みたいですか
+            kana: のみたいですか
+            romaji: nomitai desu ka
+      - prose: >-
+          With たい, the thing you want to do something to can take が or を:
+          水が飲みたいです and 水を飲みたいです are both standard Japanese. を is not an
+          error with たい, and が is not an error either. Lesson 3 takes this contrast
+          apart.
+        examples:
+          - kanji: 水が飲みたいです
+            kana: みずがのみたいです
+            romaji: mizu ga nomitai desu
+          - kanji: 水を飲みたいです
+            kana: みずをのみたいです
+            romaji: mizu o nomitai desu
+    steps:
+      - id: u4-l1-1
+        kind: interpretation
+        concepts: [tai-want]
+        prompt: >-
+          Two classmates write 水を飲みます and 水を飲みたいです for "I want to drink
+          water". Only one is correct. What does the correct one mean?
+        target:
+          kanji: 水を飲みたいです
+          kana: みずをのみたいです
+          romaji: mizu o nomitai desu
+        accept_meanings:
+          - I want to drink water.
+          - I want to drink water
+          - I want to drink some water.
+        hint: たい after the stem turns the action into a want; ます only states the action.
+        explanation: >-
+          水を飲みたいです is 飲み plus たいです: "I want to drink water". 水を飲みます
+          says that you drink it, with no want in the sentence.
+      - id: u4-l1-2
+        kind: interpretation
+        concepts: [tai-want]
+        prompt: What does this mean?
+        target:
+          kanji: 食べたくないです
+          kana: たべたくないです
+          romaji: tabetakunai desu
+        accept_meanings:
+          - I do not want to eat.
+          - I don't want to eat.
+          - I do not want to eat
+        hint: たくない is the negative of たい.
+        explanation: >-
+          食べたくないです is the negative want: 食べ + たくないです. 食べたいです would
+          say you do want to eat.
+      - id: u4-l1-3
+        kind: construction
+        concepts: [tai-want]
+        prompt: >-
+          A classmate writes 飲むたいです for "I want to drink". Write the sentence
+          they meant.
+        accept:
+          - kanji: 飲みたいです
+            kana: のみたいです
+            romaji: nomitai desu
+        hint: たい attaches to the ます stem 飲み, not to the dictionary form.
+        explanation: >-
+          飲みたいです joins the stem 飲み with たいです. 飲むたい keeps the dictionary
+          form and is not a form Japanese uses.
+      - id: u4-l1-4
+        kind: construction
+        concepts: [tai-want]
+        prompt: >-
+          A classmate writes 食べるたいです for "I want to eat". Write the sentence
+          they meant.
+        accept:
+          - kanji: 食べたいです
+            kana: たべたいです
+            romaji: tabetai desu
+        hint: 食べる is ichidan, so the る comes off and 食べ takes たい.
+        explanation: >-
+          食べたいです uses the ichidan stem 食べ. 食べるたい adds たい to the
+          dictionary form instead of the stem.
+      - id: u4-l1-5
+        kind: construction
+        concepts: [tai-want]
+        prompt: >-
+          A classmate writes 買うたいです for "I want to buy it". Write the sentence
+          they meant.
+        accept:
+          - kanji: 買いたいです
+            kana: かいたいです
+            romaji: kaitai desu
+        hint: 買う is godan, so its final う changes to い before たい.
+        explanation: >-
+          買いたいです uses the stem 買い. 買うたい keeps the dictionary form, so the
+          stem machine was skipped.
+      - id: u4-l1-6
+        kind: transformation
+        concepts: [tai-want]
+        prompt: Make 行きます say that you want to go.
+        target:
+          kanji: 行きます
+          kana: いきます
+          romaji: ikimasu
+        accept:
+          - kanji: 行きたいです
+            kana: いきたいです
+            romaji: ikitai desu
+        hint: Keep the stem 行き and replace ます with たいです.
+        explanation: >-
+          行きたいです replaces ます with たいです. The stem 行き is the same one 行きます
+          already uses.
+      - id: u4-l1-7
+        kind: construction
+        concepts: [tai-want, wo-vs-ga-want]
+        prompt: Write "I want to drink coffee."
+        accept:
+          - kanji: コーヒーが飲みたいです
+            kana: コーヒーがのみたいです
+            romaji: koohii ga nomitai desu
+          - kanji: コーヒーを飲みたいです
+            kana: コーヒーをのみたいです
+            romaji: koohii o nomitai desu
+        hint: Attach たい to 飲み; the thing you want to drink can take が or を.
+        explanation: >-
+          Both are standard: コーヒーが飲みたいです and コーヒーを飲みたいです. たい
+          allows either particle, so neither one is an error.
+      - id: u4-l1-8
+        kind: construction
+        concepts: [tai-want]
+        prompt: Write "I want to make it."
+        accept:
+          - kanji: 作りたいです
+            kana: つくりたいです
+            romaji: tsukuritai desu
+        hint: 作る is godan, so its final る changes to り before たい.
+        explanation: >-
+          作りたいです uses the godan stem 作り. 作る has not appeared in the unit, but
+          the same stem rule applies.
+      - id: u4-l1-9
+        kind: construction
+        concepts: [tai-want]
+        prompt: >-
+          A classmate writes 休みたいくないです for "I do not want to rest". Write the
+          sentence they meant.
+        accept:
+          - kanji: 休みたくないです
+            kana: やすみたくないです
+            romaji: yasumitakunai desu
+        hint: たくない is one ending; たいくない splits it in the wrong place.
+        explanation: >-
+          休みたくないです is 休み + たくないです. 休みたいくないです puts ない after a
+          piece that is not an ending Japanese uses.
+      - id: u4-l1-10
+        kind: listening
+        concepts: [tai-want]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: 今日は映画を見たくないです
+          kana: きょうはえいがをみたくないです
+          romaji: kyou wa eiga o mitakunai desu
+        accept_meanings:
+          - I do not want to watch a movie today.
+          - I don't want to watch a movie today.
+          - Today I do not want to watch a movie.
+        hint: 見たくない is 見たい with ない; 今日は sets today as the topic.
+        explanation: >-
+          今日は映画を見たくないです says "I do not want to watch a movie today".
+          見たくない is the negative of 見たい, formed on the stem 見.
+
+  - id: u4-l2
+    title: ない and ません — two negatives, two registers
+    objective: >-
+      Build the plain negative with ない from the same stem machine, and choose
+      between ない and ません by who you are talking to.
+    anchors:
+      - kanji: 飲まない
+        kana: のまない
+        romaji: nomanai
+      - kanji: 食べない
+        kana: たべない
+        romaji: tabenai
+      - kanji: 来ない
+        kana: こない
+        romaji: konai
+    teach:
+      - prose: >-
+          ません is the polite negative from Unit 3: 飲みません, 食べません. ない is the
+          plain negative, and it is built on the same stem machine. Ichidan verbs keep
+          the stem: 食べない, 見ない, 起きない. Godan verbs move the final sound to the
+          -a row instead of the -i row that ます uses: 飲みます becomes 飲まない, 買います
+          becomes 買わない, 泳ぎます becomes 泳がない, 休みます becomes 休まない. You are
+          not learning a new form from scratch; you are using the a-row twin of the
+          stem.
+        examples:
+          - kanji: 飲まない
+            kana: のまない
+            romaji: nomanai
+          - kanji: 食べない
+            kana: たべない
+            romaji: tabenai
+      - prose: >-
+          The irregulars are する → しない and 来る → 来ない, read こない. ある is the
+          other exception: its plain negative is ない, not あらない. ない and ません
+          mean the same thing; ません is polite and ない is plain, so use ません with a
+          teacher or a stranger and ない with a friend. ない also appears inside
+          たくないです from lesson 1.
+        examples:
+          - kanji: しない
+            kana: しない
+            romaji: shinai
+          - kanji: 来ない
+            kana: こない
+            romaji: konai
+    steps:
+      - id: u4-l2-1
+        kind: interpretation
+        concepts: [nai-negative]
+        prompt: >-
+          Two friends write 飲みません and 飲まない for "I do not drink". Both are
+          correct Japanese. What does 飲まない mean?
+        target:
+          kanji: 飲まない
+          kana: のまない
+          romaji: nomanai
+        accept_meanings:
+          - I do not drink.
+          - I don't drink.
+          - I do not drink
+        hint: ない is the plain negative; ません is the polite one.
+        explanation: >-
+          飲まない is the plain negative: 飲ま + ない. 飲みません means the same thing,
+          but it is the polite form you would use with someone you do not know well.
+      - id: u4-l2-2
+        kind: interpretation
+        concepts: [nai-negative]
+        prompt: What does this mean?
+        target:
+          kanji: 食べない
+          kana: たべない
+          romaji: tabenai
+        accept_meanings:
+          - I do not eat.
+          - I don't eat.
+          - I do not eat
+        hint: Ichidan 食べる keeps its stem and adds ない.
+        explanation: >-
+          食べない is the plain negative of 食べる: 食べ + ない. The stem is the same 食べ
+          that 食べます uses.
+      - id: u4-l2-3
+        kind: construction
+        concepts: [nai-negative]
+        prompt: >-
+          A classmate writes 飲ない for "I do not drink". Write the sentence they
+          meant.
+        accept:
+          - kanji: 飲まない
+            kana: のまない
+            romaji: nomanai
+        hint: 飲む is godan, so its final む moves to the -a row before ない.
+        explanation: >-
+          飲まない is correct. 飲ない drops the final sound instead of moving it to the
+          -a row, which only ichidan verbs may do.
+      - id: u4-l2-4
+        kind: construction
+        concepts: [nai-negative]
+        prompt: >-
+          A classmate writes 食べらない for "I do not eat". Write the sentence they
+          meant.
+        accept:
+          - kanji: 食べない
+            kana: たべない
+            romaji: tabenai
+        hint: Ichidan 食べる takes ない on the stem 食べ, with no ら.
+        explanation: >-
+          食べない is correct. 食べらない treats the ichidan verb as if it were godan and
+          adds a ら that is not there.
+      - id: u4-l2-5
+        kind: construction
+        concepts: [nai-negative]
+        prompt: >-
+          A classmate writes 泳ぐない for "I do not swim". Write the sentence they
+          meant.
+        accept:
+          - kanji: 泳がない
+            kana: およがない
+            romaji: oyoganai
+        hint: 泳ぐ is godan, so its final ぐ changes to が before ない.
+        explanation: >-
+          泳がない is correct. 泳ぐない leaves the final sound unchanged instead of
+          moving it to the -a row.
+      - id: u4-l2-6
+        kind: construction
+        concepts: [nai-negative]
+        prompt: >-
+          A classmate writes 買あない for "I do not buy it". Write the sentence they
+          meant.
+        accept:
+          - kanji: 買わない
+            kana: かわない
+            romaji: kawanai
+        hint: 買う ends in う, which becomes わ, not あ, before ない.
+        explanation: >-
+          買わない is the plain negative of 買う. The final う becomes わ; 買あない keeps
+          the vowel but loses the consonant change that ない requires.
+      - id: u4-l2-7
+        kind: completion
+        concepts: [nai-negative]
+        prompt: Fill the stem — "I do not rest."
+        target:
+          kanji: 休＿ない
+          kana: やす＿ない
+          romaji: yasu _ nai
+        accept:
+          - kanji: ま
+            kana: ま
+            romaji: ma
+        hint: 休む is godan, so its final む moves to the -a row.
+        explanation: >-
+          休まない is the plain negative. 休みない would use the ます stem instead of the
+          -a row stem that ない needs.
+      - id: u4-l2-8
+        kind: transformation
+        concepts: [nai-negative]
+        prompt: Make 来ます plain negative.
+        target:
+          kanji: 来ます
+          kana: きます
+          romaji: kimasu
+        accept:
+          - kanji: 来ない
+            kana: こない
+            romaji: konai
+        hint: 来る is irregular; its plain negative is 来ない, read こない.
+        explanation: >-
+          来ない is the plain negative, read こない. 来ません is the polite version of the
+          same word.
+      - id: u4-l2-9
+        kind: transformation
+        concepts: [nai-negative]
+        prompt: Make します plain negative.
+        target:
+          kanji: します
+          kana: します
+          romaji: shimasu
+        accept:
+          - kanji: しない
+            kana: しない
+            romaji: shinai
+        hint: する is irregular; the plain negative is しない.
+        explanation: >-
+          しない is the plain negative of する. すない would apply a regular rule to an
+          irregular verb.
+      - id: u4-l2-10
+        kind: construction
+        concepts: [nai-negative]
+        prompt: Write "I do not use it."
+        accept:
+          - kanji: 使わない
+            kana: つかわない
+            romaji: tsukawanai
+        hint: 使う is godan and ends in う, which becomes わ before ない.
+        explanation: >-
+          使わない is the plain negative. 使う has not appeared in the unit, but the
+          godan rule still decides the stem.
+      - id: u4-l2-11
+        kind: listening
+        concepts: [nai-negative]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: 今日は休まない
+          kana: きょうはやすまない
+          romaji: kyou wa yasumanai
+        accept_meanings:
+          - I am not resting today.
+          - I'm not resting today.
+          - Today I am not resting.
+        hint: 休まない is the plain negative of 休む.
+        explanation: >-
+          今日は休まない says "I am not resting today" in plain form. 今日は休みません
+          would say the same thing politely.
+      - id: u4-l2-12
+        kind: construction
+        concepts: [nai-negative]
+        prompt: >-
+          A classmate writes 来らない for "I do not come". Write the sentence they
+          meant.
+        accept:
+          - kanji: 来ない
+            kana: こない
+            romaji: konai
+        hint: 来る is irregular; the plain negative is 来ない, with no ら.
+        explanation: >-
+          来ない is correct, read こない. 来らない applies the godan rule to an irregular
+          verb and is not a form Japanese uses.
+
+  - id: u4-l3
+    title: ましょう・ましょうか and を vs が
+    objective: >-
+      Propose or offer with ましょう and ましょうか, and mark what you want with が
+      or を without treating either particle as an error.
+    anchors:
+      - kanji: 窓を開けましょうか
+        kana: まどをあけましょうか
+        romaji: mado o akemashou ka
+      - kanji: 水が飲みたいです
+        kana: みずがのみたいです
+        romaji: mizu ga nomitai desu
+      - kanji: 水がほしいです
+        kana: みずがほしいです
+        romaji: mizu ga hoshii desu
+    teach:
+      - prose: >-
+          ましょう attaches to the ます stem and states a proposal or a volunteer:
+          飲みましょう "let's drink", 休みましょう "let's rest", 私が買いましょう "I'll
+          buy it". ましょうか attaches the same way but asks: 窓を開けましょうか "shall I
+          open the window?" offers to do something for the listener, and
+          一緒に行きましょうか "shall we go together?" asks before proposing.
+        examples:
+          - kanji: 飲みましょう
+            kana: のみましょう
+            romaji: nomimashou
+          - kanji: 窓を開けましょうか
+            kana: まどをあけましょうか
+            romaji: mado o akemashou ka
+      - prose: >-
+          The difference between the pair changes who acts and whether you are asking.
+          窓を開けましょう states the proposal "let's open the window";
+          窓を開けましょうか asks whether the listener wants you to open it. Do not drop
+          the か when you mean the offer as a question, and do not add it when you mean
+          a decided proposal.
+        examples:
+          - kanji: 窓を開けましょう
+            kana: まどをあけましょう
+            romaji: mado o akemashou
+          - kanji: 一緒に行きましょうか
+            kana: いっしょにいきましょうか
+            romaji: issho ni ikimashou ka
+      - prose: >-
+          With たい, the thing wanted takes が or を: 水が飲みたいです and
+          水を飲みたいです are both standard, and neither particle is an error. With
+          ほしい the thing wanted takes が: 水がほしいです. 水をほしいです is not
+          standard, because ほしい describes a state rather than an action — the same
+          reason 好き takes が.
+        examples:
+          - kanji: 水を飲みたいです
+            kana: みずをのみたいです
+            romaji: mizu o nomitai desu
+          - kanji: 水がほしいです
+            kana: みずがほしいです
+            romaji: mizu ga hoshii desu
+    steps:
+      - id: u4-l3-1
+        kind: interpretation
+        concepts: [mashou-invitation]
+        prompt: >-
+          The room is hot. A coworker looks at the window and says
+          窓を開けましょうか。 What are they doing?
+        target:
+          kanji: 窓を開けましょうか。
+          kana: まどをあけましょうか。
+          romaji: mado o akemashou ka
+        accept_meanings:
+          - Asking whether they should open the window.
+          - Offering to open the window.
+          - Asking if they should open the window.
+        hint: ましょうか is a question; ましょう without か is a statement.
+        explanation: >-
+          窓を開けましょうか asks whether the listener wants the window opened.
+          窓を開けましょう would state the proposal "let's open the window" instead of
+          asking.
+      - id: u4-l3-2
+        kind: interpretation
+        concepts: [wo-vs-ga-want]
+        prompt: >-
+          Two classmates write 水が飲みたいです and 水を飲みたいです for "I want to
+          drink water". Both are correct. What does 水を飲みたいです mean?
+        target:
+          kanji: 水を飲みたいです。
+          kana: みずをのみたいです。
+          romaji: mizu o nomitai desu
+        accept_meanings:
+          - I want to drink water.
+          - I want to drink water
+          - I want to drink some water.
+        hint: With たい, を is as standard as が; do not look for an error.
+        explanation: >-
+          水を飲みたいです and 水が飲みたいです mean the same thing and both are standard.
+          を is not a mistake with たい.
+      - id: u4-l3-3
+        kind: construction
+        concepts: [mashou-invitation]
+        prompt: >-
+          A classmate writes コーヒーを飲みます for "Let's drink coffee." Write the
+          sentence they meant.
+        accept:
+          - kanji: コーヒーを飲みましょう
+            kana: コーヒーをのみましょう
+            romaji: koohii o nomimashou
+        hint: A proposal uses the stem plus ましょう, not ます.
+        explanation: >-
+          コーヒーを飲みましょう proposes drinking coffee together. 飲みます only states
+          that someone drinks it, so it does not propose anything.
+      - id: u4-l3-4
+        kind: construction
+        concepts: [mashou-invitation]
+        prompt: >-
+          A classmate says 窓を開けましょう to ask "Shall I open the window?" Write the
+          question they meant.
+        accept:
+          - kanji: 窓を開けましょうか。
+            kana: まどをあけましょうか。
+            romaji: mado o akemashou ka
+        hint: An offer put as a question needs か.
+        explanation: >-
+          窓を開けましょうか asks whether to open it. 窓を開けましょう states the
+          proposal, so it does not ask the listener anything.
+      - id: u4-l3-5
+        kind: transformation
+        concepts: [mashou-invitation]
+        prompt: Make 一緒に行きましょうか a decided suggestion.
+        target:
+          kanji: 一緒に行きましょうか。
+          kana: いっしょにいきましょうか。
+          romaji: issho ni ikimashou ka
+        accept:
+          - kanji: 一緒に行きましょう。
+            kana: いっしょにいきましょう。
+            romaji: issho ni ikimashou
+        hint: Drop か to turn the question into a suggestion.
+        explanation: >-
+          一緒に行きましょう states the suggestion. 一緒に行きましょうか asks the other
+          person first, so it is a question rather than a decided proposal.
+      - id: u4-l3-6
+        kind: construction
+        concepts: [tai-want]
+        prompt: Ask your friend whether they want to go to the sea.
+        accept:
+          - kanji: 海に行きたいですか。
+            kana: うみにいきたいですか。
+            romaji: umi ni ikitai desu ka
+        hint: Build 行きたい and add ですか to ask.
+        explanation: >-
+          海に行きたいですか asks whether they want to go to the sea. たい stays before
+          です, and か makes it a question.
+      - id: u4-l3-7
+        kind: construction
+        concepts: [wo-vs-ga-want]
+        prompt: Write "I want water."
+        accept:
+          - kanji: 水がほしいです。
+            kana: みずがほしいです。
+            romaji: mizu ga hoshii desu
+        hint: ほしい works like 好き — the thing wanted takes が.
+        explanation: >-
+          水がほしいです marks the thing wanted with が. ほしい describes a state, not an
+          action, so the particle is が.
+      - id: u4-l3-8
+        kind: construction
+        concepts: [wo-vs-ga-want]
+        prompt: >-
+          A classmate writes 水をほしいです for "I want water". Write the sentence they
+          meant.
+        accept:
+          - kanji: 水がほしいです。
+            kana: みずがほしいです。
+            romaji: mizu ga hoshii desu
+        hint: ほしい is not an action verb; the thing wanted takes the same particle as with 好き.
+        explanation: >-
+          水がほしいです is correct. を would mark the object of an action, but ほしい
+          states a want, so it takes が.
+      - id: u4-l3-9
+        kind: construction
+        concepts: [tai-want]
+        prompt: Write "I want to play in the park."
+        accept:
+          - kanji: 公園で遊びたいです。
+            kana: こうえんであそびたいです。
+            romaji: kouen de asobitai desu
+        hint: 遊ぶ is godan, so ぶ changes to び before たい; 公園 is where the playing happens.
+        explanation: >-
+          公園で遊びたいです uses で for the place and the stem 遊び. 遊ぶ and 公園 have
+          not appeared in the unit, but the stem rule and the particle rule are the same.
+      - id: u4-l3-10
+        kind: transformation
+        concepts: [mashou-invitation]
+        prompt: Make 休みます say "let's rest".
+        target:
+          kanji: 休みます
+          kana: やすみます
+          romaji: yasumimasu
+        accept:
+          - kanji: 休みましょう
+            kana: やすみましょう
+            romaji: yasumimashou
+        hint: Replace ます with ましょう.
+        explanation: >-
+          休みましょう is the stem 休み plus ましょう. 休みません would be the negative
+          instead of a proposal.
+      - id: u4-l3-11
+        kind: listening
+        concepts: [mashou-invitation]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: 一緒に食べましょうか。
+          kana: いっしょにたべましょうか。
+          romaji: issho ni tabemashou ka
+        accept_meanings:
+          - Shall we eat together?
+          - Do you want to eat together?
+          - Shall we eat together
+        hint: ましょうか asks rather than states.
+        explanation: >-
+          一緒に食べましょうか asks whether to eat together. 一緒に食べましょう would
+          state the proposal instead of asking.
+      - id: u4-l3-12
+        kind: completion
+        concepts: [wo-vs-ga-want]
+        prompt: Fill the particle — "I want water."
+        target:
+          kanji: 水＿ほしいです。
+          kana: みず＿ほしいです。
+          romaji: mizu _ hoshii desu
+        accept:
+          - kanji: が
+            kana: が
+            romaji: ga
+        hint: ほしい takes the particle that marks what is wanted.
+        explanation: >-
+          水がほしいです marks water with が. を is not standard with ほしい, even
+          though it is standard with たい.
+      - id: u4-l3-13
+        kind: completion
+        concepts: [wo-vs-ga-want]
+        prompt: Fill the particle — "I want to drink water."
+        target:
+          kanji: 水＿飲みたいです。
+          kana: みず＿のみたいです。
+          romaji: mizu _ nomitai desu
+        accept:
+          - kanji: が
+            kana: が
+            romaji: ga
+          - kanji: を
+            kana: を
+            romaji: o
+        hint: With たい, both particles are standard.
+        explanation: >-
+          水が飲みたいです and 水を飲みたいです are both correct. たい allows either が or
+          を, so both fills are accepted.
+      - id: u4-l3-14
+        kind: interpretation
+        concepts: [wo-vs-ga-want]
+        prompt: >-
+          Two classmates write 水がほしいです and 水が飲みたいです. Which one means "I
+          want water"?
+        target:
+          kanji: 水がほしいです。
+          kana: みずがほしいです。
+          romaji: mizu ga hoshii desu
+        accept_meanings:
+          - I want water.
+          - I want water
+          - I want some water.
+        hint: ほしい wants a thing; たい wants to do an action.
+        explanation: >-
+          水がほしいです wants the thing water. 水が飲みたいです wants to drink water —
+          the same が, but a different kind of want.
+
+  - id: u4-l4
+    title: 自分で言う — putting it together
+    objective: >-
+      Use たい, ない, ましょう and the が/を choice together in a conversation and
+      produce them without scaffolding.
+    teach:
+      - prose: >-
+          This lesson adds no new grammar. Choose the verb's group, build the ます
+          stem, then attach たいです, たくないです, ましょう or ましょうか. Use ない for
+          a plain negative and ません for a polite one. With たい both が and を are
+          standard; with ほしい the thing wanted takes が.
+        examples:
+          - kanji: 海に行きたいです
+            kana: うみにいきたいです
+            romaji: umi ni ikitai desu
+          - kanji: 窓を開けましょうか
+            kana: まどをあけましょうか
+            romaji: mado o akemashou ka
+      - prose: >-
+          Read the situation before choosing the ending. A want takes たい, a plain
+          refusal takes ない, a proposal takes ましょう, and an offer you are asking
+          about takes ましょうか. Getting ましょう and ましょうか backwards changes
+          whether you are telling the listener what to do or asking them what they want.
+    steps:
+      - id: u4-l4-1
+        kind: conversation
+        concepts: [tai-want, nai-negative, mashou-invitation, wo-vs-ga-want]
+        prompt: >-
+          You are planning a free day with a classmate. Answer their questions,
+          including the offer near the end.
+        scenario:
+          turns:
+            - speaker: npc
+              line:
+                kanji: 週末、何をしたいですか。
+                kana: しゅうまつ、なにをしたいですか。
+                romaji: shuumatsu, nani o shitai desu ka
+            - speaker: learner
+              accept:
+                - kanji: 海に行きたいです。
+                  kana: うみにいきたいです。
+                  romaji: umi ni ikitai desu
+                - kanji: 映画を見たいです。
+                  kana: えいがをみたいです。
+                  romaji: eiga o mitai desu
+                - kanji: 家で休みたいです。
+                  kana: いえでやすみたいです。
+                  romaji: ie de yasumitai desu
+            - speaker: npc
+              line:
+                kanji: 海で泳ぎたいですか。
+                kana: うみでおよぎたいですか。
+                romaji: umi de oyogitai desu ka
+            - speaker: learner
+              accept:
+                - kanji: はい、泳ぎたいです。
+                  kana: はい、およぎたいです。
+                  romaji: hai, oyogitai desu
+                - kanji: いいえ、泳ぎたくないです。
+                  kana: いいえ、およぎたくないです。
+                  romaji: iie, oyogitakunai desu
+                - kanji: 海で泳ぎたいです。
+                  kana: うみでおよぎたいです。
+                  romaji: umi de oyogitai desu
+            - speaker: npc
+              line:
+                kanji: お昼は何がほしいですか。
+                kana: おひるはなにがほしいですか。
+                romaji: ohiru wa nani ga hoshii desu ka
+            - speaker: learner
+              accept:
+                - kanji: すしがほしいです。
+                  kana: すしがほしいです。
+                  romaji: sushi ga hoshii desu
+                - kanji: 水がほしいです。
+                  kana: みずがほしいです。
+                  romaji: mizu ga hoshii desu
+                - kanji: コーヒーがほしいです。
+                  kana: コーヒーがほしいです。
+                  romaji: koohii ga hoshii desu
+            - speaker: npc
+              line:
+                kanji: じゃあ、私が買いましょうか。
+                kana: じゃあ、わたしがかいましょうか。
+                romaji: jaa, watashi ga kaimashou ka
+            - speaker: learner
+              accept:
+                - kanji: はい、お願いします。
+                  kana: はい、おねがいします。
+                  romaji: hai, onegaishimasu
+                - kanji: いいえ、私が買いましょう。
+                  kana: いいえ、わたしがかいましょう。
+                  romaji: iie, watashi ga kaimashou
+                - kanji: 一緒に買いましょう。
+                  kana: いっしょにかいましょう。
+                  romaji: issho ni kaimashou
+            - speaker: npc
+              line:
+                kanji: 日曜日は働きますか。
+                kana: にちようびははたらきますか。
+                romaji: nichiyoubi wa hatarakimasu ka
+            - speaker: learner
+              accept:
+                - kanji: いいえ、働きません。
+                  kana: いいえ、はたらきません。
+                  romaji: iie, hatarakimasen
+                - kanji: はい、働きます。
+                  kana: はい、はたらきます。
+                  romaji: hai, hatarakimasu
+                - kanji: いいえ、休みます。
+                  kana: いいえ、やすみます。
+                  romaji: iie, yasumimasu
+            - speaker: npc
+              line:
+                kanji: そうですか。じゃあ、日曜日に会いましょう。
+                kana: そうですか。じゃあ、にちようびにあいましょう。
+                romaji: sou desu ka. jaa, nichiyoubi ni aimashou
+        hint: >-
+          Use たい on the ます stem, が with ほしい, and choose ましょう to state a
+          proposal and ましょうか to ask.
+        explanation: >-
+          The questions move from what you want to do, to what you want (ほしい + が),
+          to an offer with ましょうか. はい、お願いします accepts the offer; 私が
+          買いましょう takes it back with a proposal. ましょう states and ましょうか
+          asks, so the pair is not interchangeable.
+      - id: u4-l4-2
+        kind: speaking
+        concepts: [tai-want, nai-negative, mashou-invitation, wo-vs-ga-want]
+        prompt: >-
+          Plan a free day out loud: say what you want to do, one thing you do not want
+          to do, one thing you want, and invite the listener or offer to do something.
+          Use a plain negative once and a polite negative once. Speak without looking
+          back at the lesson.
+        rubric: >-
+          Does it attach たい to the ます stem, choose ない or ません by who is being
+          addressed, use ましょう for a proposal and ましょうか for an offer put as a
+          question, and mark what is wanted with が or を where both are standard and
+          with が for ほしい? Judge meaning, grammar, naturalness and register
+          separately. There is no model answer.

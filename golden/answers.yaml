@@ -914,3 +914,225 @@
 - step: u3-l4-9
   answer: aimashita
   verdict: wrong
+- step: u4-l1-1
+  answer: I want to drink water.
+  verdict: correct
+- step: u4-l1-1
+  answer: I drink water.
+  verdict: wrong
+- step: u4-l1-2
+  answer: I do not want to eat.
+  verdict: correct
+- step: u4-l1-2
+  answer: I want to eat.
+  verdict: wrong
+- step: u4-l1-3
+  answer: nomitai desu
+  verdict: correct
+- step: u4-l1-3
+  answer: nomutai desu
+  verdict: wrong
+- step: u4-l1-4
+  answer: tabetai desu
+  verdict: correct
+- step: u4-l1-4
+  answer: taberutai desu
+  verdict: wrong
+- step: u4-l1-5
+  answer: kaitai desu
+  verdict: correct
+- step: u4-l1-5
+  answer: kautai desu
+  verdict: wrong
+- step: u4-l1-6
+  answer: ikitai desu
+  verdict: correct
+- step: u4-l1-6
+  answer: ikimasu
+  verdict: wrong
+- step: u4-l1-7
+  answer: koohii ga nomitai desu
+  verdict: correct
+- step: u4-l1-7
+  answer: koohii o nomitai desu
+  verdict: correct
+- step: u4-l1-7
+  answer: koohii ga nomimasu
+  verdict: wrong
+- step: u4-l1-8
+  answer: tsukuritai desu
+  verdict: correct
+- step: u4-l1-8
+  answer: tsukurimasu
+  verdict: wrong
+- step: u4-l1-9
+  answer: yasumitakunai desu
+  verdict: correct
+- step: u4-l1-9
+  answer: yasumitai desu
+  verdict: wrong
+- step: u4-l1-10
+  answer: I do not want to watch a movie today.
+  verdict: correct
+- step: u4-l1-10
+  answer: I want to watch a movie today.
+  verdict: wrong
+- step: u4-l2-1
+  answer: I do not drink.
+  verdict: correct
+- step: u4-l2-1
+  answer: I drink.
+  verdict: wrong
+- step: u4-l2-2
+  answer: I do not eat.
+  verdict: correct
+- step: u4-l2-2
+  answer: I eat.
+  verdict: wrong
+- step: u4-l2-3
+  answer: nomanai
+  verdict: correct
+- step: u4-l2-3
+  answer: nominai
+  verdict: wrong
+- step: u4-l2-4
+  answer: tabenai
+  verdict: correct
+- step: u4-l2-4
+  answer: taberanai
+  verdict: wrong
+- step: u4-l2-5
+  answer: oyoganai
+  verdict: correct
+- step: u4-l2-5
+  answer: oyogunai
+  verdict: wrong
+- step: u4-l2-6
+  answer: kawanai
+  verdict: correct
+- step: u4-l2-6
+  answer: kaimasen
+  verdict: wrong
+- step: u4-l2-7
+  answer: ma
+  verdict: correct
+- step: u4-l2-7
+  answer: mi
+  verdict: wrong
+- step: u4-l2-8
+  answer: konai
+  verdict: correct
+- step: u4-l2-8
+  answer: kinai
+  verdict: wrong
+- step: u4-l2-9
+  answer: shinai
+  verdict: correct
+- step: u4-l2-9
+  answer: sunai
+  verdict: wrong
+- step: u4-l2-10
+  answer: tsukawanai
+  verdict: correct
+- step: u4-l2-10
+  answer: tsukaimasu
+  verdict: wrong
+- step: u4-l2-11
+  answer: I am not resting today.
+  verdict: correct
+- step: u4-l2-11
+  answer: I am resting today.
+  verdict: wrong
+- step: u4-l2-12
+  answer: konai
+  verdict: correct
+- step: u4-l2-12
+  answer: kiranai
+  verdict: wrong
+- step: u4-l3-1
+  answer: Asking whether they should open the window.
+  verdict: correct
+- step: u4-l3-1
+  answer: Telling the listener to open the window.
+  verdict: wrong
+- step: u4-l3-2
+  answer: I want to drink water.
+  verdict: correct
+- step: u4-l3-2
+  answer: I drink water.
+  verdict: wrong
+- step: u4-l3-3
+  answer: koohii o nomimashou
+  verdict: correct
+- step: u4-l3-3
+  answer: koohii o nomimasu
+  verdict: wrong
+- step: u4-l3-4
+  answer: mado o akemashou ka
+  verdict: correct
+- step: u4-l3-4
+  answer: mado o akemashou
+  verdict: wrong
+- step: u4-l3-5
+  answer: issho ni ikimashou
+  verdict: correct
+- step: u4-l3-5
+  answer: issho ni ikimasu
+  verdict: wrong
+- step: u4-l3-6
+  answer: umi ni ikitai desu ka
+  verdict: correct
+- step: u4-l3-6
+  answer: umi ni ikitai desu
+  verdict: wrong
+- step: u4-l3-7
+  answer: mizu ga hoshii desu
+  verdict: correct
+- step: u4-l3-7
+  answer: mizu o hoshii desu
+  verdict: wrong
+- step: u4-l3-8
+  answer: mizu ga hoshii desu
+  verdict: correct
+- step: u4-l3-8
+  answer: mizu o hoshii desu
+  verdict: wrong
+- step: u4-l3-9
+  answer: kouen de asobitai desu
+  verdict: correct
+- step: u4-l3-9
+  answer: kouen de asobimasu
+  verdict: wrong
+- step: u4-l3-10
+  answer: yasumimashou
+  verdict: correct
+- step: u4-l3-10
+  answer: yasumimasu
+  verdict: wrong
+- step: u4-l3-11
+  answer: Shall we eat together?
+  verdict: correct
+- step: u4-l3-11
+  answer: We ate together.
+  verdict: wrong
+- step: u4-l3-12
+  answer: ga
+  verdict: correct
+- step: u4-l3-12
+  answer: o
+  verdict: wrong
+- step: u4-l3-13
+  answer: ga
+  verdict: correct
+- step: u4-l3-13
+  answer: o
+  verdict: correct
+- step: u4-l3-13
+  answer: ni
+  verdict: wrong
+- step: u4-l3-14
+  answer: I want water.
+  verdict: correct
+- step: u4-l3-14
+  answer: I want to drink water.
+  verdict: wrong
