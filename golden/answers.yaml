@@ -1,0 +1,361 @@
+- step: a-topic-1
+  answer: watashi wa gakusei desu
+  verdict: correct
+- step: a-topic-1
+  answer: watashi wa gakusei desu.
+  verdict: correct
+- step: a-topic-1
+  answer: 私は学生です。
+  verdict: correct
+- step: a-topic-1
+  answer: わたしはがくせいです
+  verdict: correct
+- step: a-topic-1
+  answer: watashiwa gakusei desu
+  verdict: correct
+- step: a-topic-1
+  answer: 学生です
+  verdict: correct
+  concepts: [desu]
+- step: a-topic-1
+  answer: watashi ga gakusei desu
+  verdict: wrong
+- step: a-object-1
+  answer: sushi o tabemasen
+  verdict: correct
+- step: a-object-1
+  answer: 寿司は食べません
+  verdict: correct
+  concepts: [masen, particle-wa]
+- step: a-object-1
+  answer: sushi wa tabemasen
+  verdict: correct
+  concepts: [masen, particle-wa]
+- step: a-object-1
+  answer: sushi o tabemasu
+  verdict: wrong
+- step: a-object-2
+  answer: mizu o nomitai desu
+  verdict: correct
+- step: a-object-2
+  answer: 水が飲みたいです
+  verdict: correct
+  concepts: [tai, particle-ga]
+- step: a-object-2
+  answer: 水を飲めます
+  verdict: wrong
+- step: a-listen-1
+  answer: neko ga suki desu
+  verdict: correct
+- step: a-listen-1
+  answer: 猫が好きです
+  verdict: correct
+- step: a-listen-2
+  answer: I like cats.
+  verdict: correct
+- step: a-listen-2
+  answer: Cats like me.
+  verdict: wrong
+- step: b-hundreds-1
+  answer: It's 600 yen
+  verdict: correct
+- step: b-hundreds-1
+  answer: "600"
+  verdict: correct
+- step: b-hundreds-1
+  answer: six hundred yen
+  verdict: correct
+- step: b-hundreds-2
+  answer: happyaku en
+  verdict: correct
+- step: b-hundreds-2
+  answer: はっぴゃくえんです
+  verdict: correct
+- step: b-hundreds-3
+  answer: happyaku en desu
+  verdict: correct
+- step: b-thousands-1
+  answer: hassen en desu
+  verdict: correct
+- step: b-thousands-1
+  answer: hasen en desu
+  verdict: wrong
+- step: b-listen-1
+  answer: sanzen gohyaku en
+  verdict: correct
+- step: b-listen-1
+  answer: 三千五百円です
+  verdict: correct
+- step: b-listen-1
+  answer: sanzengohyakuen
+  verdict: correct
+- step: b-listen-1
+  answer: 3,500円
+  verdict: correct
+- step: a-object-3
+  answer: o
+  verdict: correct
+- step: a-topic-2
+  answer: The student is Tanaka.
+  verdict: correct
+- step: b-thousands-2
+  answer: hassen en desu
+  verdict: correct
+- step: b-listen-2
+  answer: roppyaku en desu
+  verdict: correct
+- step: b-counters-1
+  answer: Six times.
+  verdict: correct
+- step: p-rec-1
+  answer: Tanaka is a student.
+  verdict: correct
+- step: p-rec-2
+  answer: There is a convenience store near the station.
+  verdict: correct
+- step: p-rec-3
+  answer: There is a cat in the room.
+  verdict: correct
+- step: p-rec-4
+  answer: I will go to school tomorrow.
+  verdict: correct
+- step: p-rec-5
+  answer: It is 800 yen.
+  verdict: correct
+- step: p-rec-6
+  answer: What is this?
+  verdict: correct
+- step: p-rec-7
+  answer: I have already eaten lunch.
+  verdict: correct
+- step: p-rec-8
+  answer: Please wash your hands.
+  verdict: correct
+- step: p-prod-1
+  answer: sushi o tabemashita
+  verdict: correct
+- step: p-prod-2
+  answer: toshokan de benkyou shimasu
+  verdict: correct
+- step: p-prod-3
+  answer: heya ni neko ga imasu
+  verdict: correct
+- step: p-prod-4
+  answer: sore wa watashi no kaban desu
+  verdict: correct
+- step: p-prod-6
+  answer: ikimashita
+  verdict: correct
+- step: p-prod-7
+  answer: kaite
+  verdict: correct
+- step: c-listen-1
+  answer: kyou wa totemo atsui
+  verdict: correct
+- step: c-listen-2
+  answer: ashita wa dou desu ka
+  verdict: correct
+- step: c-listen-3
+  answer: washoku wa suki desu ka
+  verdict: correct
+- step: c-listen-4
+  answer: yuushoku no jikan desu yo
+  verdict: correct
+- step: c-meaning-1
+  answer: I lost my wallet.
+  verdict: correct
+- step: c-meaning-2
+  answer: I don't like it anymore.
+  verdict: correct
+- step: c-produce-1
+  answer: kyoo wa totemo atsui
+  verdict: correct
+- step: c-produce-2
+  answer: washoku wa suki desu ka
+  verdict: correct
+- step: c-produce-3
+  answer: moo suki ja arimasen
+  verdict: correct
+- step: p-prod-5
+  answer: nomenai
+  verdict: wrong
+- step: p-prod-8
+  answer: hassen en desu
+  verdict: correct
+- step: p-prod-8
+  answer: hachisen en desu
+  verdict: wrong
+- step: u1-l1-1
+  answer: I am not a student.
+  verdict: correct
+- step: u1-l1-1
+  answer: I am a student.
+  verdict: wrong
+- step: u1-l1-2
+  answer: watashi wa gakusei desu
+  verdict: correct
+- step: u1-l1-2
+  answer: 学生です
+  verdict: correct
+- step: u1-l1-2
+  answer: watashi wa gakusei ja nai desu
+  verdict: wrong
+- step: u1-l1-3
+  answer: ja nai
+  verdict: correct
+- step: u1-l1-3
+  answer: じゃない
+  verdict: correct
+- step: u1-l1-3
+  answer: desu
+  verdict: wrong
+- step: u1-l1-4
+  answer: watashi wa gakusei ja nai desu
+  verdict: correct
+- step: u1-l1-4
+  answer: 私は学生じゃないです
+  verdict: correct
+- step: u1-l1-4
+  answer: watashi wa gakusei desu
+  verdict: wrong
+- step: u1-l1-5
+  answer: 私は学生です
+  verdict: correct
+- step: u1-l1-5
+  answer: gakusei desu
+  verdict: correct
+- step: u1-l1-5
+  answer: watashi wa gakusei ja nai desu
+  verdict: wrong
+- step: u1-l1-6
+  answer: Tanaka is not a teacher.
+  verdict: correct
+- step: u1-l1-6
+  answer: Tanaka is a teacher.
+  verdict: wrong
+- step: u1-l1-7
+  answer: watashi wa kaishain desu
+  verdict: correct
+- step: u1-l1-7
+  answer: kaishain desu
+  verdict: correct
+- step: u1-l1-7
+  answer: watashi wa kaishain ja nai desu
+  verdict: wrong
+- step: u1-l1-8
+  answer: I am a student.
+  verdict: correct
+- step: u1-l1-8
+  answer: He is a student.
+  verdict: wrong
+- step: u1-l1-9
+  answer: tanaka san wa sensei ja nai desu
+  verdict: correct
+- step: u1-l1-9
+  answer: 田中さんは先生じゃないです
+  verdict: correct
+- step: u1-l1-9
+  answer: tanaka san wa sensei desu
+  verdict: wrong
+- step: u1-l2-1
+  answer: Tanaka is the student.
+  verdict: correct
+- step: u1-l2-1
+  answer: Tanaka is a student.
+  verdict: wrong
+- step: u1-l2-2
+  answer: Tanaka is a student.
+  verdict: correct
+- step: u1-l2-2
+  answer: Tanaka is the teacher.
+  verdict: wrong
+- step: u1-l2-3
+  answer: tanaka san ga gakusei desu
+  verdict: correct
+- step: u1-l2-3
+  answer: 田中さんは学生です
+  verdict: wrong
+- step: u1-l2-4
+  answer: watashi wa gakusei desu
+  verdict: correct
+- step: u1-l2-4
+  answer: gakusei desu
+  verdict: correct
+- step: u1-l2-4
+  answer: watashi mo gakusei desu
+  verdict: wrong
+- step: u1-l2-5
+  answer: I am a student too.
+  verdict: correct
+- step: u1-l2-5
+  answer: I am a student.
+  verdict: wrong
+- step: u1-l2-6
+  answer: watashi mo gakusei desu
+  verdict: correct
+- step: u1-l2-6
+  answer: 私も学生です
+  verdict: correct
+- step: u1-l2-6
+  answer: watashi wa gakusei desu
+  verdict: wrong
+- step: u1-l2-7
+  answer: mo
+  verdict: correct
+- step: u1-l2-7
+  answer: も
+  verdict: correct
+- step: u1-l2-7
+  answer: wa
+  verdict: wrong
+- step: u1-l2-8
+  answer: watashi mo gakusei desu
+  verdict: correct
+- step: u1-l2-8
+  answer: watashi wa mo gakusei desu
+  verdict: wrong
+- step: u1-l2-9
+  answer: tanaka san mo sensei desu
+  verdict: correct
+- step: u1-l2-9
+  answer: tanaka san wa sensei desu
+  verdict: wrong
+- step: u1-l2-10
+  answer: Tanaka is not a teacher either.
+  verdict: correct
+- step: u1-l2-10
+  answer: Tanaka is a teacher too.
+  verdict: wrong
+- step: u1-l2-11
+  answer: dare ga gakusei desu ka
+  verdict: correct
+- step: u1-l2-11
+  answer: 誰が学生ですか
+  verdict: correct
+- step: u1-l2-11
+  answer: dare wa gakusei desu ka
+  verdict: wrong
+- step: u1-l2-12
+  answer: ga
+  verdict: correct
+- step: u1-l2-12
+  answer: wa
+  verdict: wrong
+- step: u1-l2-13
+  answer: tanaka san wa sensei desu
+  verdict: correct
+- step: u1-l2-13
+  answer: 田中さんが先生です
+  verdict: wrong
+- step: u1-l2-14
+  answer: namae wa tanaka desu
+  verdict: correct
+- step: u1-l2-14
+  answer: 名前は田中です
+  verdict: correct
+- step: u1-l2-14
+  answer: watashi wa tanaka desu
+  verdict: correct
+- step: u1-l2-14
+  answer: tanaka san wa namae desu
+  verdict: wrong

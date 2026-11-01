@@ -24,22 +24,25 @@ lessons:
         accept_meanings:
           - It is 600 yen.
           - 600 yen.
+          - It's 600 yen.
+          - 600
+          - six hundred yen
         explanation: >-
-          六百 is ろっぴゃく, not ろくひゃく. The く drops and ひ becomes ぴ. The same
-          pattern gives 三百 さんびゃく and 八百 はっぴゃく.
+          六百 is ろっぴゃく, not ろくひゃく: the く becomes the small っ and ひ becomes
+          ぴ. 三百 is さんびゃく — it voices instead — while 八百 is はっぴゃく, the same
+          gemination as 六百.
 
       - id: b-hundreds-2
-        kind: completion
+        kind: construction
         concepts: [number-hundreds, counter-en]
-        prompt: Fill in the reading — eight hundred yen.
-        target:
-          kanji: 八百＿です
-          kana: はっぴゃく＿です
-          romaji: happyaku _ desu
+        prompt: Write "eight hundred yen" in Japanese.
         accept:
-          - kanji: 円
-            kana: えん
-            romaji: en
+          - kanji: 八百円
+            kana: はっぴゃくえん
+            romaji: happyaku en
+          - kanji: 八百円です
+            kana: はっぴゃくえんです
+            romaji: happyaku en desu
         explanation: >-
           八百 is はっぴゃく. The counter 円 stays えん in this position, so it is
           はっぴゃくえん.
@@ -57,8 +60,8 @@ lessons:
             kana: はっぴゃくえんです
             romaji: happyaku en desu
         explanation: >-
-          六百 is ろっぴゃく and 八百 is はっぴゃく. Both are irregular: the hundreds
-          counter voices after 三, 六 and 八.
+          六百 is ろっぴゃく and 八百 is はっぴゃく. Only 三 voices the counter
+          (さんびゃく); 六 and 八 geminate the く into っ and take ぴゃく instead.
 
   - id: b-thousands
     title: Thousands and the はっせん trap
@@ -75,12 +78,6 @@ lessons:
           - kanji: 八千円です
             kana: はっせんえんです
             romaji: hassen en desu
-        off_target:
-          - text:
-              kanji: 八千円
-              kana: はせんえん
-              romaji: hasen en
-            meaning: This is not a Japanese word — dropping the small っ changes which number was said.
         explanation: >-
           8,000 is はっせん, with the small っ. Without it you say はせん, which is not
           a number. This is a word identity difference, not an accent.
@@ -107,7 +104,6 @@ lessons:
         kind: listening
         concepts: [number-hundreds, counter-en, number-thousands]
         prompt: Listen and type the price you hear.
-        audio: audio/unit-b/b-listen-1.opus
         target:
           kanji: 三千五百円です
           kana: さんぜんごひゃくえんです
@@ -116,6 +112,9 @@ lessons:
           - kanji: 三千五百円
             kana: さんぜんごひゃくえん
             romaji: sanzen gohyaku en
+          - kanji: 三千五百円です
+            kana: さんぜんごひゃくえんです
+            romaji: sanzen gohyaku en desu
           - kanji: 3500円
             kana: さんぜんごひゃくえん
             romaji: sanzen gohyaku en
@@ -134,6 +133,9 @@ lessons:
           - kanji: 六百円
             kana: ろっぴゃくえん
             romaji: roppyaku en
+          - kanji: 六百円です
+            kana: ろっぴゃくえんです
+            romaji: roppyaku en desu
           - kanji: 600円
             kana: ろっぴゃくえん
             romaji: roppyaku en

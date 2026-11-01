@@ -1,0 +1,507 @@
+id: unit-1
+title: はじめまして — introducing yourself
+taught: true
+concepts:
+  - id: desu-copula
+    label: です — polite "is"
+  - id: ja-nai-desu
+    label: じゃないです — polite "is not"
+  - id: drop-watashi
+    label: dropping 私は in a self-introduction
+  - id: wa-topic
+    label: は — topic marker
+  - id: ga-subject
+    label: が — identifies who
+  - id: mo-also
+    label: も — also, replacing は or が
+lessons:
+  - id: u1-l1
+    title: です and じゃないです
+    objective: >-
+      Say what you are with です, say what you are not with じゃないです, and drop
+      私は when you are introducing yourself.
+    anchors:
+      - kanji: 私も
+        kana: わたしも
+        romaji: watashi mo
+      - kanji: そうじゃない
+        kana: そうじゃない
+        romaji: sou ja nai
+      - kanji: 私は田中です
+        kana: わたしはたなかです
+        romaji: watashi wa tanaka desu
+    teach:
+      - prose: >-
+          です makes a noun sentence polite: A は B です means "A is B". Anime
+          dialogue often uses the plain だ instead, but です is the safe form for
+          every polite situation on this trip.
+        examples:
+          - kanji: 私は学生です
+            kana: わたしはがくせいです
+            romaji: watashi wa gakusei desu
+          - kanji: 田中さんは先生です
+            kana: たなかさんはせんせいです
+            romaji: tanaka san wa sensei desu
+      - prose: >-
+          The polite negative is じゃないです: A は B じゃないです means "A is not B".
+          じゃない by itself is casual, so keep です on the end when you are being
+          polite.
+        examples:
+          - kanji: 私は学生じゃないです
+            kana: わたしはがくせいじゃないです
+            romaji: watashi wa gakusei ja nai desu
+          - kanji: 先生じゃないです
+            kana: せんせいじゃないです
+            romaji: sensei ja nai desu
+      - prose: >-
+          When you are already the topic — you are introducing yourself — Japanese
+          usually drops 私は and says 学生です. Keep 私は when you are contrasting
+          yourself with someone else, as in 私は学生です。田中さんも学生です.
+        examples:
+          - kanji: 学生です
+            kana: がくせいです
+            romaji: gakusei desu
+          - kanji: 私も学生です
+            kana: わたしもがくせいです
+            romaji: watashi mo gakusei desu
+    steps:
+      - id: u1-l1-1
+        kind: interpretation
+        concepts: [ja-nai-desu, desu-copula]
+        prompt: What does this mean?
+        target:
+          kanji: 私は学生じゃないです
+          kana: わたしはがくせいじゃないです
+          romaji: watashi wa gakusei ja nai desu
+        accept_meanings:
+          - I am not a student.
+          - I'm not a student.
+        hint: The ending decides the meaning — listen for じゃないです, not です.
+        explanation: >-
+          じゃないです is the negative of です, so this says "I am not a student".
+          私は学生です would say the opposite. The は stays the same; only the ending
+          carries the "not".
+      - id: u1-l1-2
+        kind: construction
+        concepts: [desu-copula, drop-watashi]
+        prompt: Write "I am a student."
+        accept:
+          - kanji: 私は学生です
+            kana: わたしはがくせいです
+            romaji: watashi wa gakusei desu
+          - kanji: 学生です
+            kana: がくせいです
+            romaji: gakusei desu
+            concepts: [desu-copula, drop-watashi]
+        hint: Pair the person with は, then close the sentence with です.
+        explanation: >-
+          は marks 私 as the topic and です closes the sentence politely. 学生です is
+          equally natural in a self-introduction, because the person speaking is
+          already understood.
+      - id: u1-l1-3
+        kind: completion
+        concepts: [ja-nai-desu]
+        prompt: Fill the ending — "I am not a student."
+        target:
+          kanji: 私は学生＿です
+          kana: わたしはがくせい＿です
+          romaji: watashi wa gakusei _ desu
+        accept:
+          - kanji: じゃない
+            kana: じゃない
+            romaji: ja nai
+        hint: The polite negative of です comes before the final です.
+        explanation: >-
+          じゃない carries the negative and です keeps it polite: 学生じゃないです.
+          Putting only ない after the noun would be the plain negative, 学生じゃない,
+          which is too casual here.
+      - id: u1-l1-4
+        kind: transformation
+        concepts: [desu-copula, ja-nai-desu]
+        prompt: Make "I am a student" into "I am not a student."
+        target:
+          kanji: 私は学生です
+          kana: わたしはがくせいです
+          romaji: watashi wa gakusei desu
+        accept:
+          - kanji: 私は学生じゃないです
+            kana: わたしはがくせいじゃないです
+            romaji: watashi wa gakusei ja nai desu
+        hint: Keep 私は学生 and change only the ending that carries "is not".
+        explanation: >-
+          です becomes じゃないです for the polite negative. The noun and は do not
+          change, so the only new piece is じゃないです.
+      - id: u1-l1-5
+        kind: construction
+        concepts: [desu-copula, ja-nai-desu]
+        prompt: >-
+          A classmate wrote 私は学生じゃないです but meant "I am a student". Write the
+          sentence they meant.
+        accept:
+          - kanji: 私は学生です
+            kana: わたしはがくせいです
+            romaji: watashi wa gakusei desu
+          - kanji: 学生です
+            kana: がくせいです
+            romaji: gakusei desu
+        hint: Remove the negative piece じゃない and leave the polite ending.
+        explanation: >-
+          じゃないです makes the sentence negative, which is the opposite of what
+          they meant. Dropping じゃない leaves 私は学生です; leaving 学生だけです or
+          学生あります does not work, because a noun sentence needs です.
+      - id: u1-l1-6
+        kind: listening
+        concepts: [ja-nai-desu, desu-copula]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: 田中さんは先生じゃないです
+          kana: たなかさんはせんせいじゃないです
+          romaji: tanaka san wa sensei ja nai desu
+        accept_meanings:
+          - Tanaka is not a teacher.
+          - Tanaka isn't a teacher.
+        hint: The negative ending じゃないです tells you what Tanaka is not.
+        explanation: >-
+          Tanaka is the topic and 先生じゃないです says "is not a teacher". Hearing just
+          先生です would flip the meaning; the じゃない is the part that matters.
+      - id: u1-l1-7
+        kind: construction
+        concepts: [desu-copula, drop-watashi]
+        prompt: Write "I am a company employee."
+        accept:
+          - kanji: 私は会社員です
+            kana: わたしはかいしゃいんです
+            romaji: watashi wa kaishain desu
+          - kanji: 会社員です
+            kana: かいしゃいんです
+            romaji: kaishain desu
+            concepts: [desu-copula, drop-watashi]
+        hint: 会社員 is かいしゃいん — keep the small ゃ and the final ん.
+        explanation: >-
+          会社員 means "company employee" and takes です like any other noun. In a
+          self-introduction 会社員です is enough; 私は会社員です adds the topic but is
+          not required.
+      - id: u1-l1-8
+        kind: interpretation
+        concepts: [drop-watashi, desu-copula]
+        prompt: A new colleague introduces themselves with 学生です. What did they say?
+        target:
+          kanji: 学生です
+          kana: がくせいです
+          romaji: gakusei desu
+        accept_meanings:
+          - I am a student.
+          - I'm a student.
+        hint: This is a self-introduction, so the missing 私は is understood.
+        explanation: >-
+          In a self-introduction 学生です means "I am a student"; the speaker does not
+          need to say 私は. The same words out of context could describe someone else,
+          but the introduction supplies the topic.
+      - id: u1-l1-9
+        kind: transformation
+        concepts: [ja-nai-desu, desu-copula]
+        prompt: Make "Tanaka is a teacher" into "Tanaka is not a teacher."
+        target:
+          kanji: 田中さんは先生です
+          kana: たなかさんはせんせいです
+          romaji: tanaka san wa sensei desu
+        accept:
+          - kanji: 田中さんは先生じゃないです
+            kana: たなかさんはせんせいじゃないです
+            romaji: tanaka san wa sensei ja nai desu
+        hint: 田中さんは先生 stays; only the ending becomes negative.
+        explanation: >-
+          Replace です with じゃないです. は still marks Tanaka as the topic, so the
+          sentence is about him and says he is not a teacher.
+      - id: u1-l1-10
+        kind: speaking
+        concepts: [desu-copula, drop-watashi]
+        prompt: >-
+          Introduce yourself: say your name, then say that you are a student. Speak
+          your answer aloud before checking the reference.
+        rubric: >-
+          Does it give a name with です and a student statement with です, and does it
+          sound like a polite self-introduction? Judge meaning, grammar, naturalness
+          and register separately.
+        hint: You may start with 私は, but a self-introduction can go straight to 学生です.
+        explanation: >-
+          A natural pattern is 田中です。学生です。You can also say 私は田中です。
+          私は学生です。Dropping 私は is the usual choice for both sentences.
+
+  - id: u1-l2
+    title: は vs が, and も
+    objective: >-
+      Use は for what a sentence is about, が to identify who, and も to say "also"
+      in place of は or が.
+    teach:
+      - prose: >-
+          は sets the topic and が identifies. 田中さんは学生です is about Tanaka: "Tanaka
+          is a student". 田中さんが学生です answers 誰が学生ですか: "Tanaka is the student".
+          Neither is more polite; they answer different questions.
+        examples:
+          - kanji: 田中さんは学生です
+            kana: たなかさんはがくせいです
+            romaji: tanaka san wa gakusei desu
+          - kanji: 田中さんが学生です
+            kana: たなかさんががくせいです
+            romaji: tanaka san ga gakusei desu
+      - prose: >-
+          も means "also" and replaces は or が rather than joining them:
+          私も学生です. 私はも学生です stacks two particles and is ungrammatical.
+        examples:
+          - kanji: 私も学生です
+            kana: わたしもがくせいです
+            romaji: watashi mo gakusei desu
+          - kanji: 田中さんも先生です
+            kana: たなかさんもせんせいです
+            romaji: tanaka san mo sensei desu
+    steps:
+      - id: u1-l2-1
+        kind: interpretation
+        concepts: [ga-subject, wa-topic]
+        prompt: Someone asks 誰が学生ですか. The answer is 田中さんが学生です. What does it mean?
+        target:
+          kanji: 田中さんが学生です
+          kana: たなかさんががくせいです
+          romaji: tanaka san ga gakusei desu
+        accept_meanings:
+          - Tanaka is the student.
+          - It is Tanaka who is the student.
+          - Tanaka is the one who is a student.
+        hint: が points at the person who fits the question "who?".
+        explanation: >-
+          が identifies Tanaka as the student, so this answers 誰が学生ですか. With
+          は the sentence would be about Tanaka instead: 田中さんは学生です, "Tanaka is
+          a student".
+      - id: u1-l2-2
+        kind: interpretation
+        concepts: [wa-topic, desu-copula]
+        prompt: What does this mean?
+        target:
+          kanji: 田中さんは学生です
+          kana: たなかさんはがくせいです
+          romaji: tanaka san wa gakusei desu
+        accept_meanings:
+          - Tanaka is a student.
+          - Tanaka is the student.
+        hint: は makes Tanaka the topic, so the sentence is simply about him.
+        explanation: >-
+          は marks Tanaka as what the sentence is about, so this is the neutral
+          statement "Tanaka is a student". 田中さんが学生です would instead identify
+          him as the answer to "who is the student?".
+      - id: u1-l2-3
+        kind: construction
+        concepts: [ga-subject]
+        prompt: >-
+          Someone asks 誰が学生ですか. A classmate answers 田中さんは学生です. Write the
+          answer that identifies who the student is.
+        accept:
+          - kanji: 田中さんが学生です
+            kana: たなかさんががくせいです
+            romaji: tanaka san ga gakusei desu
+        off_target:
+          - text:
+              kanji: 田中さんは学生です
+              kana: たなかさんはがくせいです
+              romaji: tanaka san wa gakusei desu
+            meaning: it is about Tanaka rather than answering "who is the student?"
+        hint: The question used が, so the identifying answer uses が too.
+        explanation: >-
+          は makes Tanaka the topic, which does not answer "who?". が marks him as the
+          one who fits 学生, so 田中さんが学生です is the identifying answer.
+      - id: u1-l2-4
+        kind: construction
+        concepts: [mo-also, wa-topic]
+        prompt: >-
+          A classmate writes 私も学生です to introduce himself, but nobody has said
+          they are a student. Write the sentence he meant.
+        accept:
+          - kanji: 私は学生です
+            kana: わたしはがくせいです
+            romaji: watashi wa gakusei desu
+            concepts: [wa-topic, desu-copula]
+          - kanji: 学生です
+            kana: がくせいです
+            romaji: gakusei desu
+            concepts: [drop-watashi, desu-copula]
+        off_target:
+          - text:
+              kanji: 私も学生です
+              kana: わたしもがくせいです
+              romaji: watashi mo gakusei desu
+            meaning: I am a student too — but も needs an earlier "also", so it invents
+              a second student
+        hint: も adds "also"; if there is no "also", use the plain topic marker.
+        explanation: >-
+          も claims a second student that the conversation never introduced. The
+          neutral introduction is 私は学生です, or 学生です with 私は dropped.
+      - id: u1-l2-5
+        kind: interpretation
+        concepts: [mo-also, desu-copula]
+        prompt: What does this mean?
+        target:
+          kanji: 私も学生です
+          kana: わたしもがくせいです
+          romaji: watashi mo gakusei desu
+        accept_meanings:
+          - I am a student too.
+          - I'm a student too.
+        hint: も is the small word that adds "also".
+        explanation: >-
+          も replaces は and adds "also", so this says "I am a student too" — someone
+          else has already been called a student.
+      - id: u1-l2-6
+        kind: construction
+        concepts: [mo-also, desu-copula]
+        prompt: >-
+          A classmate wrote 私は学生です after someone else had just said they were a
+          student. They meant "I am a student too". Write the sentence they meant.
+        accept:
+          - kanji: 私も学生です
+            kana: わたしもがくせいです
+            romaji: watashi mo gakusei desu
+        hint: も takes the place of は, not a place beside it.
+        explanation: >-
+          も replaces は to mean "also": 私も学生です. 私はも学生です is ungrammatical
+          because two particles cannot stack on the same noun.
+      - id: u1-l2-7
+        kind: completion
+        concepts: [mo-also]
+        prompt: Fill the particle — "I am a student too."
+        target:
+          kanji: 私＿学生です
+          kana: わたし＿がくせいです
+          romaji: watashi _ gakusei desu
+        accept:
+          - kanji: も
+            kana: も
+            romaji: mo
+        hint: The word for "also" has its own particle, and it stands where は would.
+        explanation: >-
+          も marks "also" and replaces は: 私も学生です. Filling in は would drop the
+          "also"; filling in が would identify you instead.
+      - id: u1-l2-8
+        kind: construction
+        concepts: [mo-also]
+        prompt: "This is wrong: 私はも学生です. Write it correctly."
+        accept:
+          - kanji: 私も学生です
+            kana: わたしもがくせいです
+            romaji: watashi mo gakusei desu
+        hint: Keep only the particle that carries "also".
+        explanation: >-
+          も already includes the topic role of は, so the two cannot both appear.
+          Remove は and the sentence becomes 私も学生です.
+      - id: u1-l2-9
+        kind: transformation
+        concepts: [mo-also]
+        prompt: Make "Tanaka is a teacher" into "Tanaka is a teacher too."
+        target:
+          kanji: 田中さんは先生です
+          kana: たなかさんはせんせいです
+          romaji: tanaka san wa sensei desu
+        accept:
+          - kanji: 田中さんも先生です
+            kana: たなかさんもせんせいです
+            romaji: tanaka san mo sensei desu
+        hint: Replace the は after 田中さん with the particle for "also".
+        explanation: >-
+          も replaces は: 田中さんも先生です. Keeping both, 田中さんはも先生です, is
+          ungrammatical.
+      - id: u1-l2-10
+        kind: interpretation
+        concepts: [mo-also, ja-nai-desu]
+        prompt: What does this mean?
+        target:
+          kanji: 田中さんも先生じゃないです
+          kana: たなかさんもせんせいじゃないです
+          romaji: tanaka san mo sensei ja nai desu
+        accept_meanings:
+          - Tanaka is not a teacher either.
+          - Tanaka isn't a teacher either.
+        hint: Two small words do the work — も ("also") and じゃない ("not").
+        explanation: >-
+          も adds "also" and じゃないです makes it negative, so Tanaka joins someone
+          else in not being a teacher. Dropping も would lose the "either".
+      - id: u1-l2-11
+        kind: construction
+        concepts: [ga-subject]
+        prompt: Ask who the student is.
+        accept:
+          - kanji: 誰が学生ですか
+            kana: だれががくせいですか
+            romaji: dare ga gakusei desu ka
+        hint: The question word 誰 takes が, and か closes the question.
+        explanation: >-
+          Question words take が, not は: 誰が学生ですか. 誰は学生ですか is not how the
+          question is built.
+      - id: u1-l2-12
+        kind: completion
+        concepts: [ga-subject]
+        prompt: Fill the particle — "Who is Tanaka?"
+        target:
+          kanji: 誰＿田中さんですか
+          kana: だれ＿たなかさんですか
+          romaji: dare _ tanaka san desu ka
+        accept:
+          - kanji: が
+            kana: が
+            romaji: ga
+        hint: 誰 is a question word, and question words take the identifying particle.
+        explanation: >-
+          誰が田中さんですか asks "who is Tanaka?" — が marks the unknown person being
+          identified. は after 誰 is not used in this question.
+      - id: u1-l2-13
+        kind: construction
+        concepts: [wa-topic, desu-copula]
+        prompt: >-
+          A classmate introduces Tanaka with 田中さんが先生です. That answers "who is
+          the teacher?". Write the neutral introduction instead.
+        accept:
+          - kanji: 田中さんは先生です
+            kana: たなかさんはせんせいです
+            romaji: tanaka san wa sensei desu
+        off_target:
+          - text:
+              kanji: 田中さんが先生です
+              kana: たなかさんがせんせいです
+              romaji: tanaka san ga sensei desu
+            meaning: Tanaka is the teacher — が identifies him instead of introducing him
+        hint: For a neutral statement about Tanaka, use the topic marker.
+        explanation: >-
+          が answers "who is the teacher?" rather than introducing Tanaka. は makes
+          him the topic: 田中さんは先生です, "Tanaka is a teacher".
+      - id: u1-l2-14
+        kind: construction
+        concepts: [wa-topic, desu-copula]
+        prompt: Write "My name is Tanaka."
+        accept:
+          - kanji: 名前は田中です
+            kana: なまえはたなかです
+            romaji: namae wa tanaka desu
+          - kanji: 私は田中です
+            kana: わたしはたなかです
+            romaji: watashi wa tanaka desu
+            concepts: [wa-topic, desu-copula, drop-watashi]
+          - kanji: 田中です
+            kana: たなかです
+            romaji: tanaka desu
+            concepts: [desu-copula, drop-watashi]
+        hint: 名前 is なまえ; the name itself goes before です.
+        explanation: >-
+          名前は田中です names the topic explicitly. 私は田中です and 田中です are also
+          natural introductions, because the speaker is already understood.
+      - id: u1-l2-15
+        kind: speaking
+        concepts: [mo-also, desu-copula, drop-watashi]
+        prompt: >-
+          Say two true things about yourself and one thing about Tanaka, using も at
+          least once. Speak aloud before checking the reference.
+        rubric: >-
+          Are the sentences polite noun sentences with です, and does も replace は or
+          が rather than sit beside it? Judge meaning, grammar, naturalness and
+          register separately.
+        hint: Start with 私は…です, then use 田中さんも…です for the third sentence.
+        explanation: >-
+          For example: 私は学生です。田中さんも学生です。The second sentence uses も in
+          place of は to add Tanaka to the same statement.
