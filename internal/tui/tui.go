@@ -63,6 +63,10 @@ type gradedMsg struct {
 	err    error
 }
 
+type retryDoneMsg struct {
+	err error
+}
+
 type Model struct {
 	runner   *session.Runner
 	units    []*content.Unit
@@ -110,11 +114,6 @@ func New(runner *session.Runner, units []*content.Unit) Model {
 	}
 	m.syncConversation()
 	m.startReviews()
-	if err := runner.RetryPending(context.Background(), func(id string) *content.Step {
-		return findStepByID(units, id)
-	}); err != nil {
-		m.err = err.Error()
-	}
 	if len(m.reviews) == 0 {
 		if unit, lesson, _, ok := m.current(); ok && m.pos.step == 0 && learnAvailable(unit, lesson) {
 			m.screen = screenLearn
@@ -141,10 +140,21 @@ func findPosition(units []*content.Unit, unitID, lessonID string, step int) (pos
 }
 
 func (m Model) Init() tea.Cmd {
-	if m.screen == screenLearn {
-		return nil
+	var first tea.Cmd
+	if m.screen != screenLearn {
+		first = m.playCurrent()
 	}
-	return m.playCurrent()
+	return tea.Batch(first, m.retryPending())
+}
+
+func (m Model) retryPending() tea.Cmd {
+	runner, units := m.runner, m.units
+	return func() tea.Msg {
+		err := runner.RetryPending(context.Background(), func(id string) *content.Step {
+			return findStepByID(units, id)
+		})
+		return retryDoneMsg{err: err}
+	}
 }
 
 func (m Model) current() (*content.Unit, *content.Lesson, *content.Step, bool) {
@@ -283,6 +293,12 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			return m, nil
 		}
 		return m.showOutcome(msg.result, m.playAcceptedAnswer(msg.step))
+
+	case retryDoneMsg:
+		if msg.err != nil {
+			m.err = msg.err.Error()
+		}
+		return m, nil
 
 	case speech.Transcription:
 		m.transcript = strings.TrimSpace(msg.Text)
@@ -452,12 +468,12 @@ func (m *Model) startReviews() {
 	}
 	for _, card := range due {
 		step := siblingStep(m.units, card.ConceptID, card.StepID)
-		if step == nil || m.passed[step.ID] {
+		if step == nil {
 			if own := findStepByID(m.units, card.StepID); own != nil && eligibleReviewStep(own) {
 				step = own
 			}
 		}
-		if step == nil || m.passed[step.ID] {
+		if step == nil {
 			continue
 		}
 		m.reviews = append(m.reviews, reviewItem{card: card, step: step})
@@ -602,6 +618,12 @@ func (m Model) submit(answer string) (tea.Model, tea.Cmd) {
 	}
 
 	if step.Kind == content.Speaking && step.Rubric != "" {
+		at := m.runner.Clock()
+		pendingID, err := m.runner.SaveForGrading(step, answer, at)
+		if err != nil {
+			m.err = err.Error()
+			return m, nil
+		}
 		m.feedback = "Saved for grading — the AI verdict will appear here."
 		m.correct = false
 		m.err = ""
@@ -609,7 +631,7 @@ func (m Model) submit(answer string) (tea.Model, tea.Cmd) {
 		m.screen = screenGrading
 		runner := m.runner
 		return m, func() tea.Msg {
-			result, err := runner.Submit(context.Background(), step, answer)
+			result, err := runner.GradeSaved(context.Background(), step, answer, at, pendingID)
 			return gradedMsg{result: result, step: step, err: err}
 		}
 	}

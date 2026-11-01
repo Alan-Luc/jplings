@@ -40,34 +40,34 @@ lessons:
           dialogue often uses the plain だ instead, but です is the safe form for
           every polite situation on this trip.
         examples:
-          - kanji: 私は学生です
-            kana: わたしはがくせいです
-            romaji: watashi wa gakusei desu
-          - kanji: 田中さんは先生です
-            kana: たなかさんはせんせいです
-            romaji: tanaka san wa sensei desu
+          - kanji: 私は留学生です
+            kana: わたしはりゅうがくせいです
+            romaji: watashi wa ryuugakusei desu
+          - kanji: 山田さんは先生です
+            kana: やまださんはせんせいです
+            romaji: yamada san wa sensei desu
       - prose: >-
           The polite negative is じゃないです: A は B じゃないです means "A is not B".
           じゃない by itself is casual, so keep です on the end when you are being
           polite.
         examples:
-          - kanji: 私は学生じゃないです
-            kana: わたしはがくせいじゃないです
-            romaji: watashi wa gakusei ja nai desu
-          - kanji: 先生じゃないです
-            kana: せんせいじゃないです
-            romaji: sensei ja nai desu
+          - kanji: 私は留学生じゃないです
+            kana: わたしはりゅうがくせいじゃないです
+            romaji: watashi wa ryuugakusei ja nai desu
+          - kanji: 山田さんは先生じゃないです
+            kana: やまださんはせんせいじゃないです
+            romaji: yamada san wa sensei ja nai desu
       - prose: >-
           When you are already the topic — you are introducing yourself — Japanese
           usually drops 私は and says 学生です. Keep 私は when you are contrasting
           yourself with someone else, as in 私は学生です。田中さんも学生です.
         examples:
-          - kanji: 学生です
-            kana: がくせいです
-            romaji: gakusei desu
-          - kanji: 私も学生です
-            kana: わたしもがくせいです
-            romaji: watashi mo gakusei desu
+          - kanji: 留学生です
+            kana: りゅうがくせいです
+            romaji: ryuugakusei desu
+          - kanji: 私も留学生です
+            kana: わたしもりゅうがくせいです
+            romaji: watashi mo ryuugakusei desu
     steps:
       - id: u1-l1-1
         kind: interpretation

@@ -319,6 +319,26 @@ func TestCloseAnswerMintsNothingAndLogsAnError(t *testing.T) {
 	}
 }
 
+func TestAnswerPersistsBeforeGrading(t *testing.T) {
+	runner, store := newRunner(t, nil)
+	step := &content.Step{
+		ID: "free", Kind: content.Speaking, Concepts: []string{"c1"},
+		Prompt: "Say something you want to eat.", Rubric: "judge it",
+	}
+
+	if _, err := runner.SaveForGrading(step, "すしをたべたいです", now); err != nil {
+		t.Fatalf("SaveForGrading: %v", err)
+	}
+
+	pending, err := store.PendingToRetry()
+	if err != nil || len(pending) != 1 {
+		t.Fatalf("the answer must be durable before the model call, got %+v err=%v", pending, err)
+	}
+	if pending[0].Response != "すしをたべたいです" {
+		t.Fatalf("pending response = %q", pending[0].Response)
+	}
+}
+
 func TestEvaluatorFailureSavesUngraded(t *testing.T) {
 	step := &content.Step{
 		ID: "free", Kind: content.Speaking, Concepts: []string{"c1"},

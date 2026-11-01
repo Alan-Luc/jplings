@@ -606,7 +606,10 @@ func TestSessionStartGradesPendingResponses(t *testing.T) {
 		t.Fatalf("EnqueuePending: %v", err)
 	}
 
-	New(&session.Runner{Store: store, Evaluator: retryEvaluator{}}, units)
+	model := New(&session.Runner{Store: store, Evaluator: retryEvaluator{}}, units)
+	if msg := model.retryPending()(); msg != nil {
+		model.Update(msg)
+	}
 
 	evidence, _ := store.Evidence("c1")
 	if len(evidence) != 1 || evidence[0].Source != "llm" {

@@ -96,11 +96,37 @@ func evidenceSource(step *content.Step) string {
 }
 
 func (r *Runner) submitFreeForm(ctx context.Context, step *content.Step, answer string, at time.Time) (Result, error) {
+	id, err := r.SaveForGrading(step, answer, at)
+	if err != nil {
+		return Result{}, err
+	}
+	return r.GradeSaved(ctx, step, answer, at, id)
+}
+
+// SaveForGrading writes the answer before any model call, so quitting mid-grade
+// cannot lose a response the UI already told the learner was saved.
+func (r *Runner) SaveForGrading(step *content.Step, answer string, at time.Time) (int64, error) {
+	return r.Store.EnqueuePending(step.ID, step.Prompt, answer, at)
+}
+
+func (r *Runner) GradeSaved(ctx context.Context, step *content.Step, answer string, at time.Time, pendingID int64) (Result, error) {
 	outcome, reason, graded := r.freeFormOutcome(ctx, step, answer)
 	if !graded {
-		return r.saveUngraded(step, answer, at, reason)
+		if r.Evaluator != nil {
+			if err := r.Store.RetryPending(pendingID); err != nil {
+				return Result{}, err
+			}
+		}
+		return Result{Ungraded: true, Outcome: grade.Outcome{
+			Explanation: "Saved for grading — " + reason + ". It will be graded next session and never counted until then.",
+		}}, nil
 	}
 
+	// Resolving before recording keeps a failed write from being graded twice; the
+	// cost of that order is a dropped grade, which is the safe direction.
+	if err := r.Store.ResolvePending(pendingID); err != nil {
+		return Result{Outcome: outcome, AIGraded: true}, err
+	}
 	if reproducesTarget(step, answer) {
 		return Result{Outcome: outcome, AIGraded: true}, nil
 	}
@@ -140,20 +166,6 @@ func (r *Runner) freeFormOutcome(ctx context.Context, step *content.Step, answer
 		Correct:     rubric.Meaning >= 1 && rubric.Grammar >= 1,
 		Explanation: fmt.Sprintf("%s (AI-graded: meaning %d, grammar %d, naturalness %d, register %d)", rubric.Feedback, rubric.Meaning, rubric.Grammar, rubric.Naturalness, rubric.Register),
 	}, "", true
-}
-
-func (r *Runner) saveUngraded(step *content.Step, answer string, at time.Time, reason string) (Result, error) {
-	if _, err := r.Store.EnqueuePending(step.ID, step.Prompt, answer, at); err != nil {
-		return Result{}, err
-	}
-	return Result{
-		Ungraded: true,
-		Outcome: grade.Outcome{
-			Explanation: fmt.Sprintf(
-				"Saved for grading — %s. It will be graded next session and never counted until then.", reason,
-			),
-		},
-	}, nil
 }
 
 func (r *Runner) record(step *content.Step, outcome grade.Outcome, at time.Time, source, answer string) error {
@@ -240,7 +252,14 @@ func (r *Runner) Review(card schedule.Card, step *content.Step, answer string, a
 		quality = schedule.Good
 	}
 
-	for _, conceptID := range step.Concepts {
+	concepts := step.Concepts
+	if outcome.Correct {
+		if matched := grade.MatchedConcepts(step, answer); len(matched) > 0 {
+			concepts = matched
+		}
+	}
+
+	for _, conceptID := range concepts {
 		if !outcome.Correct {
 			if err := r.Store.AddError(conceptID, outcome.Explanation, at); err != nil {
 				return Result{Outcome: outcome}, err
