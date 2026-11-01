@@ -208,6 +208,9 @@ func (s *Store) dimensionSatisfied(conceptID, dimension string) (bool, error) {
 		if err := rows.Scan(&source); err != nil {
 			return false, err
 		}
+		if source == "guided" {
+			continue
+		}
 		if source != "llm" || trusted {
 			return true, nil
 		}
@@ -235,6 +238,9 @@ func (s *Store) CanSkip(conceptID string) (bool, error) {
 		var stimulus, source string
 		if err := rows.Scan(&stimulus, &source); err != nil {
 			return false, err
+		}
+		if source == "guided" {
+			continue
 		}
 		if source == "llm" && !trusted {
 			continue

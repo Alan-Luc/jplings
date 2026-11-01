@@ -171,7 +171,7 @@ func TestMissPlaysTheAcceptedAnswer(t *testing.T) {
 	}
 }
 
-func TestListeningMissPlaysNoAnswerAudio(t *testing.T) {
+func TestListeningMissRevealsTheTarget(t *testing.T) {
 	dictation := listeningUnits()
 	model, _ := newModelWith(t, dictation)
 
@@ -180,8 +180,11 @@ func TestListeningMissPlaysNoAnswerAudio(t *testing.T) {
 	if after.correct {
 		t.Fatalf("expected a miss, got %q", after.feedback)
 	}
-	if cmd != nil {
-		t.Fatal("a listening step is graded for comprehension; its answer audio must not play on a miss")
+	if !strings.Contains(after.View(), "六百円") {
+		t.Fatalf("a miss should reveal the model answer:\n%s", after.View())
+	}
+	if cmd == nil {
+		t.Fatal("revealing the model answer should play its audio")
 	}
 }
 
@@ -515,5 +518,258 @@ func TestDueRetentionCheckIsAdministeredAndClearsMasteryGate(t *testing.T) {
 	}
 	if due, _ := store.DueRetention(time.Now()); len(due) != 0 {
 		t.Fatalf("the retention check should not stay due: %+v", due)
+	}
+}
+
+func learnUnits() []*content.Unit {
+	return []*content.Unit{{ID: "u", Title: "Unit", Taught: true, Lessons: []content.Lesson{{
+		ID:        "l",
+		Title:     "Requesting",
+		Objective: "Ask for something with をください.",
+		Anchors: []content.Text{
+			{Kanji: "水をください", Kana: "みずをください", Romaji: "mizu o kudasai"},
+		},
+		Teach: []content.Teach{{
+			Prose: "Put をください after a noun to ask for it.",
+			Examples: []content.Text{
+				{Kanji: "お茶をください", Kana: "おちゃをください", Romaji: "ocha o kudasai"},
+			},
+		}},
+		Steps: []content.Step{{
+			ID: "s1", Kind: content.Construction, Concepts: []string{"c1"},
+			Prompt: "Ask for water.", Accept: []content.Text{{Kanji: "水をください", Kana: "みずをください", Romaji: "mizu o kudasai"}},
+			Explanation: "をください makes the request.",
+		}},
+	}}}}
+}
+
+func TestLearnScreenShowsBeforeTheFirstStep(t *testing.T) {
+	model, _ := newModelWith(t, learnUnits())
+
+	if model.screen != screenLearn {
+		t.Fatalf("a taught lesson with teaching material should open on the Learn screen, got %v", model.screen)
+	}
+	view := model.View()
+	for _, want := range []string{
+		"Ask for something with をください.",
+		"水をください",
+		"Put をください after a noun to ask for it.",
+		"お茶をください",
+	} {
+		if !strings.Contains(view, want) {
+			t.Fatalf("Learn screen missing %q:\n%s", want, view)
+		}
+	}
+	if strings.Contains(view, "Ask for water.") {
+		t.Fatalf("the first step must not appear before the Learn screen is dismissed:\n%s", view)
+	}
+
+	updated, cmd := model.handleKey(tea.KeyMsg{Type: tea.KeyRunes, Runes: []rune{'1'}})
+	model = updated.(Model)
+	if cmd == nil {
+		t.Fatal("pressing an anchor number should play that anchor")
+	}
+	if model.spokenStep != "" {
+		t.Fatal("playing an anchor must not mark the step as spoken")
+	}
+
+	updated, cmd = model.handleKey(tea.KeyMsg{Type: tea.KeyEnter})
+	model = updated.(Model)
+	if model.screen != screenPrompt {
+		t.Fatalf("enter should leave the Learn screen, got %v", model.screen)
+	}
+	if !strings.Contains(model.View(), "Ask for water.") {
+		t.Fatalf("the first step should appear after Learn:\n%s", model.View())
+	}
+}
+
+func ladderUnits() []*content.Unit {
+	step := func(id, prompt string) content.Step {
+		return content.Step{
+			ID: id, Kind: content.Construction, Concepts: []string{"c1"}, Prompt: prompt,
+			Accept:      []content.Text{{Kanji: "水をください", Kana: "みずをください", Romaji: "mizu o kudasai"}},
+			Explanation: "をください makes the request.",
+		}
+	}
+	hinted := step("s1", "Ask for water.")
+	hinted.Hint = "Use をください after the noun."
+	return []*content.Unit{{ID: "u", Title: "Unit", Lessons: []content.Lesson{{
+		ID: "l", Title: "Lesson",
+		Steps: []content.Step{hinted, step("s2", "Second."), step("s3", "Third."), step("s4", "Fourth.")},
+	}}}}
+}
+
+func TestHintThenRevealThenRetry(t *testing.T) {
+	model, store := newModelWith(t, ladderUnits())
+
+	updated, _ := model.submit("wrong")
+	model = updated.(Model)
+	if model.screen != screenPrompt {
+		t.Fatalf("a first miss with a hint should stay on the prompt, got %v", model.screen)
+	}
+	if !strings.Contains(model.View(), "Use をください after the noun.") {
+		t.Fatalf("the hint should be visible:\n%s", model.View())
+	}
+	if model.pos.step != 0 {
+		t.Fatalf("the learner should still be on the same step, got %d", model.pos.step)
+	}
+	if errors, _ := store.Errors("c1"); len(errors) != 0 {
+		t.Fatalf("a hint rung must not record a wrong attempt, got %+v", errors)
+	}
+
+	updated, cmd := model.submit("still wrong")
+	model = updated.(Model)
+	if model.screen != screenFeedback {
+		t.Fatalf("a second miss should reveal the answer, got %v", model.screen)
+	}
+	if !strings.Contains(model.View(), "水をください") {
+		t.Fatalf("the model answer should be written out:\n%s", model.View())
+	}
+	if !strings.Contains(model.View(), "をください makes the request.") {
+		t.Fatalf("the explanation should be shown with the answer:\n%s", model.View())
+	}
+	if cmd == nil {
+		t.Fatal("revealing the answer should play its audio")
+	}
+	if errors, _ := store.Errors("c1"); len(errors) != 0 {
+		t.Fatalf("the reveal rung must not record a wrong attempt, got %+v", errors)
+	}
+
+	for i := 0; i < 3; i++ {
+		model.advance()
+	}
+	if model.pos.step != 3 {
+		t.Fatalf("three other steps should run before the retry, got step %d", model.pos.step)
+	}
+	model.advance()
+	if model.pos.step != 4 {
+		t.Fatalf("the retry should be queued at least three positions later, got step %d", model.pos.step)
+	}
+	_, lesson, step, ok := model.current()
+	if !ok || step.ID != "s1" || lesson.ID != "l" {
+		t.Fatalf("expected the s1 retry, got lesson %v step %v", lesson, step)
+	}
+
+	updated, _ = model.submit("mizu o kudasai")
+	model = updated.(Model)
+	if !model.correct {
+		t.Fatalf("the second-chance answer should be correct, got %q", model.feedback)
+	}
+	evidence, err := store.Evidence("c1")
+	if err != nil || len(evidence) != 1 || evidence[0].Source != "guided" {
+		t.Fatalf("the second-chance correct should record one guided attempt, got %+v err=%v", evidence, err)
+	}
+	if can, _ := store.CanSkip("c1"); can {
+		t.Fatal("a guided attempt must not unlock skipping")
+	}
+	if mastered, _, _ := store.Mastered("c1"); mastered {
+		t.Fatal("a guided attempt must not satisfy mastery")
+	}
+	cards, _ := store.Reviews()
+	for _, card := range cards {
+		if card.Kind == schedule.KindRetention {
+			t.Fatalf("a guided attempt must not schedule retention, got %+v", card)
+		}
+	}
+}
+
+func TestNoHintGoesStraightToTheReveal(t *testing.T) {
+	units := ladderUnits()
+	units[0].Lessons[0].Steps[0].Hint = ""
+	model, _ := newModelWith(t, units)
+
+	updated, cmd := model.submit("wrong")
+	model = updated.(Model)
+	if model.screen != screenFeedback {
+		t.Fatalf("without a hint the first miss should reveal the answer, got %v", model.screen)
+	}
+	if !strings.Contains(model.View(), "水をください") {
+		t.Fatalf("the model answer should be written out:\n%s", model.View())
+	}
+	if cmd == nil {
+		t.Fatal("revealing the answer should play its audio")
+	}
+}
+
+func TestThirdMissRecordsAnOrdinaryWrongAttempt(t *testing.T) {
+	model, store := newModelWith(t, ladderUnits())
+
+	updated, _ := model.submit("wrong")
+	model = updated.(Model)
+	updated, _ = model.submit("still wrong")
+	model = updated.(Model)
+	for i := 0; i < 4; i++ {
+		model.advance()
+	}
+
+	updated, _ = model.submit("wrong again")
+	model = updated.(Model)
+	if model.correct {
+		t.Fatal("a third miss is still a miss")
+	}
+	errors, _ := store.Errors("c1")
+	if len(errors) != 1 {
+		t.Fatalf("a third miss should record exactly one ordinary wrong attempt, got %+v", errors)
+	}
+	if evidence, _ := store.Evidence("c1"); len(evidence) != 0 {
+		t.Fatalf("a third miss must not mint evidence, got %+v", evidence)
+	}
+}
+
+func TestRetentionStepDoesNotClobberTheResumedCursor(t *testing.T) {
+	store, err := profile.Open(filepath.Join(t.TempDir(), "profile.db"))
+	if err != nil {
+		t.Fatalf("Open: %v", err)
+	}
+	defer store.Close()
+
+	units := ladderUnits()
+	if err := store.SaveCursor("u", "l", 2, time.Now()); err != nil {
+		t.Fatalf("SaveCursor: %v", err)
+	}
+	if err := store.ScheduleReview(schedule.RetentionCard("c1", time.Now().Add(-72*time.Hour))); err != nil {
+		t.Fatalf("ScheduleReview: %v", err)
+	}
+
+	model := New(&session.Runner{Store: store}, units)
+	if model.pos.step != 2 || model.retentionStep == nil {
+		t.Fatalf("expected to resume at step 2 with a retention check, pos=%d retention=%v", model.pos.step, model.retentionStep)
+	}
+	updated, _ := model.handleKey(tea.KeyMsg{Type: tea.KeyRunes, Runes: []rune{'x'}})
+	_ = updated.(Model).View()
+
+	rebuilt := New(&session.Runner{Store: store}, units)
+	if rebuilt.pos.step != 2 {
+		t.Fatalf("a retention step must not overwrite the saved lesson cursor, resumed at %d", rebuilt.pos.step)
+	}
+}
+
+func TestDenialCounterResetsPerStep(t *testing.T) {
+	units := speakingUnits()
+	units[0].Lessons[0].Steps = append(units[0].Lessons[0].Steps, content.Step{
+		ID: "s2", Kind: content.Speaking, Concepts: []string{"c1"},
+		Prompt: "Say it again.", Accept: []content.Text{{Kana: "みず", Romaji: "mizu"}}, Explanation: "because",
+	})
+	model, _ := newModelWith(t, units)
+
+	model.screen = screenConfirm
+	model.transcript = "nope"
+	updated, _ := model.handleKey(tea.KeyMsg{Type: tea.KeyRunes, Runes: []rune{'n'}})
+	model = updated.(Model)
+	model.screen = screenConfirm
+	model.transcript = "nope"
+	updated, _ = model.handleKey(tea.KeyMsg{Type: tea.KeyRunes, Runes: []rune{'n'}})
+	model = updated.(Model)
+	if !model.typedFallback {
+		t.Fatal("two denials on one step should offer the typed fallback")
+	}
+
+	model.advance()
+	model.screen = screenConfirm
+	model.transcript = "nope"
+	updated, _ = model.handleKey(tea.KeyMsg{Type: tea.KeyRunes, Runes: []rune{'n'}})
+	model = updated.(Model)
+	if model.typedFallback {
+		t.Fatal("the first denial on a new step must not offer the fallback")
 	}
 }

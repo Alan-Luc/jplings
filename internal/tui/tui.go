@@ -12,6 +12,7 @@ import (
 	"jplings/internal/audio"
 	"jplings/internal/content"
 	"jplings/internal/convo"
+	"jplings/internal/grade"
 	"jplings/internal/session"
 	"jplings/internal/speech"
 )
@@ -28,6 +29,7 @@ type screen int
 
 const (
 	screenPrompt screen = iota
+	screenLearn
 	screenFeedback
 	screenConfirm
 	screenDone
@@ -72,6 +74,11 @@ type Model struct {
 	retentionStep    *content.Step
 	retentionConcept string
 	spokenStep       string
+	hint             string
+	reveal           *content.Text
+	misses           map[string]int
+	revealed         map[string]bool
+	requeueStep      *content.Step
 	err              string
 }
 
@@ -81,6 +88,7 @@ func New(runner *session.Runner, units []*content.Unit) Model {
 	input.Focus()
 
 	m := Model{runner: runner, units: units, input: input}
+	m.ensureRetryState()
 
 	if unitID, lessonID, step, ok, err := runner.Store.Cursor(); err == nil && ok {
 		if resumed, found := findPosition(units, unitID, lessonID, step); found {
@@ -89,6 +97,11 @@ func New(runner *session.Runner, units []*content.Unit) Model {
 	}
 	m.syncConversation()
 	m.startRetention()
+	if m.retentionStep == nil {
+		if unit, lesson, _, ok := m.current(); ok && m.pos.step == 0 && learnAvailable(unit, lesson) {
+			m.screen = screenLearn
+		}
+	}
 	return m
 }
 
@@ -109,7 +122,12 @@ func findPosition(units []*content.Unit, unitID, lessonID string, step int) (pos
 	return position{}, false
 }
 
-func (m Model) Init() tea.Cmd { return m.playCurrent() }
+func (m Model) Init() tea.Cmd {
+	if m.screen == screenLearn {
+		return nil
+	}
+	return m.playCurrent()
+}
 
 func (m Model) current() (*content.Unit, *content.Lesson, *content.Step, bool) {
 	if m.retentionStep != nil && m.pos.unit < len(m.units) {
@@ -158,6 +176,52 @@ func (m *Model) playAcceptedAnswer(step *content.Step) tea.Cmd {
 		return nil
 	}
 	return m.speak(step.ID, surface(step.Accept[0]))
+}
+
+func (m *Model) playModelAnswer(step *content.Step) tea.Cmd {
+	answer := modelAnswer(step)
+	if answer == nil {
+		return nil
+	}
+	return m.speak(step.ID, surface(*answer))
+}
+
+func modelAnswer(step *content.Step) *content.Text {
+	var answer *content.Text
+	if len(step.Accept) > 0 {
+		answer = &step.Accept[0]
+	} else {
+		answer = step.Target
+	}
+	if answer == nil {
+		return nil
+	}
+	copied := *answer
+	return &copied
+}
+
+func learnAvailable(unit *content.Unit, lesson *content.Lesson) bool {
+	return unit.Taught && (lesson.Objective != "" || len(lesson.Anchors) > 0 || len(lesson.Teach) > 0)
+}
+
+func (m *Model) ensureRetryState() {
+	if m.misses == nil {
+		m.misses = map[string]int{}
+	}
+	if m.revealed == nil {
+		m.revealed = map[string]bool{}
+	}
+}
+
+func anchorIndex(msg tea.KeyMsg) (int, bool) {
+	if msg.Type != tea.KeyRunes || len(msg.Runes) != 1 {
+		return 0, false
+	}
+	r := msg.Runes[0]
+	if r < '1' || r > '9' {
+		return 0, false
+	}
+	return int(r - '1'), true
 }
 
 func (m *Model) speak(stepID, text string) tea.Cmd {
@@ -215,6 +279,19 @@ func (m Model) handleKey(msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 	}
 
 	switch m.screen {
+	case screenLearn:
+		if msg.String() == "enter" {
+			m.screen = screenPrompt
+			return m, m.playCurrent()
+		}
+		if index, ok := anchorIndex(msg); ok {
+			_, lesson, _, has := m.current()
+			if has && index < len(lesson.Anchors) {
+				return m, m.speak("anchor", surface(lesson.Anchors[index]))
+			}
+		}
+		return m, nil
+
 	case screenConfirm:
 		switch strings.ToLower(msg.String()) {
 		case "y":
@@ -257,8 +334,10 @@ func (m Model) handleKey(msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 		m.screen = screenDone
 		return m, nil
 	}
-	if err := m.runner.Store.SaveCursor(unit.ID, lesson.ID, m.pos.step, m.runner.Clock()); err != nil {
-		m.err = err.Error()
+	if m.retentionStep == nil {
+		if err := m.runner.Store.SaveCursor(unit.ID, lesson.ID, m.pos.step, m.runner.Clock()); err != nil {
+			m.err = err.Error()
+		}
 	}
 
 	if msg.String() == "esc" {
@@ -432,13 +511,18 @@ func (m Model) submit(answer string) (tea.Model, tea.Cmd) {
 		m.screen = screenDone
 		return m, nil
 	}
-
-	var result session.Result
-	var err error
+	m.ensureRetryState()
 
 	if m.retentionStep != nil {
-		result, err = m.runner.GradeRetention(step, answer)
-	} else if step.Kind == content.Conversation {
+		result, err := m.runner.GradeRetention(step, answer)
+		if err != nil {
+			m.err = err.Error()
+			return m, nil
+		}
+		return m.showOutcome(result, m.playAcceptedAnswer(step))
+	}
+
+	if step.Kind == content.Conversation {
 		if m.conversation == nil {
 			m.syncConversation()
 		}
@@ -447,11 +531,36 @@ func (m Model) submit(answer string) (tea.Model, tea.Cmd) {
 			return m, nil
 		}
 		response := m.conversation.Respond(answer)
-		result, err = m.runner.GradeConversationTurn(step, response)
-		if err == nil && response.Verdict != convo.NoMatch {
+		result, err := m.runner.GradeConversationTurn(step, response)
+		if err != nil {
+			m.err = err.Error()
+			return m, nil
+		}
+		if response.Verdict != convo.NoMatch {
 			m.conversation.Advance()
 			m.collectNpcTurns()
 		}
+		return m.showOutcome(result, m.playAcceptedAnswer(step))
+	}
+
+	if step.Kind == content.Speaking && step.Rubric != "" {
+		result, err := m.runner.Submit(context.Background(), step, answer)
+		if err != nil {
+			m.err = err.Error()
+			return m, nil
+		}
+		return m.showOutcome(result, m.playAcceptedAnswer(step))
+	}
+
+	outcome := m.runner.Grade(step, answer)
+	if !outcome.Correct {
+		return m.handleMiss(step, answer, outcome)
+	}
+
+	var result session.Result
+	var err error
+	if m.revealed[step.ID] {
+		result, err = m.runner.SubmitGuided(context.Background(), step, answer)
 	} else {
 		result, err = m.runner.Submit(context.Background(), step, answer)
 	}
@@ -459,14 +568,101 @@ func (m Model) submit(answer string) (tea.Model, tea.Cmd) {
 		m.err = err.Error()
 		return m, nil
 	}
+	return m.showOutcome(result, nil)
+}
 
+func (m Model) showOutcome(result session.Result, missCmd tea.Cmd) (tea.Model, tea.Cmd) {
 	m.feedback = result.Outcome.Explanation
 	m.correct = result.Outcome.Correct
 	m.screen = screenFeedback
 	if m.correct {
 		return m, nil
 	}
-	return m, m.playAcceptedAnswer(step)
+	return m, missCmd
+}
+
+func (m Model) handleMiss(step *content.Step, answer string, outcome grade.Outcome) (tea.Model, tea.Cmd) {
+	if m.revealed[step.ID] {
+		result, err := m.runner.Submit(context.Background(), step, answer)
+		if err != nil {
+			m.err = err.Error()
+			return m, nil
+		}
+		return m.showOutcome(result, m.playAcceptedAnswer(step))
+	}
+
+	m.misses[step.ID]++
+	if m.misses[step.ID] == 1 && step.Hint != "" {
+		m.hint = step.Hint
+		m.feedback = ""
+		m.correct = false
+		m.screen = screenPrompt
+		m.input.SetValue("")
+		m.err = ""
+		return m, nil
+	}
+
+	m.hint = ""
+	m.revealed[step.ID] = true
+	retry := *step
+	m.requeueStep = &retry
+	m.feedback = outcome.Explanation
+	m.correct = false
+	m.reveal = modelAnswer(step)
+	m.screen = screenFeedback
+	return m, m.playModelAnswer(step)
+}
+
+func nextStepPosition(units []*content.Unit, pos position) (position, bool) {
+	if pos.unit >= len(units) || pos.lesson >= len(units[pos.unit].Lessons) {
+		return position{}, false
+	}
+	lesson := units[pos.unit].Lessons[pos.lesson]
+	if pos.step+1 < len(lesson.Steps) {
+		return position{unit: pos.unit, lesson: pos.lesson, step: pos.step + 1}, true
+	}
+	for l := pos.lesson + 1; l < len(units[pos.unit].Lessons); l++ {
+		if len(units[pos.unit].Lessons[l].Steps) > 0 {
+			return position{unit: pos.unit, lesson: l}, true
+		}
+	}
+	for u := pos.unit + 1; u < len(units); u++ {
+		for l := range units[u].Lessons {
+			if len(units[u].Lessons[l].Steps) > 0 {
+				return position{unit: u, lesson: l}, true
+			}
+		}
+	}
+	return position{}, false
+}
+
+func (m *Model) insertRetry(step content.Step) {
+	pos := m.pos
+	for i := 0; i < 3; i++ {
+		next, ok := nextStepPosition(m.units, pos)
+		if !ok {
+			m.appendRetry(step)
+			return
+		}
+		pos = next
+	}
+
+	lesson := &m.units[pos.unit].Lessons[pos.lesson]
+	index := pos.step + 1
+	lesson.Steps = append(lesson.Steps, content.Step{})
+	copy(lesson.Steps[index+1:], lesson.Steps[index:])
+	lesson.Steps[index] = step
+}
+
+func (m *Model) appendRetry(step content.Step) {
+	for u := len(m.units) - 1; u >= 0; u-- {
+		if len(m.units[u].Lessons) == 0 {
+			continue
+		}
+		l := len(m.units[u].Lessons) - 1
+		m.units[u].Lessons[l].Steps = append(m.units[u].Lessons[l].Steps, step)
+		return
+	}
 }
 
 func (m Model) transcribe(wav []byte) tea.Cmd {
@@ -487,6 +683,12 @@ func (m Model) transcribe(wav []byte) tea.Cmd {
 }
 
 func (m *Model) advance() {
+	m.turn = speech.Turn{}
+	if m.requeueStep != nil {
+		m.insertRetry(*m.requeueStep)
+		m.requeueStep = nil
+	}
+
 	if m.retentionStep != nil {
 		m.retentionStep = nil
 		m.retentionConcept = ""
@@ -495,6 +697,9 @@ func (m *Model) advance() {
 		m.transcript = ""
 		m.err = ""
 		m.input.SetValue("")
+		if unit, lesson, _, ok := m.current(); ok && m.pos.step == 0 && learnAvailable(unit, lesson) {
+			m.screen = screenLearn
+		}
 		return
 	}
 	m.screen = screenPrompt
@@ -504,6 +709,8 @@ func (m *Model) advance() {
 	m.degraded = false
 	m.syncConversation()
 	m.typedFallback = false
+	m.hint = ""
+	m.reveal = nil
 	m.err = ""
 	m.input.SetValue("")
 
@@ -520,12 +727,19 @@ func (m *Model) advance() {
 	m.pos.step = 0
 	m.pos.lesson++
 	if m.pos.lesson < len(unit.Lessons) {
+		if nextUnit, nextLesson, _, found := m.current(); found && learnAvailable(nextUnit, nextLesson) {
+			m.screen = screenLearn
+		}
 		return
 	}
 	m.pos.lesson = 0
 	m.pos.unit++
 	if m.pos.unit >= len(m.units) {
 		m.screen = screenDone
+		return
+	}
+	if nextUnit, nextLesson, _, found := m.current(); found && learnAvailable(nextUnit, nextLesson) {
+		m.screen = screenLearn
 	}
 }
 
@@ -543,6 +757,36 @@ func (m Model) View() string {
 	b.WriteString(dimStyle.Render(unit.Title+"  ·  "+lesson.Title) + "\n\n")
 
 	switch m.screen {
+	case screenLearn:
+		b.WriteString(titleStyle.Render("Learn") + "\n\n")
+		if lesson.Objective != "" {
+			b.WriteString(lesson.Objective + "\n\n")
+		}
+		if len(lesson.Anchors) > 0 {
+			b.WriteString(titleStyle.Render("You already know") + "\n")
+			for i, anchor := range lesson.Anchors {
+				b.WriteString(fmt.Sprintf("%d. %s", i+1, surface(anchor)) + "\n")
+				if anchor.Kana != "" || anchor.Romaji != "" {
+					b.WriteString(dimStyle.Render(anchor.Kana+"  "+anchor.Romaji) + "\n")
+				}
+			}
+			b.WriteString("\n")
+		}
+		for _, item := range lesson.Teach {
+			b.WriteString(item.Prose + "\n\n")
+			for _, example := range item.Examples {
+				b.WriteString(japaneseStyle.Render(surface(example)) + "\n")
+				if example.Kana != "" || example.Romaji != "" {
+					b.WriteString(dimStyle.Render(example.Kana+"  "+example.Romaji) + "\n")
+				}
+			}
+			if len(item.Examples) > 0 {
+				b.WriteString("\n")
+			}
+		}
+		b.WriteString(dimStyle.Render("number to hear an anchor · enter to start") + "\n")
+		return b.String()
+
 	case screenConfirm:
 		b.WriteString(titleStyle.Render("Here is what I heard — correct?") + "\n\n")
 		b.WriteString(japaneseStyle.Render(m.transcript) + "\n\n")
@@ -555,6 +799,15 @@ func (m Model) View() string {
 	case screenFeedback:
 		if m.correct {
 			b.WriteString(goodStyle.Render("Correct") + "\n\n")
+		} else if m.reveal != nil {
+			b.WriteString(badStyle.Render("Not quite — here is the model answer") + "\n\n")
+			b.WriteString(japaneseStyle.Render(surface(*m.reveal)) + "\n")
+			if m.reveal.Kana != "" || m.reveal.Romaji != "" {
+				b.WriteString(dimStyle.Render(m.reveal.Kana+"  "+m.reveal.Romaji) + "\n")
+			}
+			b.WriteString("\n" + m.feedback + "\n\n")
+			b.WriteString(dimStyle.Render("enter to continue — this step returns later in the session") + "\n")
+			return b.String()
 		} else {
 			b.WriteString(badStyle.Render("Not quite") + "\n\n")
 		}
@@ -586,6 +839,10 @@ func (m Model) View() string {
 		} else {
 			b.WriteString(dimStyle.Render("listen — ctrl+r to replay") + "\n\n")
 		}
+	}
+
+	if m.hint != "" {
+		b.WriteString(badStyle.Render("Hint: "+m.hint) + "\n\n")
 	}
 
 	if needsSpeech(step) {
