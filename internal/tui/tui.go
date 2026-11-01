@@ -75,6 +75,9 @@ type Model struct {
 	recording    bool
 	cancelRecord context.CancelFunc
 	degraded     bool
+	// typedFallback is set after two denied transcripts: the learner may type the
+	// answer instead, so progress never deadlocks on a bad transcription.
+	typedFallback bool
 	// spokenStep records which step's audio has already been played, so re-renders
 	// do not re-synthesize the same line.
 	spokenStep string
@@ -227,8 +230,10 @@ func (m Model) handleKey(msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 				// Two consecutive denials: offer a typed fallback or a no-evidence
 				// advance rather than deadlocking progress.
 				m.screen = screenPrompt
+				m.typedFallback = true
 				m.feedback = "Transcription denied twice. Type your answer instead, or press Esc to move on without evidence."
 				m.err = ""
+				m.input.Focus()
 				return m, nil
 			}
 			m.screen = screenPrompt
@@ -272,6 +277,22 @@ func (m Model) handleKey(msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 	}
 
 	if needsSpeech(step) {
+		if m.typedFallback {
+			// The typed fallback is a production answer without pronunciation
+			// evidence, and it is graded the same way any other written answer is.
+			if msg.String() == "enter" {
+				answer := strings.TrimSpace(m.input.Value())
+				if answer == "" {
+					return m, nil
+				}
+				m.input.SetValue("")
+				return m.submit(answer)
+			}
+			var cmd tea.Cmd
+			m.input, cmd = m.input.Update(msg)
+			return m, cmd
+		}
+
 		switch msg.String() {
 		case "r":
 			if m.recording {
@@ -358,6 +379,7 @@ func (m *Model) advance() {
 	m.transcript = ""
 	m.spokenStep = ""
 	m.degraded = false
+	m.typedFallback = false
 	m.err = ""
 	m.input.SetValue("")
 
@@ -438,6 +460,14 @@ func (m Model) View() string {
 	}
 
 	if needsSpeech(step) {
+		if m.typedFallback {
+			if m.feedback != "" {
+				b.WriteString(badStyle.Render(m.feedback) + "\n\n")
+			}
+			b.WriteString(m.input.View() + "\n\n")
+			b.WriteString(dimStyle.Render("enter to answer · esc to skip without evidence") + "\n")
+			return b.String()
+		}
 		switch {
 		case m.recording:
 			b.WriteString(badStyle.Render("● recording") + dimStyle.Render(" — press space to stop") + "\n")

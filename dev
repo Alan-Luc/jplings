@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# Convenience wrapper. The app has no cgo dependencies and this host has no gcc, so
+# CGO_ENABLED=0 is set here rather than depending on the caller's shell.
+set -euo pipefail
+export CGO_ENABLED=0
+
+cd "$(dirname "$0")"
+
+usage() {
+  cat <<'EOF'
+usage: ./dev <command>
+
+  run      start or resume a session in the TUI
+  doctor   check host prerequisites and the speech stack
+  lint     validate content YAML
+  test     hermetic test suite (no containers needed)
+  live     integration tests against the running containers
+  build    build ./jplings
+EOF
+}
+
+case "${1:-}" in
+  run)    go run . ;;
+  doctor) go run . doctor ;;
+  lint)   go run . lint content/ ;;
+  test)   go test ./... ;;
+  live)   go test -tags live ./internal/speech/ ./internal/session/ ;;
+  build)  go build -o jplings . && echo "built ./jplings" ;;
+  *)      usage ; exit 1 ;;
+esac
