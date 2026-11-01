@@ -451,11 +451,13 @@ func (m *Model) startReviews() {
 		return
 	}
 	for _, card := range due {
-		step := findStepByID(m.units, card.StepID)
+		step := siblingStep(m.units, card.ConceptID, card.StepID)
 		if step == nil || m.passed[step.ID] {
-			step = siblingStep(m.units, card.ConceptID, card.StepID)
+			if own := findStepByID(m.units, card.StepID); own != nil && eligibleReviewStep(own) {
+				step = own
+			}
 		}
-		if step == nil {
+		if step == nil || m.passed[step.ID] {
 			continue
 		}
 		m.reviews = append(m.reviews, reviewItem{card: card, step: step})

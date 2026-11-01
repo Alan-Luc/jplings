@@ -288,7 +288,7 @@ func TestDueCardsCapsTheBlock(t *testing.T) {
 	store := open(t)
 	for i := 0; i < 13; i++ {
 		stepID := fmt.Sprintf("s%02d", i)
-		if err := store.EnsureCard(schedule.Initial(stepID, "c1", now.Add(-time.Duration(i)*time.Hour))); err != nil {
+		if err := store.EnsureCard(schedule.Initial(stepID, "c1", now.AddDate(0, 0, -2).Add(-time.Duration(i)*time.Hour))); err != nil {
 			t.Fatalf("EnsureCard: %v", err)
 		}
 	}
@@ -335,6 +335,20 @@ func TestOpenMigratesOldConceptKeyedReviews(t *testing.T) {
 
 	if err := store.EnsureCard(schedule.Initial("s1", "c1", now)); err != nil {
 		t.Fatalf("EnsureCard after migration: %v", err)
+	}
+	var stepRows int
+	if err := store.db.QueryRow(`SELECT COUNT(*) FROM reviews WHERE step_id = 's1'`).Scan(&stepRows); err != nil {
+		t.Fatalf("count step rows: %v", err)
+	}
+	if stepRows != 1 {
+		t.Fatalf("the migrated table must store one step-keyed row, got %d", stepRows)
+	}
+	var leftovers int
+	if err := store.db.QueryRow(`SELECT COUNT(*) FROM reviews WHERE concept_id = 'c1' AND kind = 'retention'`).Scan(&leftovers); err != nil {
+		t.Fatalf("count old rows: %v", err)
+	}
+	if leftovers != 0 {
+		t.Fatalf("the concept-keyed rows are dropped deliberately, got %d left", leftovers)
 	}
 	cards, err := store.Reviews()
 	if err != nil || len(cards) != 1 || cards[0].StepID != "s1" {

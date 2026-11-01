@@ -26,7 +26,7 @@ type Card struct {
 }
 
 func Initial(stepID, conceptID string, now time.Time) Card {
-	return Card{StepID: stepID, ConceptID: conceptID, Ease: 2.5, IntervalDays: 0, Reps: 0, Due: now, Kind: KindReview}
+	return Card{StepID: stepID, ConceptID: conceptID, Ease: 2.5, IntervalDays: 1, Reps: 0, Due: now.AddDate(0, 0, 1), Kind: KindReview}
 }
 
 func Update(card Card, quality Quality, now time.Time) Card {

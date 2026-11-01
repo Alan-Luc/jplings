@@ -185,12 +185,18 @@ func (r *Runner) record(step *content.Step, outcome grade.Outcome, at time.Time,
 		}
 	}
 
-	if outcome.Correct && source != "guided" && len(step.Concepts) > 0 {
-		if err := r.Store.EnsureCard(schedule.Initial(step.ID, step.Concepts[0], at)); err != nil {
+	if outcome.Correct && source != "guided" && reviewable(step) && len(concepts) > 0 {
+		if err := r.Store.EnsureCard(schedule.Initial(step.ID, concepts[0], at)); err != nil {
 			return err
 		}
 	}
 	return nil
+}
+
+// A card must be answerable by the deterministic graders. A scenario or a rubric step
+// would come back every session as a prompt nothing can pass.
+func reviewable(step *content.Step) bool {
+	return step.Scenario == nil && step.Rubric == ""
 }
 
 func (r *Runner) Speak(ctx context.Context, text string, play func([]byte) error) (speech.SpeakResult, error) {
@@ -267,6 +273,9 @@ func (r *Runner) RetryPending(ctx context.Context, lookup func(string) *content.
 	for _, p := range pending {
 		step := lookup(p.StepID)
 		if step == nil {
+			if err := r.Store.RetryPending(p.ID); err != nil {
+				return err
+			}
 			continue
 		}
 		outcome, _, graded := r.freeFormOutcome(ctx, step, p.Response)

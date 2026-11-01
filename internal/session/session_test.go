@@ -119,9 +119,36 @@ func TestDifferentStimuliSatisfyProductionButNotRetention(t *testing.T) {
 		t.Fatalf("expected a card per passed step, got %+v err=%v", cards, err)
 	}
 	for _, card := range cards {
-		if card.Reps != 0 || card.IntervalDays != 0 {
+		if card.Reps != 0 {
 			t.Fatalf("a lesson success must create the card unadvanced, got %+v", card)
 		}
+		if card.Due.Before(now.Add(23 * time.Hour)) {
+			t.Fatalf("a new card must be due a day out so retention is a delayed check, got %+v", card)
+		}
+	}
+}
+
+func TestRubricStepsCreateNoReviewCard(t *testing.T) {
+	runner, store := newRunner(t, fakeEvaluator{rubric: eval.Rubric{Meaning: 2, Grammar: 2, Naturalness: 2, Register: 2}})
+	step := &content.Step{
+		ID: "s1", Kind: content.Speaking, Concepts: []string{"c1"},
+		Prompt: "Say something you want to eat.", Rubric: "meaning, grammar, naturalness, register",
+	}
+
+	result, err := runner.Submit(context.Background(), step, "すしをたべたいです")
+	if err != nil {
+		t.Fatalf("Submit: %v", err)
+	}
+	if !result.Outcome.Correct {
+		t.Fatalf("expected a correct free-form verdict, got %+v", result.Outcome)
+	}
+
+	cards, err := store.Reviews()
+	if err != nil {
+		t.Fatalf("Reviews: %v", err)
+	}
+	if len(cards) != 0 {
+		t.Fatalf("the deterministic graders cannot answer a rubric step, so it must not become a card: %+v", cards)
 	}
 }
 

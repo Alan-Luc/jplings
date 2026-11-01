@@ -626,7 +626,7 @@ func TestPassedDueStepIsServedAsAConceptSibling(t *testing.T) {
 	units[0].Lessons[0].Steps = append(units[0].Lessons[0].Steps, second)
 
 	model, store := newModelWith(t, units)
-	if err := store.EnsureCard(schedule.Initial("s1", "c1", time.Now().Add(-time.Hour))); err != nil {
+	if err := store.EnsureCard(schedule.Initial("s1", "c1", time.Now().AddDate(0, 0, -2))); err != nil {
 		t.Fatalf("EnsureCard: %v", err)
 	}
 	model.passed["s1"] = true
