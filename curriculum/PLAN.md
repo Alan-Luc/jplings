@@ -170,6 +170,31 @@ personal answers → roleplay → vocabulary → delayed check), with these per-
 | U14 | 〜たことがある | 〜たほうがいい | より/のほうが/一番 | Experience roleplay: 行ったことありますか |
 | U15 | plain form; かな/でしょ | Contractions, recognition first | あいづち; そうなんですか; 〜んですね | Long roleplay: 6+ turns, one unexpected follow-up |
 
+### Naming and order
+
+There is no manifest file and no `order` field, and none is needed: lesson and step
+order is YAML order inside a unit file. **Unit order is the sorted filename order**
+(`load.go` sorts the collected files, and the TUI walks units in that slice), so files
+must be named to sort as the plan sequences them:
+
+```
+content/unit-01-jikoshoukai.yaml
+content/unit-02-suki.yaml
+...
+content/unit-15-kudaketa.yaml
+```
+
+Two digits is the whole mechanism. Without it `unit-10` sorts before `unit-2`, and the
+learner's first lesson becomes week 10's. Concept and step IDs keep the existing
+convention from `unit-b.yaml`: lesson-scoped, e.g. `u3-l1-2`.
+
+Rustlings solves the same problem with one `info.toml` listing all 95 exercises in
+order, each with a hint. I am not copying that: `unit → lesson → step` already carries
+order, and a second list is a second thing to keep in sync. Its per-exercise hint is
+the one idea worth keeping in mind, and it is already covered by showing the accepted
+answer after a miss — a hint that reveals the answer before an attempt would just turn
+production items back into reading items.
+
 ## 6. Continuous tracks
 
 Not units, because each is a technique rather than a topic, and each appears in every
