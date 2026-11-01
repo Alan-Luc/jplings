@@ -76,6 +76,17 @@ type Step struct {
 	Rubric           string      `yaml:"rubric,omitempty"`
 	Explanation      string      `yaml:"explanation,omitempty"`
 	Scenario         *Scenario   `yaml:"scenario,omitempty"`
+	// Source credits imported corpus data used by this step.
+	Source *Attribution `yaml:"source,omitempty"`
+}
+
+// Attribution records where a step's language data came from, so a licensed corpus
+// is credited at the point of use (D9).
+type Attribution struct {
+	Corpus      string `yaml:"corpus"`
+	ID          string `yaml:"id,omitempty"`
+	License     string `yaml:"license"`
+	Attribution string `yaml:"attribution"`
 }
 
 // Concept is a trackable idea: the unit of evidence and mastery (R5, R6).
@@ -217,6 +228,17 @@ func (s *Step) validate(where string, concepts map[string]bool, add func(path, f
 	}
 	if s.Scenario != nil {
 		s.Scenario.validate(path(where, "scenario"), add)
+	}
+	if s.Source != nil {
+		for name, value := range map[string]string{
+			"corpus":      s.Source.Corpus,
+			"license":     s.Source.License,
+			"attribution": s.Source.Attribution,
+		} {
+			if value == "" {
+				add(path(where, "source"), "missing %s", name)
+			}
+		}
 	}
 
 	switch s.Kind {

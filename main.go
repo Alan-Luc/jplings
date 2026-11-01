@@ -2,15 +2,19 @@ package main
 
 import (
 	"bufio"
+	"flag"
 	"fmt"
+	"io"
 	"os"
 	"path/filepath"
+	"sort"
 	"strconv"
 	"strings"
 	"text/tabwriter"
 	"time"
 
 	"jplings/internal/content"
+	"jplings/internal/corpus"
 	"jplings/internal/doctor"
 	"jplings/internal/eval"
 	"jplings/internal/profile"
@@ -39,6 +43,8 @@ func run(args []string) error {
 		return gradePending(args[1:])
 	case "coverage":
 		return reportCoverage(args[1:])
+	case "content":
+		return contentCommand(args[1:])
 	case "help", "-h", "--help":
 		usage()
 		return nil
@@ -57,6 +63,7 @@ Usage:
   jplings doctor          check host prerequisites
   jplings grade --pending grade saved responses by hand
   jplings coverage        report how deeply each concept is exercised
+  jplings content import  fetch JMdict + Tatoeba reference data
 `)
 }
 
@@ -108,6 +115,157 @@ func startSession() error {
 	}
 
 	return tui.Run(runner, units)
+}
+
+func contentCommand(args []string) error {
+	if len(args) == 0 || args[0] != "import" {
+		return fmt.Errorf("usage: jplings content import [--out dir] [--words file] [--sentences n]")
+	}
+
+	flags := flag.NewFlagSet("import", flag.ContinueOnError)
+	outDir := flags.String("out", "corpus", "where to write vocab.yaml and sentences.yaml")
+	wordsPath := flags.String("words", filepath.Join("content", "words.txt"), "word list to look up in JMdict")
+	limit := flags.Int("sentences", 200, "how many sentence pairs to export")
+	cacheDir := flags.String("cache", "", "download cache (default: user cache dir)")
+	if err := flags.Parse(args[1:]); err != nil {
+		return err
+	}
+
+	cache := *cacheDir
+	if cache == "" {
+		base, err := os.UserCacheDir()
+		if err != nil {
+			return err
+		}
+		cache = filepath.Join(base, "jplings")
+	}
+
+	fmt.Fprintf(os.Stderr, "fetching sources into %s\n", cache)
+	files, err := corpus.Fetch(cache)
+	if err != nil {
+		return err
+	}
+
+	if err := os.MkdirAll(*outDir, 0o755); err != nil {
+		return err
+	}
+
+	if want, err := readWordList(*wordsPath); err != nil {
+		return err
+	} else if len(want) > 0 {
+		jmdict, err := corpus.OpenJMdict(files.JMdict)
+		if err != nil {
+			return err
+		}
+		lookup, err := corpus.LoadJMdict(jmdict, want)
+		jmdict.Close()
+		if err != nil {
+			return err
+		}
+		words := lookup.Words()
+		if err := writeFile(filepath.Join(*outDir, "vocab.yaml"), func(w io.Writer) error {
+			return corpus.WriteVocab(w, words)
+		}); err != nil {
+			return err
+		}
+		matched := map[string]bool{}
+		for _, word := range words {
+			for _, form := range append(append([]string{}, word.Kanji...), word.Kana...) {
+				if want[form] {
+					matched[form] = true
+				}
+			}
+		}
+		fmt.Printf("vocab: %d entries covering %d of %d requested words\n", len(words), len(matched), len(want))
+		for _, form := range sortedKeys(want) {
+			if !matched[form] {
+				fmt.Fprintf(os.Stderr, "  not in JMdict: %s\n", form)
+			}
+		}
+	}
+
+	pairs, err := importSentences(files, *limit)
+	if err != nil {
+		return err
+	}
+	if err := writeFile(filepath.Join(*outDir, "sentences.yaml"), func(w io.Writer) error {
+		return corpus.WriteSentences(w, pairs)
+	}); err != nil {
+		return err
+	}
+	fmt.Printf("sentences: %d pairs\n", len(pairs))
+	fmt.Printf("\nlicences: JMdict %s, Tatoeba %s — see ATTRIBUTION.md\n", corpus.JMdictLic, corpus.TatoebaLic)
+	return nil
+}
+
+func importSentences(files corpus.Files, limit int) ([]corpus.Sentence, error) {
+	japanese, err := corpus.OpenBzip2(files.Japanese)
+	if err != nil {
+		return nil, err
+	}
+	jpnSentences, err := corpus.ReadSentences(japanese)
+	japanese.Close()
+	if err != nil {
+		return nil, err
+	}
+
+	english, err := corpus.OpenBzip2(files.English)
+	if err != nil {
+		return nil, err
+	}
+	engSentences, err := corpus.ReadSentences(english)
+	english.Close()
+	if err != nil {
+		return nil, err
+	}
+
+	links, err := corpus.OpenBzip2(files.Links)
+	if err != nil {
+		return nil, err
+	}
+	linksPairs, err := corpus.ReadLinks(links)
+	links.Close()
+	if err != nil {
+		return nil, err
+	}
+
+	joined := corpus.Pairs(jpnSentences, engSentences, linksPairs)
+	if err := corpus.Validate(joined); err != nil {
+		return nil, err
+	}
+	return corpus.SelectShort(joined, limit), nil
+}
+
+func readWordList(path string) (map[string]bool, error) {
+	data, err := os.ReadFile(path)
+	if os.IsNotExist(err) {
+		return nil, nil
+	}
+	if err != nil {
+		return nil, err
+	}
+
+	want := map[string]bool{}
+	for _, line := range strings.Split(string(data), "\n") {
+		line = strings.TrimSpace(line)
+		if line == "" || strings.HasPrefix(line, "#") {
+			continue
+		}
+		want[line] = true
+	}
+	return want, nil
+}
+
+func writeFile(path string, write func(io.Writer) error) error {
+	file, err := os.Create(path)
+	if err != nil {
+		return err
+	}
+	if err := write(file); err != nil {
+		file.Close()
+		return err
+	}
+	return file.Close()
 }
 
 func reportCoverage(paths []string) error {
@@ -283,4 +441,14 @@ func readScore(reader *bufio.Reader, dimension string) (int, error) {
 		}
 		return value, nil
 	}
+}
+
+// sortedKeys returns map keys in a stable order so reports are reproducible.
+func sortedKeys(set map[string]bool) []string {
+	keys := make([]string, 0, len(set))
+	for key := range set {
+		keys = append(keys, key)
+	}
+	sort.Strings(keys)
+	return keys
 }
