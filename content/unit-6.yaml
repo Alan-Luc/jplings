@@ -1,0 +1,847 @@
+id: unit-6
+title: 聞き返す — question words, んですか and the repair toolkit
+taught: true
+concepts:
+  - id: question-words
+    label: 何・だれ・どこ・いつ・どう・どうして — the question word keeps the particle
+  - id: n-desu-ka
+    label: 〜んですか — asking for the explanation behind what you heard
+  - id: tte-nan-desu-ka
+    label: 〜って何ですか — what does this word mean?
+  - id: nan-to-iimasu-ka
+    label: 〜は日本語で何と言いますか — how do you say it?
+  - id: repair-toolkit
+    label: ききかえし — ゆっくり言ってください, もう一度言ってください, ちょっと待ってください
+lessons:
+  - id: u6-l1
+    title: 何・だれ・どこ・いつ・どう — the question word keeps the particle
+    objective: >-
+      Ask with each question word and keep the particle the verb already chooses,
+      instead of replacing the particle when the noun becomes a question word.
+    anchors:
+      - kanji: どこに住んでいますか
+        kana: どこにすんでいますか
+        romaji: doko ni sunde imasu ka
+      - kanji: だれに会いますか
+        kana: だれにあいますか
+        romaji: dare ni aimasu ka
+      - kanji: どうして来ませんでしたか
+        kana: どうしてきませんでしたか
+        romaji: doushite kimasen deshita ka
+    teach:
+      - prose: >-
+          A question word replaces the noun, and the particle stays where it was.
+          住む takes に for the place where the living continues, so "where do you
+          live" is どこに住んでいますか, not どこで住んでいますか. 会う takes に for the
+          person, so "who are you meeting" is だれに会いますか. 食べる takes を, so
+          "what do you eat" is 何を食べますか.
+        examples:
+          - kanji: どこに住んでいますか
+            kana: どこにすんでいますか
+            romaji: doko ni sunde imasu ka
+          - kanji: だれに会いますか
+            kana: だれにあいますか
+            romaji: dare ni aimasu ka
+          - kanji: 何を食べますか
+            kana: なにをたべますか
+            romaji: nani o tabemasu ka
+      - prose: >-
+          だれ and 何 take が when they are the subject, because the particle marks
+          the one doing the action: だれが来ますか, 何が食べたいですか. They do not take
+          は in these questions. The verb still decides the rest of the sentence.
+        examples:
+          - kanji: だれが来ますか
+            kana: だれがきますか
+            romaji: dare ga kimasu ka
+          - kanji: 何が食べたいですか
+            kana: なにがたべたいですか
+            romaji: nani ga tabetai desu ka
+      - prose: >-
+          いつ asks "when" and needs no particle of its own: いつ日本に行きますか. どう
+          asks "how" and どうして asks "why"; both are adverbs, so neither takes a
+          particle: どう書きますか, どうして来ませんでしたか. Read the question word as
+          standing in for a noun, not as a new particle rule.
+        examples:
+          - kanji: いつ日本に行きますか
+            kana: いつにほんにいきますか
+            romaji: itsu nihon ni ikimasu ka
+          - kanji: どう書きますか
+            kana: どうかきますか
+            romaji: dou kakimasu ka
+          - kanji: どうして来ませんでしたか
+            kana: どうしてきませんでしたか
+            romaji: doushite kimasen deshita ka
+    steps:
+      - id: u6-l1-1
+        kind: interpretation
+        concepts: [question-words]
+        prompt: >-
+          Two classmates ask where you live: どこに住んでいますか and
+          どこで住んでいますか. Only one is correct. What does the correct one mean?
+        target:
+          kanji: どこに住んでいますか
+          kana: どこにすんでいますか
+          romaji: doko ni sunde imasu ka
+        accept_meanings:
+          - Where do you live?
+          - Where are you living?
+          - Where do you live
+        hint: 住む takes the particle for the place where the state continues.
+        explanation: >-
+          住む takes に for where you live, so どこに住んでいますか. どこで marks where
+          an action happens, which is not what 住む describes.
+      - id: u6-l1-2
+        kind: interpretation
+        concepts: [question-words]
+        prompt: What does this mean?
+        target:
+          kanji: いつ日本に行きますか
+          kana: いつにほんにいきますか
+          romaji: itsu nihon ni ikimasu ka
+        accept_meanings:
+          - When are you going to Japan?
+          - When do you go to Japan?
+          - When will you go to Japan?
+        hint: いつ asks "when" and needs no particle before the verb.
+        explanation: >-
+          いつ日本に行きますか asks when you go to Japan. いつ takes no particle; に
+          stays with 日本 as the destination.
+      - id: u6-l1-3
+        kind: interpretation
+        concepts: [question-words]
+        prompt: What does this mean?
+        target:
+          kanji: どうして来ませんでしたか
+          kana: どうしてきませんでしたか
+          romaji: doushite kimasen deshita ka
+        accept_meanings:
+          - Why didn't you come?
+          - Why did you not come?
+          - Why didn't you come
+        hint: どうして asks for a reason, and the past negative is 来ませんでした.
+        explanation: >-
+          どうして来ませんでしたか asks why someone did not come. どうして carries the
+          "why" without a particle; 来ませんでした is the polite past negative.
+      - id: u6-l1-4
+        kind: construction
+        concepts: [question-words]
+        prompt: >-
+          A classmate writes だれを会いますか for "Who are you meeting?". Write the
+          sentence they meant.
+        accept:
+          - kanji: だれに会いますか
+            kana: だれにあいますか
+            romaji: dare ni aimasu ka
+        hint: 会う takes に for the person you meet.
+        explanation: >-
+          だれに会いますか keeps the particle 会う chose: に. を treats the person as
+          an object being acted on, which 会う does not do.
+      - id: u6-l1-5
+        kind: construction
+        concepts: [question-words]
+        prompt: >-
+          A classmate writes どこで住んでいますか for "Where do you live?". Write the
+          sentence they meant.
+        accept:
+          - kanji: どこに住んでいますか
+            kana: どこにすんでいますか
+            romaji: doko ni sunde imasu ka
+        hint: The question word does not change the particle 住む takes.
+        explanation: >-
+          どこに住んでいますか uses に because 住む reports the place where the living
+          continues. で marks where an action happens and does not fit 住む.
+      - id: u6-l1-6
+        kind: construction
+        concepts: [question-words]
+        prompt: Ask what someone ate.
+        accept:
+          - kanji: 何を食べましたか
+            kana: なにをたべましたか
+            romaji: nani o tabemashita ka
+        hint: 何 stands in for the thing, and 食べる still takes を.
+        explanation: >-
+          何を食べましたか replaces the food with 何 and keeps を, because 食べる takes
+          を for what is eaten. 何が食べましたか would make 何 the one doing the eating.
+      - id: u6-l1-7
+        kind: construction
+        concepts: [question-words]
+        prompt: Ask why someone is studying Japanese.
+        accept:
+          - kanji: どうして日本語を勉強していますか
+            kana: どうしてにほんごをべんきょうしていますか
+            romaji: doushite nihongo o benkyou shite imasu ka
+        hint: どうして asks for a reason and takes no particle.
+        explanation: >-
+          どうして日本語を勉強していますか puts どうして before the sentence with no
+          particle. を stays with 日本語 because 勉強する acts on it.
+      - id: u6-l1-8
+        kind: construction
+        concepts: [question-words]
+        prompt: Ask how someone writes their name.
+        accept:
+          - kanji: 名前はどう書きますか
+            kana: なまえはどうかきますか
+            romaji: namae wa dou kakimasu ka
+        hint: どう asks "how" and takes no particle; 名前は marks what is being asked about.
+        explanation: >-
+          名前はどう書きますか uses どう for the manner of writing. どう is an adverb,
+          so it stands before 書きます without a particle.
+      - id: u6-l1-9
+        kind: transformation
+        concepts: [question-words]
+        prompt: Make this sentence ask where the train goes.
+        target:
+          kanji: この電車は駅に行きます
+          kana: このでんしゃはえきにいきます
+          romaji: kono densha wa eki ni ikimasu
+        accept:
+          - kanji: この電車はどこに行きますか
+            kana: このでんしゃはどこにいきますか
+            romaji: kono densha wa doko ni ikimasu ka
+        hint: Replace 駅 with どこ and keep the particle 行く chose.
+        explanation: >-
+          この電車はどこに行きますか puts どこ in the place of 駅 and keeps に. The
+          particle belongs to 行く, not to the question word.
+      - id: u6-l1-10
+        kind: completion
+        concepts: [question-words]
+        prompt: Fill the particle — "Who is coming?"
+        target:
+          kanji: だれ＿来ますか
+          kana: だれ＿きますか
+          romaji: dare _ kimasu ka
+        accept:
+          - kanji: が
+            kana: が
+            romaji: ga
+        hint: だれ is the subject here, so it takes the subject particle.
+        explanation: >-
+          だれが来ますか marks だれ with が because だれ is the one doing the coming.
+          だれは来ますか would make だれ a topic, which is not how this question is
+          built.
+      - id: u6-l1-11
+        kind: listening
+        concepts: [question-words]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: すみません、この電車はどこに行きますか
+          kana: すみません、このでんしゃはどこにいきますか
+          romaji: sumimasen, kono densha wa doko ni ikimasu ka
+        accept_meanings:
+          - Excuse me, where does this train go?
+          - Excuse me, where is this train going?
+          - Excuse me, where does this train go
+        hint: どこ asks where, and に stays with the destination.
+        explanation: >-
+          すみません、この電車はどこに行きますか asks where the train goes. どこ holds
+          the place slot and に stays because 行く takes it for the destination.
+
+  - id: u6-l2
+    title: 〜んですか — asking for the explanation
+    objective: >-
+      Attach んですか to the dictionary form, and なんですか to a noun, to ask for
+      the explanation or confirmation behind what you heard.
+    anchors:
+      - kanji: 学生なんですか
+        kana: がくせいなんですか
+        romaji: gakusei nan desu ka
+      - kanji: どうしたんですか
+        kana: どうしたんですか
+        romaji: doushita n desu ka
+      - kanji: どこに行くんですか
+        kana: どこにいくんですか
+        romaji: doko ni iku n desu ka
+    teach:
+      - prose: >-
+          んですか asks for the explanation or the situation behind something, like
+          "so…?" or "is that so?". It attaches to the dictionary form, not to ます:
+          行くんですか, 食べるんですか, するんですか. ます plus ん is wrong, so
+          行きますんですか is not a form Japanese uses.
+        examples:
+          - kanji: どこに行くんですか
+            kana: どこにいくんですか
+            romaji: doko ni iku n desu ka
+          - kanji: 何を食べるんですか
+            kana: なにをたべるんですか
+            romaji: nani o taberu n desu ka
+      - prose: >-
+          A noun takes なんですか, with な before ん: 学生なんですか, 先生なんですか.
+          A verb takes んですか with no な: 行くんですか. The な belongs to the noun,
+          not to んですか.
+        examples:
+          - kanji: 学生なんですか
+            kana: がくせいなんですか
+            romaji: gakusei nan desu ka
+          - kanji: 行くんですか
+            kana: いくんですか
+            romaji: iku n desu ka
+      - prose: >-
+          どうしたんですか is the high-frequency concerned question, "what's wrong?".
+          It uses する's plain past した before んですか. 何をしているんですか asks what
+          someone is doing right now, with the plain している before んですか.
+        examples:
+          - kanji: どうしたんですか
+            kana: どうしたんですか
+            romaji: doushita n desu ka
+          - kanji: 何をしているんですか
+            kana: なにをしているんですか
+            romaji: nani o shite iru n desu ka
+    steps:
+      - id: u6-l2-1
+        kind: interpretation
+        concepts: [n-desu-ka]
+        prompt: What does this mean?
+        target:
+          kanji: 学生なんですか
+          kana: がくせいなんですか
+          romaji: gakusei nan desu ka
+        accept_meanings:
+          - So you're a student?
+          - Are you really a student?
+          - You're a student?
+          - So you are a student?
+        hint: A noun before んですか takes な.
+        explanation: >-
+          学生なんですか asks for confirmation of something heard: "So you're a
+          student?". 学生ですか is the neutral question; なん adds the "so / really"
+          reading.
+      - id: u6-l2-2
+        kind: interpretation
+        concepts: [n-desu-ka]
+        prompt: What does this mean?
+        target:
+          kanji: どうしたんですか
+          kana: どうしたんですか
+          romaji: doushita n desu ka
+        accept_meanings:
+          - What's wrong?
+          - What happened?
+          - What is the matter?
+        hint: した is the plain past of する.
+        explanation: >-
+          どうしたんですか asks what happened or what is wrong. It is the standard
+          concerned question when someone looks upset.
+      - id: u6-l2-3
+        kind: interpretation
+        concepts: [n-desu-ka]
+        prompt: What does this mean?
+        target:
+          kanji: どこに行くんですか
+          kana: どこにいくんですか
+          romaji: doko ni iku n desu ka
+        accept_meanings:
+          - Where are you going?
+          - Where are you off to?
+          - So where are you going?
+        hint: んですか attaches to the dictionary form 行く.
+        explanation: >-
+          どこに行くんですか asks where someone is going, with the explanatory ん.
+          どこに行きますか is the neutral version; ん invites the reason or situation.
+      - id: u6-l2-4
+        kind: construction
+        concepts: [n-desu-ka]
+        prompt: >-
+          A classmate writes どこに行きますんですか to find out where you are going.
+          Write the question they meant.
+        accept:
+          - kanji: どこに行くんですか
+            kana: どこにいくんですか
+            romaji: doko ni iku n desu ka
+        hint: んですか follows the dictionary form, not ます.
+        explanation: >-
+          どこに行くんですか uses the dictionary form 行く before んですか.
+          行きますんですか puts ます before ん, which Japanese does not do.
+      - id: u6-l2-5
+        kind: construction
+        concepts: [n-desu-ka]
+        prompt: >-
+          A classmate writes 何をしていますんですか for "What are you doing?". Write
+          the question they meant.
+        accept:
+          - kanji: 何をしているんですか
+            kana: なにをしているんですか
+            romaji: nani o shite iru n desu ka
+        hint: している is the plain form of しています; んですか follows it.
+        explanation: >-
+          何をしているんですか uses the plain している before んですか.
+          していますんですか keeps the polite ます and then adds ん, which is not a form
+          Japanese uses.
+      - id: u6-l2-6
+        kind: construction
+        concepts: [n-desu-ka]
+        prompt: You hear that Tanaka is a student. Ask him to confirm it, using んですか.
+        accept:
+          - kanji: 田中さんは学生なんですか
+            kana: たなかさんはがくせいなんですか
+            romaji: tanaka san wa gakusei nan desu ka
+        hint: A noun before んですか takes な.
+        explanation: >-
+          田中さんは学生なんですか adds な before んですか because 学生 is a noun.
+          学生んですか drops the な that a noun needs.
+      - id: u6-l2-7
+        kind: completion
+        concepts: [n-desu-ka]
+        prompt: Fill the particle a noun needs before んですか — "So you're a student?"
+        target:
+          kanji: 学生＿んですか
+          kana: がくせい＿んですか
+          romaji: gakusei _ n desu ka
+        accept:
+          - kanji: な
+            kana: な
+            romaji: na
+        hint: Nouns take な before んですか.
+        explanation: >-
+          学生なんですか needs な between the noun 学生 and んですか. Verbs do not take
+          it: 行くんですか.
+      - id: u6-l2-8
+        kind: transformation
+        concepts: [n-desu-ka]
+        prompt: Make this statement into a question that asks for the explanation.
+        target:
+          kanji: 日本に行きます
+          kana: にほんにいきます
+          romaji: nihon ni ikimasu
+        accept:
+          - kanji: 日本に行くんですか
+            kana: にほんにいくんですか
+            romaji: nihon ni iku n desu ka
+        hint: Change 行きます to its dictionary form before adding んですか.
+        explanation: >-
+          日本に行くんですか drops ます and adds んですか to the dictionary form 行く.
+          日本に行きますんですか keeps ます before ん.
+      - id: u6-l2-9
+        kind: construction
+        concepts: [repair-toolkit]
+        prompt: You catch only part of a fast sentence. Ask the person to say it slowly.
+        accept:
+          - kanji: ゆっくり言ってください
+            kana: ゆっくりいってください
+            romaji: yukkuri itte kudasai
+        hint: 言う ends in う, so it takes って before ください.
+        explanation: >-
+          ゆっくり言ってください asks for slower speech. 言う takes って, so
+          言ってください, not 言いてください. ゆっくりお願いします asks for the same thing
+          without naming 言う.
+      - id: u6-l2-10
+        kind: interpretation
+        concepts: [repair-toolkit]
+        prompt: What does this mean?
+        target:
+          kanji: すみません、もう一度言ってください
+          kana: すみません、もういちどいってください
+          romaji: sumimasen, mou ichido itte kudasai
+        accept_meanings:
+          - Excuse me, please say that again.
+          - Excuse me, please repeat that.
+          - Excuse me, say that one more time.
+        hint: もう一度 means "one more time"; 言ってください asks them to say it.
+        explanation: >-
+          すみません、もう一度言ってください is a full repair: attention, then a request
+          to repeat. もう一度お願いします asks the same without naming 言う.
+      - id: u6-l2-11
+        kind: listening
+        concepts: [n-desu-ka]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: 田中さんは学生なんですか
+          kana: たなかさんはがくせいなんですか
+          romaji: tanaka san wa gakusei nan desu ka
+        accept_meanings:
+          - Is Tanaka really a student?
+          - So Tanaka is a student?
+          - Is Tanaka a student?
+        hint: なんですか follows the noun 学生.
+        explanation: >-
+          田中さんは学生なんですか asks for confirmation about Tanaka being a student.
+          The noun 学生 takes な before んですか.
+
+  - id: u6-l3
+    title: 〜って何ですか and 〜は日本語で何と言いますか
+    objective: >-
+      Ask what a word means with 〜って何ですか, and ask how to say something in
+      Japanese with 〜は日本語で何と言いますか.
+    anchors:
+      - kanji: 「のりば」って何ですか
+        kana: 「のりば」ってなんですか
+        romaji: noriba tte nan desu ka
+      - kanji: これは日本語で何と言いますか
+        kana: これはにほんごでなんといいますか
+        romaji: kore wa nihongo de nan to iimasu ka
+      - kanji: もう一度言ってください
+        kana: もういちどいってください
+        romaji: mou ichido itte kudasai
+    teach:
+      - prose: >-
+          って is the spoken quotation particle, the casual と. Put it after a word
+          whose meaning you do not know: 「のりば」って何ですか. が is wrong here:
+          「のりば」が何ですか marks the word as a subject and does not ask what it
+          means.
+        examples:
+          - kanji: 「のりば」って何ですか
+            kana: 「のりば」ってなんですか
+            romaji: noriba tte nan desu ka
+          - kanji: 「もったいない」って何ですか
+            kana: 「もったいない」ってなんですか
+            romaji: mottainai tte nan desu ka
+      - prose: >-
+          To ask how to say something, put the word first with は, then 日本語で, then
+          何と言いますか: 「ticket」は日本語で何と言いますか. で marks the language and
+          と quotes what is said. 何ですか would ask what the thing is, not how to say
+          it.
+        examples:
+          - kanji: 「ticket」は日本語で何と言いますか
+            kana: 「ticket」はにほんごでなんといいますか
+            romaji: ticket wa nihongo de nan to iimasu ka
+          - kanji: これは日本語で何と言いますか
+            kana: これはにほんごでなんといいますか
+            romaji: kore wa nihongo de nan to iimasu ka
+      - prose: >-
+          もう一度言ってください asks for the whole line again, while
+          ゆっくり言ってください asks for slower speech. When a line outruns you, ask
+          for both at once, or ask the person to wait: すみません、もう一度ゆっくり
+          言ってください and ちょっと待ってください.
+        examples:
+          - kanji: もう一度言ってください
+            kana: もういちどいってください
+            romaji: mou ichido itte kudasai
+          - kanji: すみません、もう一度ゆっくり言ってください
+            kana: すみません、もういちどゆっくりいってください
+            romaji: sumimasen, mou ichido yukkuri itte kudasai
+    steps:
+      - id: u6-l3-1
+        kind: interpretation
+        concepts: [tte-nan-desu-ka]
+        prompt: >-
+          Two classmates ask about a word on a sign: 「のりば」って何ですか and
+          「のりば」が何ですか. Only one is correct. What does the correct one mean?
+        target:
+          kanji: 「のりば」って何ですか
+          kana: 「のりば」ってなんですか
+          romaji: noriba tte nan desu ka
+        accept_meanings:
+          - What does のりば mean?
+          - What is のりば?
+          - What does noriba mean?
+        hint: って quotes the word whose meaning you are asking about.
+        explanation: >-
+          「のりば」って何ですか quotes のりば with って and asks what it means.
+          「のりば」が何ですか uses が, which marks a subject and does not ask about a
+          meaning.
+      - id: u6-l3-2
+        kind: interpretation
+        concepts: [nan-to-iimasu-ka]
+        prompt: What does this mean?
+        target:
+          kanji: 「ticket」は日本語で何と言いますか
+          kana: 「ticket」はにほんごでなんといいますか
+          romaji: ticket wa nihongo de nan to iimasu ka
+        accept_meanings:
+          - How do you say ticket in Japanese?
+          - How do you say 'ticket' in Japanese?
+          - How do you say “ticket” in Japanese?
+        hint: で marks the language and と quotes what is said.
+        explanation: >-
+          「ticket」は日本語で何と言いますか asks for the Japanese word for ticket. で
+          marks the language you want, and と marks the word as it is said.
+      - id: u6-l3-3
+        kind: interpretation
+        concepts: [nan-to-iimasu-ka]
+        prompt: What does this mean?
+        target:
+          kanji: これは日本語で何と言いますか
+          kana: これはにほんごでなんといいますか
+          romaji: kore wa nihongo de nan to iimasu ka
+        accept_meanings:
+          - How do you say this in Japanese?
+          - How do you say this in Japanese
+          - What is this called in Japanese?
+        hint: これは marks the thing you are pointing at.
+        explanation: >-
+          これは日本語で何と言いますか asks how to say the thing you are pointing at.
+          と + 言いますか is the "say it as" part that asks for the words.
+      - id: u6-l3-4
+        kind: construction
+        concepts: [tte-nan-desu-ka]
+        prompt: >-
+          A classmate writes 「のりば」は何ですか for "What does のりば mean?". Write
+          the question they meant.
+        accept:
+          - kanji: 「のりば」って何ですか
+            kana: 「のりば」ってなんですか
+            romaji: noriba tte nan desu ka
+        hint: って quotes the word; は makes it a topic and does not ask for a meaning.
+        explanation: >-
+          「のりば」って何ですか uses って to quote the unfamiliar word. 「のりば」は
+          何ですか asks what the thing is, not what the word means.
+      - id: u6-l3-5
+        kind: construction
+        concepts: [nan-to-iimasu-ka]
+        prompt: >-
+          A classmate writes これは日本語で何ですか for "How do you say this in
+          Japanese?". Write the question they meant.
+        accept:
+          - kanji: これは日本語で何と言いますか
+            kana: これはにほんごでなんといいますか
+            romaji: kore wa nihongo de nan to iimasu ka
+        hint: 何と言いますか quotes how it is said; 何ですか asks what it is.
+        explanation: >-
+          これは日本語で何と言いますか uses と + 言いますか to ask how something is
+          said. 何ですか asks what the thing is, not how to say it.
+      - id: u6-l3-6
+        kind: construction
+        concepts: [tte-nan-desu-ka]
+        prompt: Ask what 「もったいない」 means.
+        accept:
+          - kanji: 「もったいない」って何ですか
+            kana: 「もったいない」ってなんですか
+            romaji: mottainai tte nan desu ka
+        hint: って quotes the word you are asking about.
+        explanation: >-
+          「もったいない」って何ですか quotes the word with って and asks its meaning.
+          が would mark it as a subject instead of asking what it means.
+      - id: u6-l3-7
+        kind: construction
+        concepts: [nan-to-iimasu-ka]
+        prompt: Ask how to say "receipt" in Japanese.
+        accept:
+          - kanji: 「receipt」は日本語で何と言いますか
+            kana: 「receipt」はにほんごでなんといいますか
+            romaji: receipt wa nihongo de nan to iimasu ka
+        hint: Put the word first with は, mark the language with で, and use 何と言いますか.
+        explanation: >-
+          「receipt」は日本語で何と言いますか puts the word in the topic slot, marks
+          日本語 with で, and asks for the spoken form with と + 言いますか.
+      - id: u6-l3-8
+        kind: completion
+        concepts: [nan-to-iimasu-ka]
+        prompt: Fill the particle — "How do you say this in Japanese?"
+        target:
+          kanji: これ＿日本語で何と言いますか
+          kana: これ＿にほんごでなんといいますか
+          romaji: kore _ nihongo de nan to iimasu ka
+        accept:
+          - kanji: は
+            kana: は
+            romaji: wa
+        hint: The thing being asked about is the topic.
+        explanation: >-
+          これは日本語で何と言いますか marks the thing as the topic with は. が would
+          make it the subject of 言います, which is not what is being asked.
+      - id: u6-l3-9
+        kind: completion
+        concepts: [tte-nan-desu-ka]
+        prompt: Fill the particle — "What does のりば mean?"
+        target:
+          kanji: 「のりば」＿何ですか
+          kana: 「のりば」＿なんですか
+          romaji: noriba _ nan desu ka
+        accept:
+          - kanji: って
+            kana: って
+            romaji: tte
+        hint: The spoken quotation particle goes after the word.
+        explanation: >-
+          「のりば」って何ですか needs って to quote the word. は would make it a topic,
+          and the question would no longer ask what the word means.
+      - id: u6-l3-10
+        kind: construction
+        concepts: [repair-toolkit]
+        prompt: The other person said a whole sentence too fast. Ask them to say it one more time.
+        accept:
+          - kanji: もう一度言ってください
+            kana: もういちどいってください
+            romaji: mou ichido itte kudasai
+        hint: 言う takes って before ください.
+        explanation: >-
+          もう一度言ってください asks for the whole line again. ゆっくり言ってください
+          asks only for slower speech, which is a different request.
+      - id: u6-l3-11
+        kind: listening
+        concepts: [tte-nan-desu-ka]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: すみません、「のりば」って何ですか
+          kana: すみません、「のりば」ってなんですか
+          romaji: sumimasen, noriba tte nan desu ka
+        accept_meanings:
+          - Excuse me, what does のりば mean?
+          - Excuse me, what is のりば?
+          - Excuse me, what does noriba mean?
+        hint: って marks the word being asked about.
+        explanation: >-
+          すみません、「のりば」って何ですか gets attention and then asks what the word
+          means. The quote with って is what makes it a question about meaning.
+
+  - id: u6-l4
+    title: 聞き返す — putting it together
+    objective: >-
+      Repair three breakdowns in a conversation, then ask and recover without
+      scaffolding.
+    teach:
+      - prose: >-
+          This lesson adds no new grammar. A question word keeps the particle the
+          verb chose, んですか asks for the explanation, って何ですか asks what a word
+          means, and は…で何と言いますか asks how to say it. The repair phrases are
+          ゆっくり言ってください, もう一度言ってください and ちょっと待ってください.
+        examples:
+          - kanji: どこに行くんですか
+            kana: どこにいくんですか
+            romaji: doko ni iku n desu ka
+          - kanji: 「のりば」って何ですか
+            kana: 「のりば」ってなんですか
+            romaji: noriba tte nan desu ka
+      - prose: >-
+          Read the breakdown before choosing the repair. A whole line too fast takes
+          もう一度言ってください or ゆっくり言ってください; one unknown word takes
+          〜って何ですか; a word you want to say takes 〜は日本語で何と言いますか. If
+          you need a second to think, ちょっと待ってください buys it.
+    steps:
+      - id: u6-l4-1
+        kind: construction
+        concepts: [repair-toolkit]
+        prompt: You need a second to find the word you want. Ask the person to wait a moment.
+        accept:
+          - kanji: ちょっと待ってください
+            kana: ちょっとまってください
+            romaji: chotto matte kudasai
+        hint: 待つ ends in つ, so it takes って before ください.
+        explanation: >-
+          ちょっと待ってください asks for a moment. 待って is 待つ's て form;
+          待ちますください is not a form Japanese uses.
+      - id: u6-l4-2
+        kind: conversation
+        concepts: [question-words, n-desu-ka, tte-nan-desu-ka, nan-to-iimasu-ka, repair-toolkit]
+        prompt: >-
+          You are at a station. The announcements and the person at the gate speak
+          fast, and one word is new. Ask what you need, and recover each time the
+          line outruns you.
+        scenario:
+          turns:
+            - speaker: npc
+              line:
+                kanji: すみません、この電車は何番線ですか。
+                kana: すみません、このでんしゃはなんばんせんですか。
+                romaji: sumimasen, kono densha wa nanbansen desu ka
+            - speaker: learner
+              accept:
+                - kanji: すみません、もう一度言ってください。
+                  kana: すみません、もういちどいってください。
+                  romaji: sumimasen, mou ichido itte kudasai
+                - kanji: すみません、ゆっくり言ってください。
+                  kana: すみません、ゆっくりいってください。
+                  romaji: sumimasen, yukkuri itte kudasai
+                - kanji: もう一度お願いします。
+                  kana: もういちどおねがいします。
+                  romaji: mou ichido onegai shimasu
+            - speaker: npc
+              line:
+                kanji: この電車は何番線ですか。
+                kana: このでんしゃはなんばんせんですか。
+                romaji: kono densha wa nanbansen desu ka
+            - speaker: learner
+              accept:
+                - kanji: すみません、「何番線」って何ですか。
+                  kana: すみません、「なんばんせん」ってなんですか。
+                  romaji: sumimasen, nanbansen tte nan desu ka
+                - kanji: 「何番線」って何ですか。
+                  kana: 「なんばんせん」ってなんですか。
+                  romaji: nanbansen tte nan desu ka
+                - kanji: すみません、わかりません。
+                  kana: すみません、わかりません。
+                  romaji: sumimasen, wakarimasen
+            - speaker: npc
+              line:
+                kanji: のりばです。電車に乗るところです。
+                kana: のりばです。でんしゃにのるところです。
+                romaji: noriba desu. densha ni noru tokoro desu
+            - speaker: learner
+              accept:
+                - kanji: あ、わかりました。ありがとうございます。
+                  kana: あ、わかりました。ありがとうございます。
+                  romaji: a, wakarimashita. arigatou gozaimasu
+                - kanji: わかりました。ありがとうございます。
+                  kana: わかりました。ありがとうございます。
+                  romaji: wakarimashita. arigatou gozaimasu
+                - kanji: ありがとうございます。
+                  kana: ありがとうございます。
+                  romaji: arigatou gozaimasu
+            - speaker: npc
+              line:
+                kanji: どこに行くんですか。
+                kana: どこにいくんですか。
+                romaji: doko ni iku n desu ka
+            - speaker: learner
+              accept:
+                - kanji: 大阪に行きます。
+                  kana: おおさかにいきます。
+                  romaji: oosaka ni ikimasu
+                - kanji: 大阪に行くんです。
+                  kana: おおさかにいくんです。
+                  romaji: oosaka ni iku n desu
+                - kanji: 大阪です。
+                  kana: おおさかです。
+                  romaji: oosaka desu
+            - speaker: npc
+              line:
+                kanji: 大阪ですか。じゃあ、三番線です。でも、この電車はもう出ますよ。
+                kana: おおさかですか。じゃあ、さんばんせんです。でも、このでんしゃはもうでますよ。
+                romaji: oosaka desu ka. jaa, sanbansen desu. demo, kono densha wa mou demasu yo
+            - speaker: learner
+              accept:
+                - kanji: すみません、ゆっくり言ってください。
+                  kana: すみません、ゆっくりいってください。
+                  romaji: sumimasen, yukkuri itte kudasai
+                - kanji: すみません、もう一度言ってください。
+                  kana: すみません、もういちどいってください。
+                  romaji: sumimasen, mou ichido itte kudasai
+                - kanji: すみません、ちょっと待ってください。
+                  kana: すみません、ちょっとまってください。
+                  romaji: sumimasen, chotto matte kudasai
+            - speaker: npc
+              line:
+                kanji: この電車はもう出ます。急いでください。
+                kana: このでんしゃはもうでます。いそいでください。
+                romaji: kono densha wa mou demasu. isoide kudasai
+            - speaker: learner
+              accept:
+                - kanji: わかりました。ちょっと待ってください。
+                  kana: わかりました。ちょっとまってください。
+                  romaji: wakarimashita. chotto matte kudasai
+                - kanji: はい、急ぎます。
+                  kana: はい、いそぎます。
+                  romaji: hai, isogimasu
+                - kanji: ありがとうございます。急ぎます。
+                  kana: ありがとうございます。いそぎます。
+                  romaji: arigatou gozaimasu. isogimasu
+            - speaker: npc
+              line:
+                kanji: はい、どうぞ。
+                kana: はい、どうぞ。
+                romaji: hai, douzo
+        hint: >-
+          When the line is too fast ask for a repeat or slower speech; when one word
+          is new ask 〜って何ですか; answer the んですか question with a plain
+          statement.
+        explanation: >-
+          The conversation breaks down three times. The first line is too fast, so
+          the repair is もう一度言ってください. The repeated word 何番線 is still
+          unknown, so the repair is 「何番線」って何ですか. The last line comes too
+          fast again, so the repair is ゆっくり言ってください, and ちょっと待ってください
+          buys time. The NPC's どこに行くんですか is answered with an ordinary
+          statement.
+      - id: u6-l4-3
+        kind: speaking
+        concepts: [question-words, n-desu-ka, tte-nan-desu-ka, nan-to-iimasu-ka, repair-toolkit]
+        prompt: >-
+          Role-play a station counter. Ask one question with a question word, ask
+          what one word means, ask how to say one thing in Japanese, and recover
+          twice when the other person speaks too fast. Speak without looking back at
+          the lesson.
+        rubric: >-
+          Does the question word keep the particle its verb chooses? Does んですか
+          follow the dictionary form, or なんですか follow a noun? Does って何ですか
+          quote the unknown word? Does は…で何と言いますか put the language in で and
+          the said word in と? Does each repair match the breakdown: a repeat, slower
+          speech, or a moment to wait? Judge meaning, grammar, naturalness and
+          register separately. There is no model answer.
