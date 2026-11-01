@@ -175,9 +175,32 @@ of Whisper as おくうしえ. The service in `./kokoro-onnx` therefore uses mis
 Japanese G2P (`JAG2P`) and calls Kokoro with `is_phonemes=True`. After that fix the
 same sentence round-trips exactly.
 
-**misaki's Japanese G2P needs a unidic dictionary.** The full `unidic` PyPI package
-installs without one and fails at import time; `unidic-lite` bundles it. The
-Dockerfile installs `misaki[ja]`, removes `unidic`, and installs `unidic-lite`.
+**misaki's Japanese G2P needs a unidic dictionary, and the right one matters.**
+`unidic-lite` is a reduced dictionary that mis-segments geminated digraphs: はっぴゃく
+came out as `haʔpʲi ja kɯeɴ` ("ha-pyi-ja-kuen") and Whisper heard ハッピー役演. The full
+`unidic` package ships without a dictionary and fails at import, so the Dockerfile
+installs `misaki[ja]` and runs `python -m unidic download` at build time. With the full
+dictionary the phonemes are `haʔpʲakɯ eɴ desɨ` and the sentence round-trips as 800円,
+matching the PyTorch implementation exactly.
+
+### Content authoring rule: write numbers in kanji
+
+Kana-spelled counter readings still mis-tokenize upstream — ろっぴゃく alone yields
+`ɾoʔpʲi` and is heard as のんぴゃく / 6ピクエン. **The PyTorch implementation has the
+identical bug**, so it is an upstream misaki/unidic limitation, not an ONNX one.
+Authoring numbers as kanji numerals routes the reading through the dictionary instead
+of the kana tokenizer:
+
+| Input | Phonemes | Round-trip |
+|---|---|---|
+| `六百円です。` | `ɾoʔpʲakɯ eɴ desɨ` | 600円です |
+| `八百円です。` | `haʔpʲakɯ eɴ desɨ` | 800円です |
+| `三千五百円です。` | `saɴʣeɴ ɡoçakɯ eɴ desɨ` | 3500円です |
+| `ろっぴゃく` | `ɾoʔpʲi` | のんぴゃく (wrong) |
+
+Lesson content must therefore author TTS number prompts in kanji. This is a content
+rule, not a code workaround, and it costs nothing since authored readings already
+carry the kana form for display.
 
 **The prefabricated PyTorch Kokoro image was rejected.** `ghcr.io/remsky/kokoro-fastapi-cpu`
 runs and its Japanese output round-trips correctly, but it is PyTorch rather than ONNX

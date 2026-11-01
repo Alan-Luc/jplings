@@ -44,9 +44,9 @@ type OffTarget struct {
 
 // Turn is one line of a scripted conversation (D4).
 type Turn struct {
-	Speaker string `yaml:"speaker"` // "npc" or "learner"
-	Line    *Text  `yaml:"line,omitempty"`
-	Accept  []Text `yaml:"accept,omitempty"`
+	Speaker string   `yaml:"speaker"` // "npc" or "learner"
+	Line    *Text    `yaml:"line,omitempty"`
+	Accept  []Text   `yaml:"accept,omitempty"`
 	Hints   []string `yaml:"hints,omitempty"`
 }
 
