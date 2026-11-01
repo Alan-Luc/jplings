@@ -1,0 +1,257 @@
+id: placement
+title: Placement — where to start
+concepts:
+  - id: placement-copula
+    label: です and は as topic
+  - id: placement-location
+    label: に vs で
+  - id: placement-existence
+    label: あります / います
+  - id: placement-polite-verbs
+    label: ます forms
+  - id: placement-counting
+    label: numbers and prices
+  - id: placement-questions
+    label: question formation
+  - id: placement-aspect
+    label: もう / まだ
+  - id: placement-te-form
+    label: て-form
+  - id: placement-particle-object
+    label: を — object marker
+  - id: placement-verb-class
+    label: godan vs ichidan identification
+lessons:
+  - id: p-recognition
+    title: Hearing for meaning
+    steps:
+      - id: p-rec-1
+        kind: listening
+        concepts: [placement-copula]
+        prompt: What does this mean?
+        target:
+          kanji: 田中さんは学生です
+          kana: たなかさんはがくせいです
+          romaji: tanaka san wa gakusei desu
+        accept_meanings:
+          - Tanaka is a student.
+          - Tanaka is the student.
+        explanation: >-
+          は marks 田中さん as the topic — the sentence is about him. です is the polite
+          copula. Replacing は with が would answer "who is the student?" instead.
+      - id: p-rec-2
+        kind: listening
+        concepts: [placement-location]
+        prompt: What does this mean?
+        target:
+          kanji: 駅の近くにコンビニがあります
+          kana: えきのちかくにコンビニがあります
+          romaji: eki no chikaku ni konbini ga arimasu
+        accept_meanings:
+          - There is a convenience store near the station.
+          - Near the station there is a convenience store.
+        explanation: >-
+          に marks where a thing exists and が marks the thing that exists. で would
+          mark where an action happens, which is a different sentence.
+      - id: p-rec-3
+        kind: listening
+        concepts: [placement-existence]
+        prompt: What does this mean?
+        target:
+          kanji: 部屋に猫がいます
+          kana: へやにねこがいます
+          romaji: heya ni neko ga imasu
+        accept_meanings:
+          - There is a cat in the room.
+          - There's a cat in my room.
+        explanation: >-
+          います is for living things; あります would be wrong for a cat. Both take が
+          for the thing that exists.
+      - id: p-rec-4
+        kind: listening
+        concepts: [placement-polite-verbs]
+        prompt: What does this mean?
+        target:
+          kanji: 明日、学校に行きます
+          kana: あした、がっこうにいきます
+          romaji: ashita gakkou ni ikimasu
+        accept_meanings:
+          - I will go to school tomorrow.
+          - I go to school tomorrow.
+        explanation: >-
+          ます marks the polite non-past, so this covers both "will go" and "go". に
+          marks the destination.
+      - id: p-rec-5
+        kind: listening
+        concepts: [placement-counting]
+        prompt: What price do you hear?
+        target:
+          kanji: 八百円です
+          kana: はっぴゃくえんです
+          romaji: happyaku en desu
+        accept_meanings:
+          - It is 800 yen.
+          - 800 yen.
+        explanation: >-
+          八百 is はっぴゃく: the く drops and ひ becomes ぴ. はちひゃく is a different,
+          wrong price.
+      - id: p-rec-6
+        kind: listening
+        concepts: [placement-questions]
+        prompt: What does this mean?
+        target:
+          kanji: これは何ですか
+          kana: これはなんですか
+          romaji: kore wa nan desu ka
+        accept_meanings:
+          - What is this?
+          - What's this?
+        explanation: >-
+          何 is read なん before です. か at the end turns the statement into a question.
+      - id: p-rec-7
+        kind: listening
+        concepts: [placement-aspect]
+        prompt: What does this mean?
+        target:
+          kanji: もう昼ご飯を食べました
+          kana: もうひるごはんをたべました
+          romaji: mou hirugohan o tabemashita
+        accept_meanings:
+          - I have already eaten lunch.
+          - I already ate lunch.
+        explanation: >-
+          もう with the past form means "already". まだ with the negative form means
+          "not yet", which is the opposite.
+      - id: p-rec-8
+        kind: listening
+        concepts: [placement-te-form]
+        prompt: What is this person asking you to do?
+        target:
+          kanji: 手を洗ってください
+          kana: てをあらってください
+          romaji: te o aratte kudasai
+        accept_meanings:
+          - Please wash your hands.
+          - Wash your hands, please.
+        explanation: >-
+          洗って is the て-form of 洗う, and ください after it makes a request. を marks
+          the hands as the object.
+  - id: p-production
+    title: Producing the form
+    steps:
+      - id: p-prod-1
+        kind: construction
+        concepts: [placement-particle-object]
+        prompt: Say "I ate sushi."
+        accept:
+          - kanji: 寿司を食べました
+            kana: すしをたべました
+            romaji: sushi o tabemashita
+        explanation: >-
+          を marks the thing eaten, and 食べました is the polite past of 食べる. Leaving
+          を out gives 寿司食べました, which is how casual speech drops it but not how you
+          say it to a shop.
+      - id: p-prod-2
+        kind: construction
+        concepts: [placement-location]
+        prompt: Say "I study at the library."
+        accept:
+          - kanji: 図書館で勉強します
+            kana: としょかんでべんきょうします
+            romaji: toshokan de benkyou shimasu
+        explanation: >-
+          で marks where an action happens. に would claim the studying exists there
+          rather than happens there.
+      - id: p-prod-3
+        kind: construction
+        concepts: [placement-existence]
+        prompt: Say "There is a cat in the room."
+        accept:
+          - kanji: 部屋に猫がいます
+            kana: へやにねこがいます
+            romaji: heya ni neko ga imasu
+        explanation: >-
+          A living thing takes います and が. あります is for things that do not move by
+          themselves.
+      - id: p-prod-4
+        kind: construction
+        concepts: [placement-copula]
+        prompt: Say politely "That is my bag."
+        accept:
+          - kanji: それは私のかばんです
+            kana: それはわたしのかばんです
+            romaji: sore wa watashi no kaban desu
+        explanation: >-
+          の links owner and thing, and です keeps it polite. だ would be plain and
+          blunt to a stranger.
+      - id: p-prod-5
+        kind: transformation
+        concepts: [placement-verb-class]
+        prompt: Make it negative in plain form.
+        target:
+          kanji: 飲む
+          kana: のむ
+          romaji: nomu
+        accept:
+          - kanji: 飲まない
+            kana: のまない
+            romaji: nomanai
+        off_target:
+          - text:
+              kanji: 飲めない
+              kana: のめない
+              romaji: nomenai
+            meaning: valid Japanese — that is the potential ("cannot drink"), not the negative
+        explanation: >-
+          飲む is a godan verb, so the negative is 飲まない, not 飲ない. 飲めない means
+          "cannot drink" and changes the meaning rather than the polarity.
+      - id: p-prod-6
+        kind: transformation
+        concepts: [placement-polite-verbs]
+        prompt: Make it past tense, polite.
+        target:
+          kanji: 行く
+          kana: いく
+          romaji: iku
+        accept:
+          - kanji: 行きました
+            kana: いきました
+            romaji: ikimashita
+        off_target:
+          - text:
+              kanji: 行った
+              kana: いった
+              romaji: itta
+            meaning: valid Japanese, but plain past — the prompt asks for polite
+        explanation: >-
+          行く is godan, so the polite past is 行きました. 行った is correct Japanese but
+          plain, which is not what the prompt asked for.
+      - id: p-prod-7
+        kind: transformation
+        concepts: [placement-te-form]
+        prompt: Make it the て-form.
+        target:
+          kanji: 書く
+          kana: かく
+          romaji: kaku
+        accept:
+          - kanji: 書いて
+            kana: かいて
+            romaji: kaite
+        explanation: >-
+          く verbs take いて in the て-form: 書く becomes 書いて. 書きて is not a form,
+          and 書いで belongs to a different sound change.
+      - id: p-prod-8
+        kind: construction
+        concepts: [placement-counting]
+        prompt: Say the price "8,000 yen".
+        accept:
+          - kanji: 八千円です
+            kana: はっせんえんです
+            romaji: hassen en desu
+          - kanji: 八千円
+            kana: はっせんえん
+            romaji: hassen en
+        explanation: >-
+          八千 is はっせん, not はちせん. The small っ changes which word was said, so a
+          missing っ is a different number rather than a pronunciation problem.

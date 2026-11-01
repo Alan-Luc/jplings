@@ -140,20 +140,16 @@ func TestLiveVerticalSlice(t *testing.T) {
 
 func answerFor(t *testing.T, step *content.Step) string {
 	t.Helper()
-	switch step.Kind {
-	case content.Interpretation:
+	if len(step.AcceptMeanings) > 0 {
 		return step.AcceptMeanings[0]
-	case content.Speaking:
-		if step.Rubric != "" {
-			return "すしをたべたいです"
-		}
-		return step.Accept[0].Romaji
-	default:
-		if len(step.Accept) == 0 {
-			t.Fatalf("%s has no accepted answers", step.ID)
-		}
-		return step.Accept[0].Romaji
 	}
+	if step.Kind == content.Speaking && step.Rubric != "" {
+		return "すしをたべたいです"
+	}
+	if len(step.Accept) == 0 {
+		t.Fatalf("%s has neither accepted answers nor accepted meanings", step.ID)
+	}
+	return step.Accept[0].Romaji
 }
 
 var _ = strings.TrimSpace
