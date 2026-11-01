@@ -346,8 +346,6 @@ func (m *Model) startRetention() {
 	}
 }
 
-// findRetentionStep prefers the latest gradable step for a concept, so the check runs
-// in a different context than the exercise that first proved production.
 func findRetentionStep(units []*content.Unit, conceptID string) *content.Step {
 	var found *content.Step
 	for _, unit := range units {

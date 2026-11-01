@@ -344,7 +344,6 @@ func TestSkipIsGatedOnTwoDifferentStimuli(t *testing.T) {
 		t.Fatal("a refused skip must say why")
 	}
 
-	// Two production demonstrations on the same stimulus still do not count.
 	for i := 0; i < 2; i++ {
 		if err := store.Record(profile.Evidence{
 			ConceptID: "c1", Dimension: profile.Production, Correct: true,
@@ -410,7 +409,6 @@ func TestDueRetentionCheckIsAdministeredAndClearsMasteryGate(t *testing.T) {
 	}); err != nil {
 		t.Fatalf("Record: %v", err)
 	}
-	// A retention check whose window has already passed.
 	if err := store.ScheduleReview(schedule.RetentionCard("c1", now.Add(-72*time.Hour))); err != nil {
 		t.Fatalf("ScheduleReview: %v", err)
 	}
