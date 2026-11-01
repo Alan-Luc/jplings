@@ -1136,3 +1136,273 @@
 - step: u4-l3-14
   answer: I want to drink water.
   verdict: wrong
+- step: u5-l1-1
+  answer: I drink and go to bed.
+  verdict: correct
+- step: u5-l1-1
+  answer: I drink and go home.
+  verdict: wrong
+- step: u5-l1-2
+  answer: I eat and go out.
+  verdict: correct
+- step: u5-l1-2
+  answer: I sleep and go out.
+  verdict: wrong
+- step: u5-l1-3
+  answer: tabete nemasu
+  verdict: correct
+- step: u5-l1-3
+  answer: tabette nemasu
+  verdict: wrong
+- step: u5-l1-4
+  answer: nonde nemasu
+  verdict: correct
+- step: u5-l1-4
+  answer: nomite nemasu
+  verdict: wrong
+- step: u5-l1-5
+  answer: nooto ni kaite, dekakemasu
+  verdict: correct
+- step: u5-l1-5
+  answer: nooto ni kakite, dekakemasu
+  verdict: wrong
+- step: u5-l1-6
+  answer: oyoide, kaerimasu
+  verdict: correct
+- step: u5-l1-6
+  answer: oyogite, kaerimasu
+  verdict: wrong
+- step: u5-l1-7
+  answer: tte
+  verdict: correct
+- step: u5-l1-7
+  answer: te
+  verdict: wrong
+- step: u5-l1-8
+  answer: hon o yonde nemasu
+  verdict: correct
+- step: u5-l1-8
+  answer: hon o yomite nemasu
+  verdict: wrong
+- step: u5-l1-9
+  answer: I eat breakfast and go to school.
+  verdict: correct
+- step: u5-l1-9
+  answer: I eat breakfast and go home.
+  verdict: wrong
+- step: u5-l2-1
+  answer: I buy bread and go home.
+  verdict: correct
+- step: u5-l2-1
+  answer: I buy bread and go to bed.
+  verdict: wrong
+- step: u5-l2-2
+  answer: I play and go home.
+  verdict: correct
+- step: u5-l2-2
+  answer: I play and eat.
+  verdict: wrong
+- step: u5-l2-3
+  answer: matte, hon o yomimasu
+  verdict: correct
+- step: u5-l2-3
+  answer: machite, hon o yomimasu
+  verdict: wrong
+- step: u5-l2-4
+  answer: toukyou ni sunde, hatarakimasu
+  verdict: correct
+- step: u5-l2-4
+  answer: toukyou ni sumite, hatarakimasu
+  verdict: wrong
+- step: u5-l2-5
+  answer: gakkou ni itte, benkyou shimasu
+  verdict: correct
+- step: u5-l2-5
+  answer: gakkou ni iite, benkyou shimasu
+  verdict: wrong
+- step: u5-l2-6
+  answer: tomodachi ga kite, hanashimasu
+  verdict: correct
+- step: u5-l2-6
+  answer: tomodachi ga kitte, hanashimasu
+  verdict: wrong
+- step: u5-l2-7
+  answer: benkyou shite, kaerimasu
+  verdict: correct
+- step: u5-l2-7
+  answer: benkyou shitte, kaerimasu
+  verdict: wrong
+- step: u5-l2-8
+  answer: tte
+  verdict: correct
+- step: u5-l2-8
+  answer: ite
+  verdict: wrong
+- step: u5-l2-9
+  answer: te o aratte, tabemasu
+  verdict: correct
+- step: u5-l2-9
+  answer: te o araite, tabemasu
+  verdict: wrong
+- step: u5-l2-10
+  answer: I buy bread and eat it at home.
+  verdict: correct
+- step: u5-l2-10
+  answer: I buy bread and eat it at school.
+  verdict: wrong
+- step: u5-l3-1
+  answer: I am waiting now.
+  verdict: correct
+- step: u5-l3-1
+  answer: I wait every day.
+  verdict: wrong
+- step: u5-l3-2
+  answer: I live in Tokyo.
+  verdict: correct
+- step: u5-l3-2
+  answer: I am moving to Tokyo now.
+  verdict: wrong
+- step: u5-l3-3
+  answer: I have a car.
+  verdict: correct
+- step: u5-l3-3
+  answer: I am buying a car.
+  verdict: wrong
+- step: u5-l3-4
+  answer: toukyou ni sunde imasu
+  verdict: correct
+- step: u5-l3-4
+  answer: toukyou ni sumite imasu
+  verdict: wrong
+- step: u5-l3-5
+  answer: kuruma o motte imasu
+  verdict: correct
+- step: u5-l3-5
+  answer: kuruma o mochite imasu
+  verdict: wrong
+- step: u5-l3-6
+  answer: aruite imasu
+  verdict: correct
+- step: u5-l3-6
+  answer: arukimasu
+  verdict: wrong
+- step: u5-l3-7
+  answer: eki de matte imasu
+  verdict: correct
+- step: u5-l3-7
+  answer: eki de machimasu
+  verdict: wrong
+- step: u5-l3-8
+  answer: tomodachi wa oosaka ni sunde imasu
+  verdict: correct
+- step: u5-l3-8
+  answer: tomodachi wa oosaka ni sumimasu
+  verdict: wrong
+- step: u5-l3-9
+  answer: I am waiting for a friend now.
+  verdict: correct
+- step: u5-l3-9
+  answer: I waited for a friend yesterday.
+  verdict: wrong
+- step: u5-l3-10
+  answer: nde
+  verdict: correct
+- step: u5-l3-10
+  answer: mi
+  verdict: wrong
+- step: u5-l3-11
+  answer: ima, hon o yonde imasu
+  verdict: correct
+- step: u5-l3-11
+  answer: ima, hon o yomimasu
+  verdict: wrong
+- step: u5-l4-1
+  answer: I get on the train.
+  verdict: correct
+- step: u5-l4-1
+  answer: I get off the train.
+  verdict: wrong
+- step: u5-l4-2
+  answer: I walk through the park.
+  verdict: correct
+- step: u5-l4-2
+  answer: I walk to the park.
+  verdict: wrong
+- step: u5-l4-3
+  answer: I meet a friend.
+  verdict: correct
+- step: u5-l4-3
+  answer: I wait for a friend.
+  verdict: wrong
+- step: u5-l4-4
+  answer: densha ni norimasu
+  verdict: correct
+- step: u5-l4-4
+  answer: densha o norimasu
+  verdict: wrong
+- step: u5-l4-5
+  answer: tomodachi ni aimasu
+  verdict: correct
+- step: u5-l4-5
+  answer: tomodachi o aimasu
+  verdict: wrong
+- step: u5-l4-6
+  answer: kouen o arukimasu
+  verdict: correct
+- step: u5-l4-6
+  answer: kouen ni arukimasu
+  verdict: wrong
+- step: u5-l4-7
+  answer: matte kudasai
+  verdict: correct
+- step: u5-l4-7
+  answer: machimasu kudasai
+  verdict: wrong
+- step: u5-l4-8
+  answer: oshiete kudasai
+  verdict: correct
+- step: u5-l4-8
+  answer: oshiemasu kudasai
+  verdict: wrong
+- step: u5-l4-9
+  answer: koko de orite kudasai
+  verdict: correct
+- step: u5-l4-9
+  answer: koko de orimasu kudasai
+  verdict: wrong
+- step: u5-l4-10
+  answer: eki de matte kudasai
+  verdict: correct
+- step: u5-l4-10
+  answer: eki de machimasu kudasai
+  verdict: wrong
+- step: u5-l4-11
+  answer: te o aratte kudasai
+  verdict: correct
+- step: u5-l4-11
+  answer: te o araimasu kudasai
+  verdict: wrong
+- step: u5-l4-12
+  answer: Excuse me, please sit here.
+  verdict: correct
+- step: u5-l4-12
+  answer: Excuse me, please stand here.
+  verdict: wrong
+- step: u5-l4-13
+  answer: eki de densha ni norimasu
+  verdict: correct
+- step: u5-l4-13
+  answer: eki ni densha o norimasu
+  verdict: wrong
+- step: u5-l4-14
+  answer: o
+  verdict: correct
+- step: u5-l4-14
+  answer: ni
+  verdict: wrong
+- step: u5-l4-15
+  answer: ni
+  verdict: correct
+- step: u5-l4-15
+  answer: o
+  verdict: wrong

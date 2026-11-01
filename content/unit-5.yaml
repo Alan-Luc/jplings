@@ -1,0 +1,1053 @@
+id: unit-5
+title: 今していること — the て form, ている and particles
+taught: true
+concepts:
+  - id: te-form
+    label: て形 — one table from the dictionary form
+  - id: te-iru
+    label: 〜ている — action in progress or resulting state
+  - id: te-kudasai
+    label: 〜てください — please do
+  - id: wo-vs-ni-movement
+    label: を vs に — 乗る・会う・歩く
+lessons:
+  - id: u5-l1
+    title: て形 — one table, five rows
+    objective: >-
+      Derive the て form from the dictionary form by reading its final sound off
+      one table, instead of learning four separate rules.
+    anchors:
+      - kanji: 飲んで
+        kana: のんで
+        romaji: nonde
+      - kanji: 食べて
+        kana: たべて
+        romaji: tabete
+      - kanji: 書いて
+        kana: かいて
+        romaji: kaite
+    teach:
+      - prose: >-
+          The て form is built from the dictionary form, not from the ます stem. One
+          table covers the regular verbs, and the dictionary ending chooses the row.
+          Ichidan verbs drop る and add て: 食べる → 食べて, 見る → 見て, 降りる →
+          降りて, 教える → 教えて. Godan verbs follow the ending: う・つ・る → って
+          (買う → 買って, 待つ → 待って, 乗る → 乗って); む・ぶ・ぬ → んで (飲む →
+          飲んで, 住む → 住んで, 遊ぶ → 遊んで); く → いて (書く → 書いて, 歩く →
+          歩いて); ぐ → いで (泳ぐ → 泳いで); す → して (話す → 話して).
+        examples:
+          - kanji: 食べて
+            kana: たべて
+            romaji: tabete
+          - kanji: 飲んで
+            kana: のんで
+            romaji: nonde
+          - kanji: 書いて
+            kana: かいて
+            romaji: kaite
+      - prose: >-
+          For a verb ending in る, the group decides the row: ichidan drops る and
+          takes て, while godan る takes って. 食べる is ichidan, so 食べて. 乗る is
+          godan, so 乗って. This is the same group check from Unit 3, not a new
+          classification.
+        examples:
+          - kanji: 乗って
+            kana: のって
+            romaji: notte
+          - kanji: 降りて
+            kana: おりて
+            romaji: orite
+      - prose: >-
+          The て form has no tense of its own. It joins actions and carries the
+          meaning into the ending that follows. Once the table is right, the same
+          て form feeds 〜ている and 〜てください in the next lessons.
+        examples:
+          - kanji: 飲んで、寝ます
+            kana: のんで、ねます
+            romaji: nonde nemasu
+          - kanji: 食べて、出かけます
+            kana: たべて、でかけます
+            romaji: tabete dekakemasu
+    steps:
+      - id: u5-l1-1
+        kind: interpretation
+        concepts: [te-form]
+        prompt: >-
+          Two classmates write 飲んで、寝ます and 飲みて、寝ます for "I drink and go
+          to bed". Only one is correct. What does the correct one mean?
+        target:
+          kanji: 飲んで、寝ます
+          kana: のんで、ねます
+          romaji: nonde nemasu
+        accept_meanings:
+          - I drink and go to bed.
+          - I drink and then go to bed.
+          - I drink and sleep.
+        hint: 飲む is godan, and its final む changes to んで.
+        explanation: >-
+          飲んで、寝ます is 飲む's て form followed by 寝ます: "I drink and go to bed".
+          飲みて keeps the ます stem 飲み and does not apply the て-form sound change.
+      - id: u5-l1-2
+        kind: interpretation
+        concepts: [te-form]
+        prompt: What does this mean?
+        target:
+          kanji: 食べて、出かけます
+          kana: たべて、でかけます
+          romaji: tabete dekakemasu
+        accept_meanings:
+          - I eat and go out.
+          - I eat and then go out.
+          - I eat and leave.
+        hint: 食べる is ichidan, so drop る and add て.
+        explanation: >-
+          食べて、出かけます joins 食べて with 出かけます: "I eat and go out". The
+          ichidan 食べる simply loses る before て.
+      - id: u5-l1-3
+        kind: construction
+        concepts: [te-form]
+        prompt: >-
+          A classmate writes 食べって、寝ます for "I eat and go to bed". Write the
+          sentence they meant.
+        accept:
+          - kanji: 食べて、寝ます
+            kana: たべて、ねます
+            romaji: tabete nemasu
+        hint: 食べる is ichidan, so the る comes off before て.
+        explanation: >-
+          食べて、寝ます is the ichidan form: 食べ + て. 食べって adds って as if the
+          verb were godan.
+      - id: u5-l1-4
+        kind: construction
+        concepts: [te-form]
+        prompt: >-
+          A classmate writes 飲みて、寝ます for "I drink and go to bed". Write the
+          sentence they meant.
+        accept:
+          - kanji: 飲んで、寝ます
+            kana: のんで、ねます
+            romaji: nonde nemasu
+        hint: 飲む is godan, so its final む changes to んで before て.
+        explanation: >-
+          飲んで、寝ます uses the godan row む → んで. 飲みて keeps the ます stem 飲み
+          and skips the sound change.
+      - id: u5-l1-5
+        kind: construction
+        concepts: [te-form]
+        prompt: >-
+          A classmate writes ノートに書きて、出かけます for "I write in my notebook
+          and go out". Write the sentence they meant.
+        accept:
+          - kanji: ノートに書いて、出かけます
+            kana: ノートにかいて、でかけます
+            romaji: nooto ni kaite, dekakemasu
+        hint: 書く is godan, so its final く changes to いて.
+        explanation: >-
+          ノートに書いて、出かけます uses the く → いて row. 書きて keeps the ます stem
+          書き instead of changing the final sound.
+      - id: u5-l1-6
+        kind: construction
+        concepts: [te-form]
+        prompt: >-
+          A classmate writes 泳ぎて、帰ります for "I swim and go home". Write the
+          sentence they meant.
+        accept:
+          - kanji: 泳いで、帰ります
+            kana: およいで、かえります
+            romaji: oyoide, kaerimasu
+        hint: 泳ぐ is godan, so its final ぐ changes to いで, with a voiced で.
+        explanation: >-
+          泳いで、帰ります uses ぐ → いで. 泳ぎて keeps the ます stem 泳ぎ and uses the
+          unvoiced て that ぐ never takes.
+      - id: u5-l1-7
+        kind: completion
+        concepts: [te-form]
+        prompt: Fill the て form — "wait".
+        target:
+          kanji: 待＿
+          kana: ま＿
+          romaji: ma _
+        accept:
+          - kanji: って
+            kana: って
+            romaji: tte
+        hint: 待つ ends in つ, so つ changes to って.
+        explanation: >-
+          待って is the て form of 待つ. The つ becomes って; 待ちて keeps the ます stem
+          and is not a form Japanese uses.
+      - id: u5-l1-8
+        kind: construction
+        concepts: [te-form]
+        prompt: Write "I read a book and go to bed."
+        accept:
+          - kanji: 本を読んで寝ます
+            kana: ほんをよんでねます
+            romaji: hon o yonde nemasu
+        hint: 読む is godan, so its final む changes to んで.
+        explanation: >-
+          本を読んで寝ます uses 読む's て form 読んで. 読む has not appeared in this
+          unit, but the む → んで row still decides it.
+      - id: u5-l1-9
+        kind: listening
+        concepts: [te-form]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: 朝ごはんを食べて、学校に行きます
+          kana: あさごはんをたべて、がっこうにいきます
+          romaji: asagohan o tabete, gakkou ni ikimasu
+        accept_meanings:
+          - I eat breakfast and go to school.
+          - I eat breakfast and then go to school.
+          - I eat breakfast and go to school
+        hint: 食べて is 食べる's て form, and 行きます is the final action.
+        explanation: >-
+          朝ごはんを食べて、学校に行きます says "I eat breakfast and go to school".
+          食べて joins the first action to 行きます, which carries the tense.
+
+  - id: u5-l2
+    title: って・んで and the three exceptions
+    objective: >-
+      Produce the って and んで sound changes, and treat 行って, して and 来て as
+      named exceptions rather than new rules.
+    anchors:
+      - kanji: 待って
+        kana: まって
+        romaji: matte
+      - kanji: 住んで
+        kana: すんで
+        romaji: sunde
+      - kanji: 行って
+        kana: いって
+        romaji: itte
+    teach:
+      - prose: >-
+          Most godan verbs land in one of two rows. Verbs ending in う, つ or る
+          take って: 会う → 会って, 待つ → 待って, 乗る → 乗って. Verbs ending in む,
+          ぶ or ぬ take んで: 住む → 住んで, 遊ぶ → 遊んで. The small っ and the
+          voiced ん are the sound change. 待ちて and 住みて keep the ます stem and are
+          wrong even though 待ち and 住み are familiar from ます forms.
+        examples:
+          - kanji: 会って
+            kana: あって
+            romaji: atte
+          - kanji: 待って
+            kana: まって
+            romaji: matte
+          - kanji: 住んで
+            kana: すんで
+            romaji: sunde
+      - prose: >-
+          Three forms are named exceptions. 行く is the one く verb in this course
+          that takes って: 行って, not 行いて. する → して. 来る → 来て, read きて,
+          not 来って. Memorise these three as exceptions; they do not change the
+          table for the other verbs.
+        examples:
+          - kanji: 行って
+            kana: いって
+            romaji: itte
+          - kanji: して
+            kana: して
+            romaji: shite
+          - kanji: 来て
+            kana: きて
+            romaji: kite
+      - prose: >-
+          The て form is the same form whether it joins two actions or feeds a helper.
+          In the next two lessons 住んで becomes 住んでいます and 待って becomes
+          待ってください without changing the て form itself.
+        examples:
+          - kanji: 住んでいます
+            kana: すんでいます
+            romaji: sunde imasu
+          - kanji: 待ってください
+            kana: まってください
+            romaji: matte kudasai
+    steps:
+      - id: u5-l2-1
+        kind: interpretation
+        concepts: [te-form]
+        prompt: >-
+          Two classmates write パンを買って、家に帰ります and パンを買いて、家に帰ります
+          for "I buy bread and go home". Only one is correct. What does the correct
+          one mean?
+        target:
+          kanji: パンを買って、家に帰ります
+          kana: パンをかって、いえにかえります
+          romaji: pan o katte, ie ni kaerimasu
+        accept_meanings:
+          - I buy bread and go home.
+          - I buy bread and then go home.
+          - I buy bread and return home.
+        hint: 買う ends in う, so the て form is 買って.
+        explanation: >-
+          パンを買って、家に帰ります says "I buy bread and go home". 買う takes って,
+          not いて; 買いて would borrow the く row and change the verb.
+      - id: u5-l2-2
+        kind: interpretation
+        concepts: [te-form]
+        prompt: What does this mean?
+        target:
+          kanji: 遊んで、帰ります
+          kana: あそんで、かえります
+          romaji: asonde, kaerimasu
+        accept_meanings:
+          - I play and go home.
+          - I play and then go home.
+          - I play and return home.
+        hint: 遊ぶ ends in ぶ, so its て form is 遊んで.
+        explanation: >-
+          遊んで、帰ります joins 遊ぶ's て form 遊んで with 帰ります: "I play and go
+          home". The ぶ → んで row keeps the voiced で.
+      - id: u5-l2-3
+        kind: construction
+        concepts: [te-form]
+        prompt: >-
+          A classmate writes 待ちて、本を読みます for "I wait and read a book". Write
+          the sentence they meant.
+        accept:
+          - kanji: 待って、本を読みます
+            kana: まって、ほんをよみます
+            romaji: matte, hon o yomimasu
+        hint: 待つ ends in つ, so its て form is 待って.
+        explanation: >-
+          待って、本を読みます uses 待って. 待ちて keeps the ます stem 待ち and misses
+          the っ sound change.
+      - id: u5-l2-4
+        kind: construction
+        concepts: [te-form]
+        prompt: >-
+          A classmate writes 東京に住みて、働きます for "I live in Tokyo and work".
+          Write the sentence they meant.
+        accept:
+          - kanji: 東京に住んで、働きます
+            kana: とうきょうにすんで、はたらきます
+            romaji: toukyou ni sunde, hatarakimasu
+        hint: 住む ends in む, so its て form is 住んで.
+        explanation: >-
+          東京に住んで、働きます uses 住んで. 住みて keeps the ます stem 住み instead of
+          the む → んで change.
+      - id: u5-l2-5
+        kind: construction
+        concepts: [te-form]
+        prompt: >-
+          A classmate writes 学校に行いて、勉強します for "I go to school and study".
+          Write the sentence they meant.
+        accept:
+          - kanji: 学校に行って、勉強します
+            kana: がっこうにいって、べんきょうします
+            romaji: gakkou ni itte, benkyou shimasu
+        hint: >-
+          行く is the exception — it takes って, not いて.
+        explanation: >-
+          学校に行って、勉強します uses 行って. 行く is the one く verb here that does
+          not take いて, so 行いて is wrong.
+      - id: u5-l2-6
+        kind: construction
+        concepts: [te-form]
+        prompt: >-
+          A classmate writes 友だちが来って、話します for "A friend comes and we
+          talk". Write the sentence they meant.
+        accept:
+          - kanji: 友だちが来て、話します
+            kana: ともだちがきて、はなします
+            romaji: tomodachi ga kite, hanashimasu
+        hint: >-
+          来る is irregular; its て form is 来て, read きて.
+        explanation: >-
+          友だちが来て、話します uses 来て, read きて. 来って treats 来る as a godan
+          verb and is not a form Japanese uses.
+      - id: u5-l2-7
+        kind: construction
+        concepts: [te-form]
+        prompt: Write "I study and go home."
+        accept:
+          - kanji: 勉強して、帰ります
+            kana: べんきょうして、かえります
+            romaji: benkyou shite, kaerimasu
+        hint: する is irregular; its て form is して.
+        explanation: >-
+          勉強して、帰ります uses して, the て form of する. The て form joins the
+          studying to the going home.
+      - id: u5-l2-8
+        kind: completion
+        concepts: [te-form]
+        prompt: Fill the て form — "meet".
+        target:
+          kanji: 会＿
+          kana: あ＿
+          romaji: a _
+        accept:
+          - kanji: って
+            kana: って
+            romaji: tte
+        hint: 会う ends in う, so its て form is 会って.
+        explanation: >-
+          会って is the て form of 会う. The う becomes って; 会いて would use the く
+          row that う never takes.
+      - id: u5-l2-9
+        kind: construction
+        concepts: [te-form]
+        prompt: Write "I wash my hands and eat."
+        accept:
+          - kanji: 手を洗って、食べます
+            kana: てをあらって、たべます
+            romaji: te o aratte, tabemasu
+        hint: 洗う is godan and ends in う, so it takes って.
+        explanation: >-
+          手を洗って、食べます uses 洗って. 洗う has not appeared in this unit, but the
+          う → って row still decides it.
+      - id: u5-l2-10
+        kind: listening
+        concepts: [te-form]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: パンを買って、うちで食べます
+          kana: パンをかって、うちでたべます
+          romaji: pan o katte, uchi de tabemasu
+        accept_meanings:
+          - I buy bread and eat it at home.
+          - I buy bread and eat at home.
+          - I buy bread and then eat it at home.
+        hint: 買って is 買う's て form, and で marks where the eating happens.
+        explanation: >-
+          パンを買って、うちで食べます says "I buy bread and eat it at home". 買って
+          carries the first action; 食べます carries the final tense.
+
+  - id: u5-l3
+    title: 〜ている — doing it now, or still in that state
+    objective: >-
+      Attach ています to the て form to say an action is in progress, and read
+      住んでいます and 持っています as resulting states rather than actions.
+    anchors:
+      - kanji: 住んでいます
+        kana: すんでいます
+        romaji: sunde imasu
+      - kanji: 持っています
+        kana: もっています
+        romaji: motte imasu
+      - kanji: 待っています
+        kana: まっています
+        romaji: matte imasu
+    teach:
+      - prose: >-
+          ている is the て form plus います. 待つ → 待って → 待っています "I am
+          waiting"; 歩く → 歩いて → 歩いています "I am walking". The action is
+          happening now, and the て form does not change when います is added.
+        examples:
+          - kanji: 待っています
+            kana: まっています
+            romaji: matte imasu
+          - kanji: 歩いています
+            kana: あるいています
+            romaji: aruite imasu
+      - prose: >-
+          Some verbs describe a change that leaves a state behind, so ている reports
+          that state rather than an action in progress. 住む → 住んで → 住んでいます
+          means "I live there", not "I am in the middle of moving in". 持つ → 持って
+          → 持っています means "I have it", not "I am grabbing it". For these two,
+          the state reading is the ordinary meaning.
+        examples:
+          - kanji: 東京に住んでいます
+            kana: とうきょうにすんでいます
+            romaji: toukyou ni sunde imasu
+          - kanji: 車を持っています
+            kana: くるまをもっています
+            romaji: kuruma o motte imasu
+      - prose: >-
+          Read the whole sentence: 今、待っています is an action in progress, while
+          東京に住んでいます is a state that continues. The form is the same; the
+          verb and the situation decide which reading is meant. The negative is
+          ていません, and the question is ていますか.
+        examples:
+          - kanji: 今、待っています
+            kana: いま、まっています
+            romaji: ima, matte imasu
+          - kanji: 東京に住んでいます
+            kana: とうきょうにすんでいます
+            romaji: toukyou ni sunde imasu
+    steps:
+      - id: u5-l3-1
+        kind: interpretation
+        concepts: [te-iru]
+        prompt: >-
+          Two classmates write 今、待っています and 今、待ちます for "I am waiting now".
+          Only one is correct. What does the correct one mean?
+        target:
+          kanji: 今、待っています
+          kana: いま、まっています
+          romaji: ima, matte imasu
+        accept_meanings:
+          - I am waiting now.
+          - I'm waiting now.
+          - I am waiting now
+        hint: ています marks an action in progress; ます states that you wait.
+        explanation: >-
+          今、待っています says "I am waiting now". 今、待ちます states that you wait,
+          without saying the waiting is in progress at this moment.
+      - id: u5-l3-2
+        kind: interpretation
+        concepts: [te-iru]
+        prompt: What does this mean?
+        target:
+          kanji: 東京に住んでいます
+          kana: とうきょうにすんでいます
+          romaji: toukyou ni sunde imasu
+        accept_meanings:
+          - I live in Tokyo.
+          - I am living in Tokyo.
+          - I live in Tokyo
+        hint: 住んでいる describes the state of living somewhere; it is not "moving in now".
+        explanation: >-
+          東京に住んでいます means "I live in Tokyo". 住む describes the state of
+          living, so the ている form reports that state rather than an action in
+          progress.
+      - id: u5-l3-3
+        kind: interpretation
+        concepts: [te-iru]
+        prompt: What does this mean?
+        target:
+          kanji: 車を持っています
+          kana: くるまをもっています
+          romaji: kuruma o motte imasu
+        accept_meanings:
+          - I have a car.
+          - I own a car.
+          - I have a car
+        hint: 持っている is the state of having, after the getting is done.
+        explanation: >-
+          車を持っています means "I have a car". 持つ is read as the state that
+          remains after acquiring something, not as "I am picking it up".
+      - id: u5-l3-4
+        kind: construction
+        concepts: [te-iru]
+        prompt: >-
+          A classmate writes 東京に住みています for "I live in Tokyo". Write the
+          sentence they meant.
+        accept:
+          - kanji: 東京に住んでいます
+            kana: とうきょうにすんでいます
+            romaji: toukyou ni sunde imasu
+        hint: The ている form uses 住む's て form 住んで, not the ます stem 住み.
+        explanation: >-
+          東京に住んでいます joins 住んで with います. 住みています keeps the ます stem
+          and never forms the て form.
+      - id: u5-l3-5
+        kind: construction
+        concepts: [te-iru]
+        prompt: >-
+          A classmate writes 車を持ちています for "I have a car". Write the sentence
+          they meant.
+        accept:
+          - kanji: 車を持っています
+            kana: くるまをもっています
+            romaji: kuruma o motte imasu
+        hint: 持つ ends in つ, so its て form is 持って.
+        explanation: >-
+          車を持っています uses 持って + います. 持ちています keeps the ます stem 持ち
+          and is not the form Japanese uses here.
+      - id: u5-l3-6
+        kind: transformation
+        concepts: [te-iru]
+        prompt: Make 歩く say that you are walking now.
+        target:
+          kanji: 歩く
+          kana: あるく
+          romaji: aruku
+        accept:
+          - kanji: 歩いています
+            kana: あるいています
+            romaji: aruite imasu
+        hint: 歩く takes いて; add います for the ongoing action.
+        explanation: >-
+          歩いています is 歩く's て form 歩いて plus います: "I am walking now".
+          歩きます would state the action without saying it is in progress.
+      - id: u5-l3-7
+        kind: construction
+        concepts: [te-iru]
+        prompt: Write "I am waiting at the station."
+        accept:
+          - kanji: 駅で待っています
+            kana: えきでまっています
+            romaji: eki de matte imasu
+        hint: 待つ → 待って, then add います; で marks where the waiting happens.
+        explanation: >-
+          駅で待っています uses the て form 待って and います for the action in progress.
+          駅で marks the place of the waiting.
+      - id: u5-l3-8
+        kind: construction
+        concepts: [te-iru]
+        prompt: Write "My friend lives in Osaka."
+        accept:
+          - kanji: 友だちは大阪に住んでいます
+            kana: ともだちはおおさかにすんでいます
+            romaji: tomodachi wa oosaka ni sunde imasu
+        hint: 住んでいる reports the state of living, not an action happening now.
+        explanation: >-
+          友だちは大阪に住んでいます uses 住んで + います for the state of living.
+          住みます would say the friend lives there as a habit, not describe the
+          continuing state.
+      - id: u5-l3-9
+        kind: listening
+        concepts: [te-iru]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: 今、友だちを待っています
+          kana: いま、ともだちをまっています
+          romaji: ima, tomodachi o matte imasu
+        accept_meanings:
+          - I am waiting for a friend now.
+          - I'm waiting for a friend now.
+          - I am waiting for a friend now
+        hint: 待って + います is the action in progress; を marks who is being waited for.
+        explanation: >-
+          今、友だちを待っています says "I am waiting for a friend now". 待っています
+          is the て form plus います, and を marks the person being waited for.
+      - id: u5-l3-10
+        kind: completion
+        concepts: [te-iru]
+        prompt: Fill the て form — "live (somewhere)".
+        target:
+          kanji: 住＿います
+          kana: す＿います
+          romaji: su _ imasu
+        accept:
+          - kanji: んで
+            kana: んで
+            romaji: nde
+        hint: 住む ends in む, so its て form is 住んで.
+        explanation: >-
+          住んでいます is the state of living somewhere. 住みいます keeps the ます stem
+          and never forms the て form.
+      - id: u5-l3-11
+        kind: construction
+        concepts: [te-iru]
+        prompt: Write "I am reading a book now."
+        accept:
+          - kanji: 今、本を読んでいます
+            kana: いま、ほんをよんでいます
+            romaji: ima, hon o yonde imasu
+        hint: 読む is godan and ends in む, so it takes んで before います.
+        explanation: >-
+          今、本を読んでいます uses 読んで + います for the action in progress. 読む has
+          not appeared in this unit, but む → んで still applies.
+
+  - id: u5-l4
+    title: 〜てください and the particle each verb chooses
+    objective: >-
+      Request with てください, and choose に with 乗る and 会う and を with 歩く from
+      what each verb does with the noun.
+    anchors:
+      - kanji: 待ってください
+        kana: まってください
+        romaji: matte kudasai
+      - kanji: 電車に乗る
+        kana: でんしゃにのる
+        romaji: densha ni noru
+      - kanji: 公園を歩く
+        kana: こうえんをあるく
+        romaji: kouen o aruku
+    teach:
+      - prose: >-
+          てください attaches to the て form to make a request: 待ってください "please
+          wait", 教えてください "please teach me", 降りてください "please get off".
+          The て form does not change. ます + ください is wrong, so 待ちますください is
+          not a form Japanese uses.
+        examples:
+          - kanji: 待ってください
+            kana: まってください
+            romaji: matte kudasai
+          - kanji: 教えてください
+            kana: おしえてください
+            romaji: oshiete kudasai
+      - prose: >-
+          に marks the point or target the action lands on. 乗る "get on" takes に
+          because you board the vehicle: 電車に乗る. 会う "meet" takes に because the
+          person is who the meeting lands on: 友だちに会う. を marks what an action
+          acts on, but 歩く uses it for the space you move through: 公園を歩く, like
+          道を歩く.
+        examples:
+          - kanji: 電車に乗る
+            kana: でんしゃにのる
+            romaji: densha ni noru
+          - kanji: 友だちに会う
+            kana: ともだちにあう
+            romaji: tomodachi ni au
+          - kanji: 公園を歩く
+            kana: こうえんをあるく
+            romaji: kouen o aruku
+      - prose: >-
+          The wrong particles are wrong for a reason, not because a list says so.
+          電車を乗る treats the train as a thing being acted on, but 乗る lands you
+          on it, so に. 友だちを会う treats the friend as an object, but 会う meets
+          at the person, so に. 公園に歩く treats the park as a destination, but 歩く
+          covers the ground, so を.
+        examples:
+          - kanji: 電車を乗る
+            kana: でんしゃをのる
+            romaji: densha o noru
+          - kanji: 友だちを会う
+            kana: ともだちにあう
+            romaji: tomodachi o au
+          - kanji: 公園に歩く
+            kana: こうえんにあるく
+            romaji: kouen ni aruku
+    steps:
+      - id: u5-l4-1
+        kind: interpretation
+        concepts: [wo-vs-ni-movement]
+        prompt: >-
+          Two classmates write 電車に乗ります and 電車を乗ります for "I get on the
+          train". Only one is correct. What does the correct one mean?
+        target:
+          kanji: 電車に乗ります
+          kana: でんしゃにのります
+          romaji: densha ni norimasu
+        accept_meanings:
+          - I get on the train.
+          - I board the train.
+          - I will get on the train.
+        hint: 乗る takes に for the vehicle you get onto.
+        explanation: >-
+          電車に乗ります marks the train with に because 乗る lands you on it.
+          電車を乗ります treats the train as an object being acted on, which 乗る does
+          not do.
+      - id: u5-l4-2
+        kind: interpretation
+        concepts: [wo-vs-ni-movement]
+        prompt: >-
+          Two classmates write 公園を歩きます and 公園に歩きます for "I walk through
+          the park". Only one is correct. What does the correct one mean?
+        target:
+          kanji: 公園を歩きます
+          kana: こうえんをあるきます
+          romaji: kouen o arukimasu
+        accept_meanings:
+          - I walk through the park.
+          - I walk in the park.
+          - I walk around the park.
+        hint: 歩く takes を for the space you move through.
+        explanation: >-
+          公園を歩きます marks the park with を because the park is the ground the
+          walking covers. 公園に歩きます treats the park as a destination, not the
+          space crossed.
+      - id: u5-l4-3
+        kind: interpretation
+        concepts: [wo-vs-ni-movement]
+        prompt: What does this mean?
+        target:
+          kanji: 友だちに会います
+          kana: ともだちにあいます
+          romaji: tomodachi ni aimasu
+        accept_meanings:
+          - I meet a friend.
+          - I will meet a friend.
+          - I meet my friend.
+        hint: 会う takes に for the person you meet.
+        explanation: >-
+          友だちに会います marks the friend with に because 会う meets at the person.
+          友だちを会います treats the friend as an object and is not standard.
+      - id: u5-l4-4
+        kind: construction
+        concepts: [wo-vs-ni-movement]
+        prompt: >-
+          A classmate writes 電車を乗ります for "I get on the train". Write the
+          sentence they meant.
+        accept:
+          - kanji: 電車に乗ります
+            kana: でんしゃにのります
+            romaji: densha ni norimasu
+        hint: 乗る takes に because you get onto the vehicle.
+        explanation: >-
+          電車に乗ります uses に for the vehicle. を would mark something the action
+          acts on, but 乗る does not act on the train that way.
+      - id: u5-l4-5
+        kind: construction
+        concepts: [wo-vs-ni-movement]
+        prompt: >-
+          A classmate writes 友だちを会います for "I meet a friend". Write the
+          sentence they meant.
+        accept:
+          - kanji: 友だちに会います
+            kana: ともだちにあいます
+            romaji: tomodachi ni aimasu
+        hint: 会う takes に for the person you meet.
+        explanation: >-
+          友だちに会います uses に for the person. を would make the friend the object
+          of an action, but 会う meets at the person.
+      - id: u5-l4-6
+        kind: construction
+        concepts: [wo-vs-ni-movement]
+        prompt: >-
+          A classmate writes 公園に歩きます for "I walk through the park". Write the
+          sentence they meant.
+        accept:
+          - kanji: 公園を歩きます
+            kana: こうえんをあるきます
+            romaji: kouen o arukimasu
+        hint: 歩く takes を for the space you move through.
+        explanation: >-
+          公園を歩きます uses を for the ground covered. に would mark a destination,
+          but this sentence is about walking through the park, not to it.
+      - id: u5-l4-7
+        kind: construction
+        concepts: [te-kudasai]
+        prompt: >-
+          A teacher writes 待ちますください for "Please wait". Write the sentence
+          they meant.
+        accept:
+          - kanji: 待ってください
+            kana: まってください
+            romaji: matte kudasai
+        hint: ください attaches to the て form, not to ます.
+        explanation: >-
+          待ってください is the て form 待って plus ください. 待ちますください mixes the
+          ます form with ください and is not a form Japanese uses.
+      - id: u5-l4-8
+        kind: construction
+        concepts: [te-kudasai]
+        prompt: Write "Please teach me."
+        accept:
+          - kanji: 教えてください
+            kana: おしえてください
+            romaji: oshiete kudasai
+        hint: 教える is ichidan, so drop る and add て, then ください.
+        explanation: >-
+          教えてください is 教えて + ください. The て form of the ichidan verb 教える is
+          教えて.
+      - id: u5-l4-9
+        kind: construction
+        concepts: [te-kudasai]
+        prompt: Write "Please get off here."
+        accept:
+          - kanji: ここで降りてください
+            kana: ここでおりてください
+            romaji: koko de orite kudasai
+        hint: 降りる is ichidan, so its て form is 降りて; で marks where.
+        explanation: >-
+          ここで降りてください uses 降りて + ください for the request, and で marks the
+          place where the getting off happens.
+      - id: u5-l4-10
+        kind: construction
+        concepts: [te-kudasai]
+        prompt: Write "Please wait at the station."
+        accept:
+          - kanji: 駅で待ってください
+            kana: えきでまってください
+            romaji: eki de matte kudasai
+        hint: 待つ → 待って, then add ください; で marks where.
+        explanation: >-
+          駅で待ってください joins 待って and ください for the request. 駅で marks the
+          place of the waiting.
+      - id: u5-l4-11
+        kind: construction
+        concepts: [te-kudasai]
+        prompt: Write "Please wash your hands."
+        accept:
+          - kanji: 手を洗ってください
+            kana: てをあらってください
+            romaji: te o aratte kudasai
+        hint: 洗う is godan and ends in う, so it takes って before ください.
+        explanation: >-
+          手を洗ってください uses 洗って + ください. 洗う has not appeared in this unit,
+          but the う → って row still decides its て form.
+      - id: u5-l4-12
+        kind: listening
+        concepts: [te-kudasai]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: すみません、ここに座ってください
+          kana: すみません、ここにすわってください
+          romaji: sumimasen, koko ni suwatte kudasai
+        accept_meanings:
+          - Excuse me, please sit here.
+          - Excuse me, please sit down here.
+          - Excuse me, please sit here
+        hint: 座る is godan and ends in る, so its て form is 座って.
+        explanation: >-
+          すみません、ここに座ってください says "Excuse me, please sit here". 座る is
+          godan, so る becomes って before ください.
+      - id: u5-l4-13
+        kind: construction
+        concepts: [wo-vs-ni-movement, te-kudasai]
+        prompt: Write "I get on the train at the station."
+        accept:
+          - kanji: 駅で電車に乗ります
+            kana: えきででんしゃにのります
+            romaji: eki de densha ni norimasu
+        hint: で marks where the action happens; に marks the train you get onto.
+        explanation: >-
+          駅で電車に乗ります uses で for the station and に for the train. The two
+          particles answer different questions: where, and what you get onto.
+      - id: u5-l4-14
+        kind: completion
+        concepts: [wo-vs-ni-movement]
+        prompt: Fill the particle — "I walk through the park."
+        target:
+          kanji: 公園＿歩きます
+          kana: こうえん＿あるきます
+          romaji: kouen _ arukimasu
+        accept:
+          - kanji: を
+            kana: を
+            romaji: o
+        hint: 歩く takes the particle for the space it moves through.
+        explanation: >-
+          公園を歩きます marks the park with を because the walking covers the park.
+          に would make the park a destination instead.
+      - id: u5-l4-15
+        kind: completion
+        concepts: [wo-vs-ni-movement]
+        prompt: Fill the particle — "I get on the train."
+        target:
+          kanji: 電車＿乗ります
+          kana: でんしゃ＿のります
+          romaji: densha _ norimasu
+        accept:
+          - kanji: に
+            kana: に
+            romaji: ni
+        hint: 乗る takes the particle for the vehicle you get onto.
+        explanation: >-
+          電車に乗ります marks the train with に because 乗る lands you on it. を would
+          treat the train as an object being acted on.
+
+  - id: u5-l5
+    title: 今していること — putting it together
+    objective: >-
+      Use the て form, ている, てください and the を/に choice together in a
+      conversation, then produce them without scaffolding.
+    teach:
+      - prose: >-
+          This lesson adds no new grammar. Build the て form from the dictionary
+          ending: ichidan drops る, godan follows the table, and 行って, して and 来て
+          are the named exceptions. Add います for an action in progress or a state,
+          and ください for a request. Ask what each verb does with the noun: に marks
+          the target of 乗る and 会う, and を marks the space 歩く moves through.
+        examples:
+          - kanji: 東京に住んでいます
+            kana: とうきょうにすんでいます
+            romaji: toukyou ni sunde imasu
+          - kanji: 電車に乗って、公園を歩きます
+            kana: でんしゃにのって、こうえんをあるきます
+            romaji: densha ni notte, kouen o arukimasu
+      - prose: >-
+          Read the situation before choosing the form. What is happening now or still
+          true takes ています; a request takes てください; the vehicle or person the
+          action lands on takes に; the ground you cross takes を. The conversation
+          moves through all four, including a request you did not plan for.
+    steps:
+      - id: u5-l5-1
+        kind: conversation
+        concepts: [te-form, te-iru, te-kudasai, wo-vs-ni-movement]
+        prompt: >-
+          You meet a friend in Tokyo. Answer their questions, including the request
+          near the end.
+        scenario:
+          turns:
+            - speaker: npc
+              line:
+                kanji: 今、どこに住んでいますか。
+                kana: いま、どこにすんでいますか。
+                romaji: ima, doko ni sunde imasu ka
+            - speaker: learner
+              accept:
+                - kanji: 東京に住んでいます。
+                  kana: とうきょうにすんでいます。
+                  romaji: toukyou ni sunde imasu
+                - kanji: 大阪に住んでいます。
+                  kana: おおさかにすんでいます。
+                  romaji: oosaka ni sunde imasu
+                - kanji: 駅の近くに住んでいます。
+                  kana: えきのちかくにすんでいます。
+                  romaji: eki no chikaku ni sunde imasu
+            - speaker: npc
+              line:
+                kanji: 毎日、何をしていますか。
+                kana: まいにち、なにをしていますか。
+                romaji: mainichi, nani o shite imasu ka
+            - speaker: learner
+              accept:
+                - kanji: 日本語を勉強しています。
+                  kana: にほんごをべんきょうしています。
+                  romaji: nihongo o benkyou shite imasu
+                - kanji: 公園を歩いています。
+                  kana: こうえんをあるいています。
+                  romaji: kouen o aruite imasu
+                - kanji: 電車に乗っています。
+                  kana: でんしゃにのっています。
+                  romaji: densha ni notte imasu
+            - speaker: npc
+              line:
+                kanji: 電車に乗りますか。
+                kana: でんしゃにのりますか。
+                romaji: densha ni norimasu ka
+            - speaker: learner
+              accept:
+                - kanji: はい、電車に乗ります。
+                  kana: はい、でんしゃにのります。
+                  romaji: hai, densha ni norimasu
+                - kanji: いいえ、公園を歩きます。
+                  kana: いいえ、こうえんをあるきます。
+                  romaji: iie, kouen o arukimasu
+                - kanji: いいえ、歩いて行きます。
+                  kana: いいえ、あるいていきます。
+                  romaji: iie, aruite ikimasu
+            - speaker: npc
+              line:
+                kanji: すみません、この荷物を持ってください。
+                kana: すみません、このにもつをもってください。
+                romaji: sumimasen, kono nimotsu o motte kudasai
+            - speaker: learner
+              accept:
+                - kanji: はい、持ちます。
+                  kana: はい、もちます。
+                  romaji: hai, mochimasu
+                - kanji: わかりました。
+                  kana: わかりました。
+                  romaji: wakarimashita
+                - kanji: はい、持っています。
+                  kana: はい、もっています。
+                  romaji: hai, motte imasu
+            - speaker: npc
+              line:
+                kanji: あ、ちょっと待ってください。この電車に乗りますか。
+                kana: あ、ちょっとまってください。このでんしゃにのりますか。
+                romaji: a, chotto matte kudasai. kono densha ni norimasu ka
+            - speaker: learner
+              accept:
+                - kanji: はい、この電車に乗ります。
+                  kana: はい、このでんしゃにのります。
+                  romaji: hai, kono densha ni norimasu
+                - kanji: いいえ、次の電車に乗ります。
+                  kana: いいえ、つぎのでんしゃにのります。
+                  romaji: iie, tsugi no densha ni norimasu
+                - kanji: ちょっと待ってください。
+                  kana: ちょっとまってください。
+                  romaji: chotto matte kudasai
+            - speaker: npc
+              line:
+                kanji: そうですか。じゃあ、一緒に行きましょう。
+                kana: そうですか。じゃあ、いっしょにいきましょう。
+                romaji: sou desu ka. jaa, issho ni ikimashou
+        hint: >-
+          Use ています for what is happening or still true, てください for a request,
+          に for the vehicle you get onto and を for the park you walk through.
+        explanation: >-
+          The conversation moves from where you live (住んでいます, a state) to what
+          you do every day (ています), then to the train and the park (に vs を). The
+          unexpected request この荷物を持ってください needs the て form in an answer,
+          and the last question repeats 電車に乗りますか after a request to wait.
+      - id: u5-l5-2
+        kind: speaking
+        concepts: [te-form, te-iru, te-kudasai, wo-vs-ni-movement]
+        prompt: >-
+          Say where you live, what you are doing now, one request, and one movement
+          sentence with 乗る, 会う or 歩く. Use the て form, ている, てください and the
+          right particle. Speak without looking back at the lesson.
+        rubric: >-
+          Does it build the て form from the dictionary ending, including the named
+          exceptions? Does it use ている for an action in progress or a resulting
+          state, with 住んでいる or 持っている read as a state? Does it use てください
+          for a request? Does it choose に with 乗る or 会う and を with 歩く? Judge
+          meaning, grammar, naturalness and register separately. There is no model
+          answer.
