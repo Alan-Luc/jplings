@@ -1,6 +1,8 @@
 package profile
 
 import (
+	"database/sql"
+	"fmt"
 	"path/filepath"
 	"testing"
 	"time"
@@ -68,7 +70,18 @@ func TestProfilePersistsAcrossReopen(t *testing.T) {
 	}
 }
 
-func TestMasteredRequiresProductionGeneralizationAndRetention(t *testing.T) {
+func recordSource(t *testing.T, store *Store, dimension, stimulus, source string) {
+	t.Helper()
+	err := store.Record(Evidence{
+		ConceptID: "c1", Dimension: dimension, Correct: true,
+		StimulusID: stimulus, Source: source, At: now,
+	})
+	if err != nil {
+		t.Fatalf("Record: %v", err)
+	}
+}
+
+func TestMasteredRequiresProductionOnTwoStimuliAndRetention(t *testing.T) {
 	store := open(t)
 
 	mastered, missing, err := store.Mastered("c1")
@@ -78,14 +91,17 @@ func TestMasteredRequiresProductionGeneralizationAndRetention(t *testing.T) {
 	if mastered {
 		t.Fatal("an untouched concept must not be mastered")
 	}
-	if len(missing) != 3 {
-		t.Fatalf("missing = %v, want all three dimensions", missing)
+	if len(missing) != 2 {
+		t.Fatalf("missing = %v, want production and retention", missing)
 	}
 
 	record(t, store, Production, "s1")
-	record(t, store, Generalization, "s2")
+	record(t, store, Production, "s2")
 	if mastered, missing, _ := store.Mastered("c1"); mastered {
 		t.Fatalf("mastery without retention evidence must not clear; missing=%v", missing)
+	}
+	if can, _ := store.CanSkip("c1"); !can {
+		t.Fatal("skipping must stay strictly weaker than mastery")
 	}
 
 	record(t, store, Retention, "s3")
@@ -94,37 +110,33 @@ func TestMasteredRequiresProductionGeneralizationAndRetention(t *testing.T) {
 		t.Fatalf("Mastered: %v", err)
 	}
 	if !mastered {
-		t.Fatalf("expected mastery with all three dimensions, missing=%v", missing)
+		t.Fatalf("expected mastery, missing=%v", missing)
 	}
 }
 
-func TestProvisionalLLMEvidenceCannotClearMastery(t *testing.T) {
+func TestLLMEvidenceNeedsANonLLMCredit(t *testing.T) {
 	store := open(t)
-	for _, dimension := range []string{Production, Generalization, Retention} {
-		err := store.Record(Evidence{
-			ConceptID: "c1", Dimension: dimension, Correct: true,
-			StimulusID: dimension, Source: "llm", At: now,
-		})
-		if err != nil {
-			t.Fatalf("Record: %v", err)
-		}
+	recordSource(t, store, Production, "s1", "llm")
+	recordSource(t, store, Production, "s2", "llm")
+	record(t, store, Retention, "r")
+
+	mastered, missing, _ := store.Mastered("c1")
+	if mastered {
+		t.Fatal("LLM-only production must not satisfy mastery")
+	}
+	if len(missing) != 1 || missing[0] != Production {
+		t.Fatalf("missing = %v, want production", missing)
+	}
+	if can, _ := store.CanSkip("c1"); can {
+		t.Fatal("LLM-only production must not unlock skipping")
 	}
 
-	if mastered, _, _ := store.Mastered("c1"); mastered {
-		t.Fatal("provisional LLM evidence must not satisfy mastery")
-	}
-
-	if err := store.SetLLMTrust("c1", Production, "trusted"); err != nil {
-		t.Fatalf("SetLLMTrust: %v", err)
-	}
-	if err := store.SetLLMTrust("c1", Generalization, "trusted"); err != nil {
-		t.Fatalf("SetLLMTrust: %v", err)
-	}
-	if err := store.SetLLMTrust("c1", Retention, "trusted"); err != nil {
-		t.Fatalf("SetLLMTrust: %v", err)
+	recordSource(t, store, Production, "s1", "typed")
+	if can, _ := store.CanSkip("c1"); !can {
+		t.Fatal("one non-LLM credit among two stimuli should unlock skipping")
 	}
 	if mastered, _, _ := store.Mastered("c1"); !mastered {
-		t.Fatal("trusted LLM evidence should satisfy mastery")
+		t.Fatal("expected mastery once production and retention are satisfied")
 	}
 }
 
@@ -231,15 +243,109 @@ func TestBackupProducesVerifiedSnapshotAndPrunes(t *testing.T) {
 
 func TestReviewSchedulingRoundTrip(t *testing.T) {
 	store := open(t)
-	card := schedule.Review(schedule.Initial("c1", now), schedule.Good, now)
-	if err := store.ScheduleReview(card); err != nil {
-		t.Fatalf("ScheduleReview: %v", err)
+	card := schedule.Update(schedule.Initial("s1", "c1", now), schedule.Good, now)
+	if err := store.EnsureCard(card); err != nil {
+		t.Fatalf("EnsureCard: %v", err)
 	}
 	cards, err := store.Reviews()
 	if err != nil || len(cards) != 1 {
 		t.Fatalf("Reviews: %v err=%v", cards, err)
 	}
-	if cards[0].IntervalDays != 1 {
-		t.Fatalf("interval = %d, want 1", cards[0].IntervalDays)
+	if cards[0].StepID != "s1" || cards[0].IntervalDays != 1 {
+		t.Fatalf("card = %+v, want step s1 at a 1 day interval", cards[0])
+	}
+}
+
+func TestEnsureCardKeepsExistingProgress(t *testing.T) {
+	store := open(t)
+	card := schedule.Update(schedule.Initial("s1", "c1", now), schedule.Good, now)
+	if err := store.EnsureCard(card); err != nil {
+		t.Fatalf("EnsureCard: %v", err)
+	}
+	if err := store.EnsureCard(schedule.Initial("s1", "c1", now.Add(time.Hour))); err != nil {
+		t.Fatalf("EnsureCard again: %v", err)
+	}
+
+	cards, err := store.Reviews()
+	if err != nil || len(cards) != 1 {
+		t.Fatalf("Reviews: %v err=%v", cards, err)
+	}
+	if cards[0].Reps != 1 || cards[0].IntervalDays != 1 {
+		t.Fatalf("a repeated success rebuilt the card: %+v", cards[0])
+	}
+
+	advanced := schedule.Update(cards[0], schedule.Good, now.AddDate(0, 0, 1))
+	if err := store.UpdateCard(advanced); err != nil {
+		t.Fatalf("UpdateCard: %v", err)
+	}
+	cards, _ = store.Reviews()
+	if cards[0].Reps != 2 || cards[0].IntervalDays != 6 {
+		t.Fatalf("UpdateCard did not advance the card: %+v", cards[0])
+	}
+}
+
+func TestDueCardsCapsTheBlock(t *testing.T) {
+	store := open(t)
+	for i := 0; i < 13; i++ {
+		stepID := fmt.Sprintf("s%02d", i)
+		if err := store.EnsureCard(schedule.Initial(stepID, "c1", now.Add(-time.Duration(i)*time.Hour))); err != nil {
+			t.Fatalf("EnsureCard: %v", err)
+		}
+	}
+
+	due, err := store.DueCards(now, 12)
+	if err != nil {
+		t.Fatalf("DueCards: %v", err)
+	}
+	if len(due) != 12 {
+		t.Fatalf("due = %d, want the 12-card cap", len(due))
+	}
+}
+
+func TestOpenMigratesOldConceptKeyedReviews(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "old.db")
+	old, err := sql.Open("sqlite", "file:"+path)
+	if err != nil {
+		t.Fatalf("open old db: %v", err)
+	}
+	_, err = old.Exec(`CREATE TABLE reviews (
+	  concept_id TEXT NOT NULL,
+	  kind TEXT NOT NULL DEFAULT 'review',
+	  ease REAL NOT NULL,
+	  interval_days INTEGER NOT NULL,
+	  reps INTEGER NOT NULL,
+	  due_at INTEGER NOT NULL,
+	  PRIMARY KEY (concept_id, kind)
+	)`)
+	if err != nil {
+		t.Fatalf("create old reviews: %v", err)
+	}
+	if _, err := old.Exec(`INSERT INTO reviews VALUES ('c1', 'retention', 2.5, 0, 0, 0)`); err != nil {
+		t.Fatalf("seed old review: %v", err)
+	}
+	if err := old.Close(); err != nil {
+		t.Fatalf("close old db: %v", err)
+	}
+
+	store, err := Open(path)
+	if err != nil {
+		t.Fatalf("Open old shape: %v", err)
+	}
+	defer store.Close()
+
+	if err := store.EnsureCard(schedule.Initial("s1", "c1", now)); err != nil {
+		t.Fatalf("EnsureCard after migration: %v", err)
+	}
+	cards, err := store.Reviews()
+	if err != nil || len(cards) != 1 || cards[0].StepID != "s1" {
+		t.Fatalf("migrated reviews = %+v err=%v", cards, err)
+	}
+
+	var version int
+	if err := store.db.QueryRow(`PRAGMA user_version`).Scan(&version); err != nil {
+		t.Fatalf("user_version: %v", err)
+	}
+	if version != 1 {
+		t.Fatalf("user_version = %d, want 1", version)
 	}
 }

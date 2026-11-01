@@ -14,9 +14,7 @@ import (
 )
 
 const (
-	Recognition    = "recognition"
 	Comprehension  = "comprehension"
-	Explicit       = "explicit"
 	Production     = "production"
 	Generalization = "generalization"
 	Retention      = "retention"
@@ -37,26 +35,11 @@ CREATE TABLE IF NOT EXISTS evidence (
   at INTEGER NOT NULL
 );
 CREATE INDEX IF NOT EXISTS evidence_concept ON evidence(concept_id, dimension);
-CREATE TABLE IF NOT EXISTS llm_trust (
-  concept_id TEXT NOT NULL,
-  dimension TEXT NOT NULL,
-  status TEXT NOT NULL DEFAULT 'provisional',
-  PRIMARY KEY (concept_id, dimension)
-);
 CREATE TABLE IF NOT EXISTS errors (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   concept_id TEXT NOT NULL,
   detail TEXT NOT NULL,
   at INTEGER NOT NULL
-);
-CREATE TABLE IF NOT EXISTS reviews (
-  concept_id TEXT NOT NULL,
-  kind TEXT NOT NULL DEFAULT 'review',
-  ease REAL NOT NULL,
-  interval_days INTEGER NOT NULL,
-  reps INTEGER NOT NULL,
-  due_at INTEGER NOT NULL,
-  PRIMARY KEY (concept_id, kind)
 );
 CREATE TABLE IF NOT EXISTS pending (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -103,7 +86,81 @@ func Open(path string) (*Store, error) {
 		db.Close()
 		return nil, err
 	}
+	if err := migrate(db); err != nil {
+		db.Close()
+		return nil, err
+	}
 	return &Store{db: db, path: path}, nil
+}
+
+const reviewsSchema = `
+CREATE TABLE reviews (
+  step_id TEXT PRIMARY KEY,
+  concept_id TEXT NOT NULL,
+  kind TEXT NOT NULL DEFAULT 'review',
+  ease REAL NOT NULL,
+  interval_days INTEGER NOT NULL,
+  reps INTEGER NOT NULL,
+  due_at INTEGER NOT NULL
+);
+`
+
+// Card identity moved from concept to step; concept-keyed rows have no step to
+// attach to, so they are dropped rather than guessed.
+func migrate(db *sql.DB) error {
+	var version int
+	if err := db.QueryRow(`PRAGMA user_version`).Scan(&version); err != nil {
+		return err
+	}
+	if version >= 1 {
+		return nil
+	}
+
+	tx, err := db.Begin()
+	if err != nil {
+		return err
+	}
+	defer tx.Rollback()
+
+	rows, err := tx.Query(`PRAGMA table_info(reviews)`)
+	if err != nil {
+		return err
+	}
+	exists, hasStep := false, false
+	for rows.Next() {
+		var cid, notnull, pk int
+		var name, typ string
+		var dflt sql.NullString
+		if err := rows.Scan(&cid, &name, &typ, &notnull, &dflt, &pk); err != nil {
+			rows.Close()
+			return err
+		}
+		exists = true
+		hasStep = hasStep || name == "step_id"
+	}
+	rows.Close()
+	if err := rows.Err(); err != nil {
+		return err
+	}
+
+	if exists && hasStep {
+		if _, err := tx.Exec(fmt.Sprintf(`PRAGMA user_version = %d`, 1)); err != nil {
+			return err
+		}
+		return tx.Commit()
+	}
+	if exists {
+		if _, err := tx.Exec(`DROP TABLE reviews`); err != nil {
+			return err
+		}
+	}
+	if _, err := tx.Exec(reviewsSchema); err != nil {
+		return err
+	}
+	if _, err := tx.Exec(fmt.Sprintf(`PRAGMA user_version = %d`, 1)); err != nil {
+		return err
+	}
+	return tx.Commit()
 }
 
 func (s *Store) Close() error { return s.db.Close() }
@@ -145,55 +202,63 @@ func (s *Store) Evidence(conceptID string) ([]Evidence, error) {
 	return out, rows.Err()
 }
 
-func (s *Store) SetLLMTrust(conceptID, dimension, status string) error {
-	_, err := s.db.Exec(
-		`INSERT INTO llm_trust (concept_id, dimension, status) VALUES (?, ?, ?)
-		 ON CONFLICT(concept_id, dimension) DO UPDATE SET status = excluded.status`,
-		conceptID, dimension, status,
-	)
-	return err
-}
-
-func (s *Store) llmTrusted(conceptID, dimension string) (bool, error) {
-	var status string
-	err := s.db.QueryRow(
-		`SELECT status FROM llm_trust WHERE concept_id = ? AND dimension = ?`,
-		conceptID, dimension,
-	).Scan(&status)
-	if err == sql.ErrNoRows {
-		return false, nil
-	}
-	if err != nil {
-		return false, err
-	}
-	return status == "trusted", nil
-}
-
 func (s *Store) Mastered(conceptID string) (bool, []string, error) {
-	satisfied := map[string]bool{}
-	for _, dimension := range []string{Production, Generalization, Retention} {
-		ok, err := s.dimensionSatisfied(conceptID, dimension)
-		if err != nil {
-			return false, nil, err
-		}
-		satisfied[dimension] = ok
+	var missing []string
+
+	production, err := s.productionDemonstrated(conceptID)
+	if err != nil {
+		return false, nil, err
+	}
+	if !production {
+		missing = append(missing, Production)
 	}
 
-	var missing []string
-	for _, dimension := range []string{Production, Generalization, Retention} {
-		if !satisfied[dimension] {
-			missing = append(missing, dimension)
-		}
+	retention, err := s.dimensionSatisfied(conceptID, Retention)
+	if err != nil {
+		return false, nil, err
 	}
+	if !retention {
+		missing = append(missing, Retention)
+	}
+
 	return len(missing) == 0, missing, nil
 }
 
-func (s *Store) dimensionSatisfied(conceptID, dimension string) (bool, error) {
-	trusted, err := s.llmTrusted(conceptID, dimension)
+// Mastered and CanSkip share this predicate: two distinct production stimuli,
+// at least one of them credited by something other than the LLM.
+func (s *Store) productionDemonstrated(conceptID string) (bool, error) {
+	rows, err := s.db.Query(
+		`SELECT DISTINCT stimulus_id, source FROM evidence
+		 WHERE concept_id = ? AND dimension = ? AND correct = 1 AND stimulus_id <> ''`,
+		conceptID, Production)
 	if err != nil {
 		return false, err
 	}
+	defer rows.Close()
 
+	stimuli := map[string]bool{}
+	nonLLM := false
+	for rows.Next() {
+		var stimulus, source string
+		if err := rows.Scan(&stimulus, &source); err != nil {
+			return false, err
+		}
+		if source == "guided" {
+			continue
+		}
+		stimuli[stimulus] = true
+		if source != "llm" {
+			nonLLM = true
+		}
+	}
+	return len(stimuli) >= 2 && nonLLM, rows.Err()
+}
+
+func (s *Store) CanSkip(conceptID string) (bool, error) {
+	return s.productionDemonstrated(conceptID)
+}
+
+func (s *Store) dimensionSatisfied(conceptID, dimension string) (bool, error) {
 	rows, err := s.db.Query(
 		`SELECT source FROM evidence
 		 WHERE concept_id = ? AND dimension = ? AND correct = 1`,
@@ -208,46 +273,11 @@ func (s *Store) dimensionSatisfied(conceptID, dimension string) (bool, error) {
 		if err := rows.Scan(&source); err != nil {
 			return false, err
 		}
-		if source == "guided" {
-			continue
-		}
-		if source != "llm" || trusted {
+		if source != "guided" {
 			return true, nil
 		}
 	}
 	return false, rows.Err()
-}
-
-func (s *Store) CanSkip(conceptID string) (bool, error) {
-	trusted, err := s.llmTrusted(conceptID, Production)
-	if err != nil {
-		return false, err
-	}
-
-	rows, err := s.db.Query(
-		`SELECT DISTINCT stimulus_id, source FROM evidence
-		 WHERE concept_id = ? AND dimension = ? AND correct = 1 AND stimulus_id <> ''`,
-		conceptID, Production)
-	if err != nil {
-		return false, err
-	}
-	defer rows.Close()
-
-	stimuli := map[string]bool{}
-	for rows.Next() {
-		var stimulus, source string
-		if err := rows.Scan(&stimulus, &source); err != nil {
-			return false, err
-		}
-		if source == "guided" {
-			continue
-		}
-		if source == "llm" && !trusted {
-			continue
-		}
-		stimuli[stimulus] = true
-	}
-	return len(stimuli) >= 2, rows.Err()
 }
 
 func (s *Store) AddError(conceptID, detail string, at time.Time) error {
@@ -277,44 +307,44 @@ func (s *Store) Errors(conceptID string) ([]string, error) {
 	return out, rows.Err()
 }
 
-func (s *Store) ScheduleReview(card schedule.Card) error {
+func (s *Store) EnsureCard(card schedule.Card) error {
 	kind := card.Kind
 	if kind == "" {
 		kind = schedule.KindReview
 	}
 	_, err := s.db.Exec(
-		`INSERT INTO reviews (concept_id, kind, ease, interval_days, reps, due_at)
-		 VALUES (?, ?, ?, ?, ?, ?)
-		 ON CONFLICT(concept_id, kind) DO UPDATE SET
-		   ease = excluded.ease,
-		   interval_days = excluded.interval_days,
-		   reps = excluded.reps,
-		   due_at = excluded.due_at`,
-		card.ConceptID, kind, card.Ease, card.IntervalDays, card.Reps, card.Due.Unix(),
+		`INSERT INTO reviews (step_id, concept_id, kind, ease, interval_days, reps, due_at)
+		 VALUES (?, ?, ?, ?, ?, ?, ?)
+		 ON CONFLICT(step_id) DO NOTHING`,
+		card.StepID, card.ConceptID, kind, card.Ease, card.IntervalDays, card.Reps, card.Due.Unix(),
+	)
+	return err
+}
+
+func (s *Store) UpdateCard(card schedule.Card) error {
+	kind := card.Kind
+	if kind == "" {
+		kind = schedule.KindReview
+	}
+	_, err := s.db.Exec(
+		`UPDATE reviews SET concept_id = ?, kind = ?, ease = ?, interval_days = ?, reps = ?, due_at = ?
+		 WHERE step_id = ?`,
+		card.ConceptID, kind, card.Ease, card.IntervalDays, card.Reps, card.Due.Unix(), card.StepID,
 	)
 	return err
 }
 
 func (s *Store) Reviews() ([]schedule.Card, error) {
-	return s.cardsWhere(`1 = 1`)
+	return s.cardsWhere(`1 = 1 ORDER BY step_id`)
 }
 
-func (s *Store) DueRetention(now time.Time) ([]schedule.Card, error) {
-	return s.cardsWhere(fmt.Sprintf(`kind = '%s' AND due_at <= %d`, schedule.KindRetention, now.Unix()))
-}
-
-func (s *Store) HasRetentionCheck(conceptID string) (bool, error) {
-	var count int
-	err := s.db.QueryRow(
-		`SELECT COUNT(*) FROM reviews WHERE concept_id = ? AND kind = ?`,
-		conceptID, schedule.KindRetention,
-	).Scan(&count)
-	return count > 0, err
+func (s *Store) DueCards(now time.Time, limit int) ([]schedule.Card, error) {
+	return s.cardsWhere(fmt.Sprintf(`due_at <= %d ORDER BY due_at, step_id LIMIT %d`, now.Unix(), limit))
 }
 
 func (s *Store) cardsWhere(condition string) ([]schedule.Card, error) {
 	rows, err := s.db.Query(
-		`SELECT concept_id, ease, interval_days, reps, due_at, kind FROM reviews WHERE ` + condition)
+		`SELECT step_id, concept_id, ease, interval_days, reps, due_at, kind FROM reviews WHERE ` + condition)
 	if err != nil {
 		return nil, err
 	}
@@ -324,7 +354,7 @@ func (s *Store) cardsWhere(condition string) ([]schedule.Card, error) {
 	for rows.Next() {
 		var card schedule.Card
 		var due int64
-		if err := rows.Scan(&card.ConceptID, &card.Ease, &card.IntervalDays, &card.Reps, &due, &card.Kind); err != nil {
+		if err := rows.Scan(&card.StepID, &card.ConceptID, &card.Ease, &card.IntervalDays, &card.Reps, &due, &card.Kind); err != nil {
 			return nil, err
 		}
 		card.Due = time.Unix(due, 0)
@@ -471,10 +501,4 @@ func prune(dir string, keep int) error {
 		}
 	}
 	return nil
-}
-func (s *Store) CompleteRetention(conceptID string) error {
-	_, err := s.db.Exec(
-		`DELETE FROM reviews WHERE concept_id = ? AND kind = ?`,
-		conceptID, schedule.KindRetention)
-	return err
 }

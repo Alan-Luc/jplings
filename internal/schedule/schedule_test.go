@@ -8,7 +8,7 @@ import (
 var now = time.Date(2026, 11, 1, 9, 0, 0, 0, time.UTC)
 
 func TestFirstGoodReviewSchedulesOneDay(t *testing.T) {
-	card := Review(Initial("c", now), Good, now)
+	card := Update(Initial("step-c", "c", now), Good, now)
 	if card.IntervalDays != 1 {
 		t.Fatalf("interval = %d, want 1", card.IntervalDays)
 	}
@@ -21,17 +21,17 @@ func TestFirstGoodReviewSchedulesOneDay(t *testing.T) {
 }
 
 func TestSecondGoodReviewSchedulesSixDays(t *testing.T) {
-	card := Review(Initial("c", now), Good, now)
-	card = Review(card, Good, now.AddDate(0, 0, 1))
+	card := Update(Initial("step-c", "c", now), Good, now)
+	card = Update(card, Good, now.AddDate(0, 0, 1))
 	if card.IntervalDays != 6 {
 		t.Fatalf("interval = %d, want 6", card.IntervalDays)
 	}
 }
 
 func TestAgainResetsProgress(t *testing.T) {
-	card := Review(Initial("c", now), Good, now)
-	card = Review(card, Good, now)
-	card = Review(card, Again, now)
+	card := Update(Initial("step-c", "c", now), Good, now)
+	card = Update(card, Good, now)
+	card = Update(card, Again, now)
 	if card.Reps != 0 {
 		t.Fatalf("reps = %d, want 0", card.Reps)
 	}
@@ -41,9 +41,9 @@ func TestAgainResetsProgress(t *testing.T) {
 }
 
 func TestEaseNeverDropsBelowFloor(t *testing.T) {
-	card := Initial("c", now)
+	card := Initial("step-c", "c", now)
 	for i := 0; i < 50; i++ {
-		card = Review(card, Again, now)
+		card = Update(card, Again, now)
 	}
 	if card.Ease < 1.3 {
 		t.Fatalf("ease = %v, want >= 1.3", card.Ease)
@@ -58,12 +58,5 @@ func TestDueFiltersByClock(t *testing.T) {
 	due := Due(cards, now)
 	if len(due) != 1 || due[0].ConceptID != "past" {
 		t.Fatalf("due = %+v, want only the past card", due)
-	}
-}
-
-func TestRetentionDelayLandsInsideThePlanWindow(t *testing.T) {
-	due := RetentionDue(now)
-	if due.Before(now.Add(48*time.Hour)) || due.After(now.Add(72*time.Hour)) {
-		t.Fatalf("retention due %v is outside the 48-72h window", due)
 	}
 }
