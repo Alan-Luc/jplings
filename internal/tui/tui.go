@@ -2,7 +2,8 @@
 //
 // The screens are deliberately plain: a prompt, the exercise, feedback that names
 // what went wrong, and for speech the confirmation step that stands between a
-// transcript and a grade.
+// transcript and a grade. Listening exercises are audio-first — the written target
+// stays hidden until the learner has answered.
 package tui
 
 import (
@@ -42,12 +43,26 @@ type position struct {
 	unit, lesson, step int
 }
 
+// spokenMsg reports the result of trying to play a prompt.
+type spokenMsg struct {
+	stepID   string
+	degraded bool
+	err      error
+}
+
+// recordResult carries a finished push-to-talk recording.
+type recordResult struct {
+	wav []byte
+	err error
+}
+
 type Model struct {
-	runner   *session.Runner
-	units    []*content.Unit
-	pos      position
-	input    textinput.Model
-	screen   screen
+	runner *session.Runner
+	units  []*content.Unit
+	pos    position
+	input  textinput.Model
+	screen screen
+	// feedback is the explanation shown after an answer.
 	feedback string
 	correct  bool
 
@@ -59,9 +74,11 @@ type Model struct {
 	player       audio.Player
 	recording    bool
 	cancelRecord context.CancelFunc
-	pendingWav   []byte
 	degraded     bool
-	err          string
+	// spokenStep records which step's audio has already been played, so re-renders
+	// do not re-synthesize the same line.
+	spokenStep string
+	err        string
 }
 
 // New builds the session model, resuming from the stored cursor when possible.
@@ -97,7 +114,7 @@ func findPosition(units []*content.Unit, unitID, lessonID string, step int) (pos
 	return position{}, false
 }
 
-func (m Model) Init() tea.Cmd { return nil }
+func (m Model) Init() tea.Cmd { return m.playCurrent() }
 
 func (m Model) current() (*content.Unit, *content.Lesson, *content.Step, bool) {
 	if m.pos.unit >= len(m.units) {
@@ -114,20 +131,66 @@ func (m Model) current() (*content.Unit, *content.Lesson, *content.Step, bool) {
 	return unit, lesson, &lesson.Steps[m.pos.step], true
 }
 
-type recordResult struct {
-	wav []byte
-	err error
+// audioText is the line that should be spoken for a step. Only listening exercises
+// speak their target: a speaking prompt must not play the answer.
+func audioText(step *content.Step) string {
+	if step.Kind != content.Listening || step.Target == nil {
+		return ""
+	}
+	if step.Target.Kanji != "" {
+		return step.Target.Kanji
+	}
+	return step.Target.Kana
+}
+
+// playCurrent synthesizes and plays the current step's audio once.
+func (m *Model) playCurrent() tea.Cmd {
+	unit, _, step, ok := m.current()
+	if !ok {
+		return nil
+	}
+	_ = unit
+	text := audioText(step)
+	if text == "" || m.spokenStep == step.ID {
+		return nil
+	}
+	m.spokenStep = step.ID
+
+	client := m.runner.Client
+	player := m.player
+	voice := m.runner.Voice
+	stepID := step.ID
+
+	if client == nil {
+		return func() tea.Msg { return spokenMsg{stepID: stepID, degraded: true} }
+	}
+	return func() tea.Msg {
+		wav, err := client.Synthesize(context.Background(), text, "ja", voice)
+		if err != nil {
+			return spokenMsg{stepID: stepID, degraded: true, err: err}
+		}
+		if err := player.Play(wav); err != nil {
+			return spokenMsg{stepID: stepID, degraded: true, err: err}
+		}
+		return spokenMsg{stepID: stepID}
+	}
 }
 
 func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	switch msg := msg.(type) {
+	case spokenMsg:
+		m.degraded = msg.degraded
+		if msg.err != nil {
+			m.err = "Audio unavailable — showing the written prompt. " + msg.err.Error()
+		}
+		return m, nil
+
 	case recordResult:
 		m.recording = false
 		if msg.err != nil {
 			m.err = msg.err.Error()
 			return m, nil
 		}
-		m.pendingWav = msg.wav
 		return m, m.transcribe(msg.wav)
 
 	case speech.Transcription:
@@ -154,17 +217,15 @@ func (m Model) handleKey(msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 	case screenConfirm:
 		switch strings.ToLower(msg.String()) {
 		case "y":
-			decision := m.turn.Confirm()
-			if decision.Grade {
+			if decision := m.turn.Confirm(); decision.Grade {
 				return m.submit(m.transcript)
 			}
 		case "n":
 			decision := m.turn.Deny()
-			m.pendingWav = nil
 			m.transcript = ""
 			if decision.OfferFallback {
-				// Two consecutive denials: offer typed romaji or a no-evidence advance
-				// rather than deadlocking progress.
+				// Two consecutive denials: offer a typed fallback or a no-evidence
+				// advance rather than deadlocking progress.
 				m.screen = screenPrompt
 				m.feedback = "Transcription denied twice. Type your answer instead, or press Esc to move on without evidence."
 				m.err = ""
@@ -179,7 +240,7 @@ func (m Model) handleKey(msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 	case screenFeedback:
 		if msg.String() == "enter" {
 			m.advance()
-			return m, nil
+			return m, m.playCurrent()
 		}
 		return m, nil
 
@@ -191,11 +252,6 @@ func (m Model) handleKey(msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 	}
 
 	// screenPrompt
-	if msg.String() == "esc" {
-		m.advance()
-		return m, nil
-	}
-
 	unit, lesson, step, ok := m.current()
 	if !ok {
 		m.screen = screenDone
@@ -203,6 +259,16 @@ func (m Model) handleKey(msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 	}
 	if err := m.runner.Store.SaveCursor(unit.ID, lesson.ID, m.pos.step, m.runner.Clock()); err != nil {
 		m.err = err.Error()
+	}
+
+	if msg.String() == "a" {
+		// Replay: forget that this step was played so the next call speaks again.
+		m.spokenStep = ""
+		return m, m.playCurrent()
+	}
+	if msg.String() == "esc" {
+		m.advance()
+		return m, m.playCurrent()
 	}
 
 	if needsSpeech(step) {
@@ -256,32 +322,29 @@ func (m Model) submit(answer string) (tea.Model, tea.Cmd) {
 
 	result, err := m.runner.Submit(context.Background(), step, answer)
 	if err != nil {
-		m.err = err.Error()
-		// Persistence problems must not silently drop the learner's answer, so the
+		// A persistence failure must not silently drop the learner's answer, so the
 		// screen stays put and shows the error.
+		m.err = err.Error()
 		return m, nil
 	}
 
 	m.feedback = result.Outcome.Explanation
 	m.correct = result.Outcome.Correct
-	if result.Ungraded {
-		m.feedback = result.Outcome.Explanation
-	}
 	m.screen = screenFeedback
 	return m, nil
 }
 
 func (m Model) transcribe(wav []byte) tea.Cmd {
 	client := m.runner.Client
-	language := "ja"
 	return func() tea.Msg {
+		// Silence is decided from the waveform: the recogniser invents text for it.
 		if hasSpeech, _, err := speech.HasSpeech(wav, speech.SilenceFloor); err == nil && !hasSpeech {
 			return speech.Transcription{Text: "", Ambiguous: true}
 		}
 		if client == nil {
 			return speech.Transcription{}
 		}
-		got, err := client.Transcribe(context.Background(), wav, language)
+		got, err := client.Transcribe(context.Background(), wav, "ja")
 		if err != nil {
 			return speech.Transcription{}
 		}
@@ -293,15 +356,16 @@ func (m *Model) advance() {
 	m.screen = screenPrompt
 	m.feedback = ""
 	m.transcript = ""
-	m.pendingWav = nil
+	m.spokenStep = ""
+	m.degraded = false
+	m.err = ""
 	m.input.SetValue("")
 
-	unit, lesson, step, ok := m.current()
+	unit, lesson, _, ok := m.current()
 	if !ok {
 		m.screen = screenDone
 		return
 	}
-	_ = step
 
 	m.pos.step++
 	if m.pos.step < len(lesson.Steps) {
@@ -353,12 +417,24 @@ func (m Model) View() string {
 		return b.String()
 	}
 
-	b.WriteString(titleStyle.Render(stepLabel(step)) + "\n")
+	b.WriteString(titleStyle.Render(strings.ToUpper(string(step.Kind))) + "\n")
 	b.WriteString(step.Prompt + "\n\n")
 
-	if step.Target != nil {
+	// Audio-first: a listening target is revealed only after the attempt.
+	if step.Target != nil && step.Kind != content.Listening {
 		b.WriteString(japaneseStyle.Render(surface(*step.Target)) + "\n")
 		b.WriteString(dimStyle.Render(step.Target.Romaji) + "\n\n")
+	}
+	if step.Kind == content.Listening {
+		if m.degraded {
+			b.WriteString(badStyle.Render("audio unavailable") + dimStyle.Render(" — written prompt follows") + "\n")
+			if step.Target != nil {
+				b.WriteString(japaneseStyle.Render(surface(*step.Target)) + "\n")
+			}
+			b.WriteString("\n")
+		} else {
+			b.WriteString(dimStyle.Render("listen — press a to replay") + "\n\n")
+		}
 	}
 
 	if needsSpeech(step) {
@@ -380,10 +456,6 @@ func (m Model) View() string {
 	b.WriteString(m.input.View() + "\n\n")
 	b.WriteString(dimStyle.Render("enter to answer · esc to skip · ctrl+c to quit") + "\n")
 	return b.String()
-}
-
-func stepLabel(step *content.Step) string {
-	return strings.ToUpper(string(step.Kind))
 }
 
 func surface(t content.Text) string {
