@@ -116,11 +116,15 @@ func TestLoadReportsSchemaViolations(t *testing.T) {
 			want: "interpretation needs at least one accept_meaning",
 		},
 		{
-			name: "listening without audio",
-			body: strings.Replace(validUnit,
-				"        kind: construction",
-				"        kind: listening\n        target:\n          kana: あ\n          romaji: a", 1),
-			want: "listening needs audio",
+			name: "listening without target",
+			body: strings.Replace(validUnit, "kind: construction", "kind: listening", 1),
+			want: "listening needs a target",
+		},
+		{
+			name: "audio provenance incomplete",
+			body: strings.Replace(validUnit, "        prompt: Say it.",
+				"        audio: clips/a.wav\n        audio_source: Tatoeba\n        prompt: Say it.", 1),
+			want: "audio provenance must include audio_license",
 		},
 		{
 			name: "conversation without scenario",

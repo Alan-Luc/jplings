@@ -220,7 +220,7 @@ func normalizeMeaning(s string) string {
 func normalizeJapan(s string) string {
 	s = strings.ReplaceAll(s, "　", "")
 	s = expandFullwidthDigits(s)
-	s = strings.NewReplacer("。", "", "、", "", " ", "", ".", "", "！", "", "？", "").Replace(s)
+	s = strings.NewReplacer("\n", "", "\r", "", "\t", "", "。", "", "、", "", " ", "", ".", "", "！", "", "？", "").Replace(s)
 	return digitsToKanji(s)
 }
 

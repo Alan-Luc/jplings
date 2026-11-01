@@ -1,0 +1,159 @@
+id: unit-b
+title: Numbers, prices and counters
+concepts:
+  - id: number-hundreds
+    label: 百 — hundreds, including さんびゃく / ろっぴゃく / はっぴゃく
+  - id: number-thousands
+    label: 千 — thousands, including さんぜん / はっせん
+  - id: counter-en
+    label: 円 — yen amounts
+  - id: counter-kai
+    label: 回 — times, including いっかい / ろっかい / はっかい
+lessons:
+  - id: b-hundreds
+    title: Hundreds and the sound changes
+    steps:
+      - id: b-hundreds-1
+        kind: interpretation
+        concepts: [number-hundreds]
+        prompt: What price is this?
+        target:
+          kanji: 六百円です
+          kana: ろっぴゃくえんです
+          romaji: roppyaku en desu
+        accept_meanings:
+          - It is 600 yen.
+          - 600 yen.
+        explanation: >-
+          六百 is ろっぴゃく, not ろくひゃく. The く drops and ひ becomes ぴ. The same
+          pattern gives 三百 さんびゃく and 八百 はっぴゃく.
+
+      - id: b-hundreds-2
+        kind: completion
+        concepts: [number-hundreds, counter-en]
+        prompt: Fill in the reading — eight hundred yen.
+        target:
+          kanji: 八百＿です
+          kana: はっぴゃく＿です
+          romaji: happyaku _ desu
+        accept:
+          - kanji: 円
+            kana: えん
+            romaji: en
+        explanation: >-
+          八百 is はっぴゃく. The counter 円 stays えん in this position, so it is
+          はっぴゃくえん.
+
+      - id: b-hundreds-3
+        kind: transformation
+        concepts: [number-hundreds, counter-en]
+        prompt: Say "It is 600 yen" as "It is 800 yen".
+        target:
+          kanji: 六百円です
+          kana: ろっぴゃくえんです
+          romaji: roppyaku en desu
+        accept:
+          - kanji: 八百円です
+            kana: はっぴゃくえんです
+            romaji: happyaku en desu
+        explanation: >-
+          六百 is ろっぴゃく and 八百 is はっぴゃく. Both are irregular: the hundreds
+          counter voices after 三, 六 and 八.
+
+  - id: b-thousands
+    title: Thousands and the はっせん trap
+    steps:
+      - id: b-thousands-1
+        kind: transformation
+        concepts: [number-thousands, counter-en]
+        prompt: Say "It is 5,000 yen" as "It is 8,000 yen".
+        target:
+          kanji: 五千円です
+          kana: ごせんえんです
+          romaji: go sen en desu
+        accept:
+          - kanji: 八千円です
+            kana: はっせんえんです
+            romaji: hassen en desu
+        off_target:
+          - text:
+              kanji: 八千円
+              kana: はせんえん
+              romaji: hasen en
+            meaning: This is not a Japanese word — dropping the small っ changes which number was said.
+        explanation: >-
+          8,000 is はっせん, with the small っ. Without it you say はせん, which is not
+          a number. This is a word identity difference, not an accent.
+
+      - id: b-thousands-2
+        kind: speaking
+        concepts: [number-thousands, counter-en]
+        prompt: Say "It is 8,000 yen" aloud, then confirm the transcript.
+        accept:
+          - kanji: 八千円です
+            kana: はっせんえんです
+            romaji: hassen en desu
+          - kanji: 八千円
+            kana: はっせんえん
+            romaji: hassen en
+        explanation: >-
+          はっせん needs the small っ. If the transcript shows はせん, deny it and
+          say it again — a denied transcript is never graded.
+
+  - id: b-listen
+    title: Hearing prices
+    steps:
+      - id: b-listen-1
+        kind: listening
+        concepts: [number-hundreds, counter-en, number-thousands]
+        prompt: Listen and type the price you hear.
+        audio: audio/unit-b/b-listen-1.opus
+        target:
+          kanji: 三千五百円です
+          kana: さんぜんごひゃくえんです
+          romaji: sanzen gohyaku en desu
+        accept:
+          - kanji: 三千五百円
+            kana: さんぜんごひゃくえん
+            romaji: sanzen gohyaku en
+          - kanji: 3500円
+            kana: さんぜんごひゃくえん
+            romaji: sanzen gohyaku en
+        explanation: >-
+          千 after 三 is ぜん, so 三千 is さんぜん. 五百 stays ごひゃく.
+
+      - id: b-listen-2
+        kind: listening
+        concepts: [number-hundreds, counter-en]
+        prompt: Listen and type the price you hear.
+        target:
+          kanji: 六百円です
+          kana: ろっぴゃくえんです
+          romaji: roppyaku en desu
+        accept:
+          - kanji: 六百円
+            kana: ろっぴゃくえん
+            romaji: roppyaku en
+          - kanji: 600円
+            kana: ろっぴゃくえん
+            romaji: roppyaku en
+        explanation: >-
+          ろっぴゃく, not ろくひゃく. The small っ is what makes it 600 rather than 6.
+
+  - id: b-counters
+    title: Other counters
+    steps:
+      - id: b-counters-1
+        kind: interpretation
+        concepts: [counter-kai]
+        prompt: How many times?
+        target:
+          kanji: 六回です
+          kana: ろっかいです
+          romaji: rokkai desu
+        accept_meanings:
+          - Six times.
+          - 6 times.
+        explanation: >-
+          六回 is ろっかい: the く becomes っ. 一回 is いっかい and 八回 is はっかい for
+          the same reason.

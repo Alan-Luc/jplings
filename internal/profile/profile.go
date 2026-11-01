@@ -57,11 +57,13 @@ CREATE TABLE IF NOT EXISTS errors (
   at INTEGER NOT NULL
 );
 CREATE TABLE IF NOT EXISTS reviews (
-  concept_id TEXT PRIMARY KEY,
+  concept_id TEXT NOT NULL,
+  kind TEXT NOT NULL DEFAULT 'review',
   ease REAL NOT NULL,
   interval_days INTEGER NOT NULL,
   reps INTEGER NOT NULL,
-  due_at INTEGER NOT NULL
+  due_at INTEGER NOT NULL,
+  PRIMARY KEY (concept_id, kind)
 );
 CREATE TABLE IF NOT EXISTS pending (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -287,23 +289,46 @@ func (s *Store) Errors(conceptID string) ([]string, error) {
 
 // ScheduleReview stores a concept's updated review state.
 func (s *Store) ScheduleReview(card schedule.Card) error {
+	kind := card.Kind
+	if kind == "" {
+		kind = schedule.KindReview
+	}
 	_, err := s.db.Exec(
-		`INSERT INTO reviews (concept_id, ease, interval_days, reps, due_at)
-		 VALUES (?, ?, ?, ?, ?)
-		 ON CONFLICT(concept_id) DO UPDATE SET
+		`INSERT INTO reviews (concept_id, kind, ease, interval_days, reps, due_at)
+		 VALUES (?, ?, ?, ?, ?, ?)
+		 ON CONFLICT(concept_id, kind) DO UPDATE SET
 		   ease = excluded.ease,
 		   interval_days = excluded.interval_days,
 		   reps = excluded.reps,
 		   due_at = excluded.due_at`,
-		card.ConceptID, card.Ease, card.IntervalDays, card.Reps, card.Due.Unix(),
+		card.ConceptID, kind, card.Ease, card.IntervalDays, card.Reps, card.Due.Unix(),
 	)
 	return err
 }
 
 // Reviews returns every stored review card.
 func (s *Store) Reviews() ([]schedule.Card, error) {
+	return s.cardsWhere(`1 = 1`)
+}
+
+// DueRetention returns concepts whose delayed retention check is due at now.
+func (s *Store) DueRetention(now time.Time) ([]schedule.Card, error) {
+	return s.cardsWhere(fmt.Sprintf(`kind = '%s' AND due_at <= %d`, schedule.KindRetention, now.Unix()))
+}
+
+// HasRetentionCheck reports whether a retention check is already scheduled.
+func (s *Store) HasRetentionCheck(conceptID string) (bool, error) {
+	var count int
+	err := s.db.QueryRow(
+		`SELECT COUNT(*) FROM reviews WHERE concept_id = ? AND kind = ?`,
+		conceptID, schedule.KindRetention,
+	).Scan(&count)
+	return count > 0, err
+}
+
+func (s *Store) cardsWhere(condition string) ([]schedule.Card, error) {
 	rows, err := s.db.Query(
-		`SELECT concept_id, ease, interval_days, reps, due_at FROM reviews`)
+		`SELECT concept_id, ease, interval_days, reps, due_at, kind FROM reviews WHERE ` + condition)
 	if err != nil {
 		return nil, err
 	}
@@ -313,7 +338,7 @@ func (s *Store) Reviews() ([]schedule.Card, error) {
 	for rows.Next() {
 		var card schedule.Card
 		var due int64
-		if err := rows.Scan(&card.ConceptID, &card.Ease, &card.IntervalDays, &card.Reps, &due); err != nil {
+		if err := rows.Scan(&card.ConceptID, &card.Ease, &card.IntervalDays, &card.Reps, &due, &card.Kind); err != nil {
 			return nil, err
 		}
 		card.Due = time.Unix(due, 0)

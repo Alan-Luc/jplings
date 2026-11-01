@@ -59,18 +59,23 @@ type Scenario struct {
 // that lint can report every authoring mistake at once; Validate enforces the
 // fields each kind actually requires.
 type Step struct {
-	ID             string      `yaml:"id"`
-	Kind           Kind        `yaml:"kind"`
-	Concepts       []string    `yaml:"concepts,omitempty"`
-	Prompt         string      `yaml:"prompt,omitempty"`
-	Target         *Text       `yaml:"target,omitempty"`
-	Audio          string      `yaml:"audio,omitempty"`
-	Accept         []Text      `yaml:"accept,omitempty"`
-	AcceptMeanings []string    `yaml:"accept_meanings,omitempty"`
-	OffTarget      []OffTarget `yaml:"off_target,omitempty"`
-	Rubric         string      `yaml:"rubric,omitempty"`
-	Explanation    string      `yaml:"explanation,omitempty"`
-	Scenario       *Scenario   `yaml:"scenario,omitempty"`
+	ID       string   `yaml:"id"`
+	Kind     Kind     `yaml:"kind"`
+	Concepts []string `yaml:"concepts,omitempty"`
+	Prompt   string   `yaml:"prompt,omitempty"`
+	Target   *Text    `yaml:"target,omitempty"`
+	// Audio overrides the synthesized prompt. Listening exercises synthesize their
+	// target at runtime unless a pre-recorded clip is supplied here.
+	Audio            string      `yaml:"audio,omitempty"`
+	AudioSource      string      `yaml:"audio_source,omitempty"`
+	AudioLicense     string      `yaml:"audio_license,omitempty"`
+	AudioAttribution string      `yaml:"audio_attribution,omitempty"`
+	Accept           []Text      `yaml:"accept,omitempty"`
+	AcceptMeanings   []string    `yaml:"accept_meanings,omitempty"`
+	OffTarget        []OffTarget `yaml:"off_target,omitempty"`
+	Rubric           string      `yaml:"rubric,omitempty"`
+	Explanation      string      `yaml:"explanation,omitempty"`
+	Scenario         *Scenario   `yaml:"scenario,omitempty"`
 }
 
 // Concept is a trackable idea: the unit of evidence and mastery (R5, R6).
@@ -194,6 +199,22 @@ func (s *Step) validate(where string, concepts map[string]bool, add func(path, f
 	if s.Target != nil {
 		s.Target.validate(path(where, "target"), add)
 	}
+	// Authentic clips must carry their provenance: an unlicensed clip may never be
+	// reused outside its source (handoff §8A and the §9 Q9 disposition).
+	if s.AudioSource != "" || s.AudioLicense != "" || s.AudioAttribution != "" {
+		if s.Audio == "" {
+			add(where, "audio provenance given without an audio file")
+		}
+		for name, value := range map[string]string{
+			"audio_source":      s.AudioSource,
+			"audio_license":     s.AudioLicense,
+			"audio_attribution": s.AudioAttribution,
+		} {
+			if value == "" {
+				add(where, "audio provenance must include %s", name)
+			}
+		}
+	}
 	if s.Scenario != nil {
 		s.Scenario.validate(path(where, "scenario"), add)
 	}
@@ -219,9 +240,6 @@ func (s *Step) validate(where string, concepts map[string]bool, add func(path, f
 		s.requirePrompt(where, add)
 		s.requireTarget(where, add)
 		s.requireAccept(where, add)
-		if s.Audio == "" {
-			add(where, "listening needs audio")
-		}
 		s.requireExplanation(where, add)
 	case Speaking:
 		s.requirePrompt(where, add)
