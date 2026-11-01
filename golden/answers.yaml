@@ -650,3 +650,213 @@
 - step: u2-l3-9
   answer: tanaka san wa ongaku ga suki desu
   verdict: wrong
+- step: u3-l1-1
+  answer: I get up.
+  verdict: correct
+- step: u3-l1-1
+  answer: I drink.
+  verdict: wrong
+- step: u3-l1-2
+  answer: I drink.
+  verdict: correct
+- step: u3-l1-2
+  answer: I eat.
+  verdict: wrong
+- step: u3-l1-3
+  answer: okimasu
+  verdict: correct
+- step: u3-l1-3
+  answer: 起ります
+  verdict: wrong
+- step: u3-l1-4
+  answer: 飲みます
+  verdict: correct
+- step: u3-l1-4
+  answer: 飲ます
+  verdict: wrong
+- step: u3-l1-5
+  answer: tabemasu
+  verdict: correct
+- step: u3-l1-5
+  answer: taberimasu
+  verdict: wrong
+- step: u3-l1-6
+  answer: ki
+  verdict: correct
+- step: u3-l1-6
+  answer: ku
+  verdict: wrong
+- step: u3-l1-7
+  answer: kakimasu
+  verdict: correct
+- step: u3-l1-7
+  answer: kakemasu
+  verdict: wrong
+- step: u3-l1-8
+  answer: machimasu
+  verdict: correct
+- step: u3-l1-8
+  answer: matsumasu
+  verdict: wrong
+- step: u3-l1-9
+  answer: I work every day.
+  verdict: correct
+- step: u3-l1-9
+  answer: I work every week.
+  verdict: wrong
+- step: u3-l1-10
+  answer: shimasu
+  verdict: correct
+- step: u3-l1-10
+  answer: surimasu
+  verdict: wrong
+- step: u3-l1-11
+  answer: kimasu
+  verdict: correct
+- step: u3-l1-11
+  answer: kurimasu
+  verdict: wrong
+- step: u3-l2-1
+  answer: I did not eat.
+  verdict: correct
+- step: u3-l2-1
+  answer: I ate.
+  verdict: wrong
+- step: u3-l2-2
+  answer: I went.
+  verdict: correct
+- step: u3-l2-2
+  answer: I did not go.
+  verdict: wrong
+- step: u3-l2-3
+  answer: ikimashita
+  verdict: correct
+- step: u3-l2-3
+  answer: ikimasen
+  verdict: wrong
+- step: u3-l2-4
+  answer: mimasen
+  verdict: correct
+- step: u3-l2-4
+  answer: mimashita
+  verdict: wrong
+- step: u3-l2-5
+  answer: nomimasen deshita
+  verdict: correct
+- step: u3-l2-5
+  answer: nomimasen
+  verdict: wrong
+- step: u3-l2-6
+  answer: tabemasen deshita
+  verdict: correct
+- step: u3-l2-6
+  answer: tabemashita
+  verdict: wrong
+- step: u3-l2-7
+  answer: ikimasen deshita
+  verdict: correct
+- step: u3-l2-7
+  answer: ikimashita ja nai desu
+  verdict: wrong
+- step: u3-l2-8
+  answer: tabemasen deshita
+  verdict: correct
+- step: u3-l2-8
+  answer: tabemasen mashita
+  verdict: wrong
+- step: u3-l2-9
+  answer: masen
+  verdict: correct
+- step: u3-l2-9
+  answer: mashita
+  verdict: wrong
+- step: u3-l2-10
+  answer: I did not work yesterday.
+  verdict: correct
+- step: u3-l2-10
+  answer: I worked yesterday.
+  verdict: wrong
+- step: u3-l2-11
+  answer: kaimashita
+  verdict: correct
+- step: u3-l2-11
+  answer: kaimasen deshita
+  verdict: wrong
+- step: u3-l2-12
+  answer: kimasen
+  verdict: correct
+- step: u3-l2-12
+  answer: kurimasen
+  verdict: wrong
+- step: u3-l3-1
+  answer: I study at the library.
+  verdict: correct
+- step: u3-l3-1
+  answer: toshokan ni benkyou shimasu
+  verdict: wrong
+- step: u3-l3-2
+  answer: I get up at seven.
+  verdict: correct
+- step: u3-l3-2
+  answer: I get up at eight.
+  verdict: wrong
+- step: u3-l3-3
+  answer: shichiji ni okimasu
+  verdict: correct
+- step: u3-l3-3
+  answer: shichiji de okimasu
+  verdict: wrong
+- step: u3-l3-4
+  answer: toshokan de benkyou shimasu
+  verdict: correct
+- step: u3-l3-4
+  answer: toshokan ni benkyou shimasu
+  verdict: wrong
+- step: u3-l3-5
+  answer: ni
+  verdict: correct
+- step: u3-l3-5
+  answer: de
+  verdict: wrong
+- step: u3-l3-6
+  answer: de
+  verdict: correct
+- step: u3-l3-6
+  answer: ni
+  verdict: wrong
+- step: u3-l3-7
+  answer: shichiji ni asagohan o tabemasu
+  verdict: correct
+- step: u3-l3-7
+  answer: shichiji de asagohan o tabemasu
+  verdict: wrong
+- step: u3-l3-8
+  answer: ie de nihongo o benkyou shimasu
+  verdict: correct
+- step: u3-l3-8
+  answer: ie ni nihongo o benkyou shimasu
+  verdict: wrong
+- step: u3-l3-9
+  answer: I eat breakfast at home.
+  verdict: correct
+- step: u3-l3-9
+  answer: I eat breakfast at seven.
+  verdict: wrong
+- step: u3-l3-10
+  answer: asagohan o tabemasu
+  verdict: correct
+- step: u3-l3-10
+  answer: asagohan ga tabemasu
+  verdict: wrong
+- step: u3-l3-11
+  answer: ie de eiga o mimashita
+  verdict: correct
+- step: u3-l3-11
+  answer: ie de eiga o mimasu
+  verdict: wrong
+- step: u3-l3-12
+  answer: I watched a movie at home yesterday.
+  verdict: correct
+- step: u3-l3-12
+  answer: I watched a movie at home today.
+  verdict: wrong

@@ -1,0 +1,758 @@
+id: unit-3
+title: 毎日すること — the ます stem and your day
+taught: true
+concepts:
+  - id: verb-groups
+    label: 動詞のグループ — godan, ichidan and the two irregulars
+  - id: masu-stem
+    label: ます stem — one rule from the dictionary form
+  - id: past-negative
+    label: ません・ました・ませんでした — present and past, negative and affirmative
+  - id: time-ni
+    label: に — a point in time
+  - id: place-de
+    label: で — where an action happens
+  - id: object-wo
+    label: を — what an action acts on
+lessons:
+  - id: u3-l1
+    title: 動詞のグループとます形
+    objective: >-
+      Sort a verb into godan or ichidan from its dictionary form, then derive the
+      ます stem with the rule for its group.
+    anchors:
+      - kanji: 起きます
+        kana: おきます
+        romaji: okimasu
+      - kanji: 飲みます
+        kana: のみます
+        romaji: nomimasu
+      - kanji: 食べます
+        kana: たべます
+        romaji: tabemasu
+    teach:
+      - prose: >-
+          Japanese verbs come in two regular groups plus two irregulars, and the
+          polite ます form is built from the dictionary form by a rule. Ichidan
+          verbs drop る and add ます: 食べる becomes 食べます and 起きる becomes 起きます.
+          Godan verbs change their final -u sound to the -i row and add ます: 飲む
+          becomes 飲みます and 働く becomes 働きます. The irregulars are する → します
+          and 来る → 来ます.
+        examples:
+          - kanji: 食べます
+            kana: たべます
+            romaji: tabemasu
+          - kanji: 飲みます
+            kana: のみます
+            romaji: nomimasu
+      - prose: >-
+          Do not classify by the last kana alone: 起きる ends in る and is ichidan,
+          but 帰る ends in る and is godan, so it becomes 帰ります. If dropping る
+          leaves a stem that already carries the action, the verb is ichidan. If the
+          final sound has to change before ます, it is godan.
+        examples:
+          - kanji: 起きます
+            kana: おきます
+            romaji: okimasu
+          - kanji: 帰ります
+            kana: かえります
+            romaji: kaerimasu
+      - prose: >-
+          The stem is the part every later polite ending attaches to: 食べます,
+          食べません, 食べました, 食べませんでした. Learn the stem once and the endings
+          in lesson 2 just stack onto it.
+        examples:
+          - kanji: 食べます
+            kana: たべます
+            romaji: tabemasu
+          - kanji: 食べませんでした
+            kana: たべませんでした
+            romaji: tabemasen deshita
+    steps:
+      - id: u3-l1-1
+        kind: interpretation
+        concepts: [verb-groups, masu-stem]
+        prompt: >-
+          Two classmates write 起きます and 起ります for "I get up". Only one is
+          correct. What does the correct one mean?
+        target:
+          kanji: 起きます
+          kana: おきます
+          romaji: okimasu
+        accept_meanings:
+          - I get up.
+          - I wake up.
+          - I get up
+        hint: 起きる is ichidan — the る comes off before ます, it does not turn into り.
+        explanation: >-
+          起きる is ichidan, so drop る and add ます: 起きます. 起ります treats it like
+          a godan verb and is wrong.
+      - id: u3-l1-2
+        kind: interpretation
+        concepts: [verb-groups, masu-stem]
+        prompt: >-
+          Two classmates write 飲みます and 飲ます for "I drink". Only one is correct.
+          What does the correct one mean?
+        target:
+          kanji: 飲みます
+          kana: のみます
+          romaji: nomimasu
+        accept_meanings:
+          - I drink.
+          - I drink
+        hint: 飲む is godan — the final む changes to み, and it does not disappear.
+        explanation: >-
+          飲む is godan, so む changes to み before ます: 飲みます. 飲ます drops the
+          final sound instead of changing it, as if the verb were ichidan.
+      - id: u3-l1-3
+        kind: construction
+        concepts: [verb-groups, masu-stem]
+        prompt: >-
+          A classmate writes 起ります for "I get up". Write the sentence they meant.
+        accept:
+          - kanji: 起きます
+            kana: おきます
+            romaji: okimasu
+        hint: 起きる is ichidan, so the stem is 起き.
+        explanation: >-
+          起きる loses its る before ます: 起きます. The wrong form 起ります keeps a り
+          that ichidan verbs never add.
+      - id: u3-l1-4
+        kind: construction
+        concepts: [verb-groups, masu-stem]
+        prompt: >-
+          A classmate writes 飲ます for "I drink". Write the sentence they meant.
+        accept:
+          - kanji: 飲みます
+            kana: のみます
+            romaji: nomimasu
+        hint: 飲む is godan, so the む becomes み rather than vanishing.
+        explanation: >-
+          飲む is godan: 飲み + ます gives 飲みます. 飲ます wrongly treats the verb as
+          ichidan and drops the final sound.
+      - id: u3-l1-5
+        kind: transformation
+        concepts: [verb-groups, masu-stem]
+        prompt: Make the dictionary form 食べる polite.
+        target:
+          kanji: 食べる
+          kana: たべる
+          romaji: taberu
+        accept:
+          - kanji: 食べます
+            kana: たべます
+            romaji: tabemasu
+        hint: 食べる is ichidan; drop る and attach ます.
+        explanation: >-
+          食べる drops る and takes ます: 食べます. The stem 食べ is what lesson 2's
+          endings will attach to.
+      - id: u3-l1-6
+        kind: completion
+        concepts: [verb-groups, masu-stem]
+        prompt: Fill the stem — "I work."
+        target:
+          kanji: 働＿ます
+          kana: はたら＿ます
+          romaji: hatara _ masu
+        accept:
+          - kanji: き
+            kana: き
+            romaji: ki
+        hint: 働く is godan, so its final く changes to the -i row.
+        explanation: >-
+          働く is godan: く changes to き, giving 働きます. The く is not dropped as it
+          would be in an ichidan verb.
+      - id: u3-l1-7
+        kind: construction
+        concepts: [verb-groups, masu-stem]
+        prompt: Write "I write."
+        accept:
+          - kanji: 書きます
+            kana: かきます
+            romaji: kakimasu
+        hint: 書く is godan like 働く; its final く becomes き.
+        explanation: >-
+          書く follows the godan rule: 書きます. A new verb does not change the stem
+          rule, only the sound that changes.
+      - id: u3-l1-8
+        kind: construction
+        concepts: [verb-groups, masu-stem]
+        prompt: Write "I wait."
+        accept:
+          - kanji: 待ちます
+            kana: まちます
+            romaji: machimasu
+        hint: 待つ is godan; its final つ changes to ち.
+        explanation: >-
+          待つ is godan: つ changes to ち before ます, giving 待ちます. Dropping the つ
+          would be the ichidan mistake.
+      - id: u3-l1-9
+        kind: listening
+        concepts: [verb-groups, masu-stem]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: 毎日働きます
+          kana: まいにちはたらきます
+          romaji: mainichi hatarakimasu
+        accept_meanings:
+          - I work every day.
+          - I work every day
+          - Every day I work.
+        hint: 毎日 is "every day", and 働きます is the polite form of 働く.
+        explanation: >-
+          毎日働きます says "I work every day". 働きます is the godan stem 働き plus
+          ます.
+      - id: u3-l1-10
+        kind: transformation
+        concepts: [verb-groups, masu-stem]
+        prompt: Make the irregular verb する polite.
+        target:
+          kanji: する
+          kana: する
+          romaji: suru
+        accept:
+          - kanji: します
+            kana: します
+            romaji: shimasu
+        hint: する is one of the two irregulars; it does not follow either regular rule.
+        explanation: >-
+          する becomes します. It is irregular, so there is no final sound to change
+          and no る to drop.
+      - id: u3-l1-11
+        kind: construction
+        concepts: [verb-groups, masu-stem]
+        prompt: Write "I come."
+        accept:
+          - kanji: 来ます
+            kana: きます
+            romaji: kimasu
+        hint: 来る is irregular; the polite form is 来ます, read きます.
+        explanation: >-
+          来る becomes 来ます, read きます. Like する, it is memorised as one of the two
+          irregular verbs rather than derived from a group rule.
+
+  - id: u3-l2
+    title: ません・ました・ませんでした
+    objective: >-
+      Attach ません, ました and ませんでした to the ます stem to say what you do not
+      do, what you did, and what you did not do.
+    teach:
+      - prose: >-
+          Once the stem is known, the four polite forms are the same stem plus one
+          ending. For 飲む the stem is 飲み: 飲みます "I drink", 飲みません "I do not
+          drink", 飲みました "I drank", 飲みませんでした "I did not drink". Present and
+          future share ます; only the ending changes for negative and past.
+        examples:
+          - kanji: 飲みます
+            kana: のみます
+            romaji: nomimasu
+          - kanji: 飲みませんでした
+            kana: のみませんでした
+            romaji: nomimasen deshita
+      - prose: >-
+          ました is the past affirmative and ませんでした is the past negative. Verbs
+          do not use じゃないです: 行きましたじゃないです is wrong because じゃないです
+          belongs to nouns and adjectives. The past negative is one unit,
+          行きませんでした, not ませんました.
+        examples:
+          - kanji: 行きました
+            kana: いきました
+            romaji: ikimashita
+          - kanji: 行きませんでした
+            kana: いきませんでした
+            romaji: ikimasen deshita
+    steps:
+      - id: u3-l2-1
+        kind: interpretation
+        concepts: [past-negative]
+        prompt: What does this mean?
+        target:
+          kanji: 食べませんでした
+          kana: たべませんでした
+          romaji: tabemasen deshita
+        accept_meanings:
+          - I did not eat.
+          - I didn't eat.
+          - I did not eat
+        hint: ませんでした is the past negative ending.
+        explanation: >-
+          食べませんでした is the past negative: "I did not eat". 食べました would say
+          you did eat, and 食べません would say you do not eat.
+      - id: u3-l2-2
+        kind: interpretation
+        concepts: [past-negative]
+        prompt: What does this mean?
+        target:
+          kanji: 行きました
+          kana: いきました
+          romaji: ikimashita
+        accept_meanings:
+          - I went.
+          - I went
+        hint: ました marks the past affirmative.
+        explanation: >-
+          行きました says "I went": 行き is the stem and ました makes it past. 行きます
+          would be "I go" or "I will go".
+      - id: u3-l2-3
+        kind: transformation
+        concepts: [past-negative]
+        prompt: Make 行きます past.
+        target:
+          kanji: 行きます
+          kana: いきます
+          romaji: ikimasu
+        accept:
+          - kanji: 行きました
+            kana: いきました
+            romaji: ikimashita
+        hint: Keep the stem 行き and replace ます with ました.
+        explanation: >-
+          行きます becomes 行きました by replacing ます with ました. The stem does not
+          change.
+      - id: u3-l2-4
+        kind: transformation
+        concepts: [past-negative]
+        prompt: Make 見ます negative.
+        target:
+          kanji: 見ます
+          kana: みます
+          romaji: mimasu
+        accept:
+          - kanji: 見ません
+            kana: みません
+            romaji: mimasen
+        hint: Keep the stem 見 and replace ます with ません.
+        explanation: >-
+          見ます becomes 見ません by replacing ます with ません. 見 is already the stem,
+          so nothing else changes.
+      - id: u3-l2-5
+        kind: transformation
+        concepts: [past-negative]
+        prompt: Make 飲みます past negative.
+        target:
+          kanji: 飲みます
+          kana: のみます
+          romaji: nomimasu
+        accept:
+          - kanji: 飲みませんでした
+            kana: のみませんでした
+            romaji: nomimasen deshita
+        hint: The past negative ending is ませんでした, attached to 飲み.
+        explanation: >-
+          飲みます becomes 飲みませんでした: 飲み + ませんでした. Two separate changes,
+          negative and past, are carried by one ending.
+      - id: u3-l2-6
+        kind: construction
+        concepts: [past-negative]
+        prompt: Write "I did not eat."
+        accept:
+          - kanji: 食べませんでした
+            kana: たべませんでした
+            romaji: tabemasen deshita
+        hint: Use the ichidan stem 食べ and the past negative ending.
+        explanation: >-
+          食べませんでした is the past negative of 食べます. The stem 食べ carries all
+          four endings; only the ending says negative and past.
+      - id: u3-l2-7
+        kind: construction
+        concepts: [past-negative]
+        prompt: >-
+          A classmate writes 行きましたじゃないです to mean "I did not go". Write the
+          sentence they meant.
+        accept:
+          - kanji: 行きませんでした
+            kana: いきませんでした
+            romaji: ikimasen deshita
+        hint: じゃないです is for nouns and adjectives, not for a verb's past negative.
+        explanation: >-
+          行きませんでした is the verb's past negative. じゃないです cannot negate a
+          ます form, so 行きましたじゃないです mixes two different sentence types.
+      - id: u3-l2-8
+        kind: construction
+        concepts: [past-negative]
+        prompt: >-
+          A classmate writes 食べませんました to mean "I did not eat". Write the
+          sentence they meant.
+        accept:
+          - kanji: 食べませんでした
+            kana: たべませんでした
+            romaji: tabemasen deshita
+        hint: The past negative is one ending, ませんでした — not ません plus ました.
+        explanation: >-
+          食べませんでした is the correct past negative. 食べませんました stacks the
+          negative ません with the past ました and is not a form Japanese uses.
+      - id: u3-l2-9
+        kind: completion
+        concepts: [past-negative]
+        prompt: Fill the ending — "I did not work."
+        target:
+          kanji: 働き＿でした
+          kana: はたらき＿でした
+          romaji: hataraki _ deshita
+        accept:
+          - kanji: ません
+            kana: ません
+            romaji: masen
+        hint: The stem 働き is already there; the negative part goes before でした.
+        explanation: >-
+          働きませんでした is the past negative. ません supplies the negative and でした
+          supplies the past.
+      - id: u3-l2-10
+        kind: listening
+        concepts: [past-negative]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: 昨日は働きませんでした
+          kana: きのうははたらきませんでした
+          romaji: kinou wa hatarakimasen deshita
+        accept_meanings:
+          - I did not work yesterday.
+          - I didn't work yesterday.
+          - Yesterday I did not work.
+        hint: 昨日は sets yesterday as the topic, and ませんでした makes it past negative.
+        explanation: >-
+          昨日は働きませんでした says "I did not work yesterday". は makes yesterday the
+          topic, and ませんでした carries both the negative and the past.
+      - id: u3-l2-11
+        kind: construction
+        concepts: [past-negative]
+        prompt: Write "I bought it."
+        accept:
+          - kanji: 買いました
+            kana: かいました
+            romaji: kaimashita
+        hint: 買う is godan; its final う changes to い, giving the stem 買い.
+        explanation: >-
+          買う follows the godan rule: 買います, then past 買いました. A verb not shown
+          in the lesson still takes the same stem rule.
+      - id: u3-l2-12
+        kind: construction
+        concepts: [past-negative, verb-groups]
+        prompt: Write "I am not coming."
+        accept:
+          - kanji: 来ません
+            kana: きません
+            romaji: kimasen
+        hint: "来る is irregular: the polite stem is 来, read き."
+        explanation: >-
+          来る becomes 来ます, so its negative is 来ません, read きません. The irregular
+          stem is 来, not 来り.
+
+  - id: u3-l3
+    title: に and で — when and where
+    objective: >-
+      Mark a point in time with に, the place where an action happens with で, and
+      the thing an action acts on with を.
+    teach:
+      - prose: >-
+          に marks a point in time when something happens: 七時に起きます "I get up at
+          seven" and 八時に寝ます "I go to bed at eight". Clock times, dates and days
+          take に.
+        examples:
+          - kanji: 七時に起きます
+            kana: しちじにおきます
+            romaji: shichiji ni okimasu
+          - kanji: 八時に寝ます
+            kana: はちじにねます
+            romaji: hachiji ni nemasu
+      - prose: >-
+          で marks where an action happens: 図書館で勉強します "I study at the library"
+          and 家で食べます "I eat at home". に marks a destination or where something
+          exists, not the place where you do an action, so 図書館に勉強します is wrong.
+        examples:
+          - kanji: 図書館で勉強します
+            kana: としょかんでべんきょうします
+            romaji: toshokan de benkyou shimasu
+          - kanji: 家で食べます
+            kana: いえでたべます
+            romaji: ie de tabemasu
+      - prose: >-
+          を marks what an action acts on: 朝ごはんを食べます "I eat breakfast" and
+          映画を見ます "I watch a movie". が marks who does the action, so
+          朝ごはんが食べます is wrong — breakfast is being eaten, not eating.
+        examples:
+          - kanji: 朝ごはんを食べます
+            kana: あさごはんをたべます
+            romaji: asagohan o tabemasu
+          - kanji: 映画を見ます
+            kana: えいがをみます
+            romaji: eiga o mimasu
+    steps:
+      - id: u3-l3-1
+        kind: interpretation
+        concepts: [place-de]
+        prompt: >-
+          Two classmates write 図書館で勉強します and 図書館に勉強します. Only one is
+          correct. What does the correct one mean?
+        target:
+          kanji: 図書館で勉強します
+          kana: としょかんでべんきょうします
+          romaji: toshokan de benkyou shimasu
+        accept_meanings:
+          - I study at the library.
+          - I study in the library.
+          - I study at the library
+        hint: で marks the place where the action 勉強します happens.
+        explanation: >-
+          図書館で勉強します uses で because studying happens at the library. に would
+          mark a destination or an existence, not where the action happens.
+      - id: u3-l3-2
+        kind: interpretation
+        concepts: [time-ni]
+        prompt: What does this mean?
+        target:
+          kanji: 七時に起きます
+          kana: しちじにおきます
+          romaji: shichiji ni okimasu
+        accept_meanings:
+          - I get up at seven.
+          - I wake up at seven.
+          - I get up at seven
+        hint: に after 七時 marks the time the action happens.
+        explanation: >-
+          七時に起きます says "I get up at seven". 七時 is a point in time, so it takes
+          に, and 起きます is the polite form of 起きる.
+      - id: u3-l3-3
+        kind: construction
+        concepts: [time-ni]
+        prompt: >-
+          A classmate writes 七で起きます to mean "I get up at seven". Write the
+          sentence they meant.
+        accept:
+          - kanji: 七時に起きます
+            kana: しちじにおきます
+            romaji: shichiji ni okimasu
+        hint: A clock time is a point in time, so it takes に, not で.
+        explanation: >-
+          七時に起きます marks the time with に. で marks where an action happens, so
+          七で起きます answers "where" instead of "when".
+      - id: u3-l3-4
+        kind: construction
+        concepts: [place-de]
+        prompt: >-
+          A classmate writes 図書館に勉強します to mean "I study at the library". Write
+          the sentence they meant.
+        accept:
+          - kanji: 図書館で勉強します
+            kana: としょかんでべんきょうします
+            romaji: toshokan de benkyou shimasu
+        hint: The library is where the action happens, so it takes で.
+        explanation: >-
+          図書館で勉強します uses で for the place of the action. に would treat the
+          library as a destination or a location of existence, not as where studying
+          happens.
+      - id: u3-l3-5
+        kind: completion
+        concepts: [time-ni]
+        prompt: Fill the particle — "I go to bed at eight."
+        target:
+          kanji: 八時＿寝ます
+          kana: はちじ＿ねます
+          romaji: hachiji _ nemasu
+        accept:
+          - kanji: に
+            kana: に
+            romaji: ni
+        hint: 八時 is a point in time.
+        explanation: >-
+          八時に寝ます marks the time with に: "I go to bed at eight". で would ask
+          where the going to bed happens, which is not what the sentence means.
+      - id: u3-l3-6
+        kind: completion
+        concepts: [place-de]
+        prompt: Fill the particle — "I work in Japan."
+        target:
+          kanji: 日本＿働きます
+          kana: にほん＿はたらきます
+          romaji: nihon _ hatarakimasu
+        accept:
+          - kanji: で
+            kana: で
+            romaji: de
+        hint: Japan is the place where the work happens.
+        explanation: >-
+          日本で働きます uses で for the place of the action. に would mark Japan as a
+          destination, as in 日本に行きます "I go to Japan".
+      - id: u3-l3-7
+        kind: construction
+        concepts: [time-ni, object-wo]
+        prompt: Write "I eat breakfast at seven."
+        accept:
+          - kanji: 七時に朝ごはんを食べます
+            kana: しちじにあさごはんをたべます
+            romaji: shichiji ni asagohan o tabemasu
+        hint: "Put the time before the object: 七時に, then 朝ごはんを, then 食べます."
+        explanation: >-
+          七時に朝ごはんを食べます uses に for the clock time and を for what is eaten.
+          食べます is the polite form of 食べる.
+      - id: u3-l3-8
+        kind: construction
+        concepts: [place-de, object-wo]
+        prompt: Write "I study Japanese at home."
+        accept:
+          - kanji: 家で日本語を勉強します
+            kana: いえでにほんごをべんきょうします
+            romaji: ie de nihongo o benkyou shimasu
+        hint: 家 is where the action happens; 日本語 is what the action acts on.
+        explanation: >-
+          家で日本語を勉強します uses で for home and を for Japanese. 勉強します is
+          the polite form of 勉強する.
+      - id: u3-l3-9
+        kind: interpretation
+        concepts: [place-de, object-wo]
+        prompt: What does this mean?
+        target:
+          kanji: 家で朝ごはんを食べます
+          kana: いえであさごはんをたべます
+          romaji: ie de asagohan o tabemasu
+        accept_meanings:
+          - I eat breakfast at home.
+          - I eat breakfast at home
+          - At home I eat breakfast.
+        hint: で marks home and を marks breakfast.
+        explanation: >-
+          家で朝ごはんを食べます says "I eat breakfast at home". で marks where the
+          eating happens and を marks what is eaten.
+      - id: u3-l3-10
+        kind: construction
+        concepts: [object-wo]
+        prompt: >-
+          A classmate writes 朝ごはんが食べます to mean "I eat breakfast". Write the
+          sentence they meant.
+        accept:
+          - kanji: 朝ごはんを食べます
+            kana: あさごはんをたべます
+            romaji: asagohan o tabemasu
+        hint: Breakfast is what gets eaten, so it takes the object marker.
+        explanation: >-
+          朝ごはんを食べます marks breakfast with を as what the action acts on. が
+          would mark breakfast as the one doing the eating, which is backwards.
+      - id: u3-l3-11
+        kind: transformation
+        concepts: [object-wo, place-de, past-negative]
+        prompt: Make 家で映画を見ます past.
+        target:
+          kanji: 家で映画を見ます
+          kana: いえでえいがをみます
+          romaji: ie de eiga o mimasu
+        accept:
+          - kanji: 家で映画を見ました
+            kana: いえでえいがをみました
+            romaji: ie de eiga o mimashita
+        hint: Only the ending changes; the particles stay exactly where they are.
+        explanation: >-
+          家で映画を見ました changes 見ます to 見ました. で still marks the place and
+          を still marks the movie, because the past tense does not change the
+          particles.
+      - id: u3-l3-12
+        kind: listening
+        concepts: [object-wo, place-de, past-negative]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: 昨日、家で映画を見ました
+          kana: きのう、いえでえいがをみました
+          romaji: kinou, ie de eiga o mimashita
+        accept_meanings:
+          - I watched a movie at home yesterday.
+          - I watched a film at home yesterday.
+          - Yesterday I watched a movie at home.
+        hint: 昨日 is yesterday, 家で is at home, and 見ました is the past of 見ます.
+        explanation: >-
+          昨日、家で映画を見ました says "I watched a movie at home yesterday". で marks
+          the place, を marks the movie, and ました makes it past.
+      - id: u3-l3-13
+        kind: conversation
+        concepts: [verb-groups, masu-stem, past-negative, time-ni, place-de, object-wo]
+        prompt: >-
+          You are talking with a coworker about your daily routine and yesterday.
+          Answer their questions, including the follow-up about what you did not do.
+        scenario:
+          turns:
+            - speaker: npc
+              line:
+                kanji: 毎日、何時に起きますか。
+                kana: まいにち、なんじにおきますか。
+                romaji: mainichi, nanji ni okimasu ka
+            - speaker: learner
+              accept:
+                - kanji: 七時に起きます。
+                  kana: しちじにおきます。
+                  romaji: shichiji ni okimasu
+                - kanji: 六時に起きます。
+                  kana: ろくじにおきます。
+                  romaji: rokuji ni okimasu
+                - kanji: 八時に起きます。
+                  kana: はちじにおきます。
+                  romaji: hachiji ni okimasu
+            - speaker: npc
+              line:
+                kanji: そうですか。朝ごはんは食べますか。
+                kana: そうですか。あさごはんはたべますか。
+                romaji: sou desu ka. asagohan wa tabemasu ka
+            - speaker: learner
+              accept:
+                - kanji: はい、七時半に朝ごはんを食べます。
+                  kana: はい、しちじはんにあさごはんをたべます。
+                  romaji: hai, shichiji han ni asagohan o tabemasu
+                - kanji: いいえ、朝ごはんは食べません。
+                  kana: いいえ、あさごはんはたべません。
+                  romaji: iie, asagohan wa tabemasen
+                - kanji: はい、家で食べます。
+                  kana: はい、いえでたべます。
+                  romaji: hai, ie de tabemasu
+            - speaker: npc
+              line:
+                kanji: 週末は何をしますか。
+                kana: しゅうまつはなにをしますか。
+                romaji: shuumatsu wa nani o shimasu ka
+            - speaker: learner
+              accept:
+                - kanji: 家で映画を見ます。
+                  kana: いえでえいがをみます。
+                  romaji: ie de eiga o mimasu
+                - kanji: 図書館で勉強します。
+                  kana: としょかんでべんきょうします。
+                  romaji: toshokan de benkyou shimasu
+                - kanji: 働きます。
+                  kana: はたらきます。
+                  romaji: hatarakimasu
+            - speaker: npc
+              line:
+                kanji: 昨日も映画を見ましたか。
+                kana: きのうもえいがをみましたか。
+                romaji: kinou mo eiga o mimashita ka
+            - speaker: learner
+              accept:
+                - kanji: いいえ、昨日は見ませんでした。
+                  kana: いいえ、きのうはみませんでした。
+                  romaji: iie, kinou wa mimasen deshita
+                - kanji: はい、家で見ました。
+                  kana: はい、いえでみました。
+                  romaji: hai, ie de mimashita
+                - kanji: いいえ、昨日は働きました。
+                  kana: いいえ、きのうははたらきました。
+                  romaji: iie, kinou wa hatarakimashita
+            - speaker: npc
+              line:
+                kanji: そうですか。お疲れさまです。
+                kana: そうですか。おつかれさまです。
+                romaji: sou desu ka. otsukaresama desu
+        hint: >-
+          Use に for clock times, で for where an action happens, を for what the
+          action acts on, and ませんでした for what you did not do.
+        explanation: >-
+          The questions move from present routine to a weekend, then close with an
+          unexpected past question. 七時に takes に, 家で and 図書館で take で,
+          朝ごはんを and 映画を take を, and 見ませんでした answers the past negative.
+      - id: u3-l3-14
+        kind: speaking
+        concepts: [verb-groups, masu-stem, past-negative, time-ni, place-de, object-wo]
+        prompt: >-
+          Describe your normal day and yesterday: when you get up, what you eat,
+          where you work or study, and one thing you did not do. Speak without
+          looking back at the lesson.
+        rubric: >-
+          Does it derive ます stems correctly for both godan and ichidan verbs, use
+          に for clock times, で for the place of an action, を for what an action
+          acts on, and ませんでした for one thing you did not do? Judge meaning,
+          grammar, naturalness and register separately. There is no model answer.
