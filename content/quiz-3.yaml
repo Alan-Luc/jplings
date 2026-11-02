@@ -1,0 +1,295 @@
+id: quiz-3
+title: Q3 — whole-course benchmark gate
+lessons:
+  - id: q3
+    title: Q3 — whole-course benchmark gate
+    steps:
+      - id: q3-1
+        kind: interpretation
+        prompt: What does this mean?
+        target:
+          kanji: 私は会社員です。田中さんも会社員です。
+          kana: わたしはかいしゃいんです。たなかさんもかいしゃいんです。
+          romaji: watashi wa kaishain desu. tanaka san mo kaishain desu
+        accept_meanings:
+          - I am a company employee. Tanaka is a company employee too.
+          - I'm a company employee, and Tanaka is a company employee too.
+          - I am an office worker. Tanaka is an office worker too.
+        explanation: >-
+          も replaces は and adds "also", so the second sentence says Tanaka is a
+          company employee too. The first sentence is the plain です statement.
+      - id: q3-2
+        kind: listening
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: すみません、この袋はいくらですか。
+          kana: すみません、このふくろはいくらですか。
+          romaji: sumimasen, kono fukuro wa ikura desu ka
+        accept_meanings:
+          - Excuse me, how much is this bag?
+          - Excuse me, how much is this bag
+          - Excuse me, how much does this bag cost?
+        explanation: >-
+          この袋はいくらですか asks the price of the bag. いくら asks how much, and
+          は marks the bag as what you are asking about.
+      - id: q3-3
+        kind: speaking
+        prompt: Say that you drink coffee every day.
+        accept:
+          - kanji: 毎日コーヒーを飲みます。
+            kana: まいにちコーヒーをのみます。
+            romaji: mainichi koohii o nomimasu
+          - kana: まいにちコーヒーをのみます。
+            romaji: mainichi koohii o nomimasu
+          - kanji: 毎日コーヒーをのみます。
+            kana: まいにちコーヒーをのみます。
+            romaji: mainichi koohii o nomimasu
+        explanation: >-
+          毎日 marks how often, コーヒーを marks what you drink, and 飲みます is the
+          polite ます form. 飲みません would say you do not drink it.
+      - id: q3-4
+        kind: construction
+        prompt: Write that there is a police box near the station.
+        accept:
+          - kanji: 駅の近くに交番があります。
+            kana: えきのちかくにこうばんがあります。
+            romaji: eki no chikaku ni kouban ga arimasu
+        explanation: >-
+          近くに marks the area near the station as the place where the police box
+          exists, and が marks the police box. で would mark the place of an
+          activity instead.
+      - id: q3-5
+        kind: speaking
+        prompt: >-
+          Speak for two minutes about your day: what you do on a normal day, and
+          what you did last weekend. Do not look anything up.
+        rubric: >-
+          Score from the transcript: clauses per two minutes; distinct forms used
+          (ます, ない, た, て, ている, たい, ことがある); errors per clause, split into
+          particle errors and everything else. Does the account move through the
+          day with て forms rather than listing ます sentences? Does the routine stay
+          in ます and the past weekend shift to た or ました? There is no model
+          answer.
+        explanation: >-
+          This is benchmark element 2, the two-minute monologue on a fixed theme,
+          scored from the transcript rather than by a model answer. The same theme
+          is used each month so the clause count, form count and error rate compare.
+      - id: q3-6
+        kind: listening
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: 私はスポーツが好きじゃないです。
+          kana: わたしはスポーツがすきじゃないです。
+          romaji: watashi wa supootsu ga suki ja nai desu
+        accept_meanings:
+          - I don't like sports.
+          - I do not like sports.
+          - I don't really like sports.
+        explanation: >-
+          好きじゃないです is the negative of 好きです, so the sentence says you do
+          not like sports. が marks sports as the thing liked or disliked.
+      - id: q3-7
+        kind: construction
+        prompt: Write that you go to the airport by bus.
+        accept:
+          - kanji: 空港までバスで行きます。
+            kana: くうこうまでバスでいきます。
+            romaji: kuukou made basu de ikimasu
+        explanation: >-
+          まで marks the airport as the endpoint of the journey, and で marks the
+          bus as the means. を would mark the bus as something acted on, which
+          行きます does not do.
+      - id: q3-8
+        kind: listening
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: この部屋は空いていますか。
+          kana: このへやはあいていますか。
+          romaji: kono heya wa aite imasu ka
+        accept_meanings:
+          - Is this room available?
+          - Is this room vacant?
+          - Is this room free?
+        explanation: >-
+          空いています is the て form 空いて plus います, describing the room as
+          vacant. は marks the room as what you are asking about.
+      - id: q3-9
+        kind: construction
+        prompt: Write politely that you do not want to go out today.
+        accept:
+          - kanji: 今日は出かけたくないです。
+            kana: きょうはでかけたくないです。
+            romaji: kyou wa dekaketakunai desu
+        explanation: >-
+          出かけたくないです is 出かける + たくないです, with 今日は marking today as
+          the topic. 出かけたいです would say you do want to go out.
+      - id: q3-10
+        kind: listening
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: 明日、一緒に京都に行きませんか。
+          kana: あした、いっしょにきょうとにいきませんか。
+          romaji: ashita, issho ni kyouto ni ikimasen ka
+        accept_meanings:
+          - Would you like to go to Kyoto together tomorrow?
+          - Won't you go to Kyoto with me tomorrow?
+          - Shall we go to Kyoto together tomorrow?
+        explanation: >-
+          行きませんか is an invitation: the negative question leaves the other
+          person free to say no. 一緒に marks doing it together, and に marks Kyoto
+          as the destination.
+      - id: q3-11
+        kind: speaking
+        prompt: Ask the waiter whether takeout is available.
+        accept:
+          - kanji: 持ち帰りはありますか。
+            kana: もちかえりはありますか。
+            romaji: mochikaeri wa arimasu ka
+          - kana: もちかえりはありますか。
+            romaji: mochikaeri wa arimasu ka
+          - kanji: 持ち帰りはありますか
+            kana: もちかえりはありますか
+            romaji: mochikaeri wa arimasu ka
+        explanation: >-
+          持ち帰りはありますか marks takeout with は as what you are asking about
+          and asks availability with ありますか. をください would ask them to hand it
+          over instead of asking whether it exists.
+      - id: q3-12
+        kind: conversation
+        prompt: >-
+          You are at a station and your wallet is gone. Tell the staff what
+          happened, say where you think you lost it, ask where the police box is,
+          answer their question about your passport, and acknowledge their
+          directions.
+        scenario:
+          turns:
+            - speaker: npc
+              line:
+                kanji: どうしましたか。
+                kana: どうしましたか。
+                romaji: dou shimashita ka
+            - speaker: learner
+              accept:
+                - kanji: すみません、財布をなくしました。
+                  kana: すみません、さいふをなくしました。
+                  romaji: sumimasen, saifu o nakushimashita
+                - kanji: 財布をなくしました。
+                  kana: さいふをなくしました。
+                  romaji: saifu o nakushimashita
+                - kanji: 財布がないんです。
+                  kana: さいふがないんです。
+                  romaji: saifu ga nai n desu
+            - speaker: npc
+              line:
+                kanji: どこでなくしましたか。
+                kana: どこでなくしましたか。
+                romaji: doko de nakushimashita ka
+            - speaker: learner
+              accept:
+                - kanji: 駅でなくしました。
+                  kana: えきでなくしました。
+                  romaji: eki de nakushimashita
+                - kanji: 駅でなくしたと思います。
+                  kana: えきでなくしたとおもいます。
+                  romaji: eki de nakushita to omoimasu
+            - speaker: npc
+              line:
+                kanji: 交番は駅の前にあります。
+                kana: こうばんはえきのまえにあります。
+                romaji: kouban wa eki no mae ni arimasu
+            - speaker: learner
+              accept:
+                - kanji: 交番はどこですか。
+                  kana: こうばんはどこですか。
+                  romaji: kouban wa doko desu ka
+                - kanji: 駅の前ですね。わかりました。
+                  kana: えきのまえですね。わかりました。
+                  romaji: eki no mae desu ne. wakarimashita
+                - kanji: ありがとうございます。
+                  kana: ありがとうございます。
+                  romaji: arigatou gozaimasu
+            - speaker: npc
+              line:
+                kanji: パスポートはありますか。
+                kana: パスポートはありますか。
+                romaji: pasupooto wa arimasu ka
+            - speaker: learner
+              accept:
+                - kanji: はい、パスポートはあります。
+                  kana: はい、パスポートはあります。
+                  romaji: hai, pasupooto wa arimasu
+                - kanji: パスポートはあります。
+                  kana: パスポートはあります。
+                  romaji: pasupooto wa arimasu
+                - kanji: はい、あります。
+                  kana: はい、あります。
+                  romaji: hai, arimasu
+            - speaker: npc
+              line:
+                kanji: では、交番に行ってください。
+                kana: では、こうばんにいってください。
+                romaji: dewa, kouban ni itte kudasai
+            - speaker: learner
+              accept:
+                - kanji: わかりました。行きます。
+                  kana: わかりました。いきます。
+                  romaji: wakarimashita. ikimasu
+                - kanji: はい、わかりました。ありがとうございます。
+                  kana: はい、わかりました。ありがとうございます。
+                  romaji: hai, wakarimashita. arigatou gozaimasu
+                - kanji: わかりました。ありがとうございます。
+                  kana: わかりました。ありがとうございます。
+                  romaji: wakarimashita. arigatou gozaimasu
+        explanation: >-
+          In-app this is the scripted five-turn version of a lost-wallet trip
+          situation: report the loss with 財布をなくしました or 財布がないんです,
+          give the place with で in 駅でなくしました, ask about the police box with
+          交番はどこですか, and acknowledge the directions. Benchmark element 3, the
+          unscripted roleplay, needs a human partner and is out of scope in-app.
+      - id: q3-13
+        kind: listening
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: どうして日本語を勉強しているんですか。
+          kana: どうしてにほんごをべんきょうしているんですか。
+          romaji: doushite nihongo o benkyou shite iru n desu ka
+        accept_meanings:
+          - Why are you studying Japanese?
+          - Why do you study Japanese?
+          - How come you are studying Japanese?
+        explanation: >-
+          どうして asks for a reason and takes no particle. 勉強している is the plain
+          て form before んですか, which asks for the explanation behind what the
+          speaker noticed.
+      - id: q3-14
+        kind: speaking
+        prompt: >-
+          A close friend asks whether you want lunch. Say casually that you have
+          already eaten.
+        accept:
+          - kanji: もう食べた。
+            kana: もうたべた。
+            romaji: mou tabeta
+          - kana: もうたべた。
+            romaji: mou tabeta
+          - kanji: もう食べた
+            kana: もうたべた
+            romaji: mou tabeta
+        explanation: >-
+          食べた is the plain past of 食べる, so もう食べた says you have already
+          eaten. 食べました is the same fact in polite form; between close friends
+          the plain form is what fits.
+      - id: q3-15
+        kind: listening
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: 京都には二度行ったことがあります。
+          kana: きょうとにはにどいったことがあります。
+          romaji: kyouto ni wa nido itta koto ga arimasu
+        accept_meanings:
+          - I have been to Kyoto twice.
+          - I have visited Kyoto twice.
+          - I've been to Kyoto two times.
+        explanation: >-
+          行ったことがあります reports an experience: the plain past 行った plus
+          ことがあります. 二度 is "twice", and には marks Kyoto as the topic.

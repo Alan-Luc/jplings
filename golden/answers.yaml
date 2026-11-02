@@ -5174,3 +5174,168 @@
 - step: u15-l3-13
   answer: They're asking whether Tanaka runs every morning.
   verdict: wrong
+- step: q3-1
+  answer: I am a company employee. Tanaka is a company employee too.
+  verdict: correct
+- step: q3-1
+  answer: I'm a company employee, and Tanaka is a company employee too.
+  verdict: correct
+- step: q3-1
+  answer: I am an office worker. Tanaka is an office worker too.
+  verdict: correct
+- step: q3-1
+  answer: I am a company employee. Tanaka is not a company employee.
+  verdict: wrong
+- step: q3-2
+  answer: Excuse me, how much is this bag?
+  verdict: correct
+- step: q3-2
+  answer: Excuse me, how much is this bag
+  verdict: correct
+- step: q3-2
+  answer: Excuse me, how much does this bag cost?
+  verdict: correct
+- step: q3-2
+  answer: Excuse me, where is this bag?
+  verdict: wrong
+- step: q3-3
+  answer: 毎日コーヒーを飲みます。
+  verdict: correct
+- step: q3-3
+  answer: まいにちコーヒーをのみます。
+  verdict: correct
+- step: q3-3
+  answer: 毎日コーヒーをのみます。
+  verdict: correct
+- step: q3-3
+  answer: mainichi koohii o nomimasu
+  verdict: correct
+- step: q3-3
+  answer: 毎日コーヒーを飲みません。
+  verdict: wrong
+- step: q3-4
+  answer: 駅の近くに交番があります。
+  verdict: correct
+- step: q3-4
+  answer: えきのちかくにこうばんがあります。
+  verdict: correct
+- step: q3-4
+  answer: eki no chikaku ni kouban ga arimasu
+  verdict: correct
+- step: q3-4
+  answer: 駅の近くで交番があります。
+  verdict: wrong
+- step: q3-6
+  answer: I don't like sports.
+  verdict: correct
+- step: q3-6
+  answer: I do not like sports.
+  verdict: correct
+- step: q3-6
+  answer: I don't really like sports.
+  verdict: correct
+- step: q3-6
+  answer: I like sports very much.
+  verdict: wrong
+- step: q3-7
+  answer: 空港までバスで行きます。
+  verdict: correct
+- step: q3-7
+  answer: くうこうまでバスでいきます。
+  verdict: correct
+- step: q3-7
+  answer: kuukou made basu de ikimasu
+  verdict: correct
+- step: q3-7
+  answer: 空港までバスを行きます。
+  verdict: wrong
+- step: q3-8
+  answer: Is this room available?
+  verdict: correct
+- step: q3-8
+  answer: Is this room vacant?
+  verdict: correct
+- step: q3-8
+  answer: Is this room free?
+  verdict: correct
+- step: q3-8
+  answer: Is this room expensive?
+  verdict: wrong
+- step: q3-9
+  answer: 今日は出かけたくないです。
+  verdict: correct
+- step: q3-9
+  answer: きょうはでかけたくないです。
+  verdict: correct
+- step: q3-9
+  answer: kyou wa dekaketakunai desu
+  verdict: correct
+- step: q3-9
+  answer: 今日は出かけたいです。
+  verdict: wrong
+- step: q3-10
+  answer: Would you like to go to Kyoto together tomorrow?
+  verdict: correct
+- step: q3-10
+  answer: Won't you go to Kyoto with me tomorrow?
+  verdict: correct
+- step: q3-10
+  answer: Shall we go to Kyoto together tomorrow?
+  verdict: correct
+- step: q3-10
+  answer: I am not going to Kyoto tomorrow.
+  verdict: wrong
+- step: q3-11
+  answer: 持ち帰りはありますか。
+  verdict: correct
+- step: q3-11
+  answer: もちかえりはありますか。
+  verdict: correct
+- step: q3-11
+  answer: 持ち帰りはありますか
+  verdict: correct
+- step: q3-11
+  answer: mochikaeri wa arimasu ka
+  verdict: correct
+- step: q3-11
+  answer: 持ち帰りをください。
+  verdict: wrong
+- step: q3-13
+  answer: Why are you studying Japanese?
+  verdict: correct
+- step: q3-13
+  answer: Why do you study Japanese?
+  verdict: correct
+- step: q3-13
+  answer: How come you are studying Japanese?
+  verdict: correct
+- step: q3-13
+  answer: When did you start studying Japanese?
+  verdict: wrong
+- step: q3-14
+  answer: もう食べた。
+  verdict: correct
+- step: q3-14
+  answer: もうたべた。
+  verdict: correct
+- step: q3-14
+  answer: もう食べた
+  verdict: correct
+- step: q3-14
+  answer: mou tabeta
+  verdict: correct
+- step: q3-14
+  answer: もう食べません。
+  verdict: wrong
+- step: q3-15
+  answer: I have been to Kyoto twice.
+  verdict: correct
+- step: q3-15
+  answer: I have visited Kyoto twice.
+  verdict: correct
+- step: q3-15
+  answer: I've been to Kyoto two times.
+  verdict: correct
+- step: q3-15
+  answer: I want to go to Kyoto twice.
+  verdict: wrong
