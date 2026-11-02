@@ -439,23 +439,22 @@ lessons:
           おすすめをお願いします orders the recommendation. を marks what you want
           and お願いします asks the server to bring it.
       - id: u9-l2-11
-        kind: speaking
+        kind: construction
         concepts: [request-onegai-shimasu, restaurant-vocabulary]
-        prompt: Say "A large portion, please." aloud, then confirm the transcript.
+        prompt: Write "A large portion, please."
         accept:
           - kanji: 大盛りでお願いします
             kana: おおもりでおねがいします
-            romaji: oomori de onegai shimasu
-          - kana: おおもりでおねがいします
             romaji: oomori de onegai shimasu
           - kanji: 大盛りでおねがいします
             kana: おおもりでおねがいします
             romaji: oomori de onegai shimasu
         hint: 大盛り is おおもり; で marks the option.
         explanation: >-
-          大盛りでお願いします is おおもりでおねがいします. A transcript may return
-          the kanji form, the kana form, a mixed form, or the romaji, so all are
-          accepted. で marks the option you are asking for.
+          大盛りでお願いします is おおもりでおねがいします. で marks the option you are
+          asking for, so the item request stays 定食をお願いします and the option takes
+          で. This is a written item because 大盛り and the place name 大森 share a
+          reading, so a transcript could not tell them apart.
 
   - id: u9-l3
     title: サービス敬語 — recognize it, answer without it
