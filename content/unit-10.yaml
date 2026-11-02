@@ -1,0 +1,834 @@
+id: unit-10
+title: ホテルで — checking in, leaving luggage, and asking permission
+taught: true
+concepts:
+  - id: existence-verbs
+    label: あります/います — a thing exists vs a person or animal exists
+  - id: existence-ni-ga
+    label: に marks where, が marks what exists
+  - id: hotel-vocabulary
+    label: 予約・荷物・預ける・チェックイン・部屋・空いている — hotel words
+  - id: permission-te-mo-ii
+    label: 〜てもいいですか — asking permission
+  - id: prohibition-nai-de-kudasai
+    label: 〜ないでください — telling someone not to do something
+  - id: state-te-imasu
+    label: 〜ています for states — 空いています, 予約しています
+lessons:
+  - id: u10-l1
+    title: あります/います + に/が — what exists, and where
+    objective: >-
+      Say what exists in a hotel and where, choosing あります for a thing and
+      います for a person or animal, with に marking the place and が marking
+      what exists.
+    anchors:
+      - kanji: 部屋にベッドがあります
+        kana: へやにベッドがあります
+        romaji: heya ni beddo ga arimasu
+      - kanji: ロビーに人がいます
+        kana: ロビーにひとがいます
+        romaji: robii ni hito ga imasu
+      - kanji: 予約があります
+        kana: よやくがあります
+        romaji: yoyaku ga arimasu
+    teach:
+      - prose: >-
+          あります and います are the existence verbs, and they are a separate
+          system from です. あります is for things; います is for people and
+          animals. A person or animal lives and moves on its own, so it takes
+          います; a bed, a TV or a reservation cannot, so it takes あります.
+        examples:
+          - kanji: 部屋にベッドがあります
+            kana: へやにベッドがあります
+            romaji: heya ni beddo ga arimasu
+          - kanji: ロビーに人がいます
+            kana: ロビーにひとがいます
+            romaji: robii ni hito ga imasu
+          - kanji: 部屋にテレビがあります
+            kana: へやにテレビがあります
+            romaji: heya ni terebi ga arimasu
+      - prose: >-
+          に and が do two different jobs in the same sentence. に marks where
+          something exists; が marks what exists. In 部屋にベッドがあります, に marks
+          the room as the place and が marks the bed as the thing that exists. The
+          order is place に, thing が, verb.
+        examples:
+          - kanji: 部屋にベッドがあります
+            kana: へやにベッドがあります
+            romaji: heya ni beddo ga arimasu
+          - kanji: ロビーに人がいます
+            kana: ロビーにひとがいます
+            romaji: robii ni hito ga imasu
+          - kanji: 部屋に何がありますか
+            kana: へやになにがありますか
+            romaji: heya ni nani ga arimasu ka
+      - prose: >-
+          予約 is a reservation and 部屋 is a room. 予約があります says a
+          reservation exists — you have one. 部屋にテレビがありますか asks whether
+          the room has a TV. Use ありません for "there is not".
+        examples:
+          - kanji: 予約があります
+            kana: よやくがあります
+            romaji: yoyaku ga arimasu
+          - kanji: 部屋にテレビがありますか
+            kana: へやにテレビがありますか
+            romaji: heya ni terebi ga arimasu ka
+          - kanji: 部屋にテレビがありません
+            kana: へやにテレビがありません
+            romaji: heya ni terebi ga arimasen
+    steps:
+      - id: u10-l1-1
+        kind: interpretation
+        concepts: [existence-verbs]
+        prompt: >-
+          Two sentences: 部屋にベッドがあります and 部屋にベッドがいます. A bed is a
+          thing, not a person. What does the correct sentence mean?
+        target:
+          kanji: 部屋にベッドがあります
+          kana: へやにベッドがあります
+          romaji: heya ni beddo ga arimasu
+        accept_meanings:
+          - There is a bed in the room.
+          - There's a bed in the room.
+          - The room has a bed.
+          - A bed is in the room.
+        hint: A bed is a thing, so it takes あります.
+        explanation: >-
+          ベッド is a thing, so あります is correct; います is for a person or
+          animal. に marks the room as the place and が marks the bed as what
+          exists.
+      - id: u10-l1-2
+        kind: interpretation
+        concepts: [existence-ni-ga, existence-verbs]
+        prompt: What does this mean?
+        target:
+          kanji: ロビーに人がいます
+          kana: ロビーにひとがいます
+          romaji: robii ni hito ga imasu
+        accept_meanings:
+          - There is a person in the lobby.
+          - There are people in the lobby.
+          - Someone is in the lobby.
+        hint: 人 is a person; に marks where.
+        explanation: >-
+          人 is a person, so it takes います. に marks ロビー as the place and が
+          marks 人 as the person who exists there.
+      - id: u10-l1-3
+        kind: transformation
+        concepts: [existence-verbs]
+        prompt: >-
+          A guest says 部屋にベッドがいます for "There is a bed in the room."
+          Write it correctly.
+        target:
+          kanji: 部屋にベッドがいます
+          kana: へやにベッドがいます
+          romaji: heya ni beddo ga imasu
+        accept:
+          - kanji: 部屋にベッドがあります
+            kana: へやにベッドがあります
+            romaji: heya ni beddo ga arimasu
+        hint: A bed is not a person or an animal.
+        explanation: >-
+          A bed is a thing, so it takes あります. います would treat the bed as a
+          living thing. The particles stay: に marks the room, が marks the bed.
+      - id: u10-l1-4
+        kind: completion
+        concepts: [existence-ni-ga]
+        prompt: Fill the particle — "There is a bed in the room."
+        target:
+          kanji: 部屋＿ベッドがあります
+          kana: へや＿ベッドがあります
+          romaji: heya _ beddo ga arimasu
+        accept:
+          - kanji: に
+            kana: に
+            romaji: ni
+        hint: Which particle marks where the bed is?
+        explanation: >-
+          に marks 部屋 as the place where the bed exists. が already marks ベッド
+          as the thing that exists.
+      - id: u10-l1-5
+        kind: construction
+        concepts: [existence-ni-ga, existence-verbs, hotel-vocabulary]
+        prompt: Say there is a bed in the room.
+        accept:
+          - kanji: 部屋にベッドがあります
+            kana: へやにベッドがあります
+            romaji: heya ni beddo ga arimasu
+        hint: Place に, thing が, then あります.
+        explanation: >-
+          部屋にベッドがあります puts the place first with に, marks the bed with が,
+          and closes with あります because a bed is a thing.
+      - id: u10-l1-6
+        kind: construction
+        concepts: [existence-ni-ga, existence-verbs]
+        prompt: Say there is a person in the lobby.
+        accept:
+          - kanji: ロビーに人がいます
+            kana: ロビーにひとがいます
+            romaji: robii ni hito ga imasu
+        hint: A person takes います, not あります.
+        explanation: >-
+          ロビーに人がいます marks the lobby with に and the person with が. います
+          is required because 人 is a person.
+      - id: u10-l1-7
+        kind: completion
+        concepts: [existence-ni-ga]
+        prompt: Fill the particle — "There is a person in the lobby."
+        target:
+          kanji: ロビーに人＿います
+          kana: ロビーにひと＿います
+          romaji: robii ni hito _ imasu
+        accept:
+          - kanji: が
+            kana: が
+            romaji: ga
+        hint: が marks the person as what exists.
+        explanation: >-
+          が marks 人 as the person who exists. に already marks ロビー as the place,
+          so the two particles are doing different jobs.
+      - id: u10-l1-8
+        kind: transformation
+        concepts: [existence-verbs, hotel-vocabulary]
+        prompt: Make this negative — "There is no TV in the room."
+        target:
+          kanji: 部屋にテレビがあります
+          kana: へやにテレビがあります
+          romaji: heya ni terebi ga arimasu
+        accept:
+          - kanji: 部屋にテレビがありません
+            kana: へやにテレビがありません
+            romaji: heya ni terebi ga arimasen
+        hint: あります becomes ありません.
+        explanation: >-
+          部屋にテレビがありません negates あります to ありません. The particles do not
+          change: に still marks the room and が still marks the TV.
+      - id: u10-l1-9
+        kind: listening
+        concepts: [existence-verbs, hotel-vocabulary]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: 予約があります。
+          kana: よやくがあります。
+          romaji: yoyaku ga arimasu
+        accept_meanings:
+          - I have a reservation.
+          - I have a booking.
+          - There is a reservation.
+        hint: 予約 is a reservation; があります says it exists.
+        explanation: >-
+          予約があります says you have a reservation: the reservation exists. が
+          marks 予約 as the thing that exists, and あります is correct because a
+          reservation is not a person.
+      - id: u10-l1-10
+        kind: construction
+        concepts: [hotel-vocabulary, existence-verbs]
+        prompt: Tell the front desk that you have a reservation.
+        accept:
+          - kanji: 予約があります
+            kana: よやくがあります
+            romaji: yoyaku ga arimasu
+        hint: 予約 is the reservation; があります says you have it.
+        explanation: >-
+          予約があります tells the front desk a reservation exists in your name. が
+          marks the reservation and あります is the existence verb for a thing.
+      - id: u10-l1-11
+        kind: listening
+        concepts: [existence-ni-ga, existence-verbs]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: 部屋に誰がいますか。
+          kana: へやにだれがいますか。
+          romaji: heya ni dare ga imasu ka
+        accept_meanings:
+          - Who is in the room?
+          - Who is there in the room?
+        hint: 誰 asks who; います is for people.
+        explanation: >-
+          部屋に誰がいますか asks who exists in the room. 誰 asks for a person, so the
+          verb is います; に marks the room and が marks the unknown person.
+      - id: u10-l1-12
+        kind: speaking
+        concepts: [existence-ni-ga, existence-verbs, hotel-vocabulary]
+        prompt: Say "There is a bed in the room." aloud, then confirm the transcript.
+        accept:
+          - kanji: 部屋にベッドがあります
+            kana: へやにベッドがあります
+            romaji: heya ni beddo ga arimasu
+          - kana: へやにベッドがあります
+            romaji: heya ni beddo ga arimasu
+        hint: に marks the room, が marks the bed, and a bed takes あります.
+        explanation: >-
+          部屋にベッドがあります is へやにベッドがあります. A transcript may return the
+          kanji form or the kana form, so both are accepted. あります is used because
+          ベッド is a thing.
+      - id: u10-l1-13
+        kind: construction
+        concepts: [existence-ni-ga, existence-verbs]
+        prompt: >-
+          Say there is a desk in the room. The new word is 机 (つくえ), a desk.
+        accept:
+          - kanji: 部屋に机があります
+            kana: へやにつくえがあります
+            romaji: heya ni tsukue ga arimasu
+        hint: Use the same place に, thing が pattern; a desk is a thing.
+        explanation: >-
+          部屋に机があります uses に for the room, が for the desk, and あります
+          because 机 is a thing. The pattern transfers to a noun you have not seen
+          before.
+      - id: u10-l1-14
+        kind: transformation
+        concepts: [existence-ni-ga, existence-verbs]
+        prompt: >-
+          A guest writes 部屋がベッドにあります for "There is a bed in the room."
+          The particles are swapped. Write it correctly.
+        target:
+          kanji: 部屋がベッドにあります
+          kana: へやがベッドにあります
+          romaji: heya ga beddo ni arimasu
+        accept:
+          - kanji: 部屋にベッドがあります
+            kana: へやにベッドがあります
+            romaji: heya ni beddo ga arimasu
+        hint: に marks where the bed is; が marks the bed.
+        explanation: >-
+          に marks 部屋 as the place and が marks ベッド as what exists. Swapping them
+          says the room exists at the bed, which is the wrong job for each particle.
+
+  - id: u10-l2
+    title: 〜てもいいですか and 〜ないでください — permission and refusal
+    objective: >-
+      Ask permission with 〜てもいいですか, recognize and give a refusal with
+      〜ないでください, and use 〜てください or 〜をお願いします for a request
+      instead of a permission question.
+    anchors:
+      - kanji: 荷物を預けてもいいですか
+        kana: にもつをあずけてもいいですか
+        romaji: nimotsu o azukete mo ii desu ka
+      - kanji: 部屋に入ってもいいですか
+        kana: へやにはいってもいいですか
+        romaji: heya ni haitte mo ii desu ka
+      - kanji: 部屋で食べないでください
+        kana: へやでたべないでください
+        romaji: heya de tabenai de kudasai
+    teach:
+      - prose: >-
+          〜てもいいですか asks permission: "May I do X?" Build it from the て form
+          plus もいいですか. 預ける → 預けて → 荷物を預けてもいいですか. A yes is
+          はい、いいですよ or はい、どうぞ. A refusal often names what not to do:
+          すみません、〜ないでください.
+        examples:
+          - kanji: 荷物を預けてもいいですか
+            kana: にもつをあずけてもいいですか
+            romaji: nimotsu o azukete mo ii desu ka
+          - kanji: 部屋に入ってもいいですか
+            kana: へやにはいってもいいですか
+            romaji: heya ni haitte mo ii desu ka
+          - kanji: はい、いいですよ
+            kana: はい、いいですよ
+            romaji: hai, ii desu yo
+      - prose: >-
+          〜ないでください tells someone not to do something. Build it from the ない
+          form plus でください: 食べる → 食べない → 食べないでください; 置く →
+          置かない → 置かないでください. This is the shape you will hear when a
+          request is refused.
+        examples:
+          - kanji: 部屋で食べないでください
+            kana: へやでたべないでください
+            romaji: heya de tabenai de kudasai
+          - kanji: ここに荷物を置かないでください
+            kana: ここににもつをおかないでください
+            romaji: koko ni nimotsu o okanai de kudasai
+          - kanji: すみません、ちょっと
+            kana: すみません、ちょっと
+            romaji: sumimasen, chotto
+      - prose: >-
+          〜てもいいですか only asks whether you may do something. It is not a way to
+          ask someone else to do something. To ask the staff to call a taxi, say
+          タクシーを呼んでください or タクシーをお願いします, not
+          タクシーを呼んでもいいですか, which asks whether you may call it yourself.
+        examples:
+          - kanji: タクシーを呼んでもいいですか
+            kana: タクシーをよんでもいいですか
+            romaji: takushii o yonde mo ii desu ka
+          - kanji: タクシーを呼んでください
+            kana: タクシーをよんでください
+            romaji: takushii o yonde kudasai
+          - kanji: タクシーをお願いします
+            kana: タクシーをおねがいします
+            romaji: takushii o onegai shimasu
+    steps:
+      - id: u10-l2-1
+        kind: interpretation
+        concepts: [permission-te-mo-ii, hotel-vocabulary]
+        prompt: >-
+          A guest says 荷物を預けてもいいですか and 荷物を預けてください. Which one
+          asks permission?
+        target:
+          kanji: 荷物を預けてもいいですか
+          kana: にもつをあずけてもいいですか
+          romaji: nimotsu o azukete mo ii desu ka
+        accept_meanings:
+          - May I leave my luggage?
+          - Is it all right if I leave my luggage?
+          - Can I leave my luggage?
+          - May I check my luggage?
+        hint: てもいいですか asks whether it is all right for you to do it.
+        explanation: >-
+          荷物を預けてもいいですか asks whether you may leave your luggage.
+          荷物を預けてください asks someone to leave it, so it is a request, not a
+          permission question.
+      - id: u10-l2-2
+        kind: interpretation
+        concepts: [prohibition-nai-de-kudasai]
+        prompt: What does this mean?
+        target:
+          kanji: 部屋で食べないでください
+          kana: へやでたべないでください
+          romaji: heya de tabenai de kudasai
+        accept_meanings:
+          - Please don't eat in the room.
+          - Please do not eat in the room.
+          - Don't eat in the room, please.
+        hint: ないでください is a negative request.
+        explanation: >-
+          部屋で食べないでください asks someone not to eat in the room. で marks the
+          room as the place, and ないでください is the negative request.
+      - id: u10-l2-3
+        kind: construction
+        concepts: [permission-te-mo-ii, hotel-vocabulary]
+        prompt: Ask the front desk whether you may leave your luggage.
+        accept:
+          - kanji: 荷物を預けてもいいですか
+            kana: にもつをあずけてもいいですか
+            romaji: nimotsu o azukete mo ii desu ka
+        hint: 預ける → 預けて, then add もいいですか.
+        explanation: >-
+          荷物を預けてもいいですか asks permission to leave your luggage. 預けて is
+          the て form of 預ける, and もいいですか turns it into a permission question.
+      - id: u10-l2-4
+        kind: construction
+        concepts: [permission-te-mo-ii, hotel-vocabulary]
+        prompt: Ask whether you may check in now.
+        accept:
+          - kanji: 今、チェックインしてもいいですか
+            kana: いま、チェックインしてもいいですか
+            romaji: ima, chekku in shite mo ii desu ka
+          - kanji: チェックインしてもいいですか
+            kana: チェックインしてもいいですか
+            romaji: chekku in shite mo ii desu ka
+        hint: チェックインする → チェックインして, then add もいいですか.
+        explanation: >-
+          今、チェックインしてもいいですか asks whether you may check in now.
+          チェックインして is the て form, and もいいですか asks permission.
+      - id: u10-l2-5
+        kind: construction
+        concepts: [prohibition-nai-de-kudasai]
+        prompt: Tell a guest not to eat in the room.
+        accept:
+          - kanji: 部屋で食べないでください
+            kana: へやでたべないでください
+            romaji: heya de tabenai de kudasai
+        hint: 食べる → 食べない, then add でください.
+        explanation: >-
+          部屋で食べないでください tells the guest not to eat in the room. 食べない
+          is the negative form and でください makes it a request.
+      - id: u10-l2-6
+        kind: transformation
+        concepts: [prohibition-nai-de-kudasai]
+        prompt: >-
+          The answer is no. Turn 部屋で食べてもいいですか into a refusal that tells
+          the guest what not to do.
+        target:
+          kanji: 部屋で食べてもいいですか
+          kana: へやでたべてもいいですか
+          romaji: heya de tabete mo ii desu ka
+        accept:
+          - kanji: 部屋で食べないでください
+            kana: へやでたべないでください
+            romaji: heya de tabenai de kudasai
+        hint: Replace the permission question with ないでください.
+        explanation: >-
+          部屋で食べないでください refuses by naming the action to avoid.
+          てもいいですか asks permission; ないでください answers no by telling the
+          guest not to do it.
+      - id: u10-l2-7
+        kind: completion
+        concepts: [permission-te-mo-ii]
+        prompt: Fill the particle — "May I leave my luggage?"
+        target:
+          kanji: 荷物を預けて＿いいですか
+          kana: にもつをあずけて＿いいですか
+          romaji: nimotsu o azukete _ ii desu ka
+        accept:
+          - kanji: も
+            kana: も
+            romaji: mo
+        hint: The permission pattern is て + も + いいですか.
+        explanation: >-
+          荷物を預けてもいいですか uses も between the て form 預けて and いいですか.
+          The whole shape てもいいですか is the permission question.
+      - id: u10-l2-8
+        kind: completion
+        concepts: [prohibition-nai-de-kudasai]
+        prompt: Fill the ending — "Please don't eat in the room."
+        target:
+          kanji: 部屋で食べ＿でください
+          kana: へやでたべ＿でください
+          romaji: heya de tabe _ de kudasai
+        accept:
+          - kanji: ない
+            kana: ない
+            romaji: nai
+        hint: A negative request uses the ない form.
+        explanation: >-
+          部屋で食べないでください uses ない before でください. 食べでください would
+          not be a negative request.
+      - id: u10-l2-9
+        kind: transformation
+        concepts: [permission-te-mo-ii]
+        prompt: >-
+          You want the front desk to call a taxi for you. A classmate wrote
+          タクシーを呼んでもいいですか. Write the request you actually need.
+        target:
+          kanji: タクシーを呼んでもいいですか
+          kana: タクシーをよんでもいいですか
+          romaji: takushii o yonde mo ii desu ka
+        accept:
+          - kanji: タクシーを呼んでください
+            kana: タクシーをよんでください
+            romaji: takushii o yonde kudasai
+          - kanji: タクシーをお願いします
+            kana: タクシーをおねがいします
+            romaji: takushii o onegai shimasu
+        hint: To ask the staff to do it, use てください or をお願いします.
+        explanation: >-
+          タクシーを呼んでもいいですか asks whether you may call the taxi yourself.
+          To ask the staff to call it, use タクシーを呼んでください or
+          タクシーをお願いします. てもいいですか asks permission, not service.
+      - id: u10-l2-10
+        kind: listening
+        concepts: [permission-te-mo-ii]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: 部屋に入ってもいいですか。
+          kana: へやにはいってもいいですか。
+          romaji: heya ni haitte mo ii desu ka
+        accept_meanings:
+          - May I enter the room?
+          - Is it all right if I go into the room?
+          - Can I enter the room?
+        hint: 入って plus もいいですか asks permission to enter.
+        explanation: >-
+          部屋に入ってもいいですか asks whether you may enter the room. 入って is the
+          て form of 入る, and に marks the room as the destination.
+      - id: u10-l2-11
+        kind: listening
+        concepts: [prohibition-nai-de-kudasai, hotel-vocabulary]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: ここに荷物を置かないでください。
+          kana: ここににもつをおかないでください。
+          romaji: koko ni nimotsu o okanai de kudasai
+        accept_meanings:
+          - Please don't leave your luggage here.
+          - Please do not put your luggage here.
+          - Please don't put your luggage here.
+        hint: 置かないでください tells someone not to put it there.
+        explanation: >-
+          ここに荷物を置かないでください asks someone not to put luggage here. に
+          marks the place, を marks the luggage, and ないでください is the negative
+          request.
+      - id: u10-l2-12
+        kind: speaking
+        concepts: [permission-te-mo-ii, hotel-vocabulary]
+        prompt: >-
+          Ask aloud whether you may leave your luggage at the front desk, then
+          confirm the transcript.
+        accept:
+          - kanji: 荷物を預けてもいいですか
+            kana: にもつをあずけてもいいですか
+            romaji: nimotsu o azukete mo ii desu ka
+          - kana: にもつをあずけてもいいですか
+            romaji: nimotsu o azukete mo ii desu ka
+          - kanji: 荷物をあずけてもいいですか
+            kana: にもつをあずけてもいいですか
+            romaji: nimotsu o azukete mo ii desu ka
+        hint: 預ける is あずける; use 預けて + もいいですか.
+        explanation: >-
+          荷物を預けてもいいですか is にもつをあずけてもいいですか. A transcript may
+          return the kanji form, the kana form, or a mixed form, so all are accepted.
+          もいいですか marks the permission question.
+      - id: u10-l2-13
+        kind: speaking
+        concepts: [prohibition-nai-de-kudasai]
+        prompt: Tell someone not to eat in the room, aloud, then confirm the transcript.
+        accept:
+          - kanji: 部屋で食べないでください
+            kana: へやでたべないでください
+            romaji: heya de tabenai de kudasai
+          - kana: へやでたべないでください
+            romaji: heya de tabenai de kudasai
+          - kanji: 部屋でたべないでください
+            kana: へやでたべないでください
+            romaji: heya de tabenai de kudasai
+        hint: 食べない + でください.
+        explanation: >-
+          Say 部屋で食べないでください. The kana and mixed forms are accepted too,
+          because the transcript may not return every kanji. ないでください carries
+          the negative request.
+
+  - id: u10-l3
+    title: ホテルで — putting it together
+    objective: >-
+      Check in with a reservation, ask whether a room is available, ask to leave
+      luggage, ask permission, and respond to a refusal in a hotel conversation,
+      using 〜ています for the state 空いています and 予約しています, then do it
+      without scaffolding.
+    anchors:
+      - kanji: 部屋が空いています
+        kana: へやがあいています
+        romaji: heya ga aite imasu
+      - kanji: 予約しています
+        kana: よやくしています
+        romaji: yoyaku shite imasu
+      - kanji: 空いている部屋はありますか
+        kana: あいているへやはありますか
+        romaji: aite iru heya wa arimasu ka
+    teach:
+      - prose: >-
+          〜ています also describes a state, not only an action in progress.
+          空いています means the room is available now, and 予約しています means a
+          reservation already exists because you made it. 空きます is the event
+          "will become empty"; 空いています is the state it is in now.
+        examples:
+          - kanji: 部屋が空いています
+            kana: へやがあいています
+            romaji: heya ga aite imasu
+          - kanji: 予約しています
+            kana: よやくしています
+            romaji: yoyaku shite imasu
+          - kanji: 部屋が空きます
+            kana: へやがあきます
+            romaji: heya ga akimasu
+      - prose: >-
+          At the hotel, check in with チェックインをお願いします and 予約があります.
+          Ask whether a room is available with 空いている部屋はありますか. Ask to leave
+          luggage with 荷物を預けてもいいですか. Ask permission to enter with
+          部屋に入ってもいいですか. If staff refuse, recognize 〜ないでください and
+          answer はい、わかりました.
+        examples:
+          - kanji: 空いている部屋はありますか
+            kana: あいているへやはありますか
+            romaji: aite iru heya wa arimasu ka
+          - kanji: 荷物を預けてもいいですか
+            kana: にもつをあずけてもいいですか
+            romaji: nimotsu o azukete mo ii desu ka
+          - kanji: 部屋に入ってもいいですか
+            kana: へやにはいってもいいですか
+            romaji: heya ni haitte mo ii desu ka
+    steps:
+      - id: u10-l3-1
+        kind: interpretation
+        concepts: [state-te-imasu, hotel-vocabulary]
+        prompt: >-
+          Two sentences: 部屋が空いています and 部屋が空きます. One describes the room
+          right now; the other says it will become empty. Which one means "The room
+          is available"?
+        target:
+          kanji: 部屋が空いています
+          kana: へやがあいています
+          romaji: heya ga aite imasu
+        accept_meanings:
+          - The room is available.
+          - The room is free.
+          - The room is vacant.
+          - The room is empty right now.
+        hint: 空いています describes the state the room is in now.
+        explanation: >-
+          部屋が空いています describes the state: the room is available now.
+          部屋が空きます says the room will become empty, which is an event, not the
+          current state.
+      - id: u10-l3-2
+        kind: construction
+        concepts: [state-te-imasu, hotel-vocabulary]
+        prompt: Say the room is available.
+        accept:
+          - kanji: 部屋が空いています
+            kana: へやがあいています
+            romaji: heya ga aite imasu
+        hint: 空く → 空いて, then add います for the state.
+        explanation: >-
+          部屋が空いています says the room is available. 空いて is the て form of
+          空く, and います presents the resulting state.
+      - id: u10-l3-3
+        kind: transformation
+        concepts: [state-te-imasu]
+        prompt: >-
+          Change 部屋が空きます ("The room will become empty") into "The room is
+          available right now."
+        target:
+          kanji: 部屋が空きます
+          kana: へやがあきます
+          romaji: heya ga akimasu
+        accept:
+          - kanji: 部屋が空いています
+            kana: へやがあいています
+            romaji: heya ga aite imasu
+        hint: Use the て form plus います for the current state.
+        explanation: >-
+          部屋が空いています uses 空いて plus います. 空きます names the event of
+          becoming empty, not the state of being available.
+      - id: u10-l3-4
+        kind: construction
+        concepts: [state-te-imasu, hotel-vocabulary]
+        prompt: Say that you have a reservation, using the state form.
+        accept:
+          - kanji: 予約しています
+            kana: よやくしています
+            romaji: yoyaku shite imasu
+        hint: 予約する → 予約して, then add います.
+        explanation: >-
+          予約しています presents the reservation as an existing state, like
+          持っています. The reservation is already made; you are not doing the
+          reserving right now.
+      - id: u10-l3-5
+        kind: completion
+        concepts: [state-te-imasu]
+        prompt: Fill the ending — "The room is available."
+        target:
+          kanji: 部屋が空い＿います
+          kana: へやがあい＿います
+          romaji: heya ga ai _ imasu
+        accept:
+          - kanji: て
+            kana: て
+            romaji: te
+        hint: 空く → 空いて.
+        explanation: >-
+          部屋が空いています needs て before います. 空いて is the て form, and the
+          pair ています carries the state.
+      - id: u10-l3-6
+        kind: construction
+        concepts: [hotel-vocabulary]
+        prompt: Ask whether there is an available room.
+        accept:
+          - kanji: 空いている部屋はありますか
+            kana: あいているへやはありますか
+            romaji: aite iru heya wa arimasu ka
+        hint: 空いている describes the room; はありますか asks whether it exists.
+        explanation: >-
+          空いている部屋はありますか asks whether an available room exists.
+          空いている modifies 部屋, は marks it as what you are asking about, and
+          ありますか asks availability.
+      - id: u10-l3-7
+        kind: conversation
+        concepts: [existence-verbs, existence-ni-ga, hotel-vocabulary, permission-te-mo-ii, prohibition-nai-de-kudasai, state-te-imasu]
+        prompt: >-
+          You arrive at a hotel with a reservation. Check in, ask whether a room is
+          available now, ask to leave your luggage, ask permission to enter the room,
+          and respond when the staff tell you not to do something.
+        scenario:
+          turns:
+            - speaker: npc
+              line:
+                kanji: いらっしゃいませ。チェックインですか。
+                kana: いらっしゃいませ。チェックインですか。
+                romaji: irasshaimase. chekku in desu ka
+            - speaker: learner
+              accept:
+                - kanji: はい、予約があります。
+                  kana: はい、よやくがあります。
+                  romaji: hai, yoyaku ga arimasu
+                - kanji: 予約しています。
+                  kana: よやくしています。
+                  romaji: yoyaku shite imasu
+                - kanji: チェックインをお願いします。
+                  kana: チェックインをおねがいします。
+                  romaji: chekku in o onegai shimasu
+            - speaker: npc
+              line:
+                kanji: かしこまりました。少々お待ちください。
+                kana: かしこまりました。しょうしょうおまちください。
+                romaji: kashikomarimashita. shoushou omachi kudasai
+            - speaker: learner
+              accept:
+                - kanji: 今、空いている部屋はありますか。
+                  kana: いま、あいているへやはありますか。
+                  romaji: ima, aite iru heya wa arimasu ka
+                - kanji: 空いている部屋はありますか。
+                  kana: あいているへやはありますか。
+                  romaji: aite iru heya wa arimasu ka
+                - kanji: 部屋は空いていますか。
+                  kana: へやはあいていますか。
+                  romaji: heya wa aite imasu ka
+            - speaker: npc
+              line:
+                kanji: はい、空いています。三階の部屋です。
+                kana: はい、あいています。さんがいのへやです。
+                romaji: hai, aite imasu. sangai no heya desu
+            - speaker: learner
+              accept:
+                - kanji: すみません、荷物を預けてもいいですか。
+                  kana: すみません、にもつをあずけてもいいですか。
+                  romaji: sumimasen, nimotsu o azukete mo ii desu ka
+                - kanji: 荷物を預けてもいいですか。
+                  kana: にもつをあずけてもいいですか。
+                  romaji: nimotsu o azukete mo ii desu ka
+            - speaker: npc
+              line:
+                kanji: はい、どうぞ。お預かりします。
+                kana: はい、どうぞ。おあずかりします。
+                romaji: hai, douzo. oazukari shimasu
+            - speaker: learner
+              accept:
+                - kanji: 部屋に入ってもいいですか。
+                  kana: へやにはいってもいいですか。
+                  romaji: heya ni haitte mo ii desu ka
+                - kanji: 今、部屋に入ってもいいですか。
+                  kana: いま、へやにはいってもいいですか。
+                  romaji: ima, heya ni haitte mo ii desu ka
+            - speaker: npc
+              line:
+                kanji: はい、いいですよ。でも、部屋で食べないでください。
+                kana: はい、いいですよ。でも、へやでたべないでください。
+                romaji: hai, ii desu yo. demo, heya de tabenai de kudasai
+            - speaker: learner
+              accept:
+                - kanji: はい、わかりました。
+                  kana: はい、わかりました。
+                  romaji: hai, wakarimashita
+                - kanji: わかりました。食べません。
+                  kana: わかりました。たべません。
+                  romaji: wakarimashita. tabemasen
+                - kanji: はい、気をつけます。
+                  kana: はい、きをつけます。
+                  romaji: hai, ki o tsukemasu
+        hint: >-
+          Check in with 予約があります or チェックインをお願いします. Ask about the
+          room with 空いている部屋はありますか, ask to leave luggage with
+          荷物を預けてもいいですか, and ask permission with 部屋に入ってもいいですか.
+          Recognize ないでください in the staff's refusal and answer わかりました.
+        explanation: >-
+          The learner checks in with 予約があります, asks whether a room is available
+          with 空いている部屋はありますか, asks to leave luggage with
+          荷物を預けてもいいですか, asks permission to enter with
+          部屋に入ってもいいですか, and answers the staff's 部屋で食べないでください with
+          はい、わかりました. 空いています is a state; 預けてもいいですか asks
+          permission; ないでください is the refusal.
+      - id: u10-l3-8
+        kind: speaking
+        concepts: [existence-verbs, existence-ni-ga, hotel-vocabulary, permission-te-mo-ii, prohibition-nai-de-kudasai, state-te-imasu]
+        prompt: >-
+          You arrive at a hotel with a reservation. Without looking back, check in,
+          ask whether a room is available now, ask to leave your luggage, ask
+          permission to enter the room, and respond when staff tell you not to eat
+          in the room. Speak aloud.
+        rubric: >-
+          Does the check-in use 予約があります or 予約しています? Does the room
+          question use 空いている部屋はありますか or 部屋は空いていますか? Does the
+          luggage request use 荷物を預けてもいいですか to ask permission, and does
+          the room request use 部屋に入ってもいいですか? Does the learner recognize
+          ないでください and answer わかりました without repeating the refusal as their
+          own request? Judge meaning, grammar, naturalness and register separately.
+          There is no model answer.

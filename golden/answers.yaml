@@ -2555,3 +2555,282 @@
 - step: u9-l3-10
   answer: Do you have any allergies?
   verdict: wrong
+- step: u10-l1-1
+  answer: There is a bed in the room.
+  verdict: correct
+- step: u10-l1-1
+  answer: There's a bed in the room.
+  verdict: correct
+- step: u10-l1-1
+  answer: The room has a bed.
+  verdict: correct
+- step: u10-l1-1
+  answer: A bed is in the room.
+  verdict: correct
+- step: u10-l1-1
+  answer: There is a person in the room.
+  verdict: wrong
+- step: u10-l1-2
+  answer: There is a person in the lobby.
+  verdict: correct
+- step: u10-l1-2
+  answer: There are people in the lobby.
+  verdict: correct
+- step: u10-l1-2
+  answer: Someone is in the lobby.
+  verdict: correct
+- step: u10-l1-2
+  answer: There is a person in the room.
+  verdict: wrong
+- step: u10-l1-3
+  answer: 部屋にベッドがあります
+  verdict: correct
+- step: u10-l1-3
+  answer: 部屋にベッドがいます
+  verdict: wrong
+- step: u10-l1-4
+  answer: に
+  verdict: correct
+- step: u10-l1-4
+  answer: が
+  verdict: wrong
+- step: u10-l1-5
+  answer: 部屋にベッドがあります
+  verdict: correct
+- step: u10-l1-5
+  answer: 部屋にベッドがいます
+  verdict: wrong
+- step: u10-l1-6
+  answer: ロビーに人がいます
+  verdict: correct
+- step: u10-l1-6
+  answer: ロビーに人があります
+  verdict: wrong
+- step: u10-l1-7
+  answer: が
+  verdict: correct
+- step: u10-l1-7
+  answer: に
+  verdict: wrong
+- step: u10-l1-8
+  answer: 部屋にテレビがありません
+  verdict: correct
+- step: u10-l1-8
+  answer: 部屋にテレビがあります
+  verdict: wrong
+- step: u10-l1-9
+  answer: I have a reservation.
+  verdict: correct
+- step: u10-l1-9
+  answer: I have a booking.
+  verdict: correct
+- step: u10-l1-9
+  answer: There is a reservation.
+  verdict: correct
+- step: u10-l1-9
+  answer: I have a room.
+  verdict: wrong
+- step: u10-l1-10
+  answer: 予約があります
+  verdict: correct
+- step: u10-l1-10
+  answer: 予約がいます
+  verdict: wrong
+- step: u10-l1-11
+  answer: Who is in the room?
+  verdict: correct
+- step: u10-l1-11
+  answer: Who is there in the room?
+  verdict: correct
+- step: u10-l1-11
+  answer: What is in the room?
+  verdict: wrong
+- step: u10-l1-12
+  answer: 部屋にベッドがあります
+  verdict: correct
+- step: u10-l1-12
+  answer: へやにベッドがあります
+  verdict: correct
+- step: u10-l1-12
+  answer: heya ni beddo ga imasu
+  verdict: wrong
+- step: u10-l1-13
+  answer: 部屋に机があります
+  verdict: correct
+- step: u10-l1-13
+  answer: 部屋に机がいます
+  verdict: wrong
+- step: u10-l2-1
+  answer: May I leave my luggage?
+  verdict: correct
+- step: u10-l2-1
+  answer: Is it all right if I leave my luggage?
+  verdict: correct
+- step: u10-l2-1
+  answer: Can I leave my luggage?
+  verdict: correct
+- step: u10-l2-1
+  answer: May I check my luggage?
+  verdict: correct
+- step: u10-l2-1
+  answer: Please keep my luggage.
+  verdict: wrong
+- step: u10-l2-2
+  answer: Please don't eat in the room.
+  verdict: correct
+- step: u10-l2-2
+  answer: Please do not eat in the room.
+  verdict: correct
+- step: u10-l2-2
+  answer: Don't eat in the room, please.
+  verdict: correct
+- step: u10-l2-2
+  answer: Please eat in the room.
+  verdict: wrong
+- step: u10-l2-3
+  answer: 荷物を預けてもいいですか
+  verdict: correct
+- step: u10-l2-3
+  answer: 荷物を預けてください
+  verdict: wrong
+- step: u10-l2-4
+  answer: 今、チェックインしてもいいですか
+  verdict: correct
+- step: u10-l2-4
+  answer: チェックインしてもいいですか
+  verdict: correct
+- step: u10-l2-4
+  answer: チェックインしてください
+  verdict: wrong
+- step: u10-l2-5
+  answer: 部屋で食べないでください
+  verdict: correct
+- step: u10-l2-5
+  answer: 部屋で食べてもいいですか
+  verdict: wrong
+- step: u10-l2-6
+  answer: 部屋で食べないでください
+  verdict: correct
+- step: u10-l2-6
+  answer: 部屋で食べてもいいですか
+  verdict: wrong
+- step: u10-l2-7
+  answer: も
+  verdict: correct
+- step: u10-l2-7
+  answer: は
+  verdict: wrong
+- step: u10-l2-8
+  answer: ない
+  verdict: correct
+- step: u10-l2-8
+  answer: て
+  verdict: wrong
+- step: u10-l2-9
+  answer: タクシーを呼んでください
+  verdict: correct
+- step: u10-l2-9
+  answer: タクシーをお願いします
+  verdict: correct
+- step: u10-l2-9
+  answer: タクシーを呼んでもいいですか
+  verdict: wrong
+- step: u10-l2-10
+  answer: May I enter the room?
+  verdict: correct
+- step: u10-l2-10
+  answer: Is it all right if I go into the room?
+  verdict: correct
+- step: u10-l2-10
+  answer: Can I enter the room?
+  verdict: correct
+- step: u10-l2-10
+  answer: Please enter the room.
+  verdict: wrong
+- step: u10-l2-11
+  answer: Please don't leave your luggage here.
+  verdict: correct
+- step: u10-l2-11
+  answer: Please do not put your luggage here.
+  verdict: correct
+- step: u10-l2-11
+  answer: Please don't put your luggage here.
+  verdict: correct
+- step: u10-l2-11
+  answer: Please leave your luggage here.
+  verdict: wrong
+- step: u10-l2-12
+  answer: 荷物を預けてもいいですか
+  verdict: correct
+- step: u10-l2-12
+  answer: にもつをあずけてもいいですか
+  verdict: correct
+- step: u10-l2-12
+  answer: 荷物をあずけてもいいですか
+  verdict: correct
+- step: u10-l2-12
+  answer: 荷物を預けてください
+  verdict: wrong
+- step: u10-l2-13
+  answer: 部屋で食べないでください
+  verdict: correct
+- step: u10-l2-13
+  answer: へやでたべないでください
+  verdict: correct
+- step: u10-l2-13
+  answer: 部屋でたべないでください
+  verdict: correct
+- step: u10-l2-13
+  answer: 部屋で食べてもいいですか
+  verdict: wrong
+- step: u10-l3-1
+  answer: The room is available.
+  verdict: correct
+- step: u10-l3-1
+  answer: The room is free.
+  verdict: correct
+- step: u10-l3-1
+  answer: The room is vacant.
+  verdict: correct
+- step: u10-l3-1
+  answer: The room is empty right now.
+  verdict: correct
+- step: u10-l3-1
+  answer: The room will become empty.
+  verdict: wrong
+- step: u10-l3-2
+  answer: 部屋が空いています
+  verdict: correct
+- step: u10-l3-2
+  answer: 部屋が空きます
+  verdict: wrong
+- step: u10-l3-3
+  answer: 部屋が空いています
+  verdict: correct
+- step: u10-l3-3
+  answer: 部屋が空きます
+  verdict: wrong
+- step: u10-l3-4
+  answer: 予約しています
+  verdict: correct
+- step: u10-l3-4
+  answer: 予約します
+  verdict: wrong
+- step: u10-l3-5
+  answer: て
+  verdict: correct
+- step: u10-l3-5
+  answer: た
+  verdict: wrong
+- step: u10-l3-6
+  answer: 空いている部屋はありますか
+  verdict: correct
+- step: u10-l3-6
+  answer: 空いている部屋がいますか
+  verdict: wrong
+- step: u10-l1-14
+  answer: 部屋にベッドがあります
+  verdict: correct
+- step: u10-l1-14
+  answer: 部屋がベッドにあります
+  verdict: wrong
