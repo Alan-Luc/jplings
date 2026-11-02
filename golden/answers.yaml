@@ -2834,3 +2834,495 @@
 - step: u10-l1-14
   answer: 部屋がベッドにあります
   verdict: wrong
+- step: u11-l1-1
+  answer: There is a bank on the corner.
+  verdict: correct
+- step: u11-l1-1
+  answer: There's a bank at the corner.
+  verdict: correct
+- step: u11-l1-1
+  answer: The bank is on the corner.
+  verdict: correct
+- step: u11-l1-1
+  answer: A bank is at the corner.
+  verdict: correct
+- step: u11-l1-1
+  answer: There is a corner at the bank.
+  verdict: wrong
+- step: u11-l1-2
+  answer: There is a convenience store near the traffic signal.
+  verdict: correct
+- step: u11-l1-2
+  answer: There's a convenience store near the signal.
+  verdict: correct
+- step: u11-l1-2
+  answer: A convenience store is near the traffic light.
+  verdict: correct
+- step: u11-l1-2
+  answer: There is a traffic signal near the convenience store.
+  verdict: wrong
+- step: u11-l1-3
+  answer: 角に銀行があります
+  verdict: correct
+- step: u11-l1-3
+  answer: かどにぎんこうがあります
+  verdict: correct
+- step: u11-l1-3
+  answer: kado ni ginkou ga arimasu
+  verdict: correct
+- step: u11-l1-3
+  answer: 角で銀行があります
+  verdict: wrong
+- step: u11-l1-4
+  answer: に
+  verdict: correct
+- step: u11-l1-4
+  answer: ni
+  verdict: correct
+- step: u11-l1-4
+  answer: で
+  verdict: wrong
+- step: u11-l1-5
+  answer: 角に銀行があります
+  verdict: correct
+- step: u11-l1-5
+  answer: かどにぎんこうがあります
+  verdict: correct
+- step: u11-l1-5
+  answer: kado ni ginkou ga arimasu
+  verdict: correct
+- step: u11-l1-5
+  answer: 角で銀行があります
+  verdict: wrong
+- step: u11-l1-6
+  answer: 信号の近くに交番があります
+  verdict: correct
+- step: u11-l1-6
+  answer: しんごうのちかくにこうばんがあります
+  verdict: correct
+- step: u11-l1-6
+  answer: shingou no chikaku ni kouban ga arimasu
+  verdict: correct
+- step: u11-l1-6
+  answer: 信号の近くに交番がいます
+  verdict: wrong
+- step: u11-l1-7
+  answer: There is a person on the corner.
+  verdict: correct
+- step: u11-l1-7
+  answer: There's someone at the corner.
+  verdict: correct
+- step: u11-l1-7
+  answer: Someone is on the corner.
+  verdict: correct
+- step: u11-l1-7
+  answer: There is a corner at the person.
+  verdict: wrong
+- step: u11-l1-8
+  answer: が
+  verdict: correct
+- step: u11-l1-8
+  answer: ga
+  verdict: correct
+- step: u11-l1-8
+  answer: を
+  verdict: wrong
+- step: u11-l1-9
+  answer: 信号の近くにコンビニがあります
+  verdict: correct
+- step: u11-l1-9
+  answer: しんごうのちかくにコンビニがあります
+  verdict: correct
+- step: u11-l1-9
+  answer: shingou no chikaku ni konbini ga arimasu
+  verdict: correct
+- step: u11-l1-9
+  answer: 信号の近くでコンビニがあります
+  verdict: wrong
+- step: u11-l1-10
+  answer: 角に銀行があります
+  verdict: correct
+- step: u11-l1-10
+  answer: かどにぎんこうがあります
+  verdict: correct
+- step: u11-l1-10
+  answer: kado ni ginkou ga arimasu
+  verdict: correct
+- step: u11-l1-10
+  answer: 角にぎんこうがあります
+  verdict: correct
+- step: u11-l1-10
+  answer: 角に銀行がいます
+  verdict: wrong
+- step: u11-l2-1
+  answer: There is a bank on the right.
+  verdict: correct
+- step: u11-l2-1
+  answer: The bank is on the right.
+  verdict: correct
+- step: u11-l2-1
+  answer: There's a bank on the right side.
+  verdict: correct
+- step: u11-l2-1
+  answer: There is a bank on the left.
+  verdict: wrong
+- step: u11-l2-2
+  answer: Please go straight.
+  verdict: correct
+- step: u11-l2-2
+  answer: Go straight.
+  verdict: correct
+- step: u11-l2-2
+  answer: Please go straight ahead.
+  verdict: correct
+- step: u11-l2-2
+  answer: Go straight ahead, please.
+  verdict: correct
+- step: u11-l2-2
+  answer: Please turn right.
+  verdict: wrong
+- step: u11-l2-3
+  answer: まっすぐ行ってください
+  verdict: correct
+- step: u11-l2-3
+  answer: まっすぐいってください
+  verdict: correct
+- step: u11-l2-3
+  answer: massugu itte kudasai
+  verdict: correct
+- step: u11-l2-3
+  answer: まっすぐ曲がってください
+  verdict: wrong
+- step: u11-l2-4
+  answer: に
+  verdict: correct
+- step: u11-l2-4
+  answer: ni
+  verdict: correct
+- step: u11-l2-4
+  answer: で
+  verdict: wrong
+- step: u11-l2-5
+  answer: まっすぐ行ってください
+  verdict: correct
+- step: u11-l2-5
+  answer: まっすぐいってください
+  verdict: correct
+- step: u11-l2-5
+  answer: massugu itte kudasai
+  verdict: correct
+- step: u11-l2-5
+  answer: まっすぐ曲がってください
+  verdict: wrong
+- step: u11-l2-6
+  answer: Go straight, and there is a convenience store on the right.
+  verdict: correct
+- step: u11-l2-6
+  answer: Please go straight; there's a convenience store on the right.
+  verdict: correct
+- step: u11-l2-6
+  answer: Go straight, then you will see a convenience store on the right.
+  verdict: correct
+- step: u11-l2-6
+  answer: Go straight, and there is a convenience store on the left.
+  verdict: wrong
+- step: u11-l2-7
+  answer: 左にコンビニがあります
+  verdict: correct
+- step: u11-l2-7
+  answer: ひだりにコンビニがあります
+  verdict: correct
+- step: u11-l2-7
+  answer: hidari ni konbini ga arimasu
+  verdict: correct
+- step: u11-l2-7
+  answer: 右にコンビニがあります
+  verdict: wrong
+- step: u11-l2-8
+  answer: There is a bank at the next corner.
+  verdict: correct
+- step: u11-l2-8
+  answer: There's a bank on the next corner.
+  verdict: correct
+- step: u11-l2-8
+  answer: The bank is at the next corner.
+  verdict: correct
+- step: u11-l2-8
+  answer: There is a bank at the last corner.
+  verdict: wrong
+- step: u11-l2-9
+  answer: まっすぐ行ってください
+  verdict: correct
+- step: u11-l2-9
+  answer: まっすぐいってください
+  verdict: correct
+- step: u11-l2-9
+  answer: massugu itte kudasai
+  verdict: correct
+- step: u11-l2-9
+  answer: まっすぐ曲がってください
+  verdict: wrong
+- step: u11-l2-10
+  answer: 次の角に銀行があります
+  verdict: correct
+- step: u11-l2-10
+  answer: つぎのかどにぎんこうがあります
+  verdict: correct
+- step: u11-l2-10
+  answer: tsugi no kado ni ginkou ga arimasu
+  verdict: correct
+- step: u11-l2-10
+  answer: 次の角で銀行があります
+  verdict: wrong
+- step: u11-l3-1
+  answer: Please turn at the corner.
+  verdict: correct
+- step: u11-l3-1
+  answer: Turn at the corner.
+  verdict: correct
+- step: u11-l3-1
+  answer: Please turn the corner.
+  verdict: correct
+- step: u11-l3-1
+  answer: Please go straight at the corner.
+  verdict: wrong
+- step: u11-l3-2
+  answer: The convenience store is before the bank.
+  verdict: correct
+- step: u11-l3-2
+  answer: There is a convenience store before the bank.
+  verdict: correct
+- step: u11-l3-2
+  answer: The convenience store is on the near side of the bank.
+  verdict: correct
+- step: u11-l3-2
+  answer: The convenience store is past the bank.
+  verdict: wrong
+- step: u11-l3-3
+  answer: The convenience store is past the bank.
+  verdict: correct
+- step: u11-l3-3
+  answer: There is a convenience store past the bank.
+  verdict: correct
+- step: u11-l3-3
+  answer: The convenience store is beyond the bank.
+  verdict: correct
+- step: u11-l3-3
+  answer: The convenience store is before the bank.
+  verdict: wrong
+- step: u11-l3-4
+  answer: The hotel is next to the station.
+  verdict: correct
+- step: u11-l3-4
+  answer: The hotel is right next to the station.
+  verdict: correct
+- step: u11-l3-4
+  answer: There is a hotel next to the station.
+  verdict: correct
+- step: u11-l3-4
+  answer: The hotel is near the station.
+  verdict: wrong
+- step: u11-l3-5
+  answer: 角を右に曲がってください
+  verdict: correct
+- step: u11-l3-5
+  answer: かどをみぎにまがってください
+  verdict: correct
+- step: u11-l3-5
+  answer: kado o migi ni magatte kudasai
+  verdict: correct
+- step: u11-l3-5
+  answer: 角に右に曲がってください
+  verdict: wrong
+- step: u11-l3-6
+  answer: 信号を左に曲がってください
+  verdict: correct
+- step: u11-l3-6
+  answer: しんごうをひだりにまがってください
+  verdict: correct
+- step: u11-l3-6
+  answer: shingou o hidari ni magatte kudasai
+  verdict: correct
+- step: u11-l3-6
+  answer: 信号に左に曲がってください
+  verdict: wrong
+- step: u11-l3-7
+  answer: を
+  verdict: correct
+- step: u11-l3-7
+  answer: o
+  verdict: correct
+- step: u11-l3-7
+  answer: に
+  verdict: wrong
+- step: u11-l3-8
+  answer: 隣
+  verdict: correct
+- step: u11-l3-8
+  answer: となり
+  verdict: correct
+- step: u11-l3-8
+  answer: tonari
+  verdict: correct
+- step: u11-l3-8
+  answer: 近く
+  verdict: wrong
+- step: u11-l3-9
+  answer: 角を右に曲がってください
+  verdict: correct
+- step: u11-l3-9
+  answer: かどをみぎにまがってください
+  verdict: correct
+- step: u11-l3-9
+  answer: kado o migi ni magatte kudasai
+  verdict: correct
+- step: u11-l3-9
+  answer: 角に右に曲がってください
+  verdict: wrong
+- step: u11-l3-10
+  answer: 銀行の手前にコンビニがあります
+  verdict: correct
+- step: u11-l3-10
+  answer: ぎんこうのてまえにコンビニがあります
+  verdict: correct
+- step: u11-l3-10
+  answer: ginkou no temae ni konbini ga arimasu
+  verdict: correct
+- step: u11-l3-10
+  answer: 銀行の先にコンビニがあります
+  verdict: wrong
+- step: u11-l3-11
+  answer: 信号の先に郵便局があります
+  verdict: correct
+- step: u11-l3-11
+  answer: しんごうのさきにゆうびんきょくがあります
+  verdict: correct
+- step: u11-l3-11
+  answer: shingou no saki ni yuubinkyoku ga arimasu
+  verdict: correct
+- step: u11-l3-11
+  answer: 信号の手前に郵便局があります
+  verdict: wrong
+- step: u11-l3-12
+  answer: 郵便局の手前に交番があります
+  verdict: correct
+- step: u11-l3-12
+  answer: ゆうびんきょくのてまえにこうばんがあります
+  verdict: correct
+- step: u11-l3-12
+  answer: yuubinkyoku no temae ni kouban ga arimasu
+  verdict: correct
+- step: u11-l3-12
+  answer: 郵便局の先に交番があります
+  verdict: wrong
+- step: u11-l3-13
+  answer: Turn right at the signal; the convenience store is next to the post office.
+  verdict: correct
+- step: u11-l3-13
+  answer: Please turn right at the traffic signal, and the convenience store is next to the post office.
+  verdict: correct
+- step: u11-l3-13
+  answer: Turn right at the signal, then the convenience store is next to the post office.
+  verdict: correct
+- step: u11-l3-13
+  answer: Turn right at the signal; the convenience store is past the post office.
+  verdict: wrong
+- step: u11-l3-14
+  answer: Turn left at the corner and go straight; the station is before the bank.
+  verdict: correct
+- step: u11-l3-14
+  answer: Please turn left at the corner and go straight; the station is before the bank.
+  verdict: correct
+- step: u11-l3-14
+  answer: Turn left at the corner, go straight, and the station is on the near side of the bank.
+  verdict: correct
+- step: u11-l3-14
+  answer: Turn left at the corner and go straight; the station is past the bank.
+  verdict: wrong
+- step: u11-l3-15
+  answer: 信号を右に曲がってください
+  verdict: correct
+- step: u11-l3-15
+  answer: しんごうをみぎにまがってください
+  verdict: correct
+- step: u11-l3-15
+  answer: shingou o migi ni magatte kudasai
+  verdict: correct
+- step: u11-l3-15
+  answer: 信号をみぎに曲がってください
+  verdict: correct
+- step: u11-l3-15
+  answer: 信号に右に曲がってください
+  verdict: wrong
+- step: u11-l3-16
+  answer: 駅の隣にホテルがあります
+  verdict: correct
+- step: u11-l3-16
+  answer: えきのとなりにホテルがあります
+  verdict: correct
+- step: u11-l3-16
+  answer: eki no tonari ni hoteru ga arimasu
+  verdict: correct
+- step: u11-l3-16
+  answer: 駅の近くにホテルがあります
+  verdict: wrong
+- step: u11-l4-1
+  answer: About where is the post office?
+  verdict: correct
+- step: u11-l4-1
+  answer: Whereabouts is the post office?
+  verdict: correct
+- step: u11-l4-1
+  answer: Which part of town is the post office in?
+  verdict: correct
+- step: u11-l4-1
+  answer: Where about is the post office?
+  verdict: correct
+- step: u11-l4-1
+  answer: How long does it take to the post office?
+  verdict: wrong
+- step: u11-l4-2
+  answer: ホテルはどのへんですか
+  verdict: correct
+- step: u11-l4-2
+  answer: hoteru wa dono hen desu ka
+  verdict: correct
+- step: u11-l4-2
+  answer: ホテルは何分ですか
+  verdict: wrong
+- step: u11-l4-3
+  answer: How many minutes does it take to the station? Five minutes on foot.
+  verdict: correct
+- step: u11-l4-3
+  answer: How long does it take to the station? It is five minutes on foot.
+  verdict: correct
+- step: u11-l4-3
+  answer: How many minutes to the station? Five minutes walking.
+  verdict: correct
+- step: u11-l4-3
+  answer: How many minutes does it take to the station? Fifty minutes on foot.
+  verdict: wrong
+- step: u11-l4-4
+  answer: 駅まで何分かかりますか
+  verdict: correct
+- step: u11-l4-4
+  answer: えきまでなんぷんかかりますか
+  verdict: correct
+- step: u11-l4-4
+  answer: eki made nanpun kakarimasu ka
+  verdict: correct
+- step: u11-l4-4
+  answer: 駅までどのへんですか
+  verdict: wrong
+- step: u11-l4-5
+  answer: The hotel is past the station. Go straight, then turn left at the signal.
+  verdict: correct
+- step: u11-l4-5
+  answer: The hotel is past the station; go straight and turn left at the traffic signal.
+  verdict: correct
+- step: u11-l4-5
+  answer: The hotel is beyond the station. Go straight, then turn left at the signal.
+  verdict: correct
+- step: u11-l4-5
+  answer: The hotel is before the station. Go straight, then turn left at the signal.
+  verdict: wrong

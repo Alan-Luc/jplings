@@ -1,0 +1,1010 @@
+id: unit-11
+title: 道を聞く — asking the way and following a route
+taught: true
+concepts:
+  - id: place-existence
+    label: 角に銀行があります — place に with あります/います for landmarks
+  - id: direction-words
+    label: まっすぐ・右・左・角・信号 — the words a route is made of
+  - id: wo-magaru
+    label: 〜を曲がる — を marks the landmark you turn at, に marks the direction
+  - id: landmark-position
+    label: 〜の先・手前・隣・近く — where it is relative to a landmark
+  - id: route-followup
+    label: どのへん・何分かかりますか — narrowing down a place and timing the walk
+lessons:
+  - id: u11-l1
+    title: 角に銀行があります — landmarks, and where they exist
+    objective: >-
+      Say where a landmark is with place に and あります, and choose います when the
+      thing at that place is a person, so the sentence that locates a bank or a
+      police box is the same shape as the hotel sentences from U10.
+    anchors:
+      - kanji: 角に銀行があります
+        kana: かどにぎんこうがあります
+        romaji: kado ni ginkou ga arimasu
+      - kanji: 信号の近くにコンビニがあります
+        kana: しんごうのちかくにコンビニがあります
+        romaji: shingou no chikaku ni konbini ga arimasu
+      - kanji: 角に人がいます
+        kana: かどにひとがいます
+        romaji: kado ni hito ga imasu
+    teach:
+      - prose: >-
+          A route is landmarks plus places. 角 is the corner and 信号 is the traffic
+          signal, and both behave like the hotel places in U10: place に, thing が,
+          then あります. 角に銀行があります says a bank exists at the corner. で would
+          mark where an activity happens, so 角で銀行があります is not how you locate
+          the bank.
+        examples:
+          - kanji: 角に銀行があります
+            kana: かどにぎんこうがあります
+            romaji: kado ni ginkou ga arimasu
+          - kanji: 信号の近くにコンビニがあります
+            kana: しんごうのちかくにコンビニがあります
+            romaji: shingou no chikaku ni konbini ga arimasu
+          - kanji: 次の角に銀行があります
+            kana: つぎのかどにぎんこうがあります
+            romaji: tsugi no kado ni ginkou ga arimasu
+      - prose: >-
+          The landmark can be a whole phrase: 信号の近く, the area near the signal;
+          次の角, the next corner. Put that phrase before に and it names the place
+          where the thing exists. 信号の近くに交番があります says there is a police box
+          near the signal.
+        examples:
+          - kanji: 信号の近くに交番があります
+            kana: しんごうのちかくにこうばんがあります
+            romaji: shingou no chikaku ni kouban ga arimasu
+          - kanji: 次の角に銀行があります
+            kana: つぎのかどにぎんこうがあります
+            romaji: tsugi no kado ni ginkou ga arimasu
+      - prose: >-
+          あります is still only for things. A person standing at the corner takes
+          います: 角に人がいます. Directions are full of landmarks, but the existence
+          verb still depends on what is there.
+        examples:
+          - kanji: 角に人がいます
+            kana: かどにひとがいます
+            romaji: kado ni hito ga imasu
+          - kanji: 角に誰がいますか
+            kana: かどにだれがいますか
+            romaji: kado ni dare ga imasu ka
+    steps:
+      - id: u11-l1-1
+        kind: interpretation
+        concepts: [place-existence]
+        prompt: >-
+          Two sentences: 角に銀行があります and 角で銀行があります. Which one says a bank
+          exists at the corner, and what does it mean?
+        target:
+          kanji: 角に銀行があります
+          kana: かどにぎんこうがあります
+          romaji: kado ni ginkou ga arimasu
+        accept_meanings:
+          - There is a bank on the corner.
+          - There's a bank at the corner.
+          - The bank is on the corner.
+          - A bank is at the corner.
+        hint: に marks where the bank exists; で marks where an activity happens.
+        explanation: >-
+          角に銀行があります locates the bank: に marks the corner as the place where
+          it exists and が marks the bank as what exists. 角で would mark the corner
+          as the place of an activity, not the place of a thing.
+      - id: u11-l1-2
+        kind: interpretation
+        concepts: [place-existence]
+        prompt: What does this mean?
+        target:
+          kanji: 信号の近くにコンビニがあります
+          kana: しんごうのちかくにコンビニがあります
+          romaji: shingou no chikaku ni konbini ga arimasu
+        accept_meanings:
+          - There is a convenience store near the traffic signal.
+          - There's a convenience store near the signal.
+          - A convenience store is near the traffic light.
+        hint: 信号の近く is the place; に marks it.
+        explanation: >-
+          信号の近くにコンビニがあります puts the whole phrase 信号の近く before に, so
+          the place is the area near the signal. が marks the convenience store as
+          what exists there.
+      - id: u11-l1-3
+        kind: construction
+        concepts: [place-existence]
+        prompt: Say there is a bank on the corner.
+        accept:
+          - kanji: 角に銀行があります
+            kana: かどにぎんこうがあります
+            romaji: kado ni ginkou ga arimasu
+        hint: Place に, thing が, then あります.
+        explanation: >-
+          角に銀行があります marks the corner with に and the bank with が. あります
+          is correct because a bank is a thing.
+      - id: u11-l1-4
+        kind: completion
+        concepts: [place-existence]
+        prompt: Fill the particle — "There is a bank on the corner."
+        target:
+          kanji: 角＿銀行があります
+          kana: かど＿ぎんこうがあります
+          romaji: kado _ ginkou ga arimasu
+        accept:
+          - kanji: に
+            kana: に
+            romaji: ni
+        hint: Which particle marks where the bank exists?
+        explanation: >-
+          に marks 角 as the place where the bank exists. が already marks 銀行 as the
+          thing that exists.
+      - id: u11-l1-5
+        kind: transformation
+        concepts: [place-existence]
+        prompt: >-
+          A learner writes 角で銀行があります for "There is a bank on the corner."
+          Write it correctly.
+        target:
+          kanji: 角で銀行があります
+          kana: かどでぎんこうがあります
+          romaji: kado de ginkou ga arimasu
+        accept:
+          - kanji: 角に銀行があります
+            kana: かどにぎんこうがあります
+            romaji: kado ni ginkou ga arimasu
+        hint: で is for activities; existence takes に.
+        explanation: >-
+          角に銀行があります uses に because the bank exists at the corner. で would
+          say the corner is where something happens, which does not fit あります.
+      - id: u11-l1-6
+        kind: construction
+        concepts: [place-existence]
+        prompt: Say there is a police box near the signal. The new word is 交番 (こうばん).
+        accept:
+          - kanji: 信号の近くに交番があります
+            kana: しんごうのちかくにこうばんがあります
+            romaji: shingou no chikaku ni kouban ga arimasu
+        hint: 信号の近く is the place; a police box is a thing.
+        explanation: >-
+          信号の近くに交番があります puts 信号の近く before に as the place, marks 交番
+          with が, and uses あります because a police box is a thing. The pattern
+          transfers to a new landmark.
+      - id: u11-l1-7
+        kind: listening
+        concepts: [place-existence]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: 角に人がいます。
+          kana: かどにひとがいます。
+          romaji: kado ni hito ga imasu
+        accept_meanings:
+          - There is a person on the corner.
+          - There's someone at the corner.
+          - Someone is on the corner.
+        hint: 人 takes います, not あります.
+        explanation: >-
+          角に人がいます says a person exists at the corner. 人 is a person, so the verb
+          is います; に marks the corner and が marks the person.
+      - id: u11-l1-8
+        kind: completion
+        concepts: [place-existence]
+        prompt: Fill the particle — "There is a person on the corner."
+        target:
+          kanji: 角に人＿います
+          kana: かどにひと＿います
+          romaji: kado ni hito _ imasu
+        accept:
+          - kanji: が
+            kana: が
+            romaji: ga
+        hint: が marks the person as what exists.
+        explanation: >-
+          が marks 人 as the person who exists at the corner. に already marks the
+          corner as the place.
+      - id: u11-l1-9
+        kind: construction
+        concepts: [place-existence]
+        prompt: Say there is a convenience store near the traffic signal.
+        accept:
+          - kanji: 信号の近くにコンビニがあります
+            kana: しんごうのちかくにコンビニがあります
+            romaji: shingou no chikaku ni konbini ga arimasu
+        hint: 信号の近くに + thing が + あります.
+        explanation: >-
+          信号の近くにコンビニがあります names the area near the signal with 信号の近く
+          + に, marks the store with が, and uses あります for a thing.
+      - id: u11-l1-10
+        kind: speaking
+        concepts: [place-existence]
+        prompt: Say "There is a bank on the corner." aloud, then confirm the transcript.
+        accept:
+          - kanji: 角に銀行があります
+            kana: かどにぎんこうがあります
+            romaji: kado ni ginkou ga arimasu
+          - kana: かどにぎんこうがあります
+            romaji: kado ni ginkou ga arimasu
+          - kanji: 角にぎんこうがあります
+            kana: かどにぎんこうがあります
+            romaji: kado ni ginkou ga arimasu
+        hint: 角 is かど; に marks the corner and が marks the bank.
+        explanation: >-
+          角に銀行があります is かどにぎんこうがあります. A transcript may return the
+          kanji form, the kana form, or a mixed form, so all are accepted. あります
+          is used because a bank is a thing.
+
+  - id: u11-l2
+    title: まっすぐ・右・左・角・信号 — the words in a route
+    objective: >-
+      Hear and produce the five words a route is built from — まっすぐ, 右, 左, 角,
+      信号 — and place a landmark on the right or left with に, without turning yet.
+    anchors:
+      - kanji: まっすぐ行ってください
+        kana: まっすぐいってください
+        romaji: massugu itte kudasai
+      - kanji: 右に銀行があります
+        kana: みぎにぎんこうがあります
+        romaji: migi ni ginkou ga arimasu
+      - kanji: 次の角に銀行があります
+        kana: つぎのかどにぎんこうがあります
+        romaji: tsugi no kado ni ginkou ga arimasu
+    teach:
+      - prose: >-
+          まっすぐ means straight ahead with no turn. It belongs with 行く:
+          まっすぐ行ってください, go straight. まっすぐ曲がってください is not a route
+          instruction, because 曲がる already means turning; まっすぐ says to keep
+          going.
+        examples:
+          - kanji: まっすぐ行ってください
+            kana: まっすぐいってください
+            romaji: massugu itte kudasai
+          - kanji: まっすぐ行きます
+            kana: まっすぐいきます
+            romaji: massugu ikimasu
+      - prose: >-
+          右 is the right side and 左 is the left side, from the position of the person
+          walking. A landmark on that side takes に + あります: 右に銀行があります, there
+          is a bank on the right; 左にコンビニがあります, there is a convenience store on
+          the left. The side word is a place, so it uses the same に as 角.
+        examples:
+          - kanji: 右に銀行があります
+            kana: みぎにぎんこうがあります
+            romaji: migi ni ginkou ga arimasu
+          - kanji: 左にコンビニがあります
+            kana: ひだりにコンビニがあります
+            romaji: hidari ni konbini ga arimasu
+      - prose: >-
+          角 and 信号 are the two landmarks that carry a route. 角 is the corner where
+          two streets meet, and 信号 is the traffic signal. 次の角 is the next corner
+          and 次の信号 is the next signal, so listen for 次 before the landmark.
+        examples:
+          - kanji: 次の角に銀行があります
+            kana: つぎのかどにぎんこうがあります
+            romaji: tsugi no kado ni ginkou ga arimasu
+          - kanji: 次の信号です
+            kana: つぎのしんごうです
+            romaji: tsugi no shingou desu
+    steps:
+      - id: u11-l2-1
+        kind: interpretation
+        concepts: [direction-words]
+        prompt: >-
+          Two sentences: 右に銀行があります and 左に銀行があります. Which one says the
+          bank is on the right?
+        target:
+          kanji: 右に銀行があります
+          kana: みぎにぎんこうがあります
+          romaji: migi ni ginkou ga arimasu
+        accept_meanings:
+          - There is a bank on the right.
+          - The bank is on the right.
+          - There's a bank on the right side.
+        hint: 右 is right, 左 is left.
+        explanation: >-
+          右に銀行があります puts the bank on the right. 左 would put it on the left.
+          Both use に because the side is the place where the bank exists.
+      - id: u11-l2-2
+        kind: interpretation
+        concepts: [direction-words]
+        prompt: What does this mean?
+        target:
+          kanji: まっすぐ行ってください
+          kana: まっすぐいってください
+          romaji: massugu itte kudasai
+        accept_meanings:
+          - Please go straight.
+          - Go straight.
+          - Please go straight ahead.
+          - Go straight ahead, please.
+        hint: まっすぐ is straight ahead; 行ってください is a request to go.
+        explanation: >-
+          まっすぐ行ってください asks someone to keep going straight, with no turn.
+          行ってください is the て-form request from U5.
+      - id: u11-l2-3
+        kind: construction
+        concepts: [direction-words]
+        prompt: Say "Go straight."
+        accept:
+          - kanji: まっすぐ行ってください
+            kana: まっすぐいってください
+            romaji: massugu itte kudasai
+        hint: まっすぐ + 行ってください.
+        explanation: >-
+          まっすぐ行ってください pairs まっすぐ with 行く. 行ってください makes it a
+          polite request.
+      - id: u11-l2-4
+        kind: completion
+        concepts: [direction-words]
+        prompt: Fill the particle — "There is a bank on the right."
+        target:
+          kanji: 右＿銀行があります
+          kana: みぎ＿ぎんこうがあります
+          romaji: migi _ ginkou ga arimasu
+        accept:
+          - kanji: に
+            kana: に
+            romaji: ni
+        hint: The side is the place where the bank exists.
+        explanation: >-
+          右に銀行があります uses に to mark the right side as the place. が marks the
+          bank as what exists there.
+      - id: u11-l2-5
+        kind: transformation
+        concepts: [direction-words]
+        prompt: >-
+          A classmate says まっすぐ曲がってください for "Go straight." Write it
+          correctly.
+        target:
+          kanji: まっすぐ曲がってください
+          kana: まっすぐまがってください
+          romaji: massugu magatte kudasai
+        accept:
+          - kanji: まっすぐ行ってください
+            kana: まっすぐいってください
+            romaji: massugu itte kudasai
+        hint: まっすぐ describes going, not turning.
+        explanation: >-
+          まっすぐ行ってください is "go straight". 曲がる already means turn, so
+          まっすぐ曲がってください contradicts itself. まっすぐ belongs with 行く.
+      - id: u11-l2-6
+        kind: listening
+        concepts: [direction-words]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: まっすぐ行ってください。右にコンビニがあります。
+          kana: まっすぐいってください。みぎにコンビニがあります。
+          romaji: massugu itte kudasai. migi ni konbini ga arimasu
+        accept_meanings:
+          - Go straight, and there is a convenience store on the right.
+          - Please go straight; there's a convenience store on the right.
+          - Go straight, then you will see a convenience store on the right.
+        hint: Two pieces — go straight, and the store is on the right.
+        explanation: >-
+          The route is two pieces: まっすぐ行ってください tells you to keep going, and
+          右にコンビニがあります puts the convenience store on the right. Reconstruct
+          the order, not just the words.
+      - id: u11-l2-7
+        kind: construction
+        concepts: [direction-words]
+        prompt: Say there is a convenience store on the left.
+        accept:
+          - kanji: 左にコンビニがあります
+            kana: ひだりにコンビニがあります
+            romaji: hidari ni konbini ga arimasu
+        hint: 左 is left; the side takes に.
+        explanation: >-
+          左にコンビニがあります marks the left side with に and the store with が.
+          あります is correct because a convenience store is a thing.
+      - id: u11-l2-8
+        kind: listening
+        concepts: [direction-words, place-existence]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: 次の角に銀行があります。
+          kana: つぎのかどにぎんこうがあります。
+          romaji: tsugi no kado ni ginkou ga arimasu
+        accept_meanings:
+          - There is a bank at the next corner.
+          - There's a bank on the next corner.
+          - The bank is at the next corner.
+        hint: 次の角 is the next corner.
+        explanation: >-
+          次の角に銀行があります says the bank is at the next corner. 次の marks the
+          corner as the one coming next, に marks it as the place, and が marks the
+          bank.
+      - id: u11-l2-9
+        kind: speaking
+        concepts: [direction-words]
+        prompt: Say "Go straight, please." aloud, then confirm the transcript.
+        accept:
+          - kanji: まっすぐ行ってください
+            kana: まっすぐいってください
+            romaji: massugu itte kudasai
+          - kana: まっすぐいってください
+            romaji: massugu itte kudasai
+        hint: まっすぐ is まっすぐ; 行って is いって.
+        explanation: >-
+          まっすぐ行ってください is まっすぐいってください. A transcript may return the
+          kanji or the kana form, so both are accepted. The request keeps 行って from
+          the て-form.
+      - id: u11-l2-10
+        kind: construction
+        concepts: [direction-words, place-existence]
+        prompt: Say the bank is at the next corner.
+        accept:
+          - kanji: 次の角に銀行があります
+            kana: つぎのかどにぎんこうがあります
+            romaji: tsugi no kado ni ginkou ga arimasu
+        hint: 次の角に + 銀行が + あります.
+        explanation: >-
+          次の角に銀行があります names the next corner with 次の角, marks it with に,
+          and says the bank exists there with が + あります.
+
+  - id: u11-l3
+    title: 角を曲がる — turning, and where it is from there
+    objective: >-
+      Turn at a landmark with を and state the direction with 右に or 左に, then say
+      where a place is relative to that landmark with 〜の先, 〜の手前, 〜の隣, and
+      〜の近く, choosing the right one of the three.
+    anchors:
+      - kanji: 角を右に曲がってください
+        kana: かどをみぎにまがってください
+        romaji: kado o migi ni magatte kudasai
+      - kanji: 信号を左に曲がってください
+        kana: しんごうをひだりにまがってください
+        romaji: shingou o hidari ni magatte kudasai
+      - kanji: 銀行の手前に交番があります
+        kana: ぎんこうのてまえにこうばんがあります
+        romaji: ginkou no temae ni kouban ga arimasu
+    teach:
+      - prose: >-
+          曲がる is "turn", and を marks the landmark you turn at: 角を曲がる turns at
+          the corner, 信号を曲がる turns at the signal. を is not an object being
+          turned; it marks the point you pass through and leave behind. The direction
+          takes に: 角を右に曲がる turns right at the corner, 信号を左に曲がる turns
+          left at the signal. 角に曲がる would treat the corner as a destination, and
+          that is not how a turn at a landmark is said.
+        examples:
+          - kanji: 角を右に曲がってください
+            kana: かどをみぎにまがってください
+            romaji: kado o migi ni magatte kudasai
+          - kanji: 信号を左に曲がってください
+            kana: しんごうをひだりにまがってください
+            romaji: shingou o hidari ni magatte kudasai
+          - kanji: 角を曲がります
+            kana: かどをまがります
+            romaji: kado o magarimasu
+      - prose: >-
+          先, 手前 and 隣 are three different answers to "where is it", and each
+          needs the landmark with の. 銀行の先 means past the bank, after you go by it.
+          銀行の手前 means before the bank, on the near side of it. 銀行の隣 means
+          directly next to the bank. Choosing the wrong one changes the route: past
+          and before are opposite sides of the same landmark.
+        examples:
+          - kanji: 銀行の先に郵便局があります
+            kana: ぎんこうのさきにゆうびんきょくがあります
+            romaji: ginkou no saki ni yuubinkyoku ga arimasu
+          - kanji: 銀行の手前に交番があります
+            kana: ぎんこうのてまえにこうばんがあります
+            romaji: ginkou no temae ni kouban ga arimasu
+          - kanji: 銀行の隣にコンビニがあります
+            kana: ぎんこうのとなりにコンビニがあります
+            romaji: ginkou no tonari ni konbini ga arimasu
+      - prose: >-
+          隣 and 近く are the pair that gets confused. 隣 is directly adjacent, sharing
+          a side: 駅の隣にホテルがあります means the hotel is right next door to the
+          station. 近く is somewhere in the area, maybe across the street or a block
+          away: 駅の近くにホテルがあります only means the hotel is near the station.
+          When someone says 隣, walk to the building itself; 近く only narrows the
+          area.
+        examples:
+          - kanji: 駅の隣にホテルがあります
+            kana: えきのとなりにホテルがあります
+            romaji: eki no tonari ni hoteru ga arimasu
+          - kanji: 駅の近くにホテルがあります
+            kana: えきのちかくにホテルがあります
+            romaji: eki no chikaku ni hoteru ga arimasu
+    steps:
+      - id: u11-l3-1
+        kind: interpretation
+        concepts: [wo-magaru]
+        prompt: >-
+          Two sentences: 角を曲がってください and 角に曲がってください. Which one tells
+          someone to turn at the corner, and what does it mean?
+        target:
+          kanji: 角を曲がってください
+          kana: かどをまがってください
+          romaji: kado o magatte kudasai
+        accept_meanings:
+          - Please turn at the corner.
+          - Turn at the corner.
+          - Please turn the corner.
+        hint: を marks the landmark you turn at.
+        explanation: >-
+          角を曲がってください marks 角 with を as the point you turn at. 角に would
+          treat the corner as a destination rather than the place where you turn.
+      - id: u11-l3-2
+        kind: interpretation
+        concepts: [landmark-position]
+        prompt: >-
+          Two sentences: 銀行の先にコンビニがあります and 銀行の手前にコンビニがあります.
+          Which one means the convenience store is before you reach the bank?
+        target:
+          kanji: 銀行の手前にコンビニがあります
+          kana: ぎんこうのてまえにコンビニがあります
+          romaji: ginkou no temae ni konbini ga arimasu
+        accept_meanings:
+          - The convenience store is before the bank.
+          - There is a convenience store before the bank.
+          - The convenience store is on the near side of the bank.
+        hint: 手前 is before you reach it; 先 is past it.
+        explanation: >-
+          銀行の手前にコンビニがあります puts the store before the bank. 先 would put
+          it past the bank, on the far side. The two are opposite answers, so the
+          landmark alone is not enough; the position word decides the route.
+      - id: u11-l3-3
+        kind: interpretation
+        concepts: [landmark-position]
+        prompt: >-
+          Three answers: 銀行の先にコンビニがあります, 銀行の手前にコンビニがあります,
+          and 銀行の隣にコンビニがあります. Which one says the store is past the bank?
+        target:
+          kanji: 銀行の先にコンビニがあります
+          kana: ぎんこうのさきにコンビニがあります
+          romaji: ginkou no saki ni konbini ga arimasu
+        accept_meanings:
+          - The convenience store is past the bank.
+          - There is a convenience store past the bank.
+          - The convenience store is beyond the bank.
+        hint: 先 is past the landmark.
+        explanation: >-
+          銀行の先にコンビニがあります says the store is past the bank. 手前 would be
+          before it, and 隣 would be directly beside it. Each word answers "where is
+          it" differently.
+      - id: u11-l3-4
+        kind: interpretation
+        concepts: [landmark-position]
+        prompt: >-
+          Two sentences: 駅の隣にホテルがあります and 駅の近くにホテルがあります. Which
+          one says the hotel is directly next door to the station?
+        target:
+          kanji: 駅の隣にホテルがあります
+          kana: えきのとなりにホテルがあります
+          romaji: eki no tonari ni hoteru ga arimasu
+        accept_meanings:
+          - The hotel is next to the station.
+          - The hotel is right next to the station.
+          - There is a hotel next to the station.
+        hint: 隣 is directly adjacent; 近く is only in the area.
+        explanation: >-
+          駅の隣にホテルがあります says the hotel is directly next to the station, so
+          you walk to the station building and it is beside it. 駅の近くにホテルが
+          あります only says the hotel is somewhere near the station.
+      - id: u11-l3-5
+        kind: construction
+        concepts: [wo-magaru]
+        prompt: Say "Turn right at the corner."
+        accept:
+          - kanji: 角を右に曲がってください
+            kana: かどをみぎにまがってください
+            romaji: kado o migi ni magatte kudasai
+        hint: The corner takes を; the direction takes に.
+        explanation: >-
+          角を右に曲がってください marks the corner with を as the point you turn at
+          and the direction with に. 曲がってください makes it a polite instruction.
+      - id: u11-l3-6
+        kind: construction
+        concepts: [wo-magaru]
+        prompt: Say "Turn left at the signal."
+        accept:
+          - kanji: 信号を左に曲がってください
+            kana: しんごうをひだりにまがってください
+            romaji: shingou o hidari ni magatte kudasai
+        hint: 信号 takes を; 左 takes に.
+        explanation: >-
+          信号を左に曲がってください turns left at the traffic signal. を marks the
+          signal as the landmark you turn at, and 左に marks the direction.
+      - id: u11-l3-7
+        kind: completion
+        concepts: [wo-magaru]
+        prompt: Fill the particle — "Turn right at the corner."
+        target:
+          kanji: 角＿右に曲がってください
+          kana: かど＿みぎにまがってください
+          romaji: kado _ migi ni magatte kudasai
+        accept:
+          - kanji: を
+            kana: を
+            romaji: o
+        hint: The landmark you turn at takes を.
+        explanation: >-
+          角を右に曲がってください uses を because the corner is the point you turn
+          at. に already marks the direction, 右.
+      - id: u11-l3-8
+        kind: completion
+        concepts: [landmark-position]
+        prompt: Fill the word — "There is a convenience store next to the bank."
+        target:
+          kanji: 銀行の＿にコンビニがあります
+          kana: ぎんこうの＿にコンビニがあります
+          romaji: ginkou no _ ni konbini ga arimasu
+        accept:
+          - kanji: 隣
+            kana: となり
+            romaji: tonari
+        hint: Directly beside, not merely in the area.
+        explanation: >-
+          銀行の隣にコンビニがあります uses 隣 because the store is directly next to the
+          bank. 近く would only say it is somewhere near the bank.
+      - id: u11-l3-9
+        kind: transformation
+        concepts: [wo-magaru]
+        prompt: >-
+          A learner writes 角に右に曲がってください for "Turn right at the corner."
+          Write it correctly.
+        target:
+          kanji: 角に右に曲がってください
+          kana: かどにみぎにまがってください
+          romaji: kado ni migi ni magatte kudasai
+        accept:
+          - kanji: 角を右に曲がってください
+            kana: かどをみぎにまがってください
+            romaji: kado o migi ni magatte kudasai
+        hint: を marks the corner you turn at; に marks the direction.
+        explanation: >-
+          角を右に曲がってください uses を for the corner and に for 右. 角に would
+          make the corner a destination, so the sentence no longer says where the turn
+          happens.
+      - id: u11-l3-10
+        kind: transformation
+        concepts: [landmark-position]
+        prompt: >-
+          Change this to say the convenience store is before the bank, not past it:
+          銀行の先にコンビニがあります.
+        target:
+          kanji: 銀行の先にコンビニがあります
+          kana: ぎんこうのさきにコンビニがあります
+          romaji: ginkou no saki ni konbini ga arimasu
+        accept:
+          - kanji: 銀行の手前にコンビニがあります
+            kana: ぎんこうのてまえにコンビニがあります
+            romaji: ginkou no temae ni konbini ga arimasu
+        hint: Replace 先 with the word for the near side.
+        explanation: >-
+          銀行の手前にコンビニがあります puts the store before the bank. 先 was past
+          the bank, so the walk ends on the opposite side of the same landmark.
+      - id: u11-l3-11
+        kind: construction
+        concepts: [landmark-position]
+        prompt: Say there is a post office past the signal.
+        accept:
+          - kanji: 信号の先に郵便局があります
+            kana: しんごうのさきにゆうびんきょくがあります
+            romaji: shingou no saki ni yuubinkyoku ga arimasu
+        hint: 信号の先 is past the signal.
+        explanation: >-
+          信号の先に郵便局があります uses 信号の先 for the far side of the signal, に
+          for the place, and が + あります for the post office.
+      - id: u11-l3-12
+        kind: construction
+        concepts: [landmark-position]
+        prompt: Say there is a police box before the post office.
+        accept:
+          - kanji: 郵便局の手前に交番があります
+            kana: ゆうびんきょくのてまえにこうばんがあります
+            romaji: yuubinkyoku no temae ni kouban ga arimasu
+        hint: 手前 is before you reach it.
+        explanation: >-
+          郵便局の手前に交番があります puts the police box on the near side of the post
+          office. 手前 is the opposite of 先, so the box is reached first.
+      - id: u11-l3-13
+        kind: listening
+        concepts: [wo-magaru, landmark-position]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: 信号を右に曲がってください。郵便局の隣にコンビニがあります。
+          kana: しんごうをみぎにまがってください。ゆうびんきょくのとなりにコンビニがあります。
+          romaji: shingou o migi ni magatte kudasai. yuubinkyoku no tonari ni konbini ga arimasu
+        accept_meanings:
+          - Turn right at the signal; the convenience store is next to the post office.
+          - Please turn right at the traffic signal, and the convenience store is next to the post office.
+          - Turn right at the signal, then the convenience store is next to the post office.
+        hint: Two moves — the turn, then the place relative to the post office.
+        explanation: >-
+          The first sentence gives the move — 信号を右に曲がってください, turn right at
+          the signal — and the second gives the destination — 郵便局の隣, next to the
+          post office. You have to hold the turn and then attach the landmark.
+      - id: u11-l3-14
+        kind: listening
+        concepts: [wo-magaru, landmark-position]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: 角を左に曲がって、まっすぐ行ってください。銀行の手前に駅があります。
+          kana: かどをひだりにまがって、まっすぐいってください。ぎんこうのてまえにえきがあります。
+          romaji: kado o hidari ni magatte, massugu itte kudasai. ginkou no temae ni eki ga arimasu
+        accept_meanings:
+          - Turn left at the corner and go straight; the station is before the bank.
+          - Please turn left at the corner and go straight; the station is before the bank.
+          - Turn left at the corner, go straight, and the station is on the near side of the bank.
+        hint: Three pieces in order — left turn, straight, before the bank.
+        explanation: >-
+          The route has two moves — 角を左に曲がって and まっすぐ行ってください — and
+          then the position 銀行の手前. 手前 puts the station before the bank, not past
+          it.
+      - id: u11-l3-15
+        kind: speaking
+        concepts: [wo-magaru]
+        prompt: Say "Turn right at the signal." aloud, then confirm the transcript.
+        accept:
+          - kanji: 信号を右に曲がってください
+            kana: しんごうをみぎにまがってください
+            romaji: shingou o migi ni magatte kudasai
+          - kana: しんごうをみぎにまがってください
+            romaji: shingou o migi ni magatte kudasai
+          - kanji: 信号をみぎに曲がってください
+            kana: しんごうをみぎにまがってください
+            romaji: shingou o migi ni magatte kudasai
+        hint: 信号 is しんごう; 右 is みぎ; 曲がって is まがって.
+        explanation: >-
+          信号を右に曲がってください is しんごうをみぎにまがってください. A transcript
+          may return all the kanji, none, or some, so all three forms are accepted. を
+          marks the signal and に marks the direction.
+      - id: u11-l3-16
+        kind: transformation
+        concepts: [landmark-position]
+        prompt: >-
+          Change this to say the hotel is next to the station, not merely near it:
+          駅の近くにホテルがあります.
+        target:
+          kanji: 駅の近くにホテルがあります
+          kana: えきのちかくにホテルがあります
+          romaji: eki no chikaku ni hoteru ga arimasu
+        accept:
+          - kanji: 駅の隣にホテルがあります
+            kana: えきのとなりにホテルがあります
+            romaji: eki no tonari ni hoteru ga arimasu
+        hint: Replace 近く with the word for directly beside.
+        explanation: >-
+          駅の隣にホテルがあります makes the hotel adjacent to the station. 近く only
+          said it was somewhere in the area, so the listener would have to search.
+
+  - id: u11-l4
+    title: 道を聞く — asking, repairing, and confirming a route
+    objective: >-
+      Ask for directions with どのへんですか, repair a fast answer with もう一度
+      お願いします, confirm the route back with 〜を曲がって、〜の隣ですね, and ask
+      how long the walk takes with 何分かかりますか, then do it without scaffolding.
+    anchors:
+      - kanji: 郵便局はどのへんですか
+        kana: ゆうびんきょくはどのへんですか
+        romaji: yuubinkyoku wa dono hen desu ka
+      - kanji: 駅まで何分かかりますか
+        kana: えきまでなんぷんかかりますか
+        romaji: eki made nanpun kakarimasu ka
+      - kanji: 信号を右に曲がって、銀行の隣ですね
+        kana: しんごうをみぎにまがって、ぎんこうのとなりですね
+        romaji: shingou o migi ni magatte, ginkou no tonari desu ne
+    teach:
+      - prose: >-
+          どのへんですか asks "about where?", when you know the area but not the exact
+          spot. 郵便局はどのへんですか asks whereabouts the post office is. The answer
+          still uses a landmark and a position: 駅の近くです, near the station;
+          銀行の先です, past the bank. どのへん is not a request for a street address.
+        examples:
+          - kanji: 郵便局はどのへんですか
+            kana: ゆうびんきょくはどのへんですか
+            romaji: yuubinkyoku wa dono hen desu ka
+          - kanji: 駅の近くです
+            kana: えきのちかくです
+            romaji: eki no chikaku desu
+          - kanji: 銀行の先です
+            kana: ぎんこうのさきです
+            romaji: ginkou no saki desu
+      - prose: >-
+          何分かかりますか asks how many minutes something takes, recycling U7's
+          かかります. 駅まで何分かかりますか asks how long it takes to the station;
+          the answer is 歩いて五分です, five minutes on foot. まで marks the endpoint and
+          何分 asks the number of minutes.
+        examples:
+          - kanji: 駅まで何分かかりますか
+            kana: えきまでなんぷんかかりますか
+            romaji: eki made nanpun kakarimasu ka
+          - kanji: 歩いて五分です
+            kana: あるいてごふんです
+            romaji: aruite gofun desu
+      - prose: >-
+          A real answer comes fast. When it does, do not nod: repair it with
+          すみません、もう一度お願いします or ゆっくりお願いします, then say the route back
+          to check it: 信号を右に曲がって、銀行の隣ですね. The confirmation repeats the
+          turn with を and the position with の, so the other person can correct one
+          piece instead of starting again.
+        examples:
+          - kanji: すみません、もう一度お願いします
+            kana: すみません、もういちどおねがいします
+            romaji: sumimasen, mou ichido onegai shimasu
+          - kanji: ゆっくりお願いします
+            kana: ゆっくりおねがいします
+            romaji: yukkuri onegai shimasu
+          - kanji: 信号を右に曲がって、銀行の隣ですね
+            kana: しんごうをみぎにまがって、ぎんこうのとなりですね
+            romaji: shingou o migi ni magatte, ginkou no tonari desu ne
+    steps:
+      - id: u11-l4-1
+        kind: interpretation
+        concepts: [route-followup]
+        prompt: What does this mean?
+        target:
+          kanji: 郵便局はどのへんですか
+          kana: ゆうびんきょくはどのへんですか
+          romaji: yuubinkyoku wa dono hen desu ka
+        accept_meanings:
+          - About where is the post office?
+          - Whereabouts is the post office?
+          - Which part of town is the post office in?
+          - Where about is the post office?
+        hint: どのへん asks for the area, not the exact address.
+        explanation: >-
+          郵便局はどのへんですか asks whereabouts the post office is. It expects a
+          landmark answer like 駅の近くです or 銀行の先です, not a street number.
+      - id: u11-l4-2
+        kind: construction
+        concepts: [route-followup]
+        prompt: Ask whereabouts the hotel is.
+        accept:
+          - kanji: ホテルはどのへんですか
+            kana: ホテルはどのへんですか
+            romaji: hoteru wa dono hen desu ka
+        hint: ホテルは + どのへんですか.
+        explanation: >-
+          ホテルはどのへんですか asks for the hotel's area. は marks the hotel as what
+          you are asking about, and どのへん asks "about where".
+      - id: u11-l4-3
+        kind: listening
+        concepts: [route-followup]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: 駅まで何分かかりますか。歩いて五分です。
+          kana: えきまでなんぷんかかりますか。あるいてごふんです。
+          romaji: eki made nanpun kakarimasu ka. aruite gofun desu
+        accept_meanings:
+          - How many minutes does it take to the station? Five minutes on foot.
+          - How long does it take to the station? It is five minutes on foot.
+          - How many minutes to the station? Five minutes walking.
+        hint: 何分 asks the minutes; 五分 is five minutes.
+        explanation: >-
+          駅まで何分かかりますか asks the time to the station, and 歩いて五分です
+          answers five minutes on foot. まで marks the station as the endpoint and
+          かかります is "takes".
+      - id: u11-l4-4
+        kind: construction
+        concepts: [route-followup]
+        prompt: Ask how many minutes it takes to the station.
+        accept:
+          - kanji: 駅まで何分かかりますか
+            kana: えきまでなんぷんかかりますか
+            romaji: eki made nanpun kakarimasu ka
+        hint: 駅まで + 何分 + かかりますか.
+        explanation: >-
+          駅まで何分かかりますか uses まで for the endpoint and 何分 for the number of
+          minutes. かかりますか asks how long the journey takes.
+      - id: u11-l4-5
+        kind: listening
+        concepts: [route-followup, wo-magaru, landmark-position]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: ホテルは駅の先です。まっすぐ行って、信号を左に曲がってください。
+          kana: ホテルはえきのさきです。まっすぐいって、しんごうをひだりにまがってください。
+          romaji: hoteru wa eki no saki desu. massugu itte, shingou o hidari ni magatte kudasai
+        accept_meanings:
+          - The hotel is past the station. Go straight, then turn left at the signal.
+          - The hotel is past the station; go straight and turn left at the traffic signal.
+          - The hotel is beyond the station. Go straight, then turn left at the signal.
+        hint: Three pieces — past the station, straight, left at the signal.
+        explanation: >-
+          The answer locates the hotel with 駅の先, then gives two moves: まっすぐ
+          行って and 信号を左に曲がってください. 先 means past the station, and を marks
+          the signal you turn at.
+      - id: u11-l4-6
+        kind: conversation
+        concepts: [place-existence, direction-words, wo-magaru, landmark-position, route-followup]
+        prompt: >-
+          You stop a stranger and ask the way to the post office. The answer comes too
+          fast, so ask them to repeat it, then confirm the route back and ask how long
+          the walk takes.
+        scenario:
+          turns:
+            - speaker: learner
+              accept:
+                - kanji: すみません、郵便局はどのへんですか。
+                  kana: すみません、ゆうびんきょくはどのへんですか。
+                  romaji: sumimasen, yuubinkyoku wa dono hen desu ka
+                - kanji: 郵便局はどのへんですか。
+                  kana: ゆうびんきょくはどのへんですか。
+                  romaji: yuubinkyoku wa dono hen desu ka
+                - kanji: すみません、郵便局はどこですか。
+                  kana: すみません、ゆうびんきょくはどこですか。
+                  romaji: sumimasen, yuubinkyoku wa doko desu ka
+            - speaker: npc
+              line:
+                kanji: 郵便局ですか。まっすぐ行って、信号を右に曲がってください。
+                kana: ゆうびんきょくですか。まっすぐいって、しんごうをみぎにまがってください。
+                romaji: yuubinkyoku desu ka. massugu itte, shingou o migi ni magatte kudasai
+            - speaker: learner
+              accept:
+                - kanji: すみません、もう一度お願いします。
+                  kana: すみません、もういちどおねがいします。
+                  romaji: sumimasen, mou ichido onegai shimasu
+                - kanji: ゆっくりお願いします。
+                  kana: ゆっくりおねがいします。
+                  romaji: yukkuri onegai shimasu
+                - kanji: すみません、よくわかりません。もう一度お願いします。
+                  kana: すみません、よくわかりません。もういちどおねがいします。
+                  romaji: sumimasen, yoku wakarimasen. mou ichido onegai shimasu
+            - speaker: npc
+              line:
+                kanji: はい。まっすぐ行って、信号を右に曲がってください。郵便局は銀行の隣にありますよ。
+                kana: はい。まっすぐいって、しんごうをみぎにまがってください。ゆうびんきょくはぎんこうのとなりにありますよ。
+                romaji: hai. massugu itte, shingou o migi ni magatte kudasai. yuubinkyoku wa ginkou no tonari ni arimasu yo
+            - speaker: learner
+              accept:
+                - kanji: 信号を右に曲がって、銀行の隣ですね。
+                  kana: しんごうをみぎにまがって、ぎんこうのとなりですね。
+                  romaji: shingou o migi ni magatte, ginkou no tonari desu ne
+                - kanji: まっすぐ行って、信号を右に曲がるんですね。
+                  kana: まっすぐいって、しんごうをみぎにまがるんですね。
+                  romaji: massugu itte, shingou o migi ni magaru n desu ne
+                - kanji: 信号を右に曲がって、銀行の隣にありますね。
+                  kana: しんごうをみぎにまがって、ぎんこうのとなりにありますね。
+                  romaji: shingou o migi ni magatte, ginkou no tonari ni arimasu ne
+            - speaker: npc
+              line:
+                kanji: そうです。銀行の隣です。
+                kana: そうです。ぎんこうのとなりです。
+                romaji: sou desu. ginkou no tonari desu
+            - speaker: learner
+              accept:
+                - kanji: 郵便局まで何分かかりますか。
+                  kana: ゆうびんきょくまでなんぷんかかりますか。
+                  romaji: yuubinkyoku made nanpun kakarimasu ka
+                - kanji: 何分かかりますか。
+                  kana: なんぷんかかりますか。
+                  romaji: nanpun kakarimasu ka
+                - kanji: 歩いて何分ですか。
+                  kana: あるいてなんぷんですか。
+                  romaji: aruite nanpun desu ka
+            - speaker: npc
+              line:
+                kanji: 歩いて五分です。
+                kana: あるいてごふんです。
+                romaji: aruite gofun desu
+            - speaker: learner
+              accept:
+                - kanji: ありがとうございます。
+                  kana: ありがとうございます。
+                  romaji: arigatou gozaimasu
+                - kanji: わかりました。ありがとうございます。
+                  kana: わかりました。ありがとうございます。
+                  romaji: wakarimashita. arigatou gozaimasu
+                - kanji: はい、わかりました。ありがとうございます。
+                  kana: はい、わかりました。ありがとうございます。
+                  romaji: hai, wakarimashita. arigatou gozaimasu
+        hint: >-
+          Ask with 郵便局はどのへんですか. When the answer is fast, say
+          すみません、もう一度お願いします. Confirm with 信号を右に曲がって、銀行の隣ですね,
+          then ask 郵便局まで何分かかりますか.
+        explanation: >-
+          The learner asks 郵便局はどのへんですか, repairs the fast answer with
+          もう一度お願いします, confirms the route with 信号を右に曲がって、銀行の隣ですね,
+          and asks 郵便局まで何分かかりますか. The npc's answer uses まっすぐ行って,
+          信号を右に曲がって, and 銀行の隣, so the confirmation has to keep both the turn
+          and the position.
+      - id: u11-l4-7
+        kind: speaking
+        concepts: [place-existence, direction-words, wo-magaru, landmark-position, route-followup]
+        prompt: >-
+          You stop a stranger and ask the way to the post office. The answer comes too
+          fast. Without looking back, ask them to repeat it, confirm the whole route
+          back, and ask how long the walk takes. Speak aloud.
+        rubric: >-
+          Does the learner ask with どのへんですか or a clear alternative? Does the
+          repair use もう一度お願いします or ゆっくりお願いします rather than nodding? Does
+          the confirmation repeat the turn with を and the position with の, for example
+          信号を右に曲がって、銀行の隣ですね? Does it ask the time with
+          何分かかりますか? Judge meaning, grammar, naturalness and register separately.
+          There is no model answer.
