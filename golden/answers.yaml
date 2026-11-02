@@ -3524,3 +3524,372 @@
 - step: u11-l2-9
   answer: 真っ直ぐ行ってください
   verdict: correct
+- step: u12-l1-1
+  answer: I lost my wallet.
+  verdict: correct
+- step: u12-l1-1
+  answer: I've lost my wallet.
+  verdict: correct
+- step: u12-l1-1
+  answer: I have lost my wallet.
+  verdict: correct
+- step: u12-l1-1
+  answer: My wallet isn't here.
+  verdict: wrong
+- step: u12-l1-2
+  answer: My phone is gone.
+  verdict: correct
+- step: u12-l1-2
+  answer: My phone isn't here.
+  verdict: correct
+- step: u12-l1-2
+  answer: I don't have my phone.
+  verdict: correct
+- step: u12-l1-2
+  answer: The thing is, my phone is gone.
+  verdict: correct
+- step: u12-l1-2
+  answer: My phone is broken.
+  verdict: wrong
+- step: u12-l1-3
+  answer: 財布をなくしました
+  verdict: correct
+- step: u12-l1-3
+  answer: さいふをなくしました
+  verdict: correct
+- step: u12-l1-3
+  answer: saifu o nakushimashita
+  verdict: correct
+- step: u12-l1-3
+  answer: 財布がなくしました
+  verdict: wrong
+- step: u12-l1-4
+  answer: を
+  verdict: correct
+- step: u12-l1-4
+  answer: が
+  verdict: wrong
+- step: u12-l1-5
+  answer: 財布をなくしました
+  verdict: correct
+- step: u12-l1-5
+  answer: さいふをなくしました
+  verdict: correct
+- step: u12-l1-5
+  answer: saifu o nakushimashita
+  verdict: correct
+- step: u12-l1-5
+  answer: 財布がなくしました
+  verdict: wrong
+- step: u12-l1-6
+  answer: My wallet isn't here.
+  verdict: correct
+- step: u12-l1-6
+  answer: There is no wallet.
+  verdict: correct
+- step: u12-l1-6
+  answer: I don't have my wallet.
+  verdict: correct
+- step: u12-l1-6
+  answer: The wallet is not here.
+  verdict: correct
+- step: u12-l1-6
+  answer: There is a wallet.
+  verdict: wrong
+- step: u12-l1-7
+  answer: 携帯がありません
+  verdict: correct
+- step: u12-l1-7
+  answer: けいたいがありません
+  verdict: correct
+- step: u12-l1-7
+  answer: keitai ga arimasen
+  verdict: correct
+- step: u12-l1-7
+  answer: 携帯をありません
+  verdict: wrong
+- step: u12-l1-8
+  answer: が
+  verdict: correct
+- step: u12-l1-8
+  answer: を
+  verdict: wrong
+- step: u12-l1-9
+  answer: 財布がありません
+  verdict: correct
+- step: u12-l1-9
+  answer: さいふがありません
+  verdict: correct
+- step: u12-l1-9
+  answer: saifu ga arimasen
+  verdict: correct
+- step: u12-l1-9
+  answer: 財布をなくしました
+  verdict: wrong
+- step: u12-l1-10
+  answer: Excuse me, I lost my wallet. My phone is gone too.
+  verdict: correct
+- step: u12-l1-10
+  answer: I lost my wallet. I don't have my phone either.
+  verdict: correct
+- step: u12-l1-10
+  answer: Excuse me, I lost my wallet, and my phone is gone too.
+  verdict: correct
+- step: u12-l1-10
+  answer: I found my wallet and my phone.
+  verdict: wrong
+- step: u12-l1-11
+  answer: 財布をなくしました
+  verdict: correct
+- step: u12-l1-11
+  answer: さいふをなくしました
+  verdict: correct
+- step: u12-l1-11
+  answer: saifu o nakushimashita
+  verdict: correct
+- step: u12-l1-11
+  answer: 財布を落としました
+  verdict: wrong
+- step: u12-l2-1
+  answer: I dropped my wallet.
+  verdict: correct
+- step: u12-l2-1
+  answer: I dropped my wallet somewhere.
+  verdict: correct
+- step: u12-l2-1
+  answer: I've dropped my wallet.
+  verdict: correct
+- step: u12-l2-1
+  answer: I lost my wallet.
+  verdict: wrong
+- step: u12-l2-2
+  answer: I left my umbrella at the hotel.
+  verdict: correct
+- step: u12-l2-2
+  answer: I left my umbrella in the hotel.
+  verdict: correct
+- step: u12-l2-2
+  answer: I forgot my umbrella at the hotel.
+  verdict: correct
+- step: u12-l2-2
+  answer: I lost my umbrella at the hotel.
+  verdict: wrong
+- step: u12-l2-3
+  answer: The thing is, I dropped my passport.
+  verdict: correct
+- step: u12-l2-3
+  answer: I've dropped my passport — could you help me?
+  verdict: correct
+- step: u12-l2-3
+  answer: The thing is, I've dropped my passport.
+  verdict: correct
+- step: u12-l2-3
+  answer: Did you drop your passport?
+  verdict: wrong
+- step: u12-l2-4
+  answer: パスポートを落としました
+  verdict: correct
+- step: u12-l2-4
+  answer: パスポートをおとしました
+  verdict: correct
+- step: u12-l2-4
+  answer: pasupooto o otoshimashita
+  verdict: correct
+- step: u12-l2-4
+  answer: パスポートをなくしました
+  verdict: wrong
+- step: u12-l2-5
+  answer: で
+  verdict: correct
+- step: u12-l2-5
+  answer: に
+  verdict: wrong
+- step: u12-l2-6
+  answer: に
+  verdict: correct
+- step: u12-l2-6
+  answer: で
+  verdict: wrong
+- step: u12-l2-7
+  answer: 電車に傘を忘れました
+  verdict: correct
+- step: u12-l2-7
+  answer: でんしゃにかさをわすれました
+  verdict: correct
+- step: u12-l2-7
+  answer: densha ni kasa o wasuremashita
+  verdict: correct
+- step: u12-l2-7
+  answer: 電車で傘をなくしました
+  verdict: wrong
+- step: u12-l2-8
+  answer: 財布をなくしたんですが
+  verdict: correct
+- step: u12-l2-8
+  answer: さいふをなくしたんですが
+  verdict: correct
+- step: u12-l2-8
+  answer: saifu o nakushita n desu ga
+  verdict: correct
+- step: u12-l2-8
+  answer: 財布をなくしました
+  verdict: wrong
+- step: u12-l2-9
+  answer: Did you lose your wallet?
+  verdict: correct
+- step: u12-l2-9
+  answer: Have you lost your wallet?
+  verdict: correct
+- step: u12-l2-9
+  answer: I've lost my wallet.
+  verdict: wrong
+- step: u12-l2-10
+  answer: 財布をなくしたんですが
+  verdict: correct
+- step: u12-l2-10
+  answer: さいふをなくしたんですが
+  verdict: correct
+- step: u12-l2-10
+  answer: saifu o nakushita n desu ga
+  verdict: correct
+- step: u12-l2-10
+  answer: 財布をなくしましたか
+  verdict: wrong
+- step: u12-l2-11
+  answer: を
+  verdict: correct
+- step: u12-l2-11
+  answer: が
+  verdict: wrong
+- step: u12-l2-12
+  answer: Excuse me, the thing is I left my phone at the hotel.
+  verdict: correct
+- step: u12-l2-12
+  answer: Excuse me, I left my phone at the hotel.
+  verdict: correct
+- step: u12-l2-12
+  answer: The thing is, I left my phone at the hotel.
+  verdict: correct
+- step: u12-l2-12
+  answer: I left my phone at the station.
+  verdict: wrong
+- step: u12-l2-13
+  answer: 電車に傘を忘れました
+  verdict: correct
+- step: u12-l2-13
+  answer: でんしゃにかさをわすれました
+  verdict: correct
+- step: u12-l2-13
+  answer: densha ni kasa o wasuremashita
+  verdict: correct
+- step: u12-l2-13
+  answer: 電車で傘をなくしました
+  verdict: wrong
+- step: u12-l2-14
+  answer: 財布をなくしたんですが
+  verdict: correct
+- step: u12-l2-14
+  answer: さいふをなくしたんですが
+  verdict: correct
+- step: u12-l2-14
+  answer: saifu o nakushita n desu ga
+  verdict: correct
+- step: u12-l2-14
+  answer: 財布をなくしました
+  verdict: wrong
+- step: u12-l3-1
+  answer: Has it been handed in at the lost-and-found?
+  verdict: correct
+- step: u12-l3-1
+  answer: Has it arrived at the lost-and-found?
+  verdict: correct
+- step: u12-l3-1
+  answer: Has my item been handed in at the lost-and-found?
+  verdict: correct
+- step: u12-l3-1
+  answer: Did you hand it in at the lost-and-found?
+  verdict: wrong
+- step: u12-l3-2
+  answer: The wallet has been handed in.
+  verdict: correct
+- step: u12-l3-2
+  answer: The wallet has arrived.
+  verdict: correct
+- step: u12-l3-2
+  answer: The wallet is here — it has been handed in.
+  verdict: correct
+- step: u12-l3-2
+  answer: The wallet will arrive.
+  verdict: wrong
+- step: u12-l3-3
+  answer: 携帯が届いていますか
+  verdict: correct
+- step: u12-l3-3
+  answer: けいたいがとどいていますか
+  verdict: correct
+- step: u12-l3-3
+  answer: keitai ga todoite imasu ka
+  verdict: correct
+- step: u12-l3-3
+  answer: 携帯が届きますか
+  verdict: wrong
+- step: u12-l3-4
+  answer: て
+  verdict: correct
+- step: u12-l3-4
+  answer: で
+  verdict: wrong
+- step: u12-l3-5
+  answer: ホテルに財布を忘れました
+  verdict: correct
+- step: u12-l3-5
+  answer: ホテルにさいふをわすれました
+  verdict: correct
+- step: u12-l3-5
+  answer: hoteru ni saifu o wasuremashita
+  verdict: correct
+- step: u12-l3-5
+  answer: ホテルで財布をなくしました
+  verdict: wrong
+- step: u12-l3-6
+  answer: The hospital is in front of the station.
+  verdict: correct
+- step: u12-l3-6
+  answer: There is a hospital in front of the station.
+  verdict: correct
+- step: u12-l3-6
+  answer: The station is in front of the hospital.
+  verdict: wrong
+- step: u12-l3-7
+  answer: 携帯が壊れました
+  verdict: correct
+- step: u12-l3-7
+  answer: けいたいがこわれました
+  verdict: correct
+- step: u12-l3-7
+  answer: keitai ga kowaremashita
+  verdict: correct
+- step: u12-l3-7
+  answer: 携帯が壊します
+  verdict: wrong
+- step: u12-l3-8
+  answer: どうすればいいですか
+  verdict: correct
+- step: u12-l3-8
+  answer: dou sureba ii desu ka
+  verdict: correct
+- step: u12-l3-8
+  answer: どうしますか
+  verdict: wrong
+- step: u12-l3-9
+  answer: Excuse me, I lost my phone — has it been handed in?
+  verdict: correct
+- step: u12-l3-9
+  answer: I lost my phone; has it been handed in?
+  verdict: correct
+- step: u12-l3-9
+  answer: Excuse me, the thing is I lost my phone. Has it been handed in?
+  verdict: correct
+- step: u12-l3-9
+  answer: I found a phone at the station.
+  verdict: wrong

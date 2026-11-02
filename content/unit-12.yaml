@@ -1,0 +1,873 @@
+id: unit-12
+title: こまったとき — reporting a problem and asking for help
+taught: true
+concepts:
+  - id: loss-verb-nakusu
+    label: 〜なくしました — you no longer have it, and nothing is said about how
+  - id: absence-ga-nai
+    label: 〜がない・〜がないんです — reporting an absence you have just discovered
+  - id: loss-verb-choice
+    label: なくす・落とす・忘れる — the state, the drop, and the thing left behind
+  - id: softener-n-desu-ga
+    label: 〜んですが — presenting a problem and inviting help
+  - id: problem-vocabulary
+    label: 届く・壊れる・交番・病院 — what happened to it, and where to go
+lessons:
+  - id: u12-l1
+    title: 財布をなくしました — the loss, and the thing that isn't there
+    objective: >-
+      Report that you no longer have something with 〜なくしました, and report an
+      absence you have just discovered with 〜がない or 〜がありません, so you can say
+      both "I lost my wallet" and "my wallet isn't here".
+    anchors:
+      - kanji: 財布をなくしました
+        kana: さいふをなくしました
+        romaji: saifu o nakushimashita
+      - kanji: 携帯がないんです
+        kana: けいたいがないんです
+        romaji: keitai ga nai n desu
+      - kanji: 財布がありません
+        kana: さいふがありません
+        romaji: saifu ga arimasen
+    teach:
+      - prose: >-
+          なくす is "to lose" in the sense of no longer having something.
+          財布をなくしました says I lost my wallet. を marks the wallet as what you
+          lost, and ました makes it past polite. The sentence reports the result —
+          the wallet is not with you — and says nothing about how it went missing.
+          That gap is what the next lesson fills with 落とす and 忘れる.
+        examples:
+          - kanji: 財布をなくしました
+            kana: さいふをなくしました
+            romaji: saifu o nakushimashita
+          - kanji: 携帯をなくしました
+            kana: けいたいをなくしました
+            romaji: keitai o nakushimashita
+          - kanji: パスポートをなくしました
+            kana: パスポートをなくしました
+            romaji: pasupooto o nakushimashita
+      - prose: >-
+          When you reach for something and it is not there, report the absence with
+          が + ない: 財布がない, my wallet isn't here; 携帯がない, my phone is gone.
+          The polite form is ありません: 財布がありません. が marks the thing that is
+          missing, and ない/ありません is the negative of あります, so the sentence
+          says the thing does not exist here.
+        examples:
+          - kanji: 財布がない
+            kana: さいふがない
+            romaji: saifu ga nai
+          - kanji: 携帯がありません
+            kana: けいたいがありません
+            romaji: keitai ga arimasen
+          - kanji: 財布がありません
+            kana: さいふがありません
+            romaji: saifu ga arimasen
+      - prose: >-
+          んです presents the absence as the situation behind your trouble:
+          携帯がないんです, the thing is my phone is gone. This is the same ん as
+          U6's んですか, but here you are not asking for an explanation — you are
+          giving one, and the listener understands that you need help. 〜がない,
+          〜がないんです and 〜がありません all report the same absence at different
+          levels of politeness and openness.
+        examples:
+          - kanji: 携帯がないんです
+            kana: けいたいがないんです
+            romaji: keitai ga nai n desu
+          - kanji: 財布がないんです
+            kana: さいふがないんです
+            romaji: saifu ga nai n desu
+          - kanji: 財布がありません
+            kana: さいふがありません
+            romaji: saifu ga arimasen
+    steps:
+      - id: u12-l1-1
+        kind: interpretation
+        concepts: [loss-verb-nakusu]
+        prompt: >-
+          Two sentences: 財布をなくしました and 財布がありません. Which one reports
+          that you lost your wallet, and what does it mean?
+        target:
+          kanji: 財布をなくしました
+          kana: さいふをなくしました
+          romaji: saifu o nakushimashita
+        accept_meanings:
+          - I lost my wallet.
+          - I've lost my wallet.
+          - I have lost my wallet.
+        hint: を marks the thing you lost; なくしました reports the loss.
+        explanation: >-
+          財布をなくしました marks the wallet with を as what you lost and reports
+          the loss with なくしました. 財布がありません reports the absence instead —
+          the wallet is simply not here.
+      - id: u12-l1-2
+        kind: interpretation
+        concepts: [absence-ga-nai]
+        prompt: What does this mean?
+        target:
+          kanji: 携帯がないんです
+          kana: けいたいがないんです
+          romaji: keitai ga nai n desu
+        accept_meanings:
+          - My phone is gone.
+          - My phone isn't here.
+          - I don't have my phone.
+          - The thing is, my phone is gone.
+        hint: がない reports something missing; んです presents it as the situation.
+        explanation: >-
+          携帯がないんです reports the absence of the phone with が + ない and
+          presents it with んです as the situation behind your trouble. It does not
+          say how the phone disappeared.
+      - id: u12-l1-3
+        kind: construction
+        concepts: [loss-verb-nakusu]
+        prompt: Say "I lost my wallet."
+        accept:
+          - kanji: 財布をなくしました
+            kana: さいふをなくしました
+            romaji: saifu o nakushimashita
+        hint: The wallet is what you lost, so it takes を.
+        explanation: >-
+          財布をなくしました uses を for the wallet and なくしました for the loss.
+          なくす is about no longer having the thing, not about how it happened.
+      - id: u12-l1-4
+        kind: completion
+        concepts: [loss-verb-nakusu]
+        prompt: Fill the particle — "I lost my wallet."
+        target:
+          kanji: 財布＿なくしました
+          kana: さいふ＿なくしました
+          romaji: saifu _ nakushimashita
+        accept:
+          - kanji: を
+            kana: を
+            romaji: o
+        hint: The thing you lost takes を.
+        explanation: >-
+          財布をなくしました takes を because the wallet is what was lost. なくす is
+          transitive, so its object takes を.
+      - id: u12-l1-5
+        kind: transformation
+        concepts: [loss-verb-nakusu]
+        prompt: >-
+          A learner writes 財布がなくしました for "I lost my wallet." Write it
+          correctly.
+        target:
+          kanji: 財布がなくしました
+          kana: さいふがなくしました
+          romaji: saifu ga nakushimashita
+        accept:
+          - kanji: 財布をなくしました
+            kana: さいふをなくしました
+            romaji: saifu o nakushimashita
+        hint: を marks the wallet as what you lost.
+        explanation: >-
+          財布をなくしました uses を for the wallet. が would mark the wallet as the
+          subject, as if the wallet did the losing, and なくしました needs the thing
+          you lost as its object.
+      - id: u12-l1-6
+        kind: interpretation
+        concepts: [absence-ga-nai]
+        prompt: What does this mean?
+        target:
+          kanji: 財布がありません
+          kana: さいふがありません
+          romaji: saifu ga arimasen
+        accept_meanings:
+          - My wallet isn't here.
+          - There is no wallet.
+          - I don't have my wallet.
+          - The wallet is not here.
+        hint: ありません is the polite negative of あります.
+        explanation: >-
+          財布がありません says the wallet does not exist here — an absence. が marks
+          the wallet as what is missing, and ありません is the polite negative of
+          あります.
+      - id: u12-l1-7
+        kind: construction
+        concepts: [absence-ga-nai]
+        prompt: Say "I don't have my phone," politely, with ありません.
+        accept:
+          - kanji: 携帯がありません
+            kana: けいたいがありません
+            romaji: keitai ga arimasen
+        hint: が marks what is missing; ありません is the polite negative.
+        explanation: >-
+          携帯がありません marks the phone with が as what is absent and uses
+          ありません, the polite negative of あります.
+      - id: u12-l1-8
+        kind: completion
+        concepts: [absence-ga-nai]
+        prompt: Fill the particle — "My phone is gone."
+        target:
+          kanji: 携帯＿ないんです
+          kana: けいたい＿ないんです
+          romaji: keitai _ nai n desu
+        accept:
+          - kanji: が
+            kana: が
+            romaji: ga
+        hint: が marks the thing that is missing.
+        explanation: >-
+          携帯がないんです marks the phone with が as the thing that is absent. ない
+          reports the absence and んです presents it as your situation.
+      - id: u12-l1-9
+        kind: transformation
+        concepts: [absence-ga-nai, loss-verb-nakusu]
+        prompt: >-
+          Change 財布をなくしました into a report that the wallet is not here:
+          財布がありません.
+        target:
+          kanji: 財布をなくしました
+          kana: さいふをなくしました
+          romaji: saifu o nakushimashita
+        accept:
+          - kanji: 財布がありません
+            kana: さいふがありません
+            romaji: saifu ga arimasen
+        hint: Use が + ありません to report the absence.
+        explanation: >-
+          財布がありません reports the absence of the wallet. 財布をなくしました
+          reported the loss as something you did; がありません just says the wallet
+          is not here.
+      - id: u12-l1-10
+        kind: listening
+        concepts: [loss-verb-nakusu, absence-ga-nai]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: すみません、財布をなくしました。携帯もないんです。
+          kana: すみません、さいふをなくしました。けいたいもないんです。
+          romaji: sumimasen, saifu o nakushimashita. keitai mo nai n desu
+        accept_meanings:
+          - Excuse me, I lost my wallet. My phone is gone too.
+          - I lost my wallet. I don't have my phone either.
+          - Excuse me, I lost my wallet, and my phone is gone too.
+        hint: Two problems — the lost wallet, and the phone that is also missing.
+        explanation: >-
+          The speaker reports the wallet with 財布をなくしました and adds the phone
+          with 携帯もないんです. も says the phone is missing as well, and んです
+          presents it as part of the same trouble.
+      - id: u12-l1-11
+        kind: speaking
+        concepts: [loss-verb-nakusu]
+        prompt: Say "I lost my wallet." aloud, then confirm the transcript.
+        accept:
+          - kanji: 財布をなくしました
+            kana: さいふをなくしました
+            romaji: saifu o nakushimashita
+        hint: 財布 is さいふ; the thing you lost takes を.
+        explanation: >-
+          財布をなくしました is さいふをなくしました. A transcript may return the
+          kanji, the kana, or the romaji, so all of those are accepted. なくしました
+          reports that the wallet is no longer with you.
+
+  - id: u12-l2
+    title: パスポートを落としたんですが — three ways to lose, and the softener
+    objective: >-
+      Choose なくす, 落とす or 忘れる by what each one asserts — the state, the drop,
+      or the thing left behind — and present a problem with 〜んですが so it opens a
+      request for help instead of announcing a fact.
+    anchors:
+      - kanji: パスポートを落としました
+        kana: パスポートをおとしました
+        romaji: pasupooto o otoshimashita
+      - kanji: ホテルに傘を忘れました
+        kana: ホテルにかさをわすれました
+        romaji: hoteru ni kasa o wasuremashita
+      - kanji: 財布をなくしたんですが
+        kana: さいふをなくしたんですが
+        romaji: saifu o nakushita n desu ga
+    teach:
+      - prose: >-
+          Three verbs make three different claims. なくしました says you no longer
+          have it and does not say how: 財布をなくしました. 落としました says it came
+          out of your hands or pocket at a moment: パスポートを落としました, I dropped
+          my passport. 忘れました says you left it somewhere: ホテルに傘を忘れました, I
+          left my umbrella at the hotel. Choosing the wrong one changes what the
+          listener does — a dropped passport sends them to search the street, a
+          forgotten umbrella sends them back to the hotel.
+        examples:
+          - kanji: 財布をなくしました
+            kana: さいふをなくしました
+            romaji: saifu o nakushimashita
+          - kanji: パスポートを落としました
+            kana: パスポートをおとしました
+            romaji: pasupooto o otoshimashita
+          - kanji: ホテルに傘を忘れました
+            kana: ホテルにかさをわすれました
+            romaji: hoteru ni kasa o wasuremashita
+      - prose: >-
+          落とす and 忘れる take different particles because they say different
+          things. 落とす takes を for the thing and で for the place where it
+          happened: 駅で財布を落としました. 忘れる takes に for the place where the
+          thing stayed: ホテルに傘を忘れました, 電車に傘を忘れました. で on 忘れる
+          would mark where the forgetting happened, which is not the same as where
+          the umbrella is.
+        examples:
+          - kanji: 駅で財布を落としました
+            kana: えきでさいふをおとしました
+            romaji: eki de saifu o otoshimashita
+          - kanji: ホテルに傘を忘れました
+            kana: ホテルにかさをわすれました
+            romaji: hoteru ni kasa o wasuremashita
+          - kanji: 電車に傘を忘れました
+            kana: でんしゃにかさをわすれました
+            romaji: densha ni kasa o wasuremashita
+      - prose: >-
+          〜んですが presents your situation and leaves the request open, so the
+          listener understands you need help: 財布をなくしたんですが, the thing is
+          I've lost my wallet. It is not 〜んですか. んですか asks the listener for an
+          explanation, which is U6's job; んですが gives your own explanation and
+          trails off. The flat 財布をなくしました only announces a fact, and
+          財布をなくしましたか asks whether the listener lost a wallet — the wrong
+          person entirely.
+        examples:
+          - kanji: 財布をなくしたんですが
+            kana: さいふをなくしたんですが
+            romaji: saifu o nakushita n desu ga
+          - kanji: パスポートを落としたんですが
+            kana: パスポートをおとしたんですが
+            romaji: pasupooto o otoshita n desu ga
+          - kanji: 財布をなくしましたか
+            kana: さいふをなくしましたか
+            romaji: saifu o nakushimashita ka
+    steps:
+      - id: u12-l2-1
+        kind: interpretation
+        concepts: [loss-verb-choice]
+        prompt: >-
+          Two sentences: 財布をなくしました and 財布を落としました. Which one says
+          you dropped your wallet, and what does it mean?
+        target:
+          kanji: 財布を落としました
+          kana: さいふをおとしました
+          romaji: saifu o otoshimashita
+        accept_meanings:
+          - I dropped my wallet.
+          - I dropped my wallet somewhere.
+          - I've dropped my wallet.
+        hint: 落とす is the moment it fell; なくす is the state of not having it.
+        explanation: >-
+          財布を落としました reports the moment the wallet fell with 落とす.
+          財布をなくしました reports the state of no longer having it and does not
+          say how, so a drop could be the cause, but the sentence does not claim one.
+      - id: u12-l2-2
+        kind: interpretation
+        concepts: [loss-verb-choice]
+        prompt: What does this mean?
+        target:
+          kanji: ホテルに傘を忘れました
+          kana: ホテルにかさをわすれました
+          romaji: hoteru ni kasa o wasuremashita
+        accept_meanings:
+          - I left my umbrella at the hotel.
+          - I left my umbrella in the hotel.
+          - I forgot my umbrella at the hotel.
+        hint: 忘れる with a place plus に means you left it there.
+        explanation: >-
+          ホテルに傘を忘れました says the umbrella was left at the hotel: に marks
+          the place where it stayed, and 忘れました is "left/forgot". This is not the
+          same claim as なくしました — you know where the umbrella is.
+      - id: u12-l2-3
+        kind: interpretation
+        concepts: [softener-n-desu-ga]
+        prompt: What does this mean?
+        target:
+          kanji: パスポートを落としたんですが
+          kana: パスポートをおとしたんですが
+          romaji: pasupooto o otoshita n desu ga
+        accept_meanings:
+          - The thing is, I dropped my passport.
+          - I've dropped my passport — could you help me?
+          - The thing is, I've dropped my passport.
+        hint: んですが presents the situation and invites help; it is not a question.
+        explanation: >-
+          パスポートを落としたんですが presents the dropped passport as your
+          situation and trails off, so the listener understands you need help. It is
+          not a question about the listener.
+      - id: u12-l2-4
+        kind: construction
+        concepts: [loss-verb-choice]
+        prompt: Say "I dropped my passport."
+        accept:
+          - kanji: パスポートを落としました
+            kana: パスポートをおとしました
+            romaji: pasupooto o otoshimashita
+        hint: The passport is what fell, so it takes を.
+        explanation: >-
+          パスポートを落としました uses を for the passport and 落としました for the
+          drop. 落とす names the event; it does not say the passport is gone for good.
+      - id: u12-l2-5
+        kind: completion
+        concepts: [loss-verb-choice]
+        prompt: Fill the particle — "I dropped my wallet at the station."
+        target:
+          kanji: 駅＿財布を落としました
+          kana: えき＿さいふをおとしました
+          romaji: eki _ saifu o otoshimashita
+        accept:
+          - kanji: で
+            kana: で
+            romaji: de
+        hint: で marks where the dropping happened.
+        explanation: >-
+          駅で財布を落としました uses で because the station is where the event
+          happened. に would mark a destination or the place something stays, not
+          where you dropped it.
+      - id: u12-l2-6
+        kind: completion
+        concepts: [loss-verb-choice]
+        prompt: Fill the particle — "I left my umbrella at the hotel."
+        target:
+          kanji: ホテル＿傘を忘れました
+          kana: ホテル＿かさをわすれました
+          romaji: hoteru _ kasa o wasuremashita
+        accept:
+          - kanji: に
+            kana: に
+            romaji: ni
+        hint: The place where you left it takes に.
+        explanation: >-
+          ホテルに傘を忘れました uses に because the hotel is where the umbrella
+          stayed. で would mark where the forgetting happened, which is not the same
+          as where the umbrella is.
+      - id: u12-l2-7
+        kind: transformation
+        concepts: [loss-verb-choice]
+        prompt: >-
+          You left your umbrella on the train. Write it with the right verb and
+          particle: 電車で傘をなくしました.
+        target:
+          kanji: 電車で傘をなくしました
+          kana: でんしゃでかさをなくしました
+          romaji: densha de kasa o nakushimashita
+        accept:
+          - kanji: 電車に傘を忘れました
+            kana: でんしゃにかさをわすれました
+            romaji: densha ni kasa o wasuremashita
+        hint: You know where it is, so it is 忘れる, and the place takes に.
+        explanation: >-
+          電車に傘を忘れました says you left the umbrella on the train: 忘れる is for
+          something left behind, and に marks the place it stayed. なくしました
+          would say you no longer have it without saying where it is.
+      - id: u12-l2-8
+        kind: transformation
+        concepts: [softener-n-desu-ga]
+        prompt: >-
+          At the front desk, a learner says 財布をなくしました。 It reports the loss
+          but asks for nothing. Add the softener that presents it as a request for
+          help.
+        target:
+          kanji: 財布をなくしました
+          kana: さいふをなくしました
+          romaji: saifu o nakushimashita
+        accept:
+          - kanji: 財布をなくしたんですが
+            kana: さいふをなくしたんですが
+            romaji: saifu o nakushita n desu ga
+        hint: Plain past plus んですが presents the situation and leaves the request open.
+        explanation: >-
+          財布をなくしたんですが presents the loss as the situation and trails off,
+          so the listener knows to help. 財布をなくしました only announces the fact,
+          so the staff may simply acknowledge it.
+      - id: u12-l2-9
+        kind: interpretation
+        concepts: [softener-n-desu-ga]
+        prompt: >-
+          Two sentences: 財布をなくしたんですが and 財布をなくしましたか. Which one
+          asks the listener whether they lost a wallet?
+        target:
+          kanji: 財布をなくしましたか
+          kana: さいふをなくしましたか
+          romaji: saifu o nakushimashita ka
+        accept_meanings:
+          - Did you lose your wallet?
+          - Have you lost your wallet?
+        hint: か makes it a question to the listener; んですが presents your own situation.
+        explanation: >-
+          財布をなくしましたか asks the listener whether they lost a wallet.
+          財布をなくしたんですが is about the speaker's own situation and invites
+          help, not a question.
+      - id: u12-l2-10
+        kind: construction
+        concepts: [softener-n-desu-ga]
+        prompt: Open a request for help — "The thing is, I lost my wallet..."
+        accept:
+          - kanji: 財布をなくしたんですが
+            kana: さいふをなくしたんですが
+            romaji: saifu o nakushita n desu ga
+        hint: Plain past なくした + んですが.
+        explanation: >-
+          財布をなくしたんですが opens the request: the situation is stated with
+          んですが and the request for help is left to the listener to supply.
+      - id: u12-l2-11
+        kind: completion
+        concepts: [loss-verb-choice, softener-n-desu-ga]
+        prompt: Fill the particle — "The thing is, I lost my wallet..."
+        target:
+          kanji: 財布＿なくしたんですが
+          kana: さいふ＿なくしたんですが
+          romaji: saifu _ nakushita n desu ga
+        accept:
+          - kanji: を
+            kana: を
+            romaji: o
+        hint: The thing you lost takes を.
+        explanation: >-
+          財布をなくしたんですが keeps を for the wallet. なくす is transitive, and
+          んですが only adds the presenting tone.
+      - id: u12-l2-12
+        kind: listening
+        concepts: [loss-verb-choice, softener-n-desu-ga]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: すみません、ホテルに携帯を忘れたんですが。
+          kana: すみません、ホテルにけいたいをわすれたんですが。
+          romaji: sumimasen, hoteru ni keitai o wasureta n desu ga
+        accept_meanings:
+          - Excuse me, the thing is I left my phone at the hotel.
+          - Excuse me, I left my phone at the hotel.
+          - The thing is, I left my phone at the hotel.
+        hint: に marks where it stayed; んですが presents the trouble.
+        explanation: >-
+          The speaker says the phone was left at the hotel with ホテルに携帯を忘れた,
+          then presents it with んですが. The place takes に because the phone stayed
+          there.
+      - id: u12-l2-13
+        kind: construction
+        concepts: [loss-verb-choice]
+        prompt: Say "I left my umbrella on the train."
+        accept:
+          - kanji: 電車に傘を忘れました
+            kana: でんしゃにかさをわすれました
+            romaji: densha ni kasa o wasuremashita
+        hint: 忘れる for left behind; に for the place.
+        explanation: >-
+          電車に傘を忘れました uses 忘れる because you know where the umbrella is,
+          and に marks the train as where it stayed.
+      - id: u12-l2-14
+        kind: speaking
+        concepts: [loss-verb-choice, softener-n-desu-ga]
+        prompt: Say "The thing is, I lost my wallet." aloud, then confirm the transcript.
+        accept:
+          - kanji: 財布をなくしたんですが
+            kana: さいふをなくしたんですが
+            romaji: saifu o nakushita n desu ga
+          - kana: さいふをなくしたんですが
+            romaji: saifu o nakushita n desu ga
+        hint: Plain past なくした plus んですが; 財布 is さいふ.
+        explanation: >-
+          財布をなくしたんですが is さいふをなくしたんですが. A transcript may return
+          the kanji or only the kana, so both are accepted. The softener presents
+          the loss and leaves the request for help open.
+
+  - id: u12-l3
+    title: 交番で — has it been handed in, and what do I do?
+    objective: >-
+      Take a reported loss to a lost-and-found: ask whether the item has been handed
+      in with 届いていますか, say where it stayed, describe it, ask what to do with
+      どうすればいいですか, and follow the answer to 交番 or 病院 — then do it
+      without scaffolding.
+    anchors:
+      - kanji: 忘れ物センターに届いていますか
+        kana: わすれものセンターにとどいていますか
+        romaji: wasuremono sentaa ni todoite imasu ka
+      - kanji: 携帯が壊れました
+        kana: けいたいがこわれました
+        romaji: keitai ga kowaremashita
+      - kanji: 交番は駅の前にあります
+        kana: こうばんはえきのまえにあります
+        romaji: kouban wa eki no mae ni arimasu
+    teach:
+      - prose: >-
+          届く is the verb for something arriving or being handed in, so it is the
+          verb a lost-and-found runs on. 忘れ物センターに届いていますか asks whether
+          your item has been handed in there. The form matters: 届いています is the
+          state after the arrival, which is what you are asking about; 届きました
+          only says it arrived at a moment in the past.
+        examples:
+          - kanji: 忘れ物センターに届いていますか
+            kana: わすれものセンターにとどいていますか
+            romaji: wasuremono sentaa ni todoite imasu ka
+          - kanji: 財布が届いています
+            kana: さいふがとどいています
+            romaji: saifu ga todoite imasu
+          - kanji: 携帯が届きました
+            kana: けいたいがとどきました
+            romaji: keitai ga todokimashita
+      - prose: >-
+          A lost thing and a broken thing go to different places. 交番 is the police
+          box, where a handed-in wallet ends up; 忘れ物センター is the lost-and-found
+          at a station; 病院 is where you go when the problem is your body rather
+          than your bag. 交番は駅の前にあります and 病院は駅の隣です reuse the place に
+          from U11.
+        examples:
+          - kanji: 交番は駅の前にあります
+            kana: こうばんはえきのまえにあります
+            romaji: kouban wa eki no mae ni arimasu
+          - kanji: 病院は駅の隣です
+            kana: びょういんはえきのとなりです
+            romaji: byouin wa eki no tonari desu
+          - kanji: 携帯が壊れました
+            kana: けいたいがこわれました
+            romaji: keitai ga kowaremashita
+      - prose: >-
+          At a counter the shape is report, then ask: 財布をなくしたんですが、
+          届いていますか. The first clause gives the situation with んですが, and the
+          second asks the concrete question. If they ask when and where, answer with
+          昨日 and 駅で; if they ask which one, describe it: 小さい財布です. Then ask
+          what to do with どうすればいいですか, a set phrase worth learning whole.
+        examples:
+          - kanji: 財布をなくしたんですが、届いていますか
+            kana: さいふをなくしたんですが、とどいていますか
+            romaji: saifu o nakushita n desu ga, todoite imasu ka
+          - kanji: 小さい財布です
+            kana: ちいさいさいふです
+            romaji: chiisai saifu desu
+          - kanji: どうすればいいですか
+            kana: どうすればいいですか
+            romaji: dou sureba ii desu ka
+    steps:
+      - id: u12-l3-1
+        kind: interpretation
+        concepts: [problem-vocabulary]
+        prompt: What does this mean?
+        target:
+          kanji: 忘れ物センターに届いていますか
+          kana: わすれものセンターにとどいていますか
+          romaji: wasuremono sentaa ni todoite imasu ka
+        accept_meanings:
+          - Has it been handed in at the lost-and-found?
+          - Has it arrived at the lost-and-found?
+          - Has my item been handed in at the lost-and-found?
+        hint: 届いています is the state of having arrived or been handed in.
+        explanation: >-
+          忘れ物センターに届いていますか asks whether the item is now at the
+          lost-and-found: に marks the place it reached, and 届いています presents
+          the arrived state. 届きました would report the moment it arrived.
+      - id: u12-l3-2
+        kind: interpretation
+        concepts: [problem-vocabulary]
+        prompt: >-
+          Two sentences: 財布が届いています and 財布が届きます. Which one says the
+          wallet is at the counter now?
+        target:
+          kanji: 財布が届いています
+          kana: さいふがとどいています
+          romaji: saifu ga todoite imasu
+        accept_meanings:
+          - The wallet has been handed in.
+          - The wallet has arrived.
+          - The wallet is here — it has been handed in.
+        hint: ています is the state after it arrived.
+        explanation: >-
+          財布が届いています says the wallet has arrived and is here now, the state
+          you care about at a counter. 財布が届きます says it will arrive, an event
+          in the future.
+      - id: u12-l3-3
+        kind: construction
+        concepts: [problem-vocabulary]
+        prompt: Ask whether your phone has been handed in.
+        accept:
+          - kanji: 携帯が届いていますか
+            kana: けいたいがとどいていますか
+            romaji: keitai ga todoite imasu ka
+        hint: が marks the phone; 届いていますか asks about the arrived state.
+        explanation: >-
+          携帯が届いていますか marks the phone with が and asks whether it has
+          reached the counter with 届いていますか. You are asking about the state
+          now, not about a future arrival.
+      - id: u12-l3-4
+        kind: completion
+        concepts: [problem-vocabulary]
+        prompt: Fill the ending — "Has the wallet been handed in?"
+        target:
+          kanji: 財布が届い＿いますか
+          kana: さいふがとどい＿いますか
+          romaji: saifu ga todoi _ imasu ka
+        accept:
+          - kanji: て
+            kana: て
+            romaji: te
+        hint: 届く → 届いて.
+        explanation: >-
+          財布が届いていますか needs て before います. 届いて is the て form of 届く,
+          and ています presents the state after the arrival.
+      - id: u12-l3-5
+        kind: construction
+        concepts: [loss-verb-choice, problem-vocabulary]
+        prompt: Say you left your wallet at the hotel.
+        accept:
+          - kanji: ホテルに財布を忘れました
+            kana: ホテルにさいふをわすれました
+            romaji: hoteru ni saifu o wasuremashita
+        hint: The place it stayed takes に.
+        explanation: >-
+          ホテルに財布を忘れました says the wallet stayed at the hotel: に marks the
+          place and 忘れました says you left it there. This is the answer to "where
+          did you lose it" at a counter.
+      - id: u12-l3-6
+        kind: interpretation
+        concepts: [problem-vocabulary]
+        prompt: What does this mean?
+        target:
+          kanji: 病院は駅の前にあります
+          kana: びょういんはえきのまえにあります
+          romaji: byouin wa eki no mae ni arimasu
+        accept_meanings:
+          - The hospital is in front of the station.
+          - There is a hospital in front of the station.
+        hint: は marks the hospital as what the sentence is about.
+        explanation: >-
+          病院は駅の前にあります locates the hospital in front of the station: は
+          marks the hospital as the topic, 駅の前 before に is the place, and
+          あります says it exists there.
+      - id: u12-l3-7
+        kind: construction
+        concepts: [problem-vocabulary]
+        prompt: Say your phone broke.
+        accept:
+          - kanji: 携帯が壊れました
+            kana: けいたいがこわれました
+            romaji: keitai ga kowaremashita
+        hint: The phone is what broke, so it takes が; 壊れる is "to break".
+        explanation: >-
+          携帯が壊れました uses が for the phone and 壊れました for the break. This is
+          a different problem from a loss: you still have the phone, but it does not
+          work.
+      - id: u12-l3-8
+        kind: construction
+        concepts: [problem-vocabulary, softener-n-desu-ga]
+        prompt: Ask what you should do.
+        accept:
+          - kanji: どうすればいいですか
+            kana: どうすればいいですか
+            romaji: dou sureba ii desu ka
+        hint: どうすればいいですか is the set phrase for "what should I do?".
+        explanation: >-
+          どうすればいいですか is the phrase to ask for instructions after reporting
+          the problem. It puts the next action back to the person helping you.
+      - id: u12-l3-9
+        kind: listening
+        concepts: [softener-n-desu-ga, problem-vocabulary]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: すみません、携帯をなくしたんですが、届いていますか。
+          kana: すみません、けいたいをなくしたんですが、とどいていますか。
+          romaji: sumimasen, keitai o nakushita n desu ga, todoite imasu ka
+        accept_meanings:
+          - Excuse me, I lost my phone — has it been handed in?
+          - I lost my phone; has it been handed in?
+          - Excuse me, the thing is I lost my phone. Has it been handed in?
+        hint: Report first with んですが, then ask with 届いていますか.
+        explanation: >-
+          The report comes first — 携帯をなくしたんですが — and the concrete question
+          follows with 届いていますか. This report-then-ask shape is what a
+          lost-and-found counter needs.
+      - id: u12-l3-10
+        kind: conversation
+        concepts: [loss-verb-nakusu, absence-ga-nai, loss-verb-choice, softener-n-desu-ga, problem-vocabulary]
+        prompt: >-
+          You are at the lost-and-found at a station. Report what you lost, answer
+          when and where, describe the object, ask whether it has been handed in,
+          and ask what you should do.
+        scenario:
+          turns:
+            - speaker: learner
+              accept:
+                - kanji: すみません、財布をなくしたんですが。
+                  kana: すみません、さいふをなくしたんですが。
+                  romaji: sumimasen, saifu o nakushita n desu ga
+                - kanji: 財布をなくしたんですが。
+                  kana: さいふをなくしたんですが。
+                  romaji: saifu o nakushita n desu ga
+                - kanji: すみません、財布がないんですが。
+                  kana: すみません、さいふがないんですが。
+                  romaji: sumimasen, saifu ga nai n desu ga
+            - speaker: npc
+              line:
+                kanji: いつ、どこでなくしましたか。
+                kana: いつ、どこでなくしましたか。
+                romaji: itsu, doko de nakushimashita ka
+            - speaker: learner
+              accept:
+                - kanji: 昨日、駅でなくしました。
+                  kana: きのう、えきでなくしました。
+                  romaji: kinou, eki de nakushimashita
+                - kanji: 昨日です。駅でなくしました。
+                  kana: きのうです。えきでなくしました。
+                  romaji: kinou desu. eki de nakushimashita
+                - kanji: 昨日、駅で落としました。
+                  kana: きのう、えきでおとしました。
+                  romaji: kinou, eki de otoshimashita
+            - speaker: npc
+              line:
+                kanji: 大きい財布ですか、小さい財布ですか。
+                kana: おおきいさいふですか、ちいさいさいふですか。
+                romaji: ookii saifu desu ka, chiisai saifu desu ka
+            - speaker: learner
+              accept:
+                - kanji: 小さい財布です。届いていますか。
+                  kana: ちいさいさいふです。とどいていますか。
+                  romaji: chiisai saifu desu. todoite imasu ka
+                - kanji: 小さい財布ですが、届いていますか。
+                  kana: ちいさいさいふですが、とどいていますか。
+                  romaji: chiisai saifu desu ga, todoite imasu ka
+                - kanji: 小さい財布です。忘れ物センターに届いていますか。
+                  kana: ちいさいさいふです。わすれものセンターにとどいていますか。
+                  romaji: chiisai saifu desu. wasuremono sentaa ni todoite imasu ka
+            - speaker: npc
+              line:
+                kanji: はい、届いていますよ。財布は交番にあります。
+                kana: はい、とどいていますよ。さいふはこうばんにあります。
+                romaji: hai, todoite imasu yo. saifu wa kouban ni arimasu
+            - speaker: learner
+              accept:
+                - kanji: どうすればいいですか。
+                  kana: どうすればいいですか。
+                  romaji: dou sureba ii desu ka
+                - kanji: どうしたらいいですか。
+                  kana: どうしたらいいですか。
+                  romaji: dou shitara ii desu ka
+                - kanji: 交番に行ってもいいですか。
+                  kana: こうばんにいってもいいですか。
+                  romaji: kouban ni itte mo ii desu ka
+            - speaker: npc
+              line:
+                kanji: 交番は駅の前にあります。交番で聞いてください。
+                kana: こうばんはえきのまえにあります。こうばんできいてください。
+                romaji: kouban wa eki no mae ni arimasu. kouban de kiite kudasai
+            - speaker: learner
+              accept:
+                - kanji: わかりました。ありがとうございます。
+                  kana: わかりました。ありがとうございます。
+                  romaji: wakarimashita. arigatou gozaimasu
+                - kanji: ありがとうございます。
+                  kana: ありがとうございます。
+                  romaji: arigatou gozaimasu
+                - kanji: はい、わかりました。ありがとうございます。
+                  kana: はい、わかりました。ありがとうございます。
+                  romaji: hai, wakarimashita. arigatou gozaimasu
+        hint: >-
+          Report with 財布をなくしたんですが, answer with 昨日、駅でなくしました,
+          describe it with 小さい財布です, ask 届いていますか, then ask
+          どうすればいいですか.
+        explanation: >-
+          The learner reports 財布をなくしたんですが, answers いつ and どこ with
+          昨日、駅でなくしました, describes the wallet with 小さい財布です, asks
+          届いていますか, and asks どうすればいいですか. The npc sends the learner to
+          交番 and locates it with 駅の前, so the answer has to be understood as a
+          place, not just heard.
+      - id: u12-l3-11
+        kind: speaking
+        concepts: [loss-verb-nakusu, absence-ga-nai, loss-verb-choice, softener-n-desu-ga, problem-vocabulary]
+        prompt: >-
+          You are at the lost-and-found at a station. Without looking back, report
+          what you lost with んですが, say when and where, describe the object, ask
+          whether it has been handed in, and ask what you should do. Speak aloud.
+        rubric: >-
+          Does the learner report with 〜んですが rather than a flat statement or a
+          question to the listener? Does it answer when and where with 昨日 and
+          駅で? Does it describe the object with a noun and です? Does it ask
+          届いていますか? Does it ask どうすればいいですか? Does it choose なくした,
+          落とした or 忘れた to match what happened? Judge meaning, grammar,
+          naturalness and register separately. There is no model answer.
