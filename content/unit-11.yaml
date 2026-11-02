@@ -416,13 +416,17 @@ lessons:
           - kanji: まっすぐ行ってください
             kana: まっすぐいってください
             romaji: massugu itte kudasai
-          - kana: まっすぐいってください
+          - kanji: 真っ直ぐ行ってください
+            kana: まっすぐいってください
+            romaji: massugu itte kudasai
+          - kanji: まっすぐいってください
+            kana: まっすぐいってください
             romaji: massugu itte kudasai
         hint: まっすぐ is まっすぐ; 行って is いって.
         explanation: >-
-          まっすぐ行ってください is まっすぐいってください. A transcript may return the
-          kanji or the kana form, so both are accepted. The request keeps 行って from
-          the て-form.
+          まっすぐ行ってください is まっすぐいってください. 真っ直ぐ is the same word in
+          kanji, so both spellings are accepted — unlike a homophone, the word has not
+          changed. The request keeps 行って from the て-form.
       - id: u11-l2-10
         kind: construction
         concepts: [direction-words, place-existence]

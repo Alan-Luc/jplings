@@ -3326,3 +3326,6 @@
 - step: u11-l4-5
   answer: The hotel is before the station. Go straight, then turn left at the signal.
   verdict: wrong
+- step: u11-l2-9
+  answer: 真っ直ぐ行ってください
+  verdict: correct
