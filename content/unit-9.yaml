@@ -1,0 +1,862 @@
+id: unit-9
+title: レストランで — ordering, asking about a dish, and the allergy question
+taught: true
+concepts:
+  - id: order-o-kudasai
+    label: お〜をください — asking for an item at a restaurant
+  - id: request-onegai-shimasu
+    label: 〜をお願いします — asking someone to handle a request
+  - id: restaurant-arimasu-ka
+    label: 〜はありますか — asking whether a dish is available
+  - id: restaurant-vocabulary
+    label: 定食・大盛り・持ち帰り・おすすめ・お水・お会計 — restaurant words
+  - id: allergy-repair
+    label: アレルギー — surviving the allergy question and answering without keigo
+  - id: service-keigo
+    label: service keigo — recognize it, answer in ordinary polite Japanese
+lessons:
+  - id: u9-l1
+    title: お〜をください and 〜はありますか — asking for an item and asking what is available
+    objective: >-
+      Ask for a restaurant item with お〜をください, and ask whether a dish is
+      available with 〜はありますか, using the restaurant words お水 and おすすめ.
+    anchors:
+      - kanji: お水をください
+        kana: おみずをください
+        romaji: omizu o kudasai
+      - kanji: 定食はありますか
+        kana: ていしょくはありますか
+        romaji: teishoku wa arimasu ka
+      - kanji: おすすめはありますか
+        kana: おすすめはありますか
+        romaji: osusume wa arimasu ka
+    teach:
+      - prose: >-
+          お〜をください asks for an item at a restaurant. The をください part is
+          the request you already know from the shop; the お is a politeness prefix
+          on some restaurant words: お水をください, お茶をください. The prefix does
+          not attach to every noun — 定食をください is fine, お定食 is not.
+        examples:
+          - kanji: お水をください
+            kana: おみずをください
+            romaji: omizu o kudasai
+          - kanji: お茶をください
+            kana: おちゃをください
+            romaji: ocha o kudasai
+          - kanji: 定食をください
+            kana: ていしょくをください
+            romaji: teishoku o kudasai
+      - prose: >-
+          〜はありますか asks whether a dish is available: 定食はありますか,
+          おすすめはありますか. は marks the dish as what you are asking about, and
+          the answer is はい、あります or いいえ、ありません. あります is not an action
+          verb, so the dish takes は, not を.
+        examples:
+          - kanji: 定食はありますか
+            kana: ていしょくはありますか
+            romaji: teishoku wa arimasu ka
+          - kanji: おすすめはありますか
+            kana: おすすめはありますか
+            romaji: osusume wa arimasu ka
+          - kanji: はい、あります
+            kana: はい、あります
+            romaji: hai, arimasu
+      - prose: >-
+          お水 is water and おすすめ is the recommendation. At a restaurant お水 is
+          the ordinary word for the water a server brings; 水 without お sounds
+          plain. おすすめ asks what the restaurant suggests, so it is the natural
+          word to use with はありますか.
+        examples:
+          - kanji: お水をください
+            kana: おみずをください
+            romaji: omizu o kudasai
+          - kanji: おすすめはありますか
+            kana: おすすめはありますか
+            romaji: osusume wa arimasu ka
+    steps:
+      - id: u9-l1-1
+        kind: interpretation
+        concepts: [order-o-kudasai]
+        prompt: >-
+          Two customers ask for water: お水をください and 水をください. Both are
+          understood, but one is the natural restaurant request. What does the
+          restaurant one mean?
+        target:
+          kanji: お水をください
+          kana: おみずをください
+          romaji: omizu o kudasai
+        accept_meanings:
+          - Please give me water.
+          - Water, please.
+          - Please give me some water.
+        hint: The restaurant form adds お to 水.
+        explanation: >-
+          お水をください adds the polite prefix お to 水 and keeps をください.
+          水をください is grammatical but plainer; at a restaurant the staff word is
+          お水.
+      - id: u9-l1-2
+        kind: interpretation
+        concepts: [restaurant-arimasu-ka, restaurant-vocabulary]
+        prompt: What does this mean?
+        target:
+          kanji: おすすめはありますか
+          kana: おすすめはありますか
+          romaji: osusume wa arimasu ka
+        accept_meanings:
+          - Do you have a recommendation?
+          - Do you have any recommendations?
+          - What do you recommend?
+        hint: ありますか asks whether the restaurant has it.
+        explanation: >-
+          おすすめ is the recommendation; は marks it as what you ask about and
+          ありますか asks availability. This is the restaurant use of the 〜はありますか
+          you learned in the shop.
+      - id: u9-l1-3
+        kind: transformation
+        concepts: [order-o-kudasai, restaurant-vocabulary]
+        prompt: A customer says 水をください at a restaurant. Make it the natural restaurant request.
+        target:
+          kanji: 水をください
+          kana: みずをください
+          romaji: mizu o kudasai
+        accept:
+          - kanji: お水をください
+            kana: おみずをください
+            romaji: omizu o kudasai
+        hint: Add the polite prefix to 水.
+        explanation: >-
+          お水をください uses the restaurant word お水. 水をください is understandable
+          but plain; the prefix is what makes it fit the setting.
+      - id: u9-l1-4
+        kind: construction
+        concepts: [order-o-kudasai]
+        prompt: Ask for tea at a restaurant.
+        accept:
+          - kanji: お茶をください
+            kana: おちゃをください
+            romaji: ocha o kudasai
+        hint: お茶 already carries the polite prefix; keep をください.
+        explanation: >-
+          お茶をください asks for tea. お茶 is the restaurant word for tea, and を
+          marks what you want.
+      - id: u9-l1-5
+        kind: construction
+        concepts: [restaurant-arimasu-ka, restaurant-vocabulary]
+        prompt: Ask whether the restaurant has a set meal.
+        accept:
+          - kanji: 定食はありますか
+            kana: ていしょくはありますか
+            romaji: teishoku wa arimasu ka
+        hint: は marks the set meal as what you are asking about.
+        explanation: >-
+          定食はありますか asks whether the set meal is available. 定食 is a set
+          meal, は marks it, and ありますか asks whether it exists on the menu.
+      - id: u9-l1-6
+        kind: completion
+        concepts: [order-o-kudasai, restaurant-vocabulary]
+        prompt: Fill the particle — "Please give me water."
+        target:
+          kanji: お水＿ください
+          kana: おみず＿ください
+          romaji: omizu _ kudasai
+        accept:
+          - kanji: を
+            kana: を
+            romaji: o
+        hint: ください takes the thing you are asking for.
+        explanation: >-
+          お水をください marks the water with を because you are asking for it. が
+          would mark it as a subject instead.
+      - id: u9-l1-7
+        kind: listening
+        concepts: [order-o-kudasai, restaurant-vocabulary]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: すみません、お水をください。
+          kana: すみません、おみずをください。
+          romaji: sumimasen, omizu o kudasai
+        accept_meanings:
+          - Excuse me, please give me water.
+          - Excuse me, water, please.
+          - Excuse me, please give me some water.
+        hint: Listen for お水 and ください.
+        explanation: >-
+          すみません、お水をください gets attention and asks for water. お水 is the
+          restaurant word and をください is the request.
+      - id: u9-l1-8
+        kind: listening
+        concepts: [restaurant-arimasu-ka, restaurant-vocabulary]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: 定食はありますか。
+          kana: ていしょくはありますか。
+          romaji: teishoku wa arimasu ka
+        accept_meanings:
+          - Do you have a set meal?
+          - Do you have set meals?
+          - Is there a set meal?
+        hint: ありますか asks whether the set meal is on the menu.
+        explanation: >-
+          定食はありますか asks whether they have a set meal. は marks 定食 and
+          ありますか asks availability.
+      - id: u9-l1-9
+        kind: construction
+        concepts: [restaurant-arimasu-ka, restaurant-vocabulary]
+        prompt: Ask whether they have a recommendation.
+        accept:
+          - kanji: おすすめはありますか
+            kana: おすすめはありますか
+            romaji: osusume wa arimasu ka
+        hint: おすすめ is the recommendation; はありますか asks whether it exists.
+        explanation: >-
+          おすすめはありますか asks for the restaurant's recommendation. は marks it
+          as the thing you are asking about.
+      - id: u9-l1-10
+        kind: completion
+        concepts: [restaurant-arimasu-ka, restaurant-vocabulary]
+        prompt: Fill the particle — "Do you have a recommendation?"
+        target:
+          kanji: おすすめ＿ありますか
+          kana: おすすめ＿ありますか
+          romaji: osusume _ arimasu ka
+        accept:
+          - kanji: は
+            kana: は
+            romaji: wa
+        hint: You are asking whether the restaurant has it, not making it the object of an action.
+        explanation: >-
+          おすすめはありますか marks the recommendation with は. を would make it the
+          object of an action, but あります is not an action verb.
+
+  - id: u9-l2
+    title: 注文 — 定食・大盛り・持ち帰り and 〜をお願いします
+    objective: >-
+      Order a set meal and its options with 〜をお願いします, and distinguish
+      asking for an item with お〜をください from asking someone to do something
+      with 〜をお願いします.
+    anchors:
+      - kanji: 定食をお願いします
+        kana: ていしょくをおねがいします
+        romaji: teishoku o onegai shimasu
+      - kanji: 大盛りでお願いします
+        kana: おおもりでおねがいします
+        romaji: oomori de onegai shimasu
+      - kanji: お会計をお願いします
+        kana: おかいけいをおねがいします
+        romaji: okaikei o onegai shimasu
+    teach:
+      - prose: >-
+          〜をお願いします asks someone to handle a request: 定食をお願いします,
+          おすすめをお願いします, お会計をお願いします. を marks what you want handled,
+          and お願いします asks the server to do it. For an option, use で instead:
+          大盛りでお願いします, 持ち帰りでお願いします.
+        examples:
+          - kanji: 定食をお願いします
+            kana: ていしょくをおねがいします
+            romaji: teishoku o onegai shimasu
+          - kanji: 大盛りでお願いします
+            kana: おおもりでおねがいします
+            romaji: oomori de onegai shimasu
+          - kanji: お会計をお願いします
+            kana: おかいけいをおねがいします
+            romaji: okaikei o onegai shimasu
+      - prose: >-
+          The two shapes do different jobs. お水をください asks for an item to be
+          handed over; お会計をお願いします asks the staff to do something. お会計を
+          ください is the wrong shape: the check is not an object you are handed, it
+          is something the staff handles. お水をお願いします is possible, but
+          お水をください is the clearer item request.
+        examples:
+          - kanji: お水をください
+            kana: おみずをください
+            romaji: omizu o kudasai
+          - kanji: お会計をお願いします
+            kana: おかいけいをおねがいします
+            romaji: okaikei o onegai shimasu
+      - prose: >-
+          定食 is a set meal, 大盛り is a large serving, and 持ち帰り is takeout.
+          おすすめ is the recommendation. Put the option before でお願いします:
+          大盛りでお願いします, 持ち帰りでお願いします. Name the dish with を when you
+          order it: 定食をお願いします.
+        examples:
+          - kanji: 定食をお願いします
+            kana: ていしょくをおねがいします
+            romaji: teishoku o onegai shimasu
+          - kanji: 持ち帰りでお願いします
+            kana: もちかえりでおねがいします
+            romaji: mochikaeri de onegai shimasu
+          - kanji: おすすめをお願いします
+            kana: おすすめをおねがいします
+            romaji: osusume o onegai shimasu
+    steps:
+      - id: u9-l2-1
+        kind: interpretation
+        concepts: [request-onegai-shimasu, restaurant-vocabulary]
+        prompt: >-
+          Two customers speak: お水をください and お会計をお願いします. The second asks
+          the staff to do something. What does it mean?
+        target:
+          kanji: お会計をお願いします
+          kana: おかいけいをおねがいします
+          romaji: okaikei o onegai shimasu
+        accept_meanings:
+          - The check, please.
+          - Please bring the check.
+          - Please bring me the check.
+          - Please let me pay.
+        hint: お会計 is the check; お願いします asks the staff to handle it.
+        explanation: >-
+          お会計をお願いします asks the staff to bring or settle the check.
+          お水をください asks for an item; お会計 is something the staff does, so it
+          takes お願いします.
+      - id: u9-l2-2
+        kind: interpretation
+        concepts: [request-onegai-shimasu, restaurant-vocabulary]
+        prompt: What does this mean?
+        target:
+          kanji: 定食をお願いします
+          kana: ていしょくをおねがいします
+          romaji: teishoku o onegai shimasu
+        accept_meanings:
+          - I'll have the set meal, please.
+          - The set meal, please.
+          - Please give me the set meal.
+        hint: をお願いします orders the set meal.
+        explanation: >-
+          定食をお願いします orders the set meal. を marks 定食 and お願いします asks
+          the server to bring it.
+      - id: u9-l2-3
+        kind: construction
+        concepts: [request-onegai-shimasu, restaurant-vocabulary]
+        prompt: A customer says お会計をください for "The check, please". Write the sentence they meant.
+        accept:
+          - kanji: お会計をお願いします
+            kana: おかいけいをおねがいします
+            romaji: okaikei o onegai shimasu
+        hint: The check is something the staff does, so it takes お願いします.
+        explanation: >-
+          お会計をお願いします asks the staff to handle the check. お会計をください
+          treats the check as an object to hand over, which is the wrong shape for
+          this request.
+      - id: u9-l2-4
+        kind: construction
+        concepts: [request-onegai-shimasu, restaurant-vocabulary]
+        prompt: Order a large portion.
+        accept:
+          - kanji: 大盛りでお願いします
+            kana: おおもりでおねがいします
+            romaji: oomori de onegai shimasu
+        hint: で marks the option you are choosing.
+        explanation: >-
+          大盛りでお願いします asks for a large portion. 大盛り is the large serving,
+          and で marks it as the option you want.
+      - id: u9-l2-5
+        kind: construction
+        concepts: [request-onegai-shimasu, restaurant-vocabulary]
+        prompt: Ask for takeout.
+        accept:
+          - kanji: 持ち帰りでお願いします
+            kana: もちかえりでおねがいします
+            romaji: mochikaeri de onegai shimasu
+        hint: 持ち帰り is takeout; で marks the option.
+        explanation: >-
+          持ち帰りでお願いします asks for takeout. 持ち帰り is takeout, and で marks
+          it as how you want the order.
+      - id: u9-l2-6
+        kind: transformation
+        concepts: [request-onegai-shimasu, restaurant-vocabulary]
+        prompt: Make this order takeout instead of a large portion.
+        target:
+          kanji: 大盛りでお願いします
+          kana: おおもりでおねがいします
+          romaji: oomori de onegai shimasu
+        accept:
+          - kanji: 持ち帰りでお願いします
+            kana: もちかえりでおねがいします
+            romaji: mochikaeri de onegai shimasu
+        hint: Replace 大盛り with 持ち帰り; keep でお願いします.
+        explanation: >-
+          持ち帰りでお願いします swaps the option to takeout. で stays because it
+          marks the option, and お願いします stays the request.
+      - id: u9-l2-7
+        kind: listening
+        concepts: [request-onegai-shimasu, restaurant-vocabulary]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: 大盛りでお願いします。
+          kana: おおもりでおねがいします。
+          romaji: oomori de onegai shimasu
+        accept_meanings:
+          - A large portion, please.
+          - Large, please.
+          - I'd like a large portion, please.
+        hint: 大盛り is a large serving; で marks the option.
+        explanation: >-
+          大盛りでお願いします asks for a large portion. 大盛り is the large serving,
+          and でお願いします asks for that option.
+      - id: u9-l2-8
+        kind: listening
+        concepts: [restaurant-arimasu-ka, restaurant-vocabulary]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: おすすめの定食はありますか。
+          kana: おすすめのていしょくはありますか。
+          romaji: osusume no teishoku wa arimasu ka
+        accept_meanings:
+          - Do you have a recommended set meal?
+          - Do you have a set meal you recommend?
+          - Is there a recommended set meal?
+        hint: おすすめの定食 is "the recommended set meal"; ありますか asks whether it exists.
+        explanation: >-
+          おすすめの定食はありますか asks whether there is a recommended set meal.
+          の links おすすめ to 定食, and はありますか asks availability.
+      - id: u9-l2-9
+        kind: completion
+        concepts: [request-onegai-shimasu, restaurant-vocabulary]
+        prompt: Fill the particle — "The check, please."
+        target:
+          kanji: お会計＿お願いします
+          kana: おかいけい＿おねがいします
+          romaji: okaikei _ onegai shimasu
+        accept:
+          - kanji: を
+            kana: を
+            romaji: o
+        hint: お願いします takes the thing you are asking them to handle.
+        explanation: >-
+          お会計をお願いします marks the check with を. が would mark it as a subject,
+          but here it is what you ask the staff to handle.
+      - id: u9-l2-10
+        kind: construction
+        concepts: [request-onegai-shimasu, restaurant-vocabulary]
+        prompt: Order the recommendation.
+        accept:
+          - kanji: おすすめをお願いします
+            kana: おすすめをおねがいします
+            romaji: osusume o onegai shimasu
+        hint: を marks the recommendation; お願いします orders it.
+        explanation: >-
+          おすすめをお願いします orders the recommendation. を marks what you want
+          and お願いします asks the server to bring it.
+      - id: u9-l2-11
+        kind: speaking
+        concepts: [request-onegai-shimasu, restaurant-vocabulary]
+        prompt: Say "A large portion, please." aloud, then confirm the transcript.
+        accept:
+          - kanji: 大盛りでお願いします
+            kana: おおもりでおねがいします
+            romaji: oomori de onegai shimasu
+          - kana: おおもりでおねがいします
+            romaji: oomori de onegai shimasu
+          - kanji: 大盛りでおねがいします
+            kana: おおもりでおねがいします
+            romaji: oomori de onegai shimasu
+        hint: 大盛り is おおもり; で marks the option.
+        explanation: >-
+          大盛りでお願いします is おおもりでおねがいします. A transcript may return
+          the kanji form, the kana form, a mixed form, or the romaji, so all are
+          accepted. で marks the option you are asking for.
+
+  - id: u9-l3
+    title: サービス敬語 — recognize it, answer without it
+    objective: >-
+      Recognize いらっしゃいませ, 〜でございます, ございますか and
+      少々お待ちください, and answer staff in ordinary polite Japanese without
+      producing keigo.
+    anchors:
+      - kanji: いらっしゃいませ
+        kana: いらっしゃいませ
+        romaji: irasshaimase
+      - kanji: アレルギーはございますか
+        kana: アレルギーはございますか
+        romaji: arerugii wa gozaimasu ka
+      - kanji: 少々お待ちください
+        kana: しょうしょうおまちください
+        romaji: shoushou omachi kudasai
+    teach:
+      - prose: >-
+          Restaurant staff speak keigo. You only need to recognize it. いらっしゃいませ
+          is the welcome when you enter. お会計でございます tells you the check is
+          here. 少々お待ちください asks you to wait a moment. ございます is the keigo
+          form of あります, so アレルギーはございますか is アレルギーはありますか in
+          ordinary polite Japanese.
+        examples:
+          - kanji: いらっしゃいませ
+            kana: いらっしゃいませ
+            romaji: irasshaimase
+          - kanji: お会計でございます
+            kana: おかいけいでございます
+            romaji: okaikei de gozaimasu
+          - kanji: 少々お待ちください
+            kana: しょうしょうおまちください
+            romaji: shoushou omachi kudasai
+      - prose: >-
+          When the keigo line is too fast or contains a new word, use the repair
+          toolkit from U6: もう一度言ってください, ゆっくり言ってください, or
+          「アレルギー」って何ですか. Then answer in ordinary polite Japanese:
+          アレルギーはありません, 魚のアレルギーがあります, はい、お願いします,
+          はい、わかりました. You never have to produce ございます.
+        examples:
+          - kanji: 「アレルギー」って何ですか
+            kana: 「アレルギー」ってなんですか
+            romaji: arerugii tte nan desu ka
+          - kanji: アレルギーはありません
+            kana: アレルギーはありません
+            romaji: arerugii wa arimasen
+          - kanji: はい、お願いします
+            kana: はい、おねがいします
+            romaji: hai, onegai shimasu
+    steps:
+      - id: u9-l3-1
+        kind: listening
+        concepts: [service-keigo]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: いらっしゃいませ。
+          kana: いらっしゃいませ。
+          romaji: irasshaimase
+        accept_meanings:
+          - Welcome.
+          - Welcome to our restaurant.
+          - Welcome!
+        hint: This is the greeting staff call when you enter.
+        explanation: >-
+          いらっしゃいませ is the staff greeting when you enter a restaurant. You do
+          not repeat it; you answer with すみません or a request.
+      - id: u9-l3-2
+        kind: interpretation
+        concepts: [service-keigo, restaurant-vocabulary]
+        prompt: What does this mean?
+        target:
+          kanji: お会計でございます。
+          kana: おかいけいでございます。
+          romaji: okaikei de gozaimasu
+        accept_meanings:
+          - Here is your check.
+          - This is your check.
+          - Here is the bill.
+          - Your check, sir.
+        hint: でございます is the keigo form of です.
+        explanation: >-
+          お会計でございます tells you the check has arrived. でございます is keigo
+          for です; you recognize it but answer with ordinary です or お願いします.
+      - id: u9-l3-3
+        kind: listening
+        concepts: [service-keigo]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: 少々お待ちください。
+          kana: しょうしょうおまちください。
+          romaji: shoushou omachi kudasai
+        accept_meanings:
+          - Please wait a moment.
+          - Please wait a moment
+          - One moment, please.
+        hint: 少々 means "a little"; お待ちください asks you to wait.
+        explanation: >-
+          少々お待ちください asks you to wait a moment. 少々 is a polite "a little",
+          and お待ちください is the keigo request to wait.
+      - id: u9-l3-4
+        kind: listening
+        concepts: [allergy-repair, service-keigo]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: アレルギーはございますか。
+          kana: アレルギーはございますか。
+          romaji: arerugii wa gozaimasu ka
+        accept_meanings:
+          - Do you have any allergies?
+          - Do you have an allergy?
+          - Are you allergic to anything?
+        hint: ございますか is the keigo form of ありますか.
+        explanation: >-
+          アレルギーはございますか asks whether you have allergies. ございますか is
+          keigo for ありますか, so the ordinary question is アレルギーはありますか. If
+          it is too fast, ask もう一度言ってください; if アレルギー is new, ask
+          「アレルギー」って何ですか.
+      - id: u9-l3-5
+        kind: construction
+        concepts: [service-keigo]
+        prompt: Staff say 少々お待ちください。Say that you understand.
+        accept:
+          - kanji: はい、わかりました
+            kana: はい、わかりました
+            romaji: hai, wakarimashita
+        hint: Answer in ordinary polite Japanese; do not repeat the keigo.
+        explanation: >-
+          はい、わかりました tells staff you understand. You do not need to produce
+          お待ちください or ございます; recognizing the request is enough.
+      - id: u9-l3-6
+        kind: construction
+        concepts: [service-keigo, request-onegai-shimasu]
+        prompt: Staff say お会計でございます。Say "Yes, please."
+        accept:
+          - kanji: はい、お願いします
+            kana: はい、おねがいします
+            romaji: hai, onegai shimasu
+        hint: お願いします is your ordinary polite response; でございます stays with the staff.
+        explanation: >-
+          はい、お願いします accepts the check politely without keigo. The staff's
+          でございます is recognition only; your answer uses the お願いします you
+          already know.
+      - id: u9-l3-7
+        kind: construction
+        concepts: [allergy-repair]
+        prompt: Staff ask アレルギーはございますか。Say that you have no allergies.
+        accept:
+          - kanji: アレルギーはありません
+            kana: アレルギーはありません
+            romaji: arerugii wa arimasen
+        hint: Answer with ありません, not ございません.
+        explanation: >-
+          アレルギーはありません says you have no allergies. ありません is the ordinary
+          polite negative of あります; ございません is keigo and you only need to
+          recognize it.
+      - id: u9-l3-8
+        kind: construction
+        concepts: [allergy-repair]
+        prompt: Say that you have a fish allergy.
+        accept:
+          - kanji: 魚のアレルギーがあります
+            kana: さかなのアレルギーがあります
+            romaji: sakana no arerugii ga arimasu
+        hint: の links 魚 to アレルギー; が marks what you have.
+        explanation: >-
+          魚のアレルギーがあります says you are allergic to fish. 魚のアレルギー is
+          "a fish allergy", and があります says it exists.
+      - id: u9-l3-9
+        kind: construction
+        concepts: [allergy-repair]
+        prompt: You hear アレルギーはございますか but do not know the word アレルギー. Ask what it means.
+        accept:
+          - kanji: 「アレルギー」って何ですか
+            kana: 「アレルギー」ってなんですか
+            romaji: arerugii tte nan desu ka
+        hint: Use U6's って何ですか to ask about the word.
+        explanation: >-
+          「アレルギー」って何ですか quotes the unknown word with って and asks what
+          it means. This is the repair that lets you survive the keigo question
+          without producing keigo.
+      - id: u9-l3-10
+        kind: interpretation
+        concepts: [service-keigo, restaurant-vocabulary, restaurant-arimasu-ka]
+        prompt: What does this mean?
+        target:
+          kanji: おすすめはございますか。
+          kana: おすすめはございますか。
+          romaji: osusume wa gozaimasu ka
+        accept_meanings:
+          - Do you have a recommendation?
+          - Do you have any recommendations?
+          - What do you recommend?
+        hint: ございますか is the keigo form of ありますか.
+        explanation: >-
+          おすすめはございますか is the staff's keigo version of おすすめはありますか.
+          You can answer with an ordinary おすすめはありますか or name a dish;
+          recognize ございますか but do not produce it.
+
+  - id: u9-l4
+    title: レストランで — putting it together
+    objective: >-
+      Order, ask what is in a dish, survive the allergy question with repair, and
+      ask for the check in a restaurant conversation, then do it without
+      scaffolding.
+    teach:
+      - prose: >-
+          This lesson adds no new grammar. Order with 定食をお願いします and
+          大盛りでお願いします, ask about the menu with おすすめはありますか, ask what
+          is in a dish with この定食には何が入っていますか, and ask for the check with
+          お会計をお願いします.
+        examples:
+          - kanji: この定食には何が入っていますか
+            kana: このていしょくにはなにがはいっていますか
+            romaji: kono teishoku ni wa nani ga haitte imasu ka
+          - kanji: 魚と野菜が入っています
+            kana: さかなとやさいがはいっています
+            romaji: sakana to yasai ga haitte imasu
+          - kanji: お会計をお願いします
+            kana: おかいけいをおねがいします
+            romaji: okaikei o onegai shimasu
+      - prose: >-
+          The staff may answer in keigo. Recognize アレルギーはございますか and
+          少々お待ちください, but answer with アレルギーはありません, はい、わかりました,
+          or はい、お願いします. If the allergy question contains a word you do not
+          know, repair first with 「アレルギー」って何ですか or もう一度言ってください,
+          then answer.
+    steps:
+      - id: u9-l4-1
+        kind: conversation
+        concepts: [order-o-kudasai, request-onegai-shimasu, restaurant-arimasu-ka, restaurant-vocabulary, allergy-repair, service-keigo]
+        prompt: >-
+          You are at a restaurant. Order a set meal with a large portion, ask what
+          is in a dish, handle the staff's allergy question, ask about the
+          recommendation, and ask for the check.
+        scenario:
+          turns:
+            - speaker: npc
+              line:
+                kanji: いらっしゃいませ。
+                kana: いらっしゃいませ。
+                romaji: irasshaimase
+            - speaker: learner
+              accept:
+                - kanji: すみません、定食をお願いします。
+                  kana: すみません、ていしょくをおねがいします。
+                  romaji: sumimasen, teishoku o onegai shimasu
+                - kanji: 定食をお願いします。
+                  kana: ていしょくをおねがいします。
+                  romaji: teishoku o onegai shimasu
+                - kanji: すみません、定食をください。
+                  kana: すみません、ていしょくをください。
+                  romaji: sumimasen, teishoku o kudasai
+            - speaker: npc
+              line:
+                kanji: はい、定食ですね。大盛りにしますか。
+                kana: はい、ていしょくですね。おおもりにしますか。
+                romaji: hai, teishoku desu ne. oomori ni shimasu ka
+            - speaker: learner
+              accept:
+                - kanji: はい、大盛りでお願いします。
+                  kana: はい、おおもりでおねがいします。
+                  romaji: hai, oomori de onegai shimasu
+                - kanji: 大盛りでお願いします。
+                  kana: おおもりでおねがいします。
+                  romaji: oomori de onegai shimasu
+                - kanji: はい、お願いします。
+                  kana: はい、おねがいします。
+                  romaji: hai, onegai shimasu
+            - speaker: npc
+              line:
+                kanji: かしこまりました。アレルギーはございますか。
+                kana: かしこまりました。アレルギーはございますか。
+                romaji: kashikomarimashita. arerugii wa gozaimasu ka
+            - speaker: learner
+              accept:
+                - kanji: すみません、「アレルギー」って何ですか。
+                  kana: すみません、「アレルギー」ってなんですか。
+                  romaji: sumimasen, arerugii tte nan desu ka
+                - kanji: 「アレルギー」って何ですか。
+                  kana: 「アレルギー」ってなんですか。
+                  romaji: arerugii tte nan desu ka
+                - kanji: すみません、もう一度言ってください。
+                  kana: すみません、もういちどいってください。
+                  romaji: sumimasen, mou ichido itte kudasai
+            - speaker: npc
+              line:
+                kanji: アレルギーです。食べられない物はありますか。
+                kana: アレルギーです。たべられないものはありますか。
+                romaji: arerugii desu. taberarenai mono wa arimasu ka
+            - speaker: learner
+              accept:
+                - kanji: あ、魚のアレルギーがあります。
+                  kana: あ、さかなのアレルギーがあります。
+                  romaji: a, sakana no arerugii ga arimasu
+                - kanji: 魚のアレルギーがあります。
+                  kana: さかなのアレルギーがあります。
+                  romaji: sakana no arerugii ga arimasu
+                - kanji: 魚が食べられません。
+                  kana: さかながたべられません。
+                  romaji: sakana ga taberaremasen
+            - speaker: npc
+              line:
+                kanji: 魚ですね。この定食には魚が入っています。
+                kana: さかなですね。このていしょくにはさかながはいっています。
+                romaji: sakana desu ne. kono teishoku ni wa sakana ga haitte imasu
+            - speaker: learner
+              accept:
+                - kanji: そうですか。じゃあ、おすすめはありますか。
+                  kana: そうですか。じゃあ、おすすめはありますか。
+                  romaji: sou desu ka. jaa, osusume wa arimasu ka
+                - kanji: じゃあ、おすすめはありますか。
+                  kana: じゃあ、おすすめはありますか。
+                  romaji: jaa, osusume wa arimasu ka
+                - kanji: おすすめはありますか。
+                  kana: おすすめはありますか。
+                  romaji: osusume wa arimasu ka
+            - speaker: npc
+              line:
+                kanji: はい、野菜の定食がおすすめです。
+                kana: はい、やさいのていしょくがおすすめです。
+                romaji: hai, yasai no teishoku ga osusume desu
+            - speaker: learner
+              accept:
+                - kanji: それは何が入っていますか。
+                  kana: それはなにがはいっていますか。
+                  romaji: sore wa nani ga haitte imasu ka
+                - kanji: その定食には何が入っていますか。
+                  kana: そのていしょくにはなにがはいっていますか。
+                  romaji: sono teishoku ni wa nani ga haitte imasu ka
+                - kanji: 野菜の定食には何が入っていますか。
+                  kana: やさいのていしょくにはなにがはいっていますか。
+                  romaji: yasai no teishoku ni wa nani ga haitte imasu ka
+            - speaker: npc
+              line:
+                kanji: 野菜と豆腐です。大丈夫ですか。
+                kana: やさいととうふです。だいじょうぶですか。
+                romaji: yasai to toufu desu. daijoubu desu ka
+            - speaker: learner
+              accept:
+                - kanji: はい、大丈夫です。じゃあ、それをください。
+                  kana: はい、だいじょうぶです。じゃあ、それをください。
+                  romaji: hai, daijoubu desu. jaa, sore o kudasai
+                - kanji: はい、大丈夫です。それをください。
+                  kana: はい、だいじょうぶです。それをください。
+                  romaji: hai, daijoubu desu. sore o kudasai
+                - kanji: はい、大丈夫です。
+                  kana: はい、だいじょうぶです。
+                  romaji: hai, daijoubu desu
+            - speaker: npc
+              line:
+                kanji: はい、どうぞ。
+                kana: はい、どうぞ。
+                romaji: hai, douzo
+            - speaker: learner
+              accept:
+                - kanji: すみません、お会計をお願いします。
+                  kana: すみません、おかいけいをおねがいします。
+                  romaji: sumimasen, okaikei o onegai shimasu
+                - kanji: お会計をお願いします。
+                  kana: おかいけいをおねがいします。
+                  romaji: okaikei o onegai shimasu
+            - speaker: npc
+              line:
+                kanji: はい、お会計でございます。少々お待ちください。
+                kana: はい、おかいけいでございます。しょうしょうおまちください。
+                romaji: hai, okaikei de gozaimasu. shoushou omachi kudasai
+            - speaker: learner
+              accept:
+                - kanji: はい、お願いします。
+                  kana: はい、おねがいします。
+                  romaji: hai, onegai shimasu
+                - kanji: わかりました。
+                  kana: わかりました。
+                  romaji: wakarimashita
+                - kanji: はい、わかりました。
+                  kana: はい、わかりました。
+                  romaji: hai, wakarimashita
+        hint: >-
+          Use 定食をお願いします and 大盛りでお願いします to order, おすすめはありますか
+          to ask about the menu, 何が入っていますか to ask what is in a dish, and
+          お会計をお願いします for the check. When the allergy question is new, repair
+          before answering.
+        explanation: >-
+          The learner orders a set meal with 定食をお願いします, chooses 大盛りで
+          お願いします, repairs the unknown アレルギー with 「アレルギー」って何ですか,
+          answers 魚のアレルギーがあります, asks for a recommendation with おすすめは
+          ありますか, asks what the recommended dish contains with それは何が入っていますか,
+          and asks for the check with お会計をお願いします. The staff's ございます and
+          お待ちください are recognized, never produced.
+      - id: u9-l4-2
+        kind: speaking
+        concepts: [order-o-kudasai, request-onegai-shimasu, restaurant-arimasu-ka, restaurant-vocabulary, allergy-repair, service-keigo]
+        prompt: >-
+          You are at a restaurant. Without looking back, order a set meal with a
+          large portion, ask what is in a dish, respond to アレルギーはございますか when
+          the word is new, and ask for the check. Speak aloud.
+        rubric: >-
+          Does the order use 定食をお願いします and 大盛りでお願いします, with で for
+          the option? Does the dish question ask 何が入っていますか? Does the allergy
+          response repair first with って何ですか or another U6 repair, then answer
+          without ございます? Does お会計をお願いします ask for the action rather than
+          お会計をください? Judge meaning, grammar, naturalness and register
+          separately. There is no model answer.

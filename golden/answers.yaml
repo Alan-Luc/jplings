@@ -2240,3 +2240,318 @@
 - step: u8-l3-10
   answer: kippu o san kudasai
   verdict: wrong
+- step: u9-l1-1
+  answer: Please give me water.
+  verdict: correct
+- step: u9-l1-1
+  answer: Water, please.
+  verdict: correct
+- step: u9-l1-1
+  answer: Please give me tea.
+  verdict: wrong
+- step: u9-l1-2
+  answer: Do you have a recommendation?
+  verdict: correct
+- step: u9-l1-2
+  answer: What do you recommend?
+  verdict: correct
+- step: u9-l1-2
+  answer: Do you have water?
+  verdict: wrong
+- step: u9-l1-3
+  answer: omizu o kudasai
+  verdict: correct
+- step: u9-l1-3
+  answer: お水をください
+  verdict: correct
+- step: u9-l1-3
+  answer: おみずをください
+  verdict: correct
+- step: u9-l1-3
+  answer: mizu o kudasai
+  verdict: wrong
+- step: u9-l1-4
+  answer: ocha o kudasai
+  verdict: correct
+- step: u9-l1-4
+  answer: お茶をください
+  verdict: correct
+- step: u9-l1-4
+  answer: おちゃをください
+  verdict: correct
+- step: u9-l1-4
+  answer: mizu o kudasai
+  verdict: wrong
+- step: u9-l1-5
+  answer: teishoku wa arimasu ka
+  verdict: correct
+- step: u9-l1-5
+  answer: 定食はありますか
+  verdict: correct
+- step: u9-l1-5
+  answer: ていしょくはありますか
+  verdict: correct
+- step: u9-l1-5
+  answer: teishoku o arimasu ka
+  verdict: wrong
+- step: u9-l1-6
+  answer: o
+  verdict: correct
+- step: u9-l1-6
+  answer: を
+  verdict: correct
+- step: u9-l1-6
+  answer: ga
+  verdict: wrong
+- step: u9-l1-7
+  answer: Excuse me, please give me water.
+  verdict: correct
+- step: u9-l1-7
+  answer: Excuse me, water, please.
+  verdict: correct
+- step: u9-l1-7
+  answer: Excuse me, please give me tea.
+  verdict: wrong
+- step: u9-l1-8
+  answer: Do you have a set meal?
+  verdict: correct
+- step: u9-l1-8
+  answer: Do you have set meals?
+  verdict: correct
+- step: u9-l1-8
+  answer: Do you have a recommendation?
+  verdict: wrong
+- step: u9-l1-9
+  answer: osusume wa arimasu ka
+  verdict: correct
+- step: u9-l1-9
+  answer: おすすめはありますか
+  verdict: correct
+- step: u9-l1-9
+  answer: osusume o arimasu ka
+  verdict: wrong
+- step: u9-l1-10
+  answer: wa
+  verdict: correct
+- step: u9-l1-10
+  answer: は
+  verdict: correct
+- step: u9-l1-10
+  answer: o
+  verdict: wrong
+- step: u9-l2-1
+  answer: The check, please.
+  verdict: correct
+- step: u9-l2-1
+  answer: Please bring the check.
+  verdict: correct
+- step: u9-l2-1
+  answer: Please give me water.
+  verdict: wrong
+- step: u9-l2-2
+  answer: I'll have the set meal, please.
+  verdict: correct
+- step: u9-l2-2
+  answer: The set meal, please.
+  verdict: correct
+- step: u9-l2-2
+  answer: The check, please.
+  verdict: wrong
+- step: u9-l2-3
+  answer: okaikei o onegai shimasu
+  verdict: correct
+- step: u9-l2-3
+  answer: お会計をお願いします
+  verdict: correct
+- step: u9-l2-3
+  answer: おかいけいをおねがいします
+  verdict: correct
+- step: u9-l2-3
+  answer: okaikei o kudasai
+  verdict: wrong
+- step: u9-l2-4
+  answer: oomori de onegai shimasu
+  verdict: correct
+- step: u9-l2-4
+  answer: 大盛りでお願いします
+  verdict: correct
+- step: u9-l2-4
+  answer: おおもりでおねがいします
+  verdict: correct
+- step: u9-l2-4
+  answer: oomori ni onegai shimasu
+  verdict: wrong
+- step: u9-l2-5
+  answer: mochikaeri de onegai shimasu
+  verdict: correct
+- step: u9-l2-5
+  answer: 持ち帰りでお願いします
+  verdict: correct
+- step: u9-l2-5
+  answer: もちかえりでおねがいします
+  verdict: correct
+- step: u9-l2-5
+  answer: mochikaeri ni onegai shimasu
+  verdict: wrong
+- step: u9-l2-6
+  answer: mochikaeri de onegai shimasu
+  verdict: correct
+- step: u9-l2-6
+  answer: 持ち帰りでお願いします
+  verdict: correct
+- step: u9-l2-6
+  answer: もちかえりでおねがいします
+  verdict: correct
+- step: u9-l2-6
+  answer: oomori de onegai shimasu
+  verdict: wrong
+- step: u9-l2-7
+  answer: A large portion, please.
+  verdict: correct
+- step: u9-l2-7
+  answer: Large, please.
+  verdict: correct
+- step: u9-l2-7
+  answer: The check, please.
+  verdict: wrong
+- step: u9-l2-8
+  answer: Do you have a recommended set meal?
+  verdict: correct
+- step: u9-l2-8
+  answer: Is there a recommended set meal?
+  verdict: correct
+- step: u9-l2-8
+  answer: Do you have a large portion?
+  verdict: wrong
+- step: u9-l2-9
+  answer: o
+  verdict: correct
+- step: u9-l2-9
+  answer: を
+  verdict: correct
+- step: u9-l2-9
+  answer: ga
+  verdict: wrong
+- step: u9-l2-10
+  answer: osusume o onegai shimasu
+  verdict: correct
+- step: u9-l2-10
+  answer: おすすめをお願いします
+  verdict: correct
+- step: u9-l2-10
+  answer: osusume wa onegai shimasu
+  verdict: wrong
+- step: u9-l2-11
+  answer: oomori de onegai shimasu
+  verdict: correct
+- step: u9-l2-11
+  answer: おおもりでおねがいします
+  verdict: correct
+- step: u9-l2-11
+  answer: 大盛りでお願いします
+  verdict: correct
+- step: u9-l2-11
+  answer: 大盛りでおねがいします
+  verdict: correct
+- step: u9-l2-11
+  answer: oomori de kudasai
+  verdict: wrong
+- step: u9-l3-1
+  answer: Welcome.
+  verdict: correct
+- step: u9-l3-1
+  answer: Welcome to our restaurant.
+  verdict: correct
+- step: u9-l3-1
+  answer: Please wait a moment.
+  verdict: wrong
+- step: u9-l3-2
+  answer: Here is your check.
+  verdict: correct
+- step: u9-l3-2
+  answer: This is your check.
+  verdict: correct
+- step: u9-l3-2
+  answer: Do you have any allergies?
+  verdict: wrong
+- step: u9-l3-3
+  answer: Please wait a moment.
+  verdict: correct
+- step: u9-l3-3
+  answer: One moment, please.
+  verdict: correct
+- step: u9-l3-3
+  answer: Welcome.
+  verdict: wrong
+- step: u9-l3-4
+  answer: Do you have any allergies?
+  verdict: correct
+- step: u9-l3-4
+  answer: Are you allergic to anything?
+  verdict: correct
+- step: u9-l3-4
+  answer: Do you have a recommendation?
+  verdict: wrong
+- step: u9-l3-5
+  answer: hai, wakarimashita
+  verdict: correct
+- step: u9-l3-5
+  answer: はい、わかりました
+  verdict: correct
+- step: u9-l3-5
+  answer: hai, omachi shimasu
+  verdict: wrong
+- step: u9-l3-6
+  answer: hai, onegai shimasu
+  verdict: correct
+- step: u9-l3-6
+  answer: はい、お願いします
+  verdict: correct
+- step: u9-l3-6
+  answer: はい、おねがいします
+  verdict: correct
+- step: u9-l3-6
+  answer: hai, gozaimasu
+  verdict: wrong
+- step: u9-l3-7
+  answer: arerugii wa arimasen
+  verdict: correct
+- step: u9-l3-7
+  answer: アレルギーはありません
+  verdict: correct
+- step: u9-l3-7
+  answer: arerugii wa gozaimasen
+  verdict: wrong
+- step: u9-l3-8
+  answer: sakana no arerugii ga arimasu
+  verdict: correct
+- step: u9-l3-8
+  answer: 魚のアレルギーがあります
+  verdict: correct
+- step: u9-l3-8
+  answer: さかなのアレルギーがあります
+  verdict: correct
+- step: u9-l3-8
+  answer: sakana ga arerugii arimasu
+  verdict: wrong
+- step: u9-l3-9
+  answer: arerugii tte nan desu ka
+  verdict: correct
+- step: u9-l3-9
+  answer: 「アレルギー」って何ですか
+  verdict: correct
+- step: u9-l3-9
+  answer: 「アレルギー」ってなんですか
+  verdict: correct
+- step: u9-l3-9
+  answer: arerugii wa nan desu ka
+  verdict: wrong
+- step: u9-l3-10
+  answer: Do you have a recommendation?
+  verdict: correct
+- step: u9-l3-10
+  answer: What do you recommend?
+  verdict: correct
+- step: u9-l3-10
+  answer: Do you have any allergies?
+  verdict: wrong
