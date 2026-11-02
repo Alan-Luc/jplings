@@ -1,0 +1,961 @@
+id: unit-15
+title: くだけた話し方 — understanding casual speech and keeping a conversation going
+taught: true
+concepts:
+  - id: casual-plain-form
+    label: 普通形 — the plain form that casual speech is built on
+  - id: casual-contractions
+    label: てる・ちゃう・じゃん・とく・なきゃ — contractions recognised, not produced
+  - id: casual-kana-desho
+    label: かな・でしょ — wondering and seeking agreement
+  - id: casual-aizuchi
+    label: あいづち — そうなんですか・なるほど・たしかに・へえ・じゃあ by purpose
+  - id: casual-n-desu-ne
+    label: 〜んですね — confirming what you have just learned
+lessons:
+  - id: u15-l1
+    title: 明日、行く？ — plain form, かな and でしょ
+    objective: >-
+      Drop です／ます for a close friend, produce the plain past and plain negative,
+      keep だ after nouns and な-adjectives, and tell かな (wondering) from でしょ
+      (seeking agreement).
+    anchors:
+      - kanji: 明日、行く？
+        kana: あした、いく？
+        romaji: ashita, iku?
+      - kanji: 学生だよ
+        kana: がくせいだよ
+        romaji: gakusei da yo
+      - kanji: 明日は雨かな
+        kana: あしたはあめかな
+        romaji: ashita wa ame kana
+      - kanji: これ、おいしいでしょ
+        kana: これ、おいしいでしょ
+        romaji: kore, oishii desho
+    teach:
+      - prose: >-
+          Plain form is what casual speech is built on. For a close friend, drop
+          です／ます and use the dictionary form: 明日、行く。 For a stranger, keep
+          明日、行きます。 The past plain of 行く is 行った, the negative is 行かない,
+          and the past negative is 行かなかった. 食べる becomes 食べた, 食べない and
+          食べなかった; する becomes した; 来る becomes 来た. Nouns and な-adjectives
+          take だ: 学生だ, 静かだ, 学生だった, 静かじゃない. い-adjectives do not:
+          高い, not 高いだ; 高かった, 高くない.
+        examples:
+          - kanji: 明日、行く。
+            kana: あした、いく。
+            romaji: ashita, iku
+          - kanji: 昨日、行った。
+            kana: きのう、いった。
+            romaji: kinou, itta
+          - kanji: 学生だ。
+            kana: がくせいだ。
+            romaji: gakusei da
+      - prose: >-
+          かな and でしょ both attach to the plain form, but they do different work.
+          かな is a self-directed wonder: 明日は雨かな, I wonder if it will rain
+          tomorrow; 店は開いているかな, I wonder if the shop is open. でしょ asks the
+          listener to agree: これ、おいしいでしょ, this is tasty, right?; テストは
+          簡単でしょ, the test is easy, right? かな does not ask the listener for an
+          answer, while でしょ expects agreement.
+        examples:
+          - kanji: 明日は雨かな
+            kana: あしたはあめかな
+            romaji: ashita wa ame kana
+          - kanji: これ、おいしいでしょ
+            kana: これ、おいしいでしょ
+            romaji: kore, oishii desho
+          - kanji: テストは簡単でしょ
+            kana: テストはかんたんでしょ
+            romaji: tesuto wa kantan desho
+    steps:
+      - id: u15-l1-1
+        kind: interpretation
+        concepts: [casual-plain-form]
+        prompt: >-
+          One friend says 明日、行きます。 and another says 明日、行く。 Which one is
+          casual, and what does it mean?
+        target:
+          kanji: 明日、行く。
+          kana: あした、いく。
+          romaji: ashita, iku
+        accept_meanings:
+          - I'm going tomorrow.
+          - I will go tomorrow.
+          - I'm going tomorrow, casually.
+        hint: Plain form drops ます.
+        explanation: >-
+          明日、行く is the plain, casual form. 明日、行きます carries the same
+          meaning with ます, which is polite and used with strangers or people above
+          you. The choice is register, not time.
+      - id: u15-l1-2
+        kind: transformation
+        concepts: [casual-plain-form]
+        prompt: >-
+          A learner writes 明日、行きます。 to a close friend. Write it in casual plain
+          form.
+        target:
+          kanji: 明日、行きます。
+          kana: あした、いきます。
+          romaji: ashita, ikimasu
+        accept:
+          - kanji: 明日、行く。
+            kana: あした、いく。
+            romaji: ashita, iku
+        hint: Drop ます and use the dictionary form 行く.
+        explanation: >-
+          明日、行く drops ます for a close friend. 明日、行きます is not wrong
+          Japanese, but it is polite and sounds distant between friends.
+      - id: u15-l1-3
+        kind: transformation
+        concepts: [casual-plain-form]
+        prompt: >-
+          A learner writes 昨日、行きました。 to a friend. Write the casual plain past.
+        target:
+          kanji: 昨日、行きました。
+          kana: きのう、いきました。
+          romaji: kinou, ikimashita
+        accept:
+          - kanji: 昨日、行った。
+            kana: きのう、いった。
+            romaji: kinou, itta
+        hint: The plain past of 行く is 行った.
+        explanation: >-
+          昨日、行った is the casual plain past. 行きました is the polite past; 行く
+          would leave the sentence in the present.
+      - id: u15-l1-4
+        kind: construction
+        concepts: [casual-plain-form]
+        prompt: Tell a close friend "I'm a student" in plain form.
+        accept:
+          - kanji: 学生だ。
+            kana: がくせいだ。
+            romaji: gakusei da
+          - kanji: 私は学生だ。
+            kana: わたしはがくせいだ。
+            romaji: watashi wa gakusei da
+        hint: Nouns take だ in the plain form.
+        explanation: >-
+          学生だ is the plain form of 学生です. The noun needs だ; 学生 alone sounds
+          like a fragment, and 学生です is the polite form you are dropping.
+      - id: u15-l1-5
+        kind: completion
+        concepts: [casual-plain-form]
+        prompt: Fill the plain negative — "I don't eat natto."
+        target:
+          kanji: 納豆は食べ＿。
+          kana: なっとうはたべ＿。
+          romaji: nattou wa tabe _
+        accept:
+          - kanji: ない
+            kana: ない
+            romaji: nai
+        hint: The plain negative of 食べる is 食べない.
+        explanation: >-
+          納豆は食べない needs ない for the plain negative. 食べません is the polite
+          negative, and 食べなかった is the past negative.
+      - id: u15-l1-6
+        kind: interpretation
+        concepts: [casual-kana-desho]
+        prompt: >-
+          One friend says 明日は雨かな and another says 明日は雨でしょ。 Which one is
+          wondering to themselves, and what does it mean?
+        target:
+          kanji: 明日は雨かな。
+          kana: あしたはあめかな。
+          romaji: ashita wa ame kana
+        accept_meanings:
+          - I wonder if it will rain tomorrow.
+          - I wonder whether it will rain tomorrow.
+          - Maybe it will rain tomorrow.
+        hint: かな marks a self-directed wonder.
+        explanation: >-
+          明日は雨かな is the speaker wondering aloud. 明日は雨でしょ is different:
+          it asks the listener to agree that it will rain.
+      - id: u15-l1-7
+        kind: interpretation
+        concepts: [casual-kana-desho]
+        prompt: A friend says これ、おいしいでしょ。 What are they doing?
+        target:
+          kanji: これ、おいしいでしょ。
+          kana: これ、おいしいでしょ。
+          romaji: kore, oishii desho
+        accept_meanings:
+          - They're saying it's delicious, right?
+          - They're seeking agreement that it's delicious.
+          - They're saying it's tasty, aren't they?
+        hint: でしょ asks the listener for agreement.
+        explanation: >-
+          これ、おいしいでしょ seeks agreement: the speaker expects you to say yes.
+          かな would instead show the speaker wondering to themselves.
+      - id: u15-l1-8
+        kind: construction
+        concepts: [casual-kana-desho]
+        prompt: You are not sure whether the shop is open. Say "I wonder if the shop is open."
+        accept:
+          - kanji: 店は開いているかな。
+            kana: みせはあいているかな。
+            romaji: mise wa aite iru kana
+          - kanji: 店、開いているかな。
+            kana: みせ、あいているかな。
+            romaji: mise, aite iru kana
+        hint: Put かな after the plain sentence.
+        explanation: >-
+          店は開いているかな uses plain 開いている plus かな for wondering. 開いています
+          かな mixes the polite form into a casual wonder, and でしょ would ask the
+          listener to agree instead.
+      - id: u15-l1-9
+        kind: construction
+        concepts: [casual-kana-desho]
+        prompt: >-
+          You think the test is easy and want your friend to agree. Say "The test is
+          easy, right?" using でしょ.
+        accept:
+          - kanji: テストは簡単でしょ。
+            kana: テストはかんたんでしょ。
+            romaji: tesuto wa kantan desho
+        hint: でしょ follows the plain form; な-adjectives keep で before it.
+        explanation: >-
+          テストは簡単でしょ asks your friend to agree. テストは簡単かな would be you
+          wondering to yourself, which does not invite agreement.
+      - id: u15-l1-10
+        kind: listening
+        concepts: [casual-kana-desho]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: 明日は早く起きるかな。
+          kana: あしたははやくおきるかな。
+          romaji: ashita wa hayaku okiru kana
+        accept_meanings:
+          - I wonder if I'll get up early tomorrow.
+          - I wonder whether I will get up early tomorrow.
+          - Maybe I'll get up early tomorrow.
+        hint: かな at the end marks wondering.
+        explanation: >-
+          明日は早く起きるかな is the speaker wondering about tomorrow morning.
+          起きますかな would mix polite ます into the casual pattern.
+      - id: u15-l1-11
+        kind: speaking
+        concepts: [casual-plain-form]
+        prompt: Say the plain equivalent of 私は学生です。 Speak aloud.
+        accept:
+          - kanji: 私は学生だ。
+            kana: わたしはがくせいだ。
+            romaji: watashi wa gakusei da
+          - kanji: 学生だ。
+            kana: がくせいだ。
+            romaji: gakusei da
+        hint: Drop です and add だ after the noun.
+        explanation: >-
+          私は学生だ is the plain form. A transcript may return the kanji, the kana,
+          or the romaji, so all of those are accepted. 学生 alone is missing だ, and
+          学生です is still polite.
+      - id: u15-l1-12
+        kind: speaking
+        concepts: [casual-kana-desho]
+        prompt: >-
+          You are looking at a menu and wondering whether the fish is fresh. Say "I
+          wonder if the fish is fresh." Speak aloud.
+        accept:
+          - kanji: 魚は新鮮かな。
+            kana: さかなはしんせんかな。
+            romaji: sakana wa shinsen kana
+          - kanji: 魚、新鮮かな。
+            kana: さかな、しんせんかな。
+            romaji: sakana, shinsen kana
+        hint: かな goes after the plain form.
+        explanation: >-
+          魚は新鮮かな uses 新鮮 plus かな. 新鮮だかな is not the usual shape; a
+          な-adjective takes かな directly. A transcript may return the kanji, the
+          kana, or the romaji.
+
+  - id: u15-l2
+    title: 何してるの？ — contractions you need to recognise
+    objective: >-
+      Recognise てる, ちゃう, じゃん, とく and なきゃ in speech and writing, and
+      expand each to its full form (ている, てしまう, じゃない, ておく,
+      なければならない) without being asked to produce the contraction.
+    anchors:
+      - kanji: 何してるの？
+        kana: なにしてるの？
+        romaji: nani shiteru no?
+      - kanji: もう食べちゃった
+        kana: もうたべちゃった
+        romaji: mou tabechatta
+      - kanji: いいじゃん
+        kana: いいじゃん
+        romaji: ii jan
+      - kanji: 先に買っとくね
+        kana: さきにかっとくね
+        romaji: saki ni kattoku ne
+      - kanji: もう行かなきゃ
+        kana: もういかなきゃ
+        romaji: mou ikanakya
+    teach:
+      - prose: >-
+          てる is ている with the い dropped: 何してるの？ is 何をしているの？,
+          what are you doing?; 待ってる is 待っている. ちゃう is てしまう: もう
+          食べちゃった is もう食べてしまった, I already ate it, often with the
+          feeling that it is done and cannot be undone. Both are casual, and both are
+          far more common in anime dialogue than their full forms.
+        examples:
+          - kanji: 何してるの？
+            kana: なにしてるの？
+            romaji: nani shiteru no
+          - kanji: もう食べちゃった
+            kana: もうたべちゃった
+            romaji: mou tabechatta
+          - kanji: 待ってるよ
+            kana: まってるよ
+            romaji: matteru yo
+      - prose: >-
+          じゃん is じゃない used as a casual "isn't it?": いいじゃん, it's good,
+          isn't it?; 安いじゃん, it's cheap, right? とく is ておく with the てお
+          squeezed: 先に買っとくね is 先に買っておくね, I'll buy it in advance, okay?;
+          やっておく becomes やっとく. The contraction does not change who acts or
+          when; it only makes the sentence casual.
+        examples:
+          - kanji: いいじゃん
+            kana: いいじゃん
+            romaji: ii jan
+          - kanji: 先に買っとくね
+            kana: さきにかっとくね
+            romaji: saki ni kattoku ne
+          - kanji: やっておく
+            kana: やっておく
+            romaji: yatte oku
+      - prose: >-
+          なきゃ is なければ, usually with ならない or いけない left unsaid: もう
+          行かなきゃ is もう行かなければならない, I have to go now. 勉強しなきゃ is
+          勉強しなければならない. In this unit these five contractions are for
+          recognition only: you need to hear them, read them, and expand them to the
+          full form so the grammar is visible. You are never asked to produce a
+          contraction; your own answers stay in plain form.
+        examples:
+          - kanji: もう行かなきゃ
+            kana: もういかなきゃ
+            romaji: mou ikanakya
+          - kanji: 勉強しなきゃ
+            kana: べんきょうしなきゃ
+            romaji: benkyou shinakya
+          - kanji: 行かなければならない
+            kana: いかなければならない
+            romaji: ikanakereba naranai
+    steps:
+      - id: u15-l2-1
+        kind: listening
+        concepts: [casual-contractions]
+        prompt: Listen, then say what it means.
+        target:
+          kanji: 何してるの？
+          kana: なにしてるの？
+          romaji: nani shiteru no?
+        accept_meanings:
+          - What are you doing?
+          - What're you doing?
+          - What are you doing right now?
+        hint: してる is している.
+        explanation: >-
+          何してるの？ is 何をしているの？ with てる for ている. It asks what the
+          listener is doing now. The casual question drops を and uses の at the end.
+      - id: u15-l2-2
+        kind: listening
+        concepts: [casual-contractions]
+        prompt: Listen, then say what it means.
+        target:
+          kanji: もう昼ご飯食べちゃった。
+          kana: もうひるごはんたべちゃった。
+          romaji: mou hirugohan tabechatta
+        accept_meanings:
+          - I already ate lunch.
+          - I've already eaten lunch.
+          - I ended up eating lunch already.
+        hint: ちゃった is てしまった.
+        explanation: >-
+          もう昼ご飯食べちゃった is もう昼ご飯食べてしまった. ちゃう is てしまう, so
+          the sentence reports that the eating is already done, often with a trace of
+          "oops" or "that's that".
+      - id: u15-l2-3
+        kind: listening
+        concepts: [casual-contractions]
+        prompt: Listen, then say what it means.
+        target:
+          kanji: この店、安くていいじゃん。
+          kana: このみせ、やすくていいじゃん。
+          romaji: kono mise, yasukute ii jan
+        accept_meanings:
+          - This shop is cheap and good, isn't it?
+          - This shop is cheap and good, right?
+          - This shop is cheap and nice, don't you think?
+        hint: じゃん is じゃない used for casual agreement.
+        explanation: >-
+          この店、安くていいじゃん is 安くていいじゃない, seeking agreement that the
+          shop is a good one. じゃん is not a separate word meaning "good"; it is the
+          casual negative question that invites the listener to agree.
+      - id: u15-l2-4
+        kind: listening
+        concepts: [casual-contractions]
+        prompt: Listen, then say what it means.
+        target:
+          kanji: 先に買っとくね。
+          kana: さきにかっとくね。
+          romaji: saki ni kattoku ne
+        accept_meanings:
+          - I'll buy it in advance, okay?
+          - I'll go ahead and buy it.
+          - I'll buy it beforehand, all right?
+        hint: とく is ておく.
+        explanation: >-
+          先に買っとくね is 先に買っておくね. ておく means doing something in
+          advance or leaving it prepared, and とく is its casual contraction.
+      - id: u15-l2-5
+        kind: listening
+        concepts: [casual-contractions]
+        prompt: Listen, then say what it means.
+        target:
+          kanji: もう行かなきゃ。
+          kana: もういかなきゃ。
+          romaji: mou ikanakya
+        accept_meanings:
+          - I have to go now.
+          - I've got to go now.
+          - I need to leave now.
+        hint: なきゃ is なければ, with ならない left unsaid.
+        explanation: >-
+          もう行かなきゃ is もう行かなければならない. なきゃ marks an obligation the
+          speaker feels, and the full ending is usually omitted in casual speech.
+      - id: u15-l2-6
+        kind: transformation
+        concepts: [casual-contractions]
+        prompt: >-
+          A learner hears 何してるの？ and needs the full form to see the grammar.
+          Write it out.
+        target:
+          kanji: 何してるの？
+          kana: なにしてるの？
+          romaji: nani shiteru no?
+        accept:
+          - kanji: 何をしているの？
+            kana: なにをしているの？
+            romaji: nani o shite iru no?
+        hint: Expand してる to している and restore the dropped を.
+        explanation: >-
+          何をしているの？ is the full form. してる is している, and casual speech
+          often drops the object particle を. The full form is what makes the
+          progressive visible.
+      - id: u15-l2-7
+        kind: transformation
+        concepts: [casual-contractions]
+        prompt: >-
+          A learner hears もう食べちゃった。 and needs the full form. Write it out.
+        target:
+          kanji: もう食べちゃった。
+          kana: もうたべちゃった。
+          romaji: mou tabechatta
+        accept:
+          - kanji: もう食べてしまった。
+            kana: もうたべてしまった。
+            romaji: mou tabete shimatta
+        hint: Expand ちゃった to てしまった.
+        explanation: >-
+          もう食べてしまった is the full form. ちゃう is てしまう; 食べちゃった is
+          食べてしまった, with the same sense that the action is complete.
+      - id: u15-l2-8
+        kind: transformation
+        concepts: [casual-contractions]
+        prompt: >-
+          A learner hears 先に買っとくね。 and needs the full form. Write it out.
+        target:
+          kanji: 先に買っとくね。
+          kana: さきにかっとくね。
+          romaji: saki ni kattoku ne
+        accept:
+          - kanji: 先に買っておくね。
+            kana: さきにかっておくね。
+            romaji: saki ni katte oku ne
+        hint: Expand とく to ておく.
+        explanation: >-
+          先に買っておくね is the full form. 買っとく is 買っておく; とく replaces
+          ておく in casual speech.
+      - id: u15-l2-9
+        kind: transformation
+        concepts: [casual-contractions]
+        prompt: >-
+          A learner hears もう行かなきゃ。 and needs the full form. Write it out.
+        target:
+          kanji: もう行かなきゃ。
+          kana: もういかなきゃ。
+          romaji: mou ikanakya
+        accept:
+          - kanji: もう行かなければならない。
+            kana: もういかなければならない。
+            romaji: mou ikanakereba naranai
+          - kanji: もう行かなければいけない。
+            kana: もういかなければいけない。
+            romaji: mou ikanakereba ikenai
+        hint: Expand なきゃ to なければならない.
+        explanation: >-
+          もう行かなければならない is the full form, and 行かなければいけない carries
+          the same obligation. なきゃ is なければ with the ending left unsaid; both
+          full endings are accepted here.
+      - id: u15-l2-10
+        kind: transformation
+        concepts: [casual-contractions]
+        prompt: A learner hears いいじゃん。 and needs the full form. Write it out.
+        target:
+          kanji: いいじゃん。
+          kana: いいじゃん。
+          romaji: ii jan
+        accept:
+          - kanji: いいじゃない。
+            kana: いいじゃない。
+            romaji: ii ja nai
+        hint: Expand じゃん to じゃない.
+        explanation: >-
+          いいじゃない is the full form. じゃん is the casual contraction of じゃない,
+          and here it invites agreement rather than denying anything.
+      - id: u15-l2-11
+        kind: listening
+        concepts: [casual-contractions]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: 明日までにレポートを出しとくね。
+          kana: あしたまでにレポートをだしとくね。
+          romaji: ashita made ni repooto o dashitoku ne
+        accept_meanings:
+          - I'll submit the report by tomorrow, okay?
+          - I'll hand in the report by tomorrow.
+          - I'll get the report in by tomorrow, all right?
+        hint: 出しとく is 出しておく.
+        explanation: >-
+          明日までにレポートを出しとくね is 出しておくね, a promise to submit the
+          report in advance of the deadline. までに marks the deadline, and とく is
+          ておく.
+      - id: u15-l2-12
+        kind: speaking
+        concepts: [casual-contractions]
+        prompt: >-
+          Say "I have to go now" in the full form, not the contraction. Speak aloud.
+        accept:
+          - kanji: もう行かなければならない。
+            kana: もういかなければならない。
+            romaji: mou ikanakereba naranai
+          - kanji: もう行かなければいけない。
+            kana: もういかなければいけない。
+            romaji: mou ikanakereba ikenai
+        hint: Expand なきゃ to なければならない.
+        explanation: >-
+          もう行かなければならない is the full form of もう行かなきゃ. This unit asks
+          you to recognise the contraction, not produce it, so the spoken answer is
+          the full obligation. A transcript may return the kanji, the kana, or the
+          romaji.
+
+  - id: u15-l3
+    title: そうなんですか — あいづち and 〜んですね
+    objective: >-
+      Keep a conversation alive by choosing the aizuchi that matches the speaker's
+      intent — そうなんですか for received information, なるほど for understanding,
+      たしかに for agreement, へえ for surprise, じゃあ for moving on — and confirm
+      new information with 〜んですね.
+    anchors:
+      - kanji: そうなんですか
+        kana: そうなんですか
+        romaji: sou nan desu ka
+      - kanji: なるほど、わかりました
+        kana: なるほど、わかりました
+        romaji: naruhodo, wakarimashita
+      - kanji: たしかに、そうですね
+        kana: たしかに、そうですね
+        romaji: tashika ni, sou desu ne
+      - kanji: へえ、すごいですね
+        kana: へえ、すごいですね
+        romaji: hee, sugoi desu ne
+      - kanji: じゃあ、また明日
+        kana: じゃあ、またあした
+        romaji: jaa, mata ashita
+    teach:
+      - prose: >-
+          あいづち is not one noise; each phrase does a different job. そうなんですか
+          receives information you did not have: oh, really? なるほど shows that an
+          explanation has landed: I see. たしかに agrees with a point someone just
+          made: that's true. へえ reacts to unexpected news: wow, really? じゃあ moves
+          the conversation to the next step: then, well then. Choosing the wrong one
+          is not a grammar error, but it answers a different intent.
+        examples:
+          - kanji: そうなんですか
+            kana: そうなんですか
+            romaji: sou nan desu ka
+          - kanji: なるほど
+            kana: なるほど
+            romaji: naruhodo
+          - kanji: たしかに
+            kana: たしかに
+            romaji: tashika ni
+          - kanji: へえ
+            kana: へえ
+            romaji: hee
+          - kanji: じゃあ
+            kana: じゃあ
+            romaji: jaa
+      - prose: >-
+          んですね confirms something you have just learned and shows you are taking
+          it in: 学生なんですね, so you're a student. Nouns and な-adjectives take
+          なん before ん: 学生なんですね, 静かなんですね. Verbs and い-adjectives take
+          ん: 行くんですね, 忙しいんですね. そうなんですか receives new information,
+          while そうなんですね confirms it with a note of "I see, so that's how it
+          is."
+        examples:
+          - kanji: 学生なんですね
+            kana: がくせいなんですね
+            romaji: gakusei nan desu ne
+          - kanji: 忙しいんですね
+            kana: いそがしいんですね
+            romaji: isogashii n desu ne
+          - kanji: そうなんですね
+            kana: そうなんですね
+            romaji: sou nan desu ne
+    steps:
+      - id: u15-l3-1
+        kind: interpretation
+        concepts: [casual-aizuchi]
+        prompt: >-
+          A friend says 実は、来月から大阪に引っ越すんです。 You are surprised by the
+          unexpected news. Which reply fits — へえ、そうなんですか or なるほど、
+          わかりました — and what does it mean?
+        target:
+          kanji: へえ、そうなんですか。
+          kana: へえ、そうなんですか。
+          romaji: hee, sou nan desu ka
+        accept_meanings:
+          - Wow, really?
+          - Oh, is that so?
+          - Really? I didn't know that.
+        hint: へえ reacts to surprise; そうなんですか receives the information.
+        explanation: >-
+          へえ、そうなんですか reacts to unexpected news and receives it.
+          なるほど、わかりました would say that you understand an explanation, which
+          is not the same as being surprised by a move.
+      - id: u15-l3-2
+        kind: interpretation
+        concepts: [casual-aizuchi]
+        prompt: >-
+          A coworker explains a complicated procedure and you now understand it.
+          Which reply fits — なるほど or へえ — and what does it mean?
+        target:
+          kanji: なるほど。
+          kana: なるほど。
+          romaji: naruhodo
+        accept_meanings:
+          - I see.
+          - That makes sense.
+          - I understand now.
+        hint: Understanding an explanation calls for なるほど.
+        explanation: >-
+          なるほど marks understanding after an explanation. へえ would react to
+          surprise at news; it does not say that the procedure now makes sense.
+      - id: u15-l3-3
+        kind: interpretation
+        concepts: [casual-aizuchi]
+        prompt: >-
+          A friend says この店は安いのに料理がおいしい。 You agree with the point.
+          Which reply fits — たしかに、そうですね or じゃあ、また明日 — and what does
+          it mean?
+        target:
+          kanji: たしかに、そうですね。
+          kana: たしかに、そうですね。
+          romaji: tashika ni, sou desu ne
+        accept_meanings:
+          - That's true, isn't it?
+          - Indeed, you're right.
+          - True.
+        hint: Agreement calls for たしかに.
+        explanation: >-
+          たしかに、そうですね agrees with the point that the shop is cheap yet good.
+          じゃあ、また明日 would move on and end the conversation instead of agreeing.
+      - id: u15-l3-4
+        kind: interpretation
+        concepts: [casual-aizuchi]
+        prompt: >-
+          A friend tells you 私は大阪出身です。 You are receiving new information.
+          Which reply fits — そうなんですか or たしかに — and what does it mean?
+        target:
+          kanji: そうなんですか。
+          kana: そうなんですか。
+          romaji: sou nan desu ka
+        accept_meanings:
+          - Oh, really?
+          - Is that so?
+          - I didn't know that.
+        hint: New information is received with そうなんですか.
+        explanation: >-
+          そうなんですか receives the new fact that your friend is from Osaka.
+          たしかに would agree with an opinion, but your friend has just stated a fact
+          you did not know.
+      - id: u15-l3-5
+        kind: interpretation
+        concepts: [casual-aizuchi]
+        prompt: >-
+          The plan is settled and it is time to leave. Which reply fits — じゃあ、
+          また明日 or なるほど — and what does it mean?
+        target:
+          kanji: じゃあ、また明日。
+          kana: じゃあ、またあした。
+          romaji: jaa, mata ashita
+        accept_meanings:
+          - Well then, see you tomorrow.
+          - Then, see you tomorrow.
+          - Okay, see you tomorrow then.
+        hint: じゃあ moves the conversation on.
+        explanation: >-
+          じゃあ、また明日 moves to the next step and closes the conversation.
+          なるほど would comment on understanding and leave the goodbye unsaid.
+      - id: u15-l3-6
+        kind: construction
+        concepts: [casual-aizuchi]
+        prompt: A friend explains a word you did not know, and now you understand. Reply with なるほど.
+        accept:
+          - kanji: なるほど。
+            kana: なるほど。
+            romaji: naruhodo
+          - kanji: なるほど、わかりました。
+            kana: なるほど、わかりました。
+            romaji: naruhodo, wakarimashita
+        hint: Understanding an explanation is なるほど.
+        explanation: >-
+          なるほど shows the explanation has landed. へえ would only show surprise,
+          and そうなんですか would receive the information without saying you
+          understood it.
+      - id: u15-l3-7
+        kind: construction
+        concepts: [casual-aizuchi]
+        prompt: A friend says they got a new job. Express surprise.
+        accept:
+          - kanji: へえ、そうなんですか。
+            kana: へえ、そうなんですか。
+            romaji: hee, sou nan desu ka
+          - kanji: へえ、すごいですね。
+            kana: へえ、すごいですね。
+            romaji: hee, sugoi desu ne
+        hint: Surprise starts with へえ.
+        explanation: >-
+          へえ、そうなんですか reacts to the unexpected news and asks for more.
+          へえ、すごいですね adds admiration. たしかに would agree with an opinion
+          rather than react to news.
+      - id: u15-l3-8
+        kind: construction
+        concepts: [casual-aizuchi]
+        prompt: >-
+          A friend says the ramen is spicy but delicious. Agree with the point using
+          たしかに.
+        accept:
+          - kanji: たしかに。
+            kana: たしかに。
+            romaji: tashika ni
+          - kanji: たしかに、おいしいですね。
+            kana: たしかに、おいしいですね。
+            romaji: tashika ni, oishii desu ne
+        hint: Agreement with a point is たしかに.
+        explanation: >-
+          たしかに agrees that the ramen is spicy yet delicious. なるほど would mark
+          understanding of an explanation, not agreement with the friend's judgement.
+      - id: u15-l3-9
+        kind: transformation
+        concepts: [casual-n-desu-ne]
+        prompt: >-
+          You just learned that your friend is a student. Confirm it with 〜んですね.
+          Start from 学生です。
+        target:
+          kanji: 学生です。
+          kana: がくせいです。
+          romaji: gakusei desu
+        accept:
+          - kanji: 学生なんですね。
+            kana: がくせいなんですね。
+            romaji: gakusei nan desu ne
+        hint: Nouns take なん before ん.
+        explanation: >-
+          学生なんですね confirms the new information that your friend is a student.
+          学生んですね is missing the な that a noun needs before ん.
+      - id: u15-l3-10
+        kind: completion
+        concepts: [casual-n-desu-ne]
+        prompt: Fill the confirmation — "So you're from Osaka."
+        target:
+          kanji: 大阪出身＿ですね。
+          kana: おおさかしゅっしん＿ですね。
+          romaji: oosaka shusshin _ desu ne
+        accept:
+          - kanji: なん
+            kana: なん
+            romaji: nan
+        hint: 出身 is a noun, so it takes なん before ん.
+        explanation: >-
+          大阪出身なんですね needs なん because 出身 is a noun. 大阪出身んですね is
+          missing the な.
+      - id: u15-l3-11
+        kind: transformation
+        concepts: [casual-n-desu-ne]
+        prompt: >-
+          You just learned that your friend is busy tomorrow. Confirm it with
+          〜んですね. Start from 明日は忙しいです。
+        target:
+          kanji: 明日は忙しいです。
+          kana: あしたはいそがしいです。
+          romaji: ashita wa isogashii desu
+        accept:
+          - kanji: 明日は忙しいんですね。
+            kana: あしたはいそがしいんですね。
+            romaji: ashita wa isogashii n desu ne
+        hint: い-adjectives take ん directly before ん.
+        explanation: >-
+          明日は忙しいんですね confirms the new information. 忙しいなんですね adds an
+          extra な that an い-adjective does not take.
+      - id: u15-l3-12
+        kind: speaking
+        concepts: [casual-aizuchi, casual-n-desu-ne]
+        prompt: >-
+          A friend has just explained something and you understand. Reply with なるほど
+          and そうなんですね. Speak aloud.
+        accept:
+          - kanji: なるほど、そうなんですね。
+            kana: なるほど、そうなんですね。
+            romaji: naruhodo, sou nan desu ne
+          - kanji: なるほど。
+            kana: なるほど。
+            romaji: naruhodo
+        hint: なるほど shows understanding; そうなんですね confirms it.
+        explanation: >-
+          なるほど、そうなんですね shows that the explanation landed and confirms
+          what you learned. Both parts are common together in conversation. A
+          transcript may return the kanji, the kana, or the romaji.
+      - id: u15-l3-13
+        kind: interpretation
+        concepts: [casual-n-desu-ne]
+        prompt: What is the speaker doing in へえ、田中さんは毎朝走るんですね。
+        target:
+          kanji: へえ、田中さんは毎朝走るんですね。
+          kana: へえ、たなかさんはまいあさはしるんですね。
+          romaji: hee, tanaka san wa maiasa hashiru n desu ne
+        accept_meanings:
+          - They're surprised and confirming that Tanaka runs every morning.
+          - Oh, so Tanaka runs every morning.
+          - Really, Tanaka runs every morning.
+        hint: へえ shows surprise; んですね confirms what was just learned.
+        explanation: >-
+          へえ、田中さんは毎朝走るんですね reacts with surprise and confirms the new
+          information. 走るんですね follows a verb, so no な is needed before ん.
+
+  - id: u15-l4
+    title: casual conversation — putting it together
+    objective: >-
+      Follow a casual conversation in which the other speaker uses contractions, and
+      reply in plain form without producing a contraction yourself.
+    anchors:
+      - kanji: 今日、何してたの？
+        kana: きょう、なにしてたの？
+        romaji: kyou, nani shiteta no?
+      - kanji: テストがあるでしょ？
+        kana: テストがあるでしょ？
+        romaji: tesuto ga aru desho?
+    teach:
+      - prose: >-
+          This lesson has no new grammar. The other speaker will use casual forms and
+          contractions; your job is to understand them and answer in plain form. In
+          the conversation, してた is していた and でしょ asks for agreement. Your own
+          replies use していた, 勉強する, テストがある and 勉強しなければならない — the
+          full forms, never the contractions.
+        examples:
+          - kanji: 今日、何してたの？
+            kana: きょう、なにしてたの？
+            romaji: kyou, nani shiteta no
+          - kanji: 日本語を勉強していた。
+            kana: にほんごをべんきょうしていた。
+            romaji: nihongo o benkyou shite ita
+          - kanji: テストがあるでしょ？
+            kana: テストがあるでしょ？
+            romaji: tesuto ga aru desho
+    steps:
+      - id: u15-l4-1
+        kind: conversation
+        concepts: [casual-contractions, casual-plain-form, casual-kana-desho, casual-aizuchi, casual-n-desu-ne]
+        prompt: >-
+          You meet a friend and talk about your day and the test coming up. They
+          speak casually and use a contraction; answer in plain form.
+        scenario:
+          turns:
+            - speaker: npc
+              line:
+                kanji: お疲れ。今日、何してたの？
+                kana: おつかれ。きょう、なにしてたの？
+                romaji: otsukare. kyou, nani shiteta no
+            - speaker: learner
+              accept:
+                - kanji: 日本語を勉強していた。
+                  kana: にほんごをべんきょうしていた。
+                  romaji: nihongo o benkyou shite ita
+                - kanji: 図書館で日本語を勉強した。
+                  kana: としょかんでにほんごをべんきょうした。
+                  romaji: toshokan de nihongo o benkyou shita
+                - kanji: 日本語の勉強をしていた。
+                  kana: にほんごのべんきょうをしていた。
+                  romaji: nihongo no benkyou o shite ita
+            - speaker: npc
+              line:
+                kanji: へえ、すごいね。明日も勉強する？
+                kana: へえ、すごいね。あしたもべんきょうする？
+                romaji: hee, sugoi ne. ashita mo benkyou suru
+            - speaker: learner
+              accept:
+                - kanji: うん、明日も勉強する。
+                  kana: うん、あしたもべんきょうする。
+                  romaji: un, ashita mo benkyou suru
+                - kanji: 明日は少し忙しいから、勉強しない。
+                  kana: あしたはすこしいそがしいから、べんきょうしない。
+                  romaji: ashita wa sukoshi isogashii kara, benkyou shinai
+                - kanji: 明日も勉強するつもりだ。
+                  kana: あしたもべんきょうするつもりだ。
+                  romaji: ashita mo benkyou suru tsumori da
+            - speaker: npc
+              line:
+                kanji: じゃあ、明後日は？テストがあるでしょ？
+                kana: じゃあ、あさっては？テストがあるでしょ？
+                romaji: jaa, asatte wa? tesuto ga aru desho
+            - speaker: learner
+              accept:
+                - kanji: うん、テストがあるから、勉強しなければならない。
+                  kana: うん、テストがあるから、べんきょうしなければならない。
+                  romaji: un, tesuto ga aru kara, benkyou shinakereba naranai
+                - kanji: テストがある。だから、勉強する。
+                  kana: テストがある。だから、べんきょうする。
+                  romaji: tesuto ga aru. dakara, benkyou suru
+                - kanji: うん、明後日はテストだ。
+                  kana: うん、あさってはテストだ。
+                  romaji: un, asatte wa tesuto da
+        hint: >-
+          The friend's してた is していた, and でしょ asks for agreement. Answer in
+          plain form, not in ます form and not with a contraction.
+        explanation: >-
+          The friend opens with 今日、何してたの？ (していた), reacts with へえ, asks
+          about tomorrow, then uses じゃあ and テストがあるでしょ to move to the test.
+          The learner replies with plain していた or 勉強した, plain する or しない,
+          and a full 勉強しなければならない rather than なきゃ. The conversation
+          stays casual on both sides without the learner producing a contraction.
+      - id: u15-l4-2
+        kind: speaking
+        concepts: [casual-contractions, casual-plain-form, casual-kana-desho, casual-aizuchi, casual-n-desu-ne]
+        prompt: >-
+          Have a casual conversation about your day and what you have to do next.
+          Use plain form, respond to the other person's casual speech, and keep the
+          conversation going with aizuchi. Do not look back at the lesson. Speak
+          aloud.
+        rubric: >-
+          Does the learner understand casual plain forms and contractions and reply in
+          plain form rather than です／ます? Does the learner keep だ after nouns and
+          な-adjectives and avoid だ after い-adjectives? Does the learner use かな to
+          wonder and でしょ to seek agreement, not the other way round? Does the
+          learner choose an aizuchi that fits the speaker's intent — そうなんですか
+          for new information, なるほど for understanding, たしかに for agreement,
+          へえ for surprise, じゃあ for moving on? Does the learner confirm new
+          information with 〜んですね, with なん after nouns and な-adjectives? Does
+          the learner avoid producing contractions and use the full form instead? Judge meaning, grammar, naturalness and register
+          separately. There is no model answer.

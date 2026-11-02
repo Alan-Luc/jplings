@@ -4673,3 +4673,504 @@
 - step: u14-l3-9
   answer: Tokyo is quieter than Kyoto.
   verdict: wrong
+- step: u15-l1-1
+  answer: I'm going tomorrow.
+  verdict: correct
+- step: u15-l1-1
+  answer: I will go tomorrow.
+  verdict: correct
+- step: u15-l1-1
+  answer: I'm going tomorrow, casually.
+  verdict: correct
+- step: u15-l1-2
+  answer: 明日、行く。
+  verdict: correct
+- step: u15-l1-2
+  answer: あした、いく。
+  verdict: correct
+- step: u15-l1-2
+  answer: ashita, iku
+  verdict: correct
+- step: u15-l1-3
+  answer: 昨日、行った。
+  verdict: correct
+- step: u15-l1-3
+  answer: きのう、いった。
+  verdict: correct
+- step: u15-l1-3
+  answer: kinou, itta
+  verdict: correct
+- step: u15-l1-4
+  answer: 学生だ。
+  verdict: correct
+- step: u15-l1-4
+  answer: がくせいだ。
+  verdict: correct
+- step: u15-l1-4
+  answer: gakusei da
+  verdict: correct
+- step: u15-l1-4
+  answer: 私は学生だ。
+  verdict: correct
+- step: u15-l1-4
+  answer: わたしはがくせいだ。
+  verdict: correct
+- step: u15-l1-4
+  answer: watashi wa gakusei da
+  verdict: correct
+- step: u15-l1-5
+  answer: ない
+  verdict: correct
+- step: u15-l1-5
+  answer: nai
+  verdict: correct
+- step: u15-l1-6
+  answer: I wonder if it will rain tomorrow.
+  verdict: correct
+- step: u15-l1-6
+  answer: I wonder whether it will rain tomorrow.
+  verdict: correct
+- step: u15-l1-6
+  answer: Maybe it will rain tomorrow.
+  verdict: correct
+- step: u15-l1-7
+  answer: They're saying it's delicious, right?
+  verdict: correct
+- step: u15-l1-7
+  answer: They're seeking agreement that it's delicious.
+  verdict: correct
+- step: u15-l1-7
+  answer: They're saying it's tasty, aren't they?
+  verdict: correct
+- step: u15-l1-8
+  answer: 店は開いているかな。
+  verdict: correct
+- step: u15-l1-8
+  answer: みせはあいているかな。
+  verdict: correct
+- step: u15-l1-8
+  answer: mise wa aite iru kana
+  verdict: correct
+- step: u15-l1-8
+  answer: 店、開いているかな。
+  verdict: correct
+- step: u15-l1-8
+  answer: みせ、あいているかな。
+  verdict: correct
+- step: u15-l1-8
+  answer: mise, aite iru kana
+  verdict: correct
+- step: u15-l1-9
+  answer: テストは簡単でしょ。
+  verdict: correct
+- step: u15-l1-9
+  answer: テストはかんたんでしょ。
+  verdict: correct
+- step: u15-l1-9
+  answer: tesuto wa kantan desho
+  verdict: correct
+- step: u15-l1-10
+  answer: I wonder if I'll get up early tomorrow.
+  verdict: correct
+- step: u15-l1-10
+  answer: I wonder whether I will get up early tomorrow.
+  verdict: correct
+- step: u15-l1-10
+  answer: Maybe I'll get up early tomorrow.
+  verdict: correct
+- step: u15-l1-11
+  answer: 私は学生だ。
+  verdict: correct
+- step: u15-l1-11
+  answer: わたしはがくせいだ。
+  verdict: correct
+- step: u15-l1-11
+  answer: watashi wa gakusei da
+  verdict: correct
+- step: u15-l1-11
+  answer: 学生だ。
+  verdict: correct
+- step: u15-l1-11
+  answer: がくせいだ。
+  verdict: correct
+- step: u15-l1-11
+  answer: gakusei da
+  verdict: correct
+- step: u15-l1-12
+  answer: 魚は新鮮かな。
+  verdict: correct
+- step: u15-l1-12
+  answer: さかなはしんせんかな。
+  verdict: correct
+- step: u15-l1-12
+  answer: sakana wa shinsen kana
+  verdict: correct
+- step: u15-l1-12
+  answer: 魚、新鮮かな。
+  verdict: correct
+- step: u15-l1-12
+  answer: さかな、しんせんかな。
+  verdict: correct
+- step: u15-l1-12
+  answer: sakana, shinsen kana
+  verdict: correct
+- step: u15-l2-1
+  answer: What are you doing?
+  verdict: correct
+- step: u15-l2-1
+  answer: What're you doing?
+  verdict: correct
+- step: u15-l2-1
+  answer: What are you doing right now?
+  verdict: correct
+- step: u15-l2-2
+  answer: I already ate lunch.
+  verdict: correct
+- step: u15-l2-2
+  answer: I've already eaten lunch.
+  verdict: correct
+- step: u15-l2-2
+  answer: I ended up eating lunch already.
+  verdict: correct
+- step: u15-l2-3
+  answer: This shop is cheap and good, isn't it?
+  verdict: correct
+- step: u15-l2-3
+  answer: This shop is cheap and good, right?
+  verdict: correct
+- step: u15-l2-3
+  answer: This shop is cheap and nice, don't you think?
+  verdict: correct
+- step: u15-l2-4
+  answer: I'll buy it in advance, okay?
+  verdict: correct
+- step: u15-l2-4
+  answer: I'll go ahead and buy it.
+  verdict: correct
+- step: u15-l2-4
+  answer: I'll buy it beforehand, all right?
+  verdict: correct
+- step: u15-l2-5
+  answer: I have to go now.
+  verdict: correct
+- step: u15-l2-5
+  answer: I've got to go now.
+  verdict: correct
+- step: u15-l2-5
+  answer: I need to leave now.
+  verdict: correct
+- step: u15-l2-6
+  answer: 何をしているの？
+  verdict: correct
+- step: u15-l2-6
+  answer: なにをしているの？
+  verdict: correct
+- step: u15-l2-6
+  answer: nani o shite iru no?
+  verdict: correct
+- step: u15-l2-7
+  answer: もう食べてしまった。
+  verdict: correct
+- step: u15-l2-7
+  answer: もうたべてしまった。
+  verdict: correct
+- step: u15-l2-7
+  answer: mou tabete shimatta
+  verdict: correct
+- step: u15-l2-8
+  answer: 先に買っておくね。
+  verdict: correct
+- step: u15-l2-8
+  answer: さきにかっておくね。
+  verdict: correct
+- step: u15-l2-8
+  answer: saki ni katte oku ne
+  verdict: correct
+- step: u15-l2-9
+  answer: もう行かなければならない。
+  verdict: correct
+- step: u15-l2-9
+  answer: もういかなければならない。
+  verdict: correct
+- step: u15-l2-9
+  answer: mou ikanakereba naranai
+  verdict: correct
+- step: u15-l2-9
+  answer: もう行かなければいけない。
+  verdict: correct
+- step: u15-l2-9
+  answer: もういかなければいけない。
+  verdict: correct
+- step: u15-l2-9
+  answer: mou ikanakereba ikenai
+  verdict: correct
+- step: u15-l2-10
+  answer: いいじゃない。
+  verdict: correct
+- step: u15-l2-10
+  answer: ii ja nai
+  verdict: correct
+- step: u15-l2-11
+  answer: I'll submit the report by tomorrow, okay?
+  verdict: correct
+- step: u15-l2-11
+  answer: I'll hand in the report by tomorrow.
+  verdict: correct
+- step: u15-l2-11
+  answer: I'll get the report in by tomorrow, all right?
+  verdict: correct
+- step: u15-l2-12
+  answer: もう行かなければならない。
+  verdict: correct
+- step: u15-l2-12
+  answer: もういかなければならない。
+  verdict: correct
+- step: u15-l2-12
+  answer: mou ikanakereba naranai
+  verdict: correct
+- step: u15-l2-12
+  answer: もう行かなければいけない。
+  verdict: correct
+- step: u15-l2-12
+  answer: もういかなければいけない。
+  verdict: correct
+- step: u15-l2-12
+  answer: mou ikanakereba ikenai
+  verdict: correct
+- step: u15-l3-1
+  answer: Wow, really?
+  verdict: correct
+- step: u15-l3-1
+  answer: Oh, is that so?
+  verdict: correct
+- step: u15-l3-1
+  answer: Really? I didn't know that.
+  verdict: correct
+- step: u15-l3-2
+  answer: I see.
+  verdict: correct
+- step: u15-l3-2
+  answer: That makes sense.
+  verdict: correct
+- step: u15-l3-2
+  answer: I understand now.
+  verdict: correct
+- step: u15-l3-3
+  answer: That's true, isn't it?
+  verdict: correct
+- step: u15-l3-3
+  answer: Indeed, you're right.
+  verdict: correct
+- step: u15-l3-3
+  answer: True.
+  verdict: correct
+- step: u15-l3-4
+  answer: Oh, really?
+  verdict: correct
+- step: u15-l3-4
+  answer: Is that so?
+  verdict: correct
+- step: u15-l3-4
+  answer: I didn't know that.
+  verdict: correct
+- step: u15-l3-5
+  answer: Well then, see you tomorrow.
+  verdict: correct
+- step: u15-l3-5
+  answer: Then, see you tomorrow.
+  verdict: correct
+- step: u15-l3-5
+  answer: Okay, see you tomorrow then.
+  verdict: correct
+- step: u15-l3-6
+  answer: なるほど。
+  verdict: correct
+- step: u15-l3-6
+  answer: naruhodo
+  verdict: correct
+- step: u15-l3-6
+  answer: なるほど、わかりました。
+  verdict: correct
+- step: u15-l3-6
+  answer: naruhodo, wakarimashita
+  verdict: correct
+- step: u15-l3-7
+  answer: へえ、そうなんですか。
+  verdict: correct
+- step: u15-l3-7
+  answer: hee, sou nan desu ka
+  verdict: correct
+- step: u15-l3-7
+  answer: へえ、すごいですね。
+  verdict: correct
+- step: u15-l3-7
+  answer: hee, sugoi desu ne
+  verdict: correct
+- step: u15-l3-8
+  answer: たしかに。
+  verdict: correct
+- step: u15-l3-8
+  answer: tashika ni
+  verdict: correct
+- step: u15-l3-8
+  answer: たしかに、おいしいですね。
+  verdict: correct
+- step: u15-l3-8
+  answer: tashika ni, oishii desu ne
+  verdict: correct
+- step: u15-l3-9
+  answer: 学生なんですね。
+  verdict: correct
+- step: u15-l3-9
+  answer: がくせいなんですね。
+  verdict: correct
+- step: u15-l3-9
+  answer: gakusei nan desu ne
+  verdict: correct
+- step: u15-l3-10
+  answer: なん
+  verdict: correct
+- step: u15-l3-10
+  answer: nan
+  verdict: correct
+- step: u15-l3-11
+  answer: 明日は忙しいんですね。
+  verdict: correct
+- step: u15-l3-11
+  answer: あしたはいそがしいんですね。
+  verdict: correct
+- step: u15-l3-11
+  answer: ashita wa isogashii n desu ne
+  verdict: correct
+- step: u15-l3-12
+  answer: なるほど、そうなんですね。
+  verdict: correct
+- step: u15-l3-12
+  answer: naruhodo, sou nan desu ne
+  verdict: correct
+- step: u15-l3-12
+  answer: なるほど。
+  verdict: correct
+- step: u15-l3-12
+  answer: naruhodo
+  verdict: correct
+- step: u15-l3-13
+  answer: They're surprised and confirming that Tanaka runs every morning.
+  verdict: correct
+- step: u15-l3-13
+  answer: Oh, so Tanaka runs every morning.
+  verdict: correct
+- step: u15-l3-13
+  answer: Really, Tanaka runs every morning.
+  verdict: correct
+- step: u15-l1-1
+  answer: I'm not going tomorrow.
+  verdict: wrong
+- step: u15-l1-2
+  answer: 明日、行きます。
+  verdict: wrong
+- step: u15-l1-3
+  answer: 昨日、行きました。
+  verdict: wrong
+- step: u15-l1-4
+  answer: 学生です。
+  verdict: wrong
+- step: u15-l1-5
+  answer: ません
+  verdict: wrong
+- step: u15-l1-6
+  answer: It will rain tomorrow, right?
+  verdict: wrong
+- step: u15-l1-7
+  answer: They're wondering if it's delicious.
+  verdict: wrong
+- step: u15-l1-8
+  answer: 店は開いていますかな。
+  verdict: wrong
+- step: u15-l1-9
+  answer: テストは簡単かな。
+  verdict: wrong
+- step: u15-l1-10
+  answer: I got up early tomorrow.
+  verdict: wrong
+- step: u15-l1-11
+  answer: 学生です。
+  verdict: wrong
+- step: u15-l1-12
+  answer: 魚は新鮮だかな。
+  verdict: wrong
+- step: u15-l2-1
+  answer: What did you do yesterday?
+  verdict: wrong
+- step: u15-l2-2
+  answer: I'm about to eat lunch.
+  verdict: wrong
+- step: u15-l2-3
+  answer: This shop is expensive and bad, isn't it?
+  verdict: wrong
+- step: u15-l2-4
+  answer: I bought it in advance.
+  verdict: wrong
+- step: u15-l2-5
+  answer: I don't have to go now.
+  verdict: wrong
+- step: u15-l2-6
+  answer: 何してるの？
+  verdict: wrong
+- step: u15-l2-7
+  answer: もう食べちゃった。
+  verdict: wrong
+- step: u15-l2-8
+  answer: 先に買っとくね。
+  verdict: wrong
+- step: u15-l2-9
+  answer: もう行かなきゃ。
+  verdict: wrong
+- step: u15-l2-10
+  answer: いいじゃん。
+  verdict: wrong
+- step: u15-l2-11
+  answer: I submitted the report yesterday.
+  verdict: wrong
+- step: u15-l2-12
+  answer: もう行かなきゃ。
+  verdict: wrong
+- step: u15-l3-1
+  answer: なるほど、わかりました。
+  verdict: wrong
+- step: u15-l3-2
+  answer: へえ。
+  verdict: wrong
+- step: u15-l3-3
+  answer: じゃあ、また明日。
+  verdict: wrong
+- step: u15-l3-4
+  answer: たしかに。
+  verdict: wrong
+- step: u15-l3-5
+  answer: なるほど。
+  verdict: wrong
+- step: u15-l3-6
+  answer: へえ。
+  verdict: wrong
+- step: u15-l3-7
+  answer: たしかに。
+  verdict: wrong
+- step: u15-l3-8
+  answer: なるほど。
+  verdict: wrong
+- step: u15-l3-9
+  answer: 学生んですね。
+  verdict: wrong
+- step: u15-l3-10
+  answer: ん
+  verdict: wrong
+- step: u15-l3-11
+  answer: 明日は忙しいなんですね。
+  verdict: wrong
+- step: u15-l3-12
+  answer: たしかに。
+  verdict: wrong
+- step: u15-l3-13
+  answer: They're asking whether Tanaka runs every morning.
+  verdict: wrong
