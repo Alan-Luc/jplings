@@ -1,0 +1,881 @@
+id: unit-8
+title: 買い物 — buying something and asking the price
+taught: true
+concepts:
+  - id: kosoado-standalone
+    label: これ・それ・あれ・どれ — pointing at a thing without a noun
+  - id: kosoado-modifier
+    label: この・その・あの・どの — pointing at a thing by naming it
+  - id: price-ikura
+    label: いくら・円・高い・安い — asking and stating a price
+  - id: counter-native
+    label: 一つ・二つ・三つ — the native counter and its sound changes
+  - id: counter-mai-ko
+    label: 〜枚・〜個・何枚・何個 — flat things and small objects
+  - id: request-kudasai
+    label: 〜をください — asking for something
+  - id: request-arimasu-ka
+    label: 〜はありますか — asking whether something is in stock
+lessons:
+  - id: u8-l1
+    title: これ・それ・あれ・どれ — pointing at things
+    objective: >-
+      Choose between a standalone これ/それ/あれ/どれ and a noun-taking
+      この/その/あの/どの, depending on whether a noun follows.
+    anchors:
+      - kanji: これは袋です
+        kana: これはふくろです
+        romaji: kore wa fukuro desu
+      - kanji: この袋は安いです
+        kana: このふくろはやすいです
+        romaji: kono fukuro wa yasui desu
+      - kanji: あれは何ですか
+        kana: あれはなんですか
+        romaji: are wa nan desu ka
+    teach:
+      - prose: >-
+          これ・それ・あれ point at a thing without naming it: これ is the thing near
+          you, それ the thing near the person you are talking to, あれ the thing far
+          from both. どれ asks which one of a set. They stand alone, so a noun never
+          follows them: これは袋です, あれは何ですか.
+        examples:
+          - kanji: これは袋です
+            kana: これはふくろです
+            romaji: kore wa fukuro desu
+          - kanji: あれは何ですか
+            kana: あれはなんですか
+            romaji: are wa nan desu ka
+          - kanji: どれが安いですか
+            kana: どれがやすいですか
+            romaji: dore ga yasui desu ka
+      - prose: >-
+          この・その・あの・どの do the same pointing but must be followed by a noun:
+          この袋, その店, あのシャツ, どの人. この袋は安いです is correct; これ袋は
+          安いです is not, because これ cannot stand in front of a noun.
+        examples:
+          - kanji: この袋は安いです
+            kana: このふくろはやすいです
+            romaji: kono fukuro wa yasui desu
+          - kanji: あの店は高いです
+            kana: あの店はたかいです
+            romaji: ano mise wa takai desu
+          - kanji: どの袋が安いですか
+            kana: どのふくろがやすいですか
+            romaji: dono fukuro ga yasui desu ka
+      - prose: >-
+          Choose by the next word. If a noun comes, use この・その・あの・どの:
+          どの袋が安いですか. If the thing stands alone before は・が・を, use
+          これ・それ・あれ・どれ: どれが安いですか. The two sets answer the same
+          question, but only one of them can take a noun.
+        examples:
+          - kanji: どれが安いですか
+            kana: どれがやすいですか
+            romaji: dore ga yasui desu ka
+          - kanji: どの袋が安いですか
+            kana: どのふくろがやすいですか
+            romaji: dono fukuro ga yasui desu ka
+    steps:
+      - id: u8-l1-1
+        kind: interpretation
+        concepts: [kosoado-standalone]
+        prompt: >-
+          Two classmates write これは袋です and このは袋です for "This is a bag". Only
+          one is correct. What does the correct one mean?
+        target:
+          kanji: これは袋です
+          kana: これはふくろです
+          romaji: kore wa fukuro desu
+        accept_meanings:
+          - This is a bag.
+          - This is a bag
+          - This one is a bag.
+        hint: The thing stands alone before は, so it needs the standalone form.
+        explanation: >-
+          これは袋です uses これ because the thing is not followed by a noun. このは
+          袋です puts この in front of は, but この needs a noun such as 袋 to point at.
+      - id: u8-l1-2
+        kind: interpretation
+        concepts: [kosoado-modifier]
+        prompt: >-
+          Two classmates write この袋は安いです and これ袋は安いです for "This bag is
+          cheap". Only one is correct. What does the correct one mean?
+        target:
+          kanji: この袋は安いです
+          kana: このふくろはやすいです
+          romaji: kono fukuro wa yasui desu
+        accept_meanings:
+          - This bag is cheap.
+          - This bag is cheap
+          - This bag is inexpensive.
+        hint: 袋 is a noun, so the word before it must be この.
+        explanation: >-
+          この袋は安いです uses この because a noun follows it. これ袋は安いです puts
+          the standalone form directly before 袋, which is not how the pair works.
+      - id: u8-l1-3
+        kind: construction
+        concepts: [kosoado-standalone]
+        prompt: >-
+          A classmate writes このは袋です for "This is a bag". Write the sentence they
+          meant.
+        accept:
+          - kanji: これは袋です
+            kana: これはふくろです
+            romaji: kore wa fukuro desu
+        hint: Nothing names the thing, so the pointing word stands alone.
+        explanation: >-
+          これは袋です uses これ because no noun follows it. この is only used with a
+          noun, so このは is not a phrase.
+      - id: u8-l1-4
+        kind: construction
+        concepts: [kosoado-modifier]
+        prompt: >-
+          A classmate writes これ袋は安いです for "This bag is cheap". Write the
+          sentence they meant.
+        accept:
+          - kanji: この袋は安いです
+            kana: このふくろはやすいです
+            romaji: kono fukuro wa yasui desu
+        hint: Replace the standalone form with the one that takes a noun.
+        explanation: >-
+          この袋は安いです uses この before the noun 袋. これ cannot stand before a
+          noun, so これ袋 is the error.
+      - id: u8-l1-5
+        kind: construction
+        concepts: [kosoado-modifier]
+        prompt: >-
+          A classmate writes あれ店は高いです for "That shop over there is
+          expensive". Write the sentence they meant.
+        accept:
+          - kanji: あの店は高いです
+            kana: あの店はたかいです
+            romaji: ano mise wa takai desu
+        hint: 店 is a noun, so it takes the form that needs a noun.
+        explanation: >-
+          あの店は高いです uses あの before 店. あれ stands alone, so あれ店 puts the
+          standalone form where a noun-taking form belongs.
+      - id: u8-l1-6
+        kind: completion
+        concepts: [kosoado-modifier]
+        prompt: Fill the word — "Which bag is cheap?"
+        target:
+          kanji: ＿袋が安いですか
+          kana: ＿ふくろがやすいですか
+          romaji: _ fukuro ga yasui desu ka
+        accept:
+          - kanji: どの
+            kana: どの
+            romaji: dono
+        hint: A noun follows, so the question word must take one too.
+        explanation: >-
+          どの袋が安いですか uses どの because 袋 follows it. どれ would be the
+          standalone form and cannot come before 袋.
+      - id: u8-l1-7
+        kind: interpretation
+        concepts: [kosoado-standalone]
+        prompt: What does this mean?
+        target:
+          kanji: あれは何ですか
+          kana: あれはなんですか
+          romaji: are wa nan desu ka
+        accept_meanings:
+          - What is that over there?
+          - What is that?
+          - What's that over there?
+        hint: あれ points at something far from both speakers.
+        explanation: >-
+          あれは何ですか asks what the thing over there is. あれ stands alone and は
+          marks it as the topic; 何 asks what it is.
+      - id: u8-l1-8
+        kind: construction
+        concepts: [kosoado-standalone]
+        prompt: Write "That over there is a bag."
+        accept:
+          - kanji: あれは袋です
+            kana: あれはふくろです
+            romaji: are wa fukuro desu
+        hint: The thing is not named before は, so use あれ.
+        explanation: >-
+          あれは袋です uses あれ because the bag is pointed at, not named in front of
+          the pointing word. あの would need to sit directly before 袋.
+      - id: u8-l1-9
+        kind: listening
+        concepts: [kosoado-modifier]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: その袋は高いですか
+          kana: そのふくろはたかいですか
+          romaji: sono fukuro wa takai desu ka
+        accept_meanings:
+          - Is that bag expensive?
+          - Is that bag expensive
+          - Is the bag near you expensive?
+        hint: その points at something near the person you are talking to.
+        explanation: >-
+          その袋は高いですか asks whether the bag near the listener is expensive. その
+          takes the noun 袋, and か makes it a question.
+      - id: u8-l1-10
+        kind: construction
+        concepts: [kosoado-standalone]
+        prompt: Write "Which one is cheap?"
+        accept:
+          - kanji: どれが安いですか
+            kana: どれがやすいですか
+            romaji: dore ga yasui desu ka
+        hint: どれ stands alone; the answer is one item, not one noun phrase.
+        explanation: >-
+          どれが安いですか uses どれ because it stands alone before が. どの would need
+          a noun, as in どの袋が安いですか.
+
+  - id: u8-l2
+    title: いくらですか — prices, 円 and the counters
+    objective: >-
+      Ask a price with いくら, state it with 円 and the sound changes from the
+      numbers lesson, and count things with 一つ/二つ/三つ and 〜枚/〜個.
+    anchors:
+      - kanji: これはいくらですか
+        kana: これはいくらですか
+        romaji: kore wa ikura desu ka
+      - kanji: 三百円です
+        kana: さんびゃくえんです
+        romaji: sanbyaku en desu
+      - kanji: 切符三枚
+        kana: きっぷさんまい
+        romaji: kippu sanmai
+    teach:
+      - prose: >-
+          いくら asks the price: これはいくらですか. Answer with the amount and 円:
+          三百円です. The numbers recycle the sounds you already met: 三百 is
+          さんびゃく, 六百 is ろっぴゃく, 八百 is はっぴゃく, 三千 is さんぜん, 八千 is
+          はっせん. 円 itself stays えん.
+        examples:
+          - kanji: これはいくらですか
+            kana: これはいくらですか
+            romaji: kore wa ikura desu ka
+          - kanji: 八百円です
+            kana: はっぴゃくえんです
+            romaji: happyaku en desu
+          - kanji: 八千円です
+            kana: はっせんえんです
+            romaji: hassen en desu
+      - prose: >-
+          高い is expensive and 安い is cheap. They are い-adjectives, so they end the
+          sentence: この袋は高いです, あの店は安いです. The thing you describe takes
+          は or が, and the adjective carries the judgement.
+        examples:
+          - kanji: この袋は高いです
+            kana: このふくろはたかいです
+            romaji: kono fukuro wa takai desu
+          - kanji: あの店は安いです
+            kana: あのみせはやすいです
+            romaji: ano mise wa yasui desu
+      - prose: >-
+          一つ・二つ・三つ count things without a class counter, and their readings
+          are not built from いち・に・さん: 一つ is ひとつ, 二つ is ふたつ, 三つ is
+          みっつ, 四つ is よっつ, 五つ is いつつ. 三つ has the small っ; みつ without
+          it is a different word.
+        examples:
+          - kanji: りんごを三つ買います
+            kana: りんごをみっつかいます
+            romaji: ringo o mittsu kaimasu
+          - kanji: 袋二つ
+            kana: ふくろふたつ
+            romaji: fukuro futatsu
+      - prose: >-
+          〜枚 counts flat things — shirts, tickets, plates — and 〜個 counts small
+          objects. 一枚 is いちまい, 三枚 is さんまい and 何枚 is なんまい. 一個 is
+          いっこ, 三個 is さんこ and 何個 is なんこ. The counter is part of the word:
+          dropping 枚 or 個 leaves a bare number, which does not say how many things.
+        examples:
+          - kanji: 切符三枚
+            kana: きっぷさんまい
+            romaji: kippu sanmai
+          - kanji: 何枚ですか
+            kana: なんまいですか
+            romaji: nanmai desu ka
+          - kanji: おにぎり一個
+            kana: おにぎりいっこ
+            romaji: onigiri ikko
+    steps:
+      - id: u8-l2-1
+        kind: interpretation
+        concepts: [price-ikura]
+        prompt: What does this mean?
+        target:
+          kanji: これはいくらですか
+          kana: これはいくらですか
+          romaji: kore wa ikura desu ka
+        accept_meanings:
+          - How much is this?
+          - How much is this
+          - How much does this cost?
+        hint: いくら asks for an amount of money.
+        explanation: >-
+          これはいくらですか asks the price of the thing you are pointing at. いくら
+          asks how much money, and か makes it a question.
+      - id: u8-l2-2
+        kind: interpretation
+        concepts: [price-ikura]
+        prompt: What does this mean?
+        target:
+          kanji: この袋は三百円です
+          kana: このふくろはさんびゃくえんです
+          romaji: kono fukuro wa sanbyaku en desu
+        accept_meanings:
+          - This bag is 300 yen.
+          - This bag is three hundred yen.
+          - This bag costs 300 yen.
+        hint: 三百 is さんびゃく, not さんひゃく.
+        explanation: >-
+          この袋は三百円です states the price of this bag. 三百 is さんびゃく: the ひ
+          voices to び after さん. 円 stays えん.
+      - id: u8-l2-3
+        kind: construction
+        concepts: [price-ikura]
+        prompt: Ask how much that over there is.
+        accept:
+          - kanji: あれはいくらですか
+            kana: あれはいくらですか
+            romaji: are wa ikura desu ka
+        hint: Point with あれ, then ask the price with いくら.
+        explanation: >-
+          あれはいくらですか asks the price of the thing over there. あれ stands
+          alone, and いくら asks how much money it costs.
+      - id: u8-l2-4
+        kind: transformation
+        concepts: [price-ikura]
+        prompt: Make this sentence say the bag is 800 yen.
+        target:
+          kanji: この袋は三百円です
+          kana: このふくろはさんびゃくえんです
+          romaji: kono fukuro wa sanbyaku en desu
+        accept:
+          - kanji: この袋は八百円です
+            kana: このふくろははっぴゃくえんです
+            romaji: kono fukuro wa happyaku en desu
+        hint: 八百 is はっぴゃく, with the small っ.
+        explanation: >-
+          この袋は八百円です changes the amount to 800. 八百 is はっぴゃく: the く
+          becomes the small っ and ひ becomes ぴ. はちひゃく is not the word.
+      - id: u8-l2-5
+        kind: listening
+        concepts: [price-ikura]
+        prompt: Listen and type the price you hear.
+        target:
+          kanji: 八千円です
+          kana: はっせんえんです
+          romaji: hassen en desu
+        accept:
+          - kanji: 八千円です
+            kana: はっせんえんです
+            romaji: hassen en desu
+          - kanji: 八千円
+            kana: はっせんえん
+            romaji: hassen en
+          - kanji: 8000円
+            kana: はっせんえん
+            romaji: hassen en
+        hint: Listen for the small っ in はっせん.
+        explanation: >-
+          八千円 is はっせんえん. The small っ is what makes it 8,000; はせん is not a
+          number. 円 stays えん.
+      - id: u8-l2-6
+        kind: interpretation
+        concepts: [counter-native]
+        prompt: What does this mean?
+        target:
+          kanji: りんごを三つ買います
+          kana: りんごをみっつかいます
+          romaji: ringo o mittsu kaimasu
+        accept_meanings:
+          - I buy three apples.
+          - I'll buy three apples.
+          - I will buy three apples.
+        hint: 三つ is みっつ, not さんつ.
+        explanation: >-
+          りんごを三つ買います says you buy three apples. 三つ is みっつ, with the
+          small っ; the native counter does not use さん.
+      - id: u8-l2-7
+        kind: construction
+        concepts: [counter-native]
+        prompt: Write "two bags".
+        accept:
+          - kanji: 袋二つ
+            kana: ふくろふたつ
+            romaji: fukuro futatsu
+        hint: 二つ is ふたつ.
+        explanation: >-
+          袋二つ is ふくろふたつ. 二つ is ふたつ, not につ, and the counter follows
+          the noun without a particle.
+      - id: u8-l2-8
+        kind: construction
+        concepts: [counter-native]
+        prompt: Write "I ate three rice balls."
+        accept:
+          - kanji: おにぎりを三つ食べました
+            kana: おにぎりをみっつたべました
+            romaji: onigiri o mittsu tabemashita
+        hint: 三つ is みっつ; the verb goes last.
+        explanation: >-
+          おにぎりを三つ食べました uses 三つ = みっつ before the verb. を marks the
+          rice balls as what you ate, and 食べました is the past polite form.
+      - id: u8-l2-9
+        kind: speaking
+        concepts: [counter-native]
+        prompt: Say "three bags" aloud, then confirm the transcript.
+        accept:
+          - kanji: 袋三つ
+            kana: ふくろみっつ
+            romaji: fukuro mittsu
+          - kanji: 袋が三つ
+            kana: ふくろがみっつ
+            romaji: fukuro ga mittsu
+        hint: 三つ is みっつ — hold the small っ.
+        explanation: >-
+          袋三つ is ふくろみっつ. If the transcript shows みつ, deny it: みっつ has
+          the small っ and みつ is a different word.
+      - id: u8-l2-10
+        kind: interpretation
+        concepts: [counter-mai-ko]
+        prompt: What does this mean?
+        target:
+          kanji: 二枚で三百円です
+          kana: にまいでさんびゃくえんです
+          romaji: nimai de sanbyaku en desu
+        accept_meanings:
+          - Two of them are 300 yen.
+          - Two are 300 yen.
+          - It is 300 yen for two.
+        hint: 二枚 is にまい; で marks the amount the price is for.
+        explanation: >-
+          二枚で三百円です says two flat things cost 300 yen. 二枚 is にまい, and で
+          marks two as the quantity the price covers.
+      - id: u8-l2-11
+        kind: construction
+        concepts: [counter-mai-ko]
+        prompt: Write "three tickets".
+        accept:
+          - kanji: 切符三枚
+            kana: きっぷさんまい
+            romaji: kippu sanmai
+        hint: 三枚 is さんまい — tickets are flat.
+        explanation: >-
+          切符三枚 is きっぷさんまい. A ticket is flat, so it takes 枚, and 三枚 is
+          さんまい. Without 枚, さん is only the number three, not three tickets.
+      - id: u8-l2-12
+        kind: completion
+        concepts: [counter-mai-ko]
+        prompt: Fill the question word — "How many tickets?"
+        target:
+          kanji: 切符は＿枚ですか
+          kana: きっぷは＿まいですか
+          romaji: kippu wa _ mai desu ka
+        accept:
+          - kanji: 何
+            kana: なん
+            romaji: nan
+        hint: 何 before 枚 is なん, not なに.
+        explanation: >-
+          切符は何枚ですか asks how many tickets. 何 before a counter is なん, so
+          何枚 is なんまい.
+      - id: u8-l2-13
+        kind: construction
+        concepts: [counter-mai-ko]
+        prompt: Write "one rice ball".
+        accept:
+          - kanji: おにぎり一個
+            kana: おにぎりいっこ
+            romaji: onigiri ikko
+        hint: 一個 is いっこ, with the small っ.
+        explanation: >-
+          おにぎり一個 is おにぎりいっこ. 一個 is いっこ: the いち becomes いっ
+          before こ, and いちこ is not the word. Without 個, いち is only the number
+          one, not one rice ball.
+      - id: u8-l2-14
+        kind: construction
+        concepts: [price-ikura, counter-mai-ko]
+        prompt: Write "Two tickets cost 600 yen."
+        accept:
+          - kanji: 切符二枚で六百円です
+            kana: きっぷにまいでろっぴゃくえんです
+            romaji: kippu nimai de roppyaku en desu
+        hint: 二枚 is にまい, and 六百 is ろっぴゃく.
+        explanation: >-
+          切符二枚で六百円です states a total: 二枚 = にまい marks two tickets, and
+          六百 is ろっぴゃく, with the small っ. Dropping 枚 or 円 would leave the
+          quantity or the money unstated.
+
+  - id: u8-l3
+    title: をください and はありますか — asking for what you want
+    objective: >-
+      Ask for an item with 〜をください, ask whether a shop has something with
+      〜はありますか, and handle 袋 and レシート at the till.
+    anchors:
+      - kanji: これをください
+        kana: これをください
+        romaji: kore o kudasai
+      - kanji: 袋はありますか
+        kana: ふくろはありますか
+        romaji: fukuro wa arimasu ka
+      - kanji: レシートはいいです
+        kana: レシートはいいです
+        romaji: reeshiito wa ii desu
+    teach:
+      - prose: >-
+          〜をください asks for something: これをください, 袋をください. を marks the
+          thing you want, and ください comes last. With a counter, the number and
+          counter go before ください: りんごを二つください, 切符を三枚ください.
+        examples:
+          - kanji: これをください
+            kana: これをください
+            romaji: kore o kudasai
+          - kanji: りんごを二つください
+            kana: りんごをふたつください
+            romaji: ringo o futatsu kudasai
+          - kanji: 切符を三枚ください
+            kana: きっぷをさんまいください
+            romaji: kippu o sanmai kudasai
+      - prose: >-
+          〜はありますか asks whether a shop has something: 袋はありますか,
+          レシートはありますか. は marks the thing you are asking about, and the answer
+          is はい、あります or いいえ、ありません. あります is for things, and unlike an
+          action verb it does not take を.
+        examples:
+          - kanji: 袋はありますか
+            kana: ふくろはありますか
+            romaji: fukuro wa arimasu ka
+          - kanji: はい、あります
+            kana: はい、あります
+            romaji: hai, arimasu
+          - kanji: いいえ、ありません
+            kana: いいえ、ありません
+            romaji: iie, arimasen
+      - prose: >-
+          袋 is a bag and レシート is a receipt. 袋はありますか asks whether they have
+          one; 袋をください asks them to hand it over. To decline the receipt, say
+          レシートはいいです: いいです here means "it is fine without it", not "it is
+          good".
+        examples:
+          - kanji: 袋をください
+            kana: ふくろをください
+            romaji: fukuro o kudasai
+          - kanji: レシートはいいです
+            kana: レシートはいいです
+            romaji: reeshiito wa ii desu
+    steps:
+      - id: u8-l3-1
+        kind: interpretation
+        concepts: [request-kudasai]
+        prompt: What does this mean?
+        target:
+          kanji: これをください
+          kana: これをください
+          romaji: kore o kudasai
+        accept_meanings:
+          - This, please.
+          - I'll take this.
+          - I will take this.
+          - Please give me this.
+        hint: ください makes it a request for the thing marked with を.
+        explanation: >-
+          これをください asks for this one. を marks the thing you want, and ください
+          is the request; これ stands alone because no noun follows it.
+      - id: u8-l3-2
+        kind: interpretation
+        concepts: [request-arimasu-ka]
+        prompt: What does this mean?
+        target:
+          kanji: 袋はありますか
+          kana: ふくろはありますか
+          romaji: fukuro wa arimasu ka
+        accept_meanings:
+          - Do you have a bag?
+          - Do you have a bag
+          - Do you have bags?
+        hint: ありますか asks whether a thing exists here.
+        explanation: >-
+          袋はありますか asks whether the shop has a bag. は marks the bag as what you
+          are asking about, and ありますか asks whether it exists.
+      - id: u8-l3-3
+        kind: construction
+        concepts: [request-kudasai]
+        prompt: >-
+          A classmate writes これがください for "This, please". Write the sentence
+          they meant.
+        accept:
+          - kanji: これをください
+            kana: これをください
+            romaji: kore o kudasai
+        hint: ください takes the thing you want, and that thing is marked with を.
+        explanation: >-
+          これをください marks the thing with を. が would mark it as a subject, but
+          here you are asking for it, not saying it exists.
+      - id: u8-l3-4
+        kind: construction
+        concepts: [request-kudasai]
+        prompt: Write "Two apples, please."
+        accept:
+          - kanji: りんごを二つください
+            kana: りんごをふたつください
+            romaji: ringo o futatsu kudasai
+        hint: を marks the apples, and 二つ goes before ください.
+        explanation: >-
+          りんごを二つください uses 二つ = ふたつ before ください. The counter sits
+          between the thing and the request.
+      - id: u8-l3-5
+        kind: construction
+        concepts: [request-arimasu-ka]
+        prompt: Ask whether they have a receipt.
+        accept:
+          - kanji: レシートはありますか
+            kana: レシートはありますか
+            romaji: reeshiito wa arimasu ka
+        hint: は marks the receipt as the thing you are asking about.
+        explanation: >-
+          レシートはありますか asks whether they have a receipt. は marks the receipt,
+          and ありますか asks whether it exists.
+      - id: u8-l3-6
+        kind: construction
+        concepts: [request-arimasu-ka]
+        prompt: Ask whether they have a bigger bag.
+        accept:
+          - kanji: 大きい袋はありますか
+            kana: おおきいふくろはありますか
+            romaji: ookii fukuro wa arimasu ka
+        hint: 大きい describes 袋, and は marks the whole thing as what you are asking about.
+        explanation: >-
+          大きい袋はありますか puts 大きい before 袋 and asks whether that bag exists.
+          大きい is an い-adjective, so it sits directly before the noun.
+      - id: u8-l3-7
+        kind: completion
+        concepts: [request-kudasai]
+        prompt: Fill the particle — "This, please."
+        target:
+          kanji: これ＿ください
+          kana: これ＿ください
+          romaji: kore _ kudasai
+        accept:
+          - kanji: を
+            kana: を
+            romaji: o
+        hint: ください takes the thing you are asking for.
+        explanation: >-
+          これをください marks the thing with を because you are asking for it. が
+          would mark it as a subject instead.
+      - id: u8-l3-8
+        kind: completion
+        concepts: [request-arimasu-ka]
+        prompt: Fill the particle — "Do you have a bag?"
+        target:
+          kanji: 袋＿ありますか
+          kana: ふくろ＿ありますか
+          romaji: fukuro _ arimasu ka
+        accept:
+          - kanji: は
+            kana: は
+            romaji: wa
+        hint: The bag is what you are asking about, not the object of an action.
+        explanation: >-
+          袋はありますか marks the bag with は as the thing you are asking about. を
+          would make it the object of an action verb, but あります is not one.
+      - id: u8-l3-9
+        kind: listening
+        concepts: [request-arimasu-ka]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: すみません、袋はありますか
+          kana: すみません、ふくろはありますか
+          romaji: sumimasen, fukuro wa arimasu ka
+        accept_meanings:
+          - Excuse me, do you have a bag?
+          - Excuse me, do you have bags?
+          - Excuse me, do you have a bag
+        hint: Listen for ありますか at the end.
+        explanation: >-
+          すみません、袋はありますか opens with すみません and asks whether they have a
+          bag. は marks the bag, and ありますか asks whether it exists.
+      - id: u8-l3-10
+        kind: construction
+        concepts: [request-kudasai, counter-mai-ko]
+        prompt: Write "Three tickets, please."
+        accept:
+          - kanji: 切符を三枚ください
+            kana: きっぷをさんまいください
+            romaji: kippu o sanmai kudasai
+        hint: を marks the tickets, 三枚 is さんまい, and ください ends the request.
+        explanation: >-
+          切符を三枚ください asks for three tickets. 三枚 is さんまい, and the counter
+          must stay between the thing and ください. Without 枚, さん is only the
+          number three.
+      - id: u8-l3-11
+        kind: speaking
+        concepts: [request-arimasu-ka]
+        prompt: Ask whether they have a receipt, aloud, then confirm the transcript.
+        accept:
+          - kana: レシートはありますか
+            romaji: reeshiito wa arimasu ka
+          - kanji: レシートはありますか
+            kana: レシートはありますか
+            romaji: reeshiito wa arimasu ka
+        hint: は marks the receipt; ありますか asks whether it exists.
+        explanation: >-
+          レシートはありますか asks whether they have a receipt. A transcript may
+          return the katakana form or the romaji, so both are accepted; レシートが
+          ありますか would ask about existence as new information instead of
+          availability.
+
+  - id: u8-l4
+    title: 買い物 — putting it together at the till
+    objective: >-
+      Use the pointing words, the price question, the counters, をください and
+      はありますか in a shop conversation, then produce them without scaffolding.
+    teach:
+      - prose: >-
+          This lesson adds no new grammar. これ・それ・あれ・どれ stand alone, while
+          この・その・あの・どの need a noun. Ask a price with いくらですか, count with
+          一つ・二つ and 〜枚・〜個, ask for something with をください, and ask
+          whether it is in stock with はありますか.
+        examples:
+          - kanji: このシャツはいくらですか
+            kana: このシャツはいくらですか
+            romaji: kono shatsu wa ikura desu ka
+          - kanji: 大きいシャツはありますか
+            kana: おおきいシャツはありますか
+            romaji: ookii shatsu wa arimasu ka
+      - prose: >-
+          Read the shop's question before answering. いくらですか asks the price;
+          袋はどうしますか asks whether you want a bag; レシートはどうしますか asks
+          about the receipt. Answer with the same pattern the question used, and keep
+          the counter when you name a quantity.
+    steps:
+      - id: u8-l4-1
+        kind: conversation
+        concepts: [kosoado-modifier, price-ikura, request-kudasai, request-arimasu-ka]
+        prompt: >-
+          You are in a clothes shop holding a shirt. Ask for it, ask the price, ask
+          whether they have a bigger one, ask for a bag, and decline the receipt.
+        scenario:
+          turns:
+            - speaker: npc
+              line:
+                kanji: いらっしゃいませ。
+                kana: いらっしゃいませ。
+                romaji: irasshaimase
+            - speaker: learner
+              accept:
+                - kanji: すみません、このシャツをください。
+                  kana: すみません、このシャツをください。
+                  romaji: sumimasen, kono shatsu o kudasai
+                - kanji: このシャツをください。
+                  kana: このシャツをください。
+                  romaji: kono shatsu o kudasai
+                - kanji: すみません、これをください。
+                  kana: すみません、これをください。
+                  romaji: sumimasen, kore o kudasai
+            - speaker: npc
+              line:
+                kanji: はい、シャツですね。
+                kana: はい、シャツですね。
+                romaji: hai, shatsu desu ne
+            - speaker: learner
+              accept:
+                - kanji: すみません、これはいくらですか。
+                  kana: すみません、これはいくらですか。
+                  romaji: sumimasen, kore wa ikura desu ka
+                - kanji: これはいくらですか。
+                  kana: これはいくらですか。
+                  romaji: kore wa ikura desu ka
+                - kanji: いくらですか。
+                  kana: いくらですか。
+                  romaji: ikura desu ka
+            - speaker: npc
+              line:
+                kanji: 千五百円です。
+                kana: せんごひゃくえんです。
+                romaji: sen gohyaku en desu
+            - speaker: learner
+              accept:
+                - kanji: すみません、大きいシャツはありますか。
+                  kana: すみません、おおきいシャツはありますか。
+                  romaji: sumimasen, ookii shatsu wa arimasu ka
+                - kanji: 大きいシャツはありますか。
+                  kana: おおきいシャツはありますか。
+                  romaji: ookii shatsu wa arimasu ka
+                - kanji: 大きいサイズはありますか。
+                  kana: おおきいサイズはありますか。
+                  romaji: ookii saizu wa arimasu ka
+            - speaker: npc
+              line:
+                kanji: はい、大きいサイズもあります。千八百円です。
+                kana: はい、おおきいサイズもあります。せんはっぴゃくえんです。
+                romaji: hai, ookii saizu mo arimasu. sen happyaku en desu
+            - speaker: learner
+              accept:
+                - kanji: では、それをください。
+                  kana: では、それをください。
+                  romaji: de wa, sore o kudasai
+                - kanji: じゃあ、それをください。
+                  kana: じゃあ、それをください。
+                  romaji: jaa, sore o kudasai
+                - kanji: それをください。
+                  kana: それをください。
+                  romaji: sore o kudasai
+            - speaker: npc
+              line:
+                kanji: はい、どうぞ。袋はどうしますか。
+                kana: はい、どうぞ。ふくろはどうしますか。
+                romaji: hai, doozo. fukuro wa doo shimasu ka
+            - speaker: learner
+              accept:
+                - kanji: 袋をください。
+                  kana: ふくろをください。
+                  romaji: fukuro o kudasai
+                - kanji: すみません、袋をください。
+                  kana: すみません、ふくろをください。
+                  romaji: sumimasen, fukuro o kudasai
+                - kanji: はい、袋をください。
+                  kana: はい、ふくろをください。
+                  romaji: hai, fukuro o kudasai
+            - speaker: npc
+              line:
+                kanji: はい。レシートはどうしますか。
+                kana: はい。レシートはどうしますか。
+                romaji: hai. reeshiito wa doo shimasu ka
+            - speaker: learner
+              accept:
+                - kanji: レシートはいいです。ありがとうございます。
+                  kana: レシートはいいです。ありがとうございます。
+                  romaji: reeshiito wa ii desu. arigatou gozaimasu
+                - kanji: いいえ、レシートはいいです。
+                  kana: いいえ、レシートはいいです。
+                  romaji: iie, reeshiito wa ii desu
+                - kanji: レシートはいいです。
+                  kana: レシートはいいです。
+                  romaji: reeshiito wa ii desu
+            - speaker: npc
+              line:
+                kanji: ありがとうございました。
+                kana: ありがとうございました。
+                romaji: arigatou gozaimashita
+        hint: >-
+          Use この before シャツ, いくらですか for the price, はありますか for the bigger
+          size, をください for the bag, and レシートはいいです to decline the receipt.
+        explanation: >-
+          The learner asks for the shirt with このシャツをください, asks the price with
+          これはいくらですか, asks about the bigger size with 大きいシャツはありますか,
+          takes the other one with それをください, asks for a bag with 袋をください,
+          and declines the receipt with レシートはいいです. The shop answers the price
+          with 千五百円 and 千八百円, recycling はっぴゃく from the numbers lesson.
+      - id: u8-l4-2
+        kind: speaking
+        concepts: [kosoado-standalone, kosoado-modifier, price-ikura, counter-native, counter-mai-ko, request-kudasai, request-arimasu-ka]
+        prompt: >-
+          You are in a shop with a shirt in your hand. Without looking back, ask for
+          it, ask the price, ask whether they have a bigger size, ask for a bag, and
+          decline the receipt. Speak aloud.
+        rubric: >-
+          Do これ・それ・あれ・どれ stand alone, and do この・その・あの・どの take a
+          noun? Does いくらですか ask the price, and does 円 carry the amount? Do
+          一つ・二つ and 〜枚 keep their counters and sound changes? Does をください
+          mark the thing you ask for, and does はありますか ask whether something is
+          in stock? Does レシートはいいです decline politely? Judge meaning, grammar,
+          naturalness and register separately. There is no model answer.

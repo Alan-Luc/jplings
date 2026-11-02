@@ -1922,3 +1922,321 @@
 - step: u7-l3-12
   answer: basu ni juppun kakarimasu
   verdict: wrong
+- step: u8-l1-1
+  answer: This is a bag.
+  verdict: correct
+- step: u8-l1-1
+  answer: This one is a bag.
+  verdict: correct
+- step: u8-l1-1
+  answer: This is a shop.
+  verdict: wrong
+- step: u8-l1-2
+  answer: This bag is cheap.
+  verdict: correct
+- step: u8-l1-2
+  answer: This bag is expensive.
+  verdict: wrong
+- step: u8-l1-3
+  answer: kore wa fukuro desu
+  verdict: correct
+- step: u8-l1-3
+  answer: これは袋です
+  verdict: correct
+- step: u8-l1-3
+  answer: kono wa fukuro desu
+  verdict: wrong
+- step: u8-l1-4
+  answer: kono fukuro wa yasui desu
+  verdict: correct
+- step: u8-l1-4
+  answer: この袋は安いです
+  verdict: correct
+- step: u8-l1-4
+  answer: kore fukuro wa yasui desu
+  verdict: wrong
+- step: u8-l1-5
+  answer: ano mise wa takai desu
+  verdict: correct
+- step: u8-l1-5
+  answer: あの店は高いです
+  verdict: correct
+- step: u8-l1-5
+  answer: are mise wa takai desu
+  verdict: wrong
+- step: u8-l1-6
+  answer: dono
+  verdict: correct
+- step: u8-l1-6
+  answer: どの
+  verdict: correct
+- step: u8-l1-6
+  answer: dore
+  verdict: wrong
+- step: u8-l1-7
+  answer: What is that over there?
+  verdict: correct
+- step: u8-l1-7
+  answer: How much is that over there?
+  verdict: wrong
+- step: u8-l1-8
+  answer: are wa fukuro desu
+  verdict: correct
+- step: u8-l1-8
+  answer: あれは袋です
+  verdict: correct
+- step: u8-l1-8
+  answer: ano fukuro desu
+  verdict: wrong
+- step: u8-l1-9
+  answer: Is that bag expensive?
+  verdict: correct
+- step: u8-l1-9
+  answer: Is this bag expensive?
+  verdict: wrong
+- step: u8-l1-10
+  answer: dore ga yasui desu ka
+  verdict: correct
+- step: u8-l1-10
+  answer: どれが安いですか
+  verdict: correct
+- step: u8-l1-10
+  answer: dono ga yasui desu ka
+  verdict: wrong
+- step: u8-l2-1
+  answer: How much is this?
+  verdict: correct
+- step: u8-l2-1
+  answer: What is this?
+  verdict: wrong
+- step: u8-l2-2
+  answer: This bag is 300 yen.
+  verdict: correct
+- step: u8-l2-2
+  answer: This bag is 3000 yen.
+  verdict: wrong
+- step: u8-l2-3
+  answer: are wa ikura desu ka
+  verdict: correct
+- step: u8-l2-3
+  answer: あれはいくらですか
+  verdict: correct
+- step: u8-l2-3
+  answer: are wa nan desu ka
+  verdict: wrong
+- step: u8-l2-4
+  answer: kono fukuro wa happyaku en desu
+  verdict: correct
+- step: u8-l2-4
+  answer: この袋は八百円です
+  verdict: correct
+- step: u8-l2-4
+  answer: kono fukuro wa hachihyaku en desu
+  verdict: wrong
+- step: u8-l2-5
+  answer: hassen en desu
+  verdict: correct
+- step: u8-l2-5
+  answer: 八千円です
+  verdict: correct
+- step: u8-l2-5
+  answer: 八千円
+  verdict: correct
+- step: u8-l2-5
+  answer: 8000円
+  verdict: correct
+- step: u8-l2-5
+  answer: hasen en desu
+  verdict: wrong
+- step: u8-l2-6
+  answer: I buy three apples.
+  verdict: correct
+- step: u8-l2-6
+  answer: I buy two apples.
+  verdict: wrong
+- step: u8-l2-7
+  answer: fukuro futatsu
+  verdict: correct
+- step: u8-l2-7
+  answer: 袋二つ
+  verdict: correct
+- step: u8-l2-7
+  answer: fukuro hitotsu
+  verdict: wrong
+- step: u8-l2-8
+  answer: onigiri o mittsu tabemashita
+  verdict: correct
+- step: u8-l2-8
+  answer: おにぎりを三つ食べました
+  verdict: correct
+- step: u8-l2-8
+  answer: onigiri o mitsu tabemashita
+  verdict: wrong
+- step: u8-l2-9
+  answer: 袋三つ
+  verdict: correct
+- step: u8-l2-9
+  answer: ふくろみっつ
+  verdict: correct
+- step: u8-l2-9
+  answer: fukuro mittsu
+  verdict: correct
+- step: u8-l2-9
+  answer: 袋が三つ
+  verdict: correct
+- step: u8-l2-9
+  answer: ふくろがみっつ
+  verdict: correct
+- step: u8-l2-9
+  answer: fukuro ga mittsu
+  verdict: correct
+- step: u8-l2-9
+  answer: fukuro mitsu
+  verdict: wrong
+- step: u8-l2-10
+  answer: Two of them are 300 yen.
+  verdict: correct
+- step: u8-l2-10
+  answer: Three of them are 300 yen.
+  verdict: wrong
+- step: u8-l2-11
+  answer: kippu sanmai
+  verdict: correct
+- step: u8-l2-11
+  answer: 切符三枚
+  verdict: correct
+- step: u8-l2-11
+  answer: kippu nimai
+  verdict: wrong
+- step: u8-l2-12
+  answer: nan
+  verdict: correct
+- step: u8-l2-12
+  answer: 何
+  verdict: correct
+- step: u8-l2-12
+  answer: なん
+  verdict: correct
+- step: u8-l2-12
+  answer: nani
+  verdict: wrong
+- step: u8-l2-13
+  answer: onigiri ikko
+  verdict: correct
+- step: u8-l2-13
+  answer: おにぎり一個
+  verdict: correct
+- step: u8-l2-13
+  answer: onigiri ichiko
+  verdict: wrong
+- step: u8-l2-14
+  answer: kippu nimai de roppyaku en desu
+  verdict: correct
+- step: u8-l2-14
+  answer: 切符二枚で六百円です
+  verdict: correct
+- step: u8-l2-14
+  answer: kippu nimai de happyaku en desu
+  verdict: wrong
+- step: u8-l3-1
+  answer: This, please.
+  verdict: correct
+- step: u8-l3-1
+  answer: That, please.
+  verdict: wrong
+- step: u8-l3-2
+  answer: Do you have a bag?
+  verdict: correct
+- step: u8-l3-2
+  answer: Do you have a receipt?
+  verdict: wrong
+- step: u8-l3-3
+  answer: kore o kudasai
+  verdict: correct
+- step: u8-l3-3
+  answer: これをください
+  verdict: correct
+- step: u8-l3-3
+  answer: kore ga kudasai
+  verdict: wrong
+- step: u8-l3-4
+  answer: ringo o futatsu kudasai
+  verdict: correct
+- step: u8-l3-4
+  answer: りんごを二つください
+  verdict: correct
+- step: u8-l3-4
+  answer: ringo o mittsu kudasai
+  verdict: wrong
+- step: u8-l3-5
+  answer: reeshiito wa arimasu ka
+  verdict: correct
+- step: u8-l3-5
+  answer: レシートはありますか
+  verdict: correct
+- step: u8-l3-5
+  answer: reeshiito ga arimasu ka
+  verdict: wrong
+- step: u8-l3-6
+  answer: ookii fukuro wa arimasu ka
+  verdict: correct
+- step: u8-l3-6
+  answer: 大きい袋はありますか
+  verdict: correct
+- step: u8-l3-6
+  answer: ookii fukuro ga arimasu ka
+  verdict: wrong
+- step: u8-l3-7
+  answer: o
+  verdict: correct
+- step: u8-l3-7
+  answer: を
+  verdict: correct
+- step: u8-l3-7
+  answer: ga
+  verdict: wrong
+- step: u8-l3-8
+  answer: wa
+  verdict: correct
+- step: u8-l3-8
+  answer: は
+  verdict: correct
+- step: u8-l3-8
+  answer: o
+  verdict: wrong
+- step: u8-l3-9
+  answer: Excuse me, do you have a bag?
+  verdict: correct
+- step: u8-l3-9
+  answer: Excuse me, how much is a bag?
+  verdict: wrong
+- step: u8-l3-10
+  answer: kippu o sanmai kudasai
+  verdict: correct
+- step: u8-l3-10
+  answer: 切符を三枚ください
+  verdict: correct
+- step: u8-l3-10
+  answer: kippu o sanmai
+  verdict: wrong
+- step: u8-l3-11
+  answer: レシートはありますか
+  verdict: correct
+- step: u8-l3-11
+  answer: reeshiito wa arimasu ka
+  verdict: correct
+- step: u8-l3-11
+  answer: レシートはいくらですか
+  verdict: wrong
+- step: u8-l2-11
+  answer: kippu san
+  verdict: wrong
+- step: u8-l2-13
+  answer: onigiri ichi
+  verdict: wrong
+- step: u8-l2-14
+  answer: kippu nimai de roppyaku desu
+  verdict: wrong
+- step: u8-l3-10
+  answer: kippu o san kudasai
+  verdict: wrong
