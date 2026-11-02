@@ -419,9 +419,9 @@ lessons:
           おにぎりを三つ食べました uses 三つ = みっつ before the verb. を marks the
           rice balls as what you ate, and 食べました is the past polite form.
       - id: u8-l2-9
-        kind: speaking
+        kind: construction
         concepts: [counter-native]
-        prompt: Say "three bags" aloud, then confirm the transcript.
+        prompt: Write "three bags".
         accept:
           - kanji: 袋三つ
             kana: ふくろみっつ
@@ -429,10 +429,13 @@ lessons:
           - kanji: 袋が三つ
             kana: ふくろがみっつ
             romaji: fukuro ga mittsu
+          - kanji: 袋三つです
+            kana: ふくろみっつです
+            romaji: fukuro mittsu desu
         hint: 三つ is みっつ — hold the small っ.
         explanation: >-
-          袋三つ is ふくろみっつ. If the transcript shows みつ, deny it: みっつ has
-          the small っ and みつ is a different word.
+          袋三つ is ふくろみっつ. みつ without the small っ is a different word, so
+          dropping it is a wrong answer rather than an accent.
       - id: u8-l2-10
         kind: interpretation
         concepts: [counter-mai-ko]
