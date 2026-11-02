@@ -4283,3 +4283,393 @@
 - step: u13-l3-8
   answer: 来週は忙しいですか。
   verdict: wrong
+- step: u14-l1-1
+  answer: I have been to Kyoto.
+  verdict: correct
+- step: u14-l1-1
+  answer: I've been to Kyoto.
+  verdict: correct
+- step: u14-l1-1
+  answer: I have visited Kyoto before.
+  verdict: correct
+- step: u14-l1-1
+  answer: I sometimes go to Kyoto.
+  verdict: wrong
+- step: u14-l1-2
+  answer: 京都に行ったことがあります。
+  verdict: correct
+- step: u14-l1-2
+  answer: きょうとにいったことがあります。
+  verdict: correct
+- step: u14-l1-2
+  answer: kyouto ni itta koto ga arimasu
+  verdict: correct
+- step: u14-l1-2
+  answer: 京都に行きましたことがあります。
+  verdict: wrong
+- step: u14-l1-3
+  answer: 日本に一度行ったことがあります。
+  verdict: correct
+- step: u14-l1-3
+  answer: にほんにいちどいったことがあります。
+  verdict: correct
+- step: u14-l1-3
+  answer: nihon ni ichido itta koto ga arimasu
+  verdict: correct
+- step: u14-l1-3
+  answer: 一度日本に行ったことがあります。
+  verdict: correct
+- step: u14-l1-3
+  answer: いちどにほんにいったことがあります。
+  verdict: correct
+- step: u14-l1-3
+  answer: ichido nihon ni itta koto ga arimasu
+  verdict: correct
+- step: u14-l1-3
+  answer: 日本に行きましたことがあります。
+  verdict: wrong
+- step: u14-l1-4
+  answer: た
+  verdict: correct
+- step: u14-l1-4
+  answer: ta
+  verdict: correct
+- step: u14-l1-4
+  answer: て
+  verdict: wrong
+- step: u14-l1-5
+  answer: 日本に行ったことがあります。
+  verdict: correct
+- step: u14-l1-5
+  answer: にほんにいったことがあります。
+  verdict: correct
+- step: u14-l1-5
+  answer: nihon ni itta koto ga arimasu
+  verdict: correct
+- step: u14-l1-5
+  answer: 日本に行くことがあります。
+  verdict: wrong
+- step: u14-l1-6
+  answer: I have been to Kyoto once.
+  verdict: correct
+- step: u14-l1-6
+  answer: I've been to Kyoto once.
+  verdict: correct
+- step: u14-l1-6
+  answer: I have visited Kyoto once.
+  verdict: correct
+- step: u14-l1-6
+  answer: I have never been to Kyoto.
+  verdict: wrong
+- step: u14-l1-7
+  answer: 一度京都に行ったことがあります。
+  verdict: correct
+- step: u14-l1-7
+  answer: いちどきょうとにいったことがあります。
+  verdict: correct
+- step: u14-l1-7
+  answer: ichido kyouto ni itta koto ga arimasu
+  verdict: correct
+- step: u14-l1-7
+  answer: 京都に一度行ったことがあります。
+  verdict: correct
+- step: u14-l1-7
+  answer: きょうとにいちどいったことがあります。
+  verdict: correct
+- step: u14-l1-7
+  answer: kyouto ni ichido itta koto ga arimasu
+  verdict: correct
+- step: u14-l1-7
+  answer: 一度京都に行きましたことがあります。
+  verdict: wrong
+- step: u14-l1-8
+  answer: 日本に行ったことがありますか。
+  verdict: correct
+- step: u14-l1-8
+  answer: にほんにいったことがありますか。
+  verdict: correct
+- step: u14-l1-8
+  answer: nihon ni itta koto ga arimasu ka
+  verdict: correct
+- step: u14-l1-8
+  answer: 日本に行きますか。
+  verdict: wrong
+- step: u14-l1-9
+  answer: I have eaten sushi twice.
+  verdict: correct
+- step: u14-l1-9
+  answer: I've eaten sushi twice.
+  verdict: correct
+- step: u14-l1-9
+  answer: I have had sushi twice.
+  verdict: correct
+- step: u14-l1-9
+  answer: I have eaten sushi once.
+  verdict: wrong
+- step: u14-l2-1
+  answer: You should go to bed early.
+  verdict: correct
+- step: u14-l2-1
+  answer: You'd better go to bed early.
+  verdict: correct
+- step: u14-l2-1
+  answer: It would be better to go to bed early.
+  verdict: correct
+- step: u14-l2-1
+  answer: You went to bed early.
+  verdict: wrong
+- step: u14-l2-2
+  answer: You shouldn't drink alcohol.
+  verdict: correct
+- step: u14-l2-2
+  answer: You'd better not drink alcohol.
+  verdict: correct
+- step: u14-l2-2
+  answer: It would be better not to drink alcohol.
+  verdict: correct
+- step: u14-l2-2
+  answer: You should drink alcohol.
+  verdict: wrong
+- step: u14-l2-3
+  answer: You should go to the hospital.
+  verdict: correct
+- step: u14-l2-3
+  answer: You'd better go to the hospital.
+  verdict: correct
+- step: u14-l2-3
+  answer: It would be better to go to the hospital.
+  verdict: correct
+- step: u14-l2-3
+  answer: You shouldn't go to the hospital.
+  verdict: wrong
+- step: u14-l2-4
+  answer: 早く寝たほうがいいです。
+  verdict: correct
+- step: u14-l2-4
+  answer: はやくねたほうがいいです。
+  verdict: correct
+- step: u14-l2-4
+  answer: hayaku neta hou ga ii desu
+  verdict: correct
+- step: u14-l2-4
+  answer: 早く寝るほうがいいです。
+  verdict: wrong
+- step: u14-l2-5
+  answer: 薬を飲んだほうがいいです。
+  verdict: correct
+- step: u14-l2-5
+  answer: くすりをのんだほうがいいです。
+  verdict: correct
+- step: u14-l2-5
+  answer: kusuri o nonda hou ga ii desu
+  verdict: correct
+- step: u14-l2-5
+  answer: 薬を飲むほうがいいです。
+  verdict: wrong
+- step: u14-l2-6
+  answer: そのすしは食べないほうがいいです。
+  verdict: correct
+- step: u14-l2-6
+  answer: そのすしはたべないほうがいいです。
+  verdict: correct
+- step: u14-l2-6
+  answer: sono sushi wa tabenai hou ga ii desu
+  verdict: correct
+- step: u14-l2-6
+  answer: そのすしを食べないほうがいいです。
+  verdict: correct
+- step: u14-l2-6
+  answer: そのすしをたべないほうがいいです。
+  verdict: correct
+- step: u14-l2-6
+  answer: sono sushi o tabenai hou ga ii desu
+  verdict: correct
+- step: u14-l2-6
+  answer: そのすしは食べたほうがいいです。
+  verdict: wrong
+- step: u14-l2-7
+  answer: 行かないほうがいいです。
+  verdict: correct
+- step: u14-l2-7
+  answer: いかないほうがいいです。
+  verdict: correct
+- step: u14-l2-7
+  answer: ikanai hou ga ii desu
+  verdict: correct
+- step: u14-l2-7
+  answer: 行かなかったほうがいいです。
+  verdict: wrong
+- step: u14-l2-8
+  answer: ない
+  verdict: correct
+- step: u14-l2-8
+  answer: nai
+  verdict: correct
+- step: u14-l2-8
+  answer: なかった
+  verdict: wrong
+- step: u14-l2-9
+  answer: That hotel is expensive, so you shouldn't book it.
+  verdict: correct
+- step: u14-l2-9
+  answer: The hotel is expensive, so you'd better not book it.
+  verdict: correct
+- step: u14-l2-9
+  answer: That hotel is expensive, so it would be better not to book it.
+  verdict: correct
+- step: u14-l2-9
+  answer: That hotel is cheap, so you should book it.
+  verdict: wrong
+- step: u14-l2-10
+  answer: 病院に行ったほうがいいです。
+  verdict: correct
+- step: u14-l2-10
+  answer: びょういんにいったほうがいいです。
+  verdict: correct
+- step: u14-l2-10
+  answer: byouin ni itta hou ga ii desu
+  verdict: correct
+- step: u14-l2-10
+  answer: 病院に行くほうがいいです。
+  verdict: wrong
+- step: u14-l2-11
+  answer: それを食べないほうがいいです。
+  verdict: correct
+- step: u14-l2-11
+  answer: それをたべないほうがいいです。
+  verdict: correct
+- step: u14-l2-11
+  answer: sore o tabenai hou ga ii desu
+  verdict: correct
+- step: u14-l2-11
+  answer: それを食べたほうがいいです。
+  verdict: wrong
+- step: u14-l2-12
+  answer: 行ったほうがいいです。
+  verdict: correct
+- step: u14-l2-12
+  answer: いったほうがいいです。
+  verdict: correct
+- step: u14-l2-12
+  answer: itta hou ga ii desu
+  verdict: correct
+- step: u14-l2-12
+  answer: 行きましたほうがいいです。
+  verdict: wrong
+- step: u14-l3-1
+  answer: Tokyo is bigger than Osaka.
+  verdict: correct
+- step: u14-l3-1
+  answer: Tokyo is larger than Osaka.
+  verdict: correct
+- step: u14-l3-1
+  answer: Tokyo is bigger than Osaka, and Osaka is the standard.
+  verdict: correct
+- step: u14-l3-1
+  answer: Osaka is bigger than Tokyo.
+  verdict: wrong
+- step: u14-l3-2
+  answer: Tokyo is the bigger one.
+  verdict: correct
+- step: u14-l3-2
+  answer: Tokyo is bigger than Osaka.
+  verdict: correct
+- step: u14-l3-2
+  answer: Tokyo is the larger one.
+  verdict: correct
+- step: u14-l3-2
+  answer: Osaka is the bigger one.
+  verdict: wrong
+- step: u14-l3-3
+  answer: Mt Fuji is the highest mountain in Japan.
+  verdict: correct
+- step: u14-l3-3
+  answer: Mt Fuji is the highest in Japan.
+  verdict: correct
+- step: u14-l3-3
+  answer: Fuji is the highest mountain in Japan.
+  verdict: correct
+- step: u14-l3-3
+  answer: Mt Fuji is not the highest mountain in Japan.
+  verdict: wrong
+- step: u14-l3-4
+  answer: 東京は大阪より大きいです。
+  verdict: correct
+- step: u14-l3-4
+  answer: とうきょうはおおさかよりおおきいです。
+  verdict: correct
+- step: u14-l3-4
+  answer: toukyou wa oosaka yori ookii desu
+  verdict: correct
+- step: u14-l3-4
+  answer: 大阪は東京より大きいです。
+  verdict: wrong
+- step: u14-l3-5
+  answer: 東京は大阪より高いです。
+  verdict: correct
+- step: u14-l3-5
+  answer: とうきょうはおおさかよりたかいです。
+  verdict: correct
+- step: u14-l3-5
+  answer: toukyou wa oosaka yori takai desu
+  verdict: correct
+- step: u14-l3-5
+  answer: 大阪は東京より高いです。
+  verdict: wrong
+- step: u14-l3-6
+  answer: お茶のほうが好きです。
+  verdict: correct
+- step: u14-l3-6
+  answer: おちゃのほうがすきです。
+  verdict: correct
+- step: u14-l3-6
+  answer: ocha no hou ga suki desu
+  verdict: correct
+- step: u14-l3-6
+  answer: コーヒーよりお茶のほうが好きです。
+  verdict: correct
+- step: u14-l3-6
+  answer: こーひーよりおちゃのほうがすきです。
+  verdict: correct
+- step: u14-l3-6
+  answer: koohii yori ocha no hou ga suki desu
+  verdict: correct
+- step: u14-l3-6
+  answer: コーヒーのほうが好きです。
+  verdict: wrong
+- step: u14-l3-7
+  answer: すしが一番好きです。
+  verdict: correct
+- step: u14-l3-7
+  answer: すしがいちばんすきです。
+  verdict: correct
+- step: u14-l3-7
+  answer: sushi ga ichiban suki desu
+  verdict: correct
+- step: u14-l3-7
+  answer: コーヒーが一番好きです。
+  verdict: wrong
+- step: u14-l3-8
+  answer: 東京のほうが大阪より大きいです。
+  verdict: correct
+- step: u14-l3-8
+  answer: とうきょうのほうがおおさかよりおおきいです。
+  verdict: correct
+- step: u14-l3-8
+  answer: toukyou no hou ga oosaka yori ookii desu
+  verdict: correct
+- step: u14-l3-8
+  answer: 大阪のほうが東京より大きいです。
+  verdict: wrong
+- step: u14-l3-9
+  answer: Kyoto is quieter than Tokyo.
+  verdict: correct
+- step: u14-l3-9
+  answer: Kyoto is more quiet than Tokyo.
+  verdict: correct
+- step: u14-l3-9
+  answer: Kyoto is quieter than Tokyo is.
+  verdict: correct
+- step: u14-l3-9
+  answer: Tokyo is quieter than Kyoto.
+  verdict: wrong

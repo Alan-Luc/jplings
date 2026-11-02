@@ -1,0 +1,833 @@
+id: unit-14
+title: 経験と比較 — talking about what you've done and comparing
+taught: true
+concepts:
+  - id: experience-ta-koto-ga-aru
+    label: 〜たことがある — plain past plus ことがある for experience
+  - id: advice-ta-hou-ga-ii
+    label: 〜たほうがいい — advice to do something
+  - id: advice-nai-hou-ga-ii
+    label: 〜ないほうがいい — advice against doing something
+  - id: comparison-yori
+    label: より・のほうが・一番 — the comparison decision tree
+lessons:
+  - id: u14-l1
+    title: 行ったことがあります — talking about experience
+    objective: >-
+      Report an experience with plain past + ことがある, place a frequency such as
+      一度 or 二度 before the verb, and tell 行ったことがある (have done) from
+      行くことがある (sometimes do).
+    anchors:
+      - kanji: 京都に行ったことがあります
+        kana: きょうとにいったことがあります
+        romaji: kyouto ni itta koto ga arimasu
+      - kanji: 一度行ったことがあります
+        kana: いちどいったことがあります
+        romaji: ichido itta koto ga arimasu
+      - kanji: 日本に行ったことがありますか
+        kana: にほんにいったことがありますか
+        romaji: nihon ni itta koto ga arimasu ka
+    teach:
+      - prose: >-
+          ことがある attaches to the plain past to report an experience:
+          行ったことがある, have been; 食べたことがある, have eaten. The sentence still
+          ends politely with あります: 京都に行ったことがあります. The plain past is
+          the て-form with た: 行って becomes 行った, 食べて becomes 食べた, して
+          becomes した, 来て becomes 来た. こと turns the clause into a noun, and
+          ある says such a time exists. 経験 is the noun for experience:
+          いい経験になりました, it became a good experience.
+        examples:
+          - kanji: 京都に行ったことがあります
+            kana: きょうとにいったことがあります
+            romaji: kyouto ni itta koto ga arimasu
+          - kanji: すしを食べたことがあります
+            kana: すしをたべたことがあります
+            romaji: sushi o tabeta koto ga arimasu
+          - kanji: 日本に行ったことがありますか
+            kana: にほんにいったことがありますか
+            romaji: nihon ni itta koto ga arimasu ka
+      - prose: >-
+          Frequency goes before the past plain verb: 一度行ったことがあります, I have
+          been once; 二度食べたことがあります, I have eaten it twice. 一度 and 二度
+          count experiences, not attempts. 一度も…ありません means never: 一度も
+          行ったことがありません. The question is 行ったことがありますか, and the
+          answer is 行ったことがありません, not 行きませんでした — the experience is
+          absent, not a past action.
+        examples:
+          - kanji: 一度行ったことがあります
+            kana: いちどいったことがあります
+            romaji: ichido itta koto ga arimasu
+          - kanji: 二度食べたことがあります
+            kana: にどたべたことがあります
+            romaji: nido tabeta koto ga arimasu
+          - kanji: 一度も行ったことがありません
+            kana: いちどもいったことがありません
+            romaji: ichido mo itta koto ga arimasen
+      - prose: >-
+          Two errors change the sentence. 行くことがある uses the non-past plain
+          form, so it means "sometimes go", a habit: 京都に行くことがあります means I
+          sometimes go to Kyoto. 行きましたことがある mixes the polite past into the
+          clause; ことがある follows the plain past 行った, so the correct sentence is
+          行ったことがあります. Politeness belongs on the final あります, not inside
+          the clause.
+        examples:
+          - kanji: 京都に行ったことがあります
+            kana: きょうとにいったことがあります
+            romaji: kyouto ni itta koto ga arimasu
+          - kanji: 京都に行くことがあります
+            kana: きょうとにいくことがあります
+            romaji: kyouto ni iku koto ga arimasu
+          - kanji: 一度行ったことがあります
+            kana: いちどいったことがあります
+            romaji: ichido itta koto ga arimasu
+    steps:
+      - id: u14-l1-1
+        kind: interpretation
+        concepts: [experience-ta-koto-ga-aru]
+        prompt: >-
+          One classmate says 京都に行ったことがあります and another says
+          京都に行くことがあります. Which one reports an experience, and what does it
+          mean?
+        target:
+          kanji: 京都に行ったことがあります。
+          kana: きょうとにいったことがあります。
+          romaji: kyouto ni itta koto ga arimasu
+        accept_meanings:
+          - I have been to Kyoto.
+          - I've been to Kyoto.
+          - I have visited Kyoto before.
+        hint: Experience is the plain past 行った plus ことがある.
+        explanation: >-
+          京都に行ったことがあります reports an experience. 京都に行くことがあります
+          uses the non-past 行く, so it means "I sometimes go to Kyoto" — a habit, not
+          an experience.
+      - id: u14-l1-2
+        kind: transformation
+        concepts: [experience-ta-koto-ga-aru]
+        prompt: >-
+          A learner writes 京都に行きましたことがあります for "I have been to Kyoto."
+          Write the sentence they meant.
+        target:
+          kanji: 京都に行きましたことがあります。
+          kana: きょうとにいきましたことがあります。
+          romaji: kyouto ni ikimashita koto ga arimasu
+        accept:
+          - kanji: 京都に行ったことがあります。
+            kana: きょうとにいったことがあります。
+            romaji: kyouto ni itta koto ga arimasu
+        hint: ことがある follows the plain past; politeness stays on the final あります.
+        explanation: >-
+          京都に行ったことがあります keeps 行った plain before ことがある.
+          行きましたことがあります puts the polite past inside the clause, which the
+          pattern does not allow.
+      - id: u14-l1-3
+        kind: construction
+        concepts: [experience-ta-koto-ga-aru]
+        prompt: Say "I have been to Japan once."
+        accept:
+          - kanji: 日本に一度行ったことがあります。
+            kana: にほんにいちどいったことがあります。
+            romaji: nihon ni ichido itta koto ga arimasu
+          - kanji: 一度日本に行ったことがあります。
+            kana: いちどにほんにいったことがあります。
+            romaji: ichido nihon ni itta koto ga arimasu
+        hint: Put 一度 before the past plain 行った, then add ことがあります.
+        explanation: >-
+          日本に一度行ったことがあります reports one trip as an experience. The
+          frequency 一度 goes before the verb, and 行った stays plain before ことが.
+          日本に行きましたことがあります would put the polite past inside the clause.
+      - id: u14-l1-4
+        kind: completion
+        concepts: [experience-ta-koto-ga-aru]
+        prompt: Fill the past plain ending — "I have eaten sushi twice."
+        target:
+          kanji: すしを二度食べ＿ことがあります。
+          kana: すしをにどたべ＿ことがあります。
+          romaji: sushi o nido tabe _ koto ga arimasu
+        accept:
+          - kanji: た
+            kana: た
+            romaji: ta
+        hint: 食べる is a る-verb; its plain past is 食べた.
+        explanation: >-
+          すしを二度食べたことがあります needs 食べた before ことがあります. 食べて
+          is the て-form, not the past plain, and 二度 counts the experiences.
+      - id: u14-l1-5
+        kind: transformation
+        concepts: [experience-ta-koto-ga-aru]
+        prompt: >-
+          A learner says 日本に行くことがあります for "I have been to Japan." Write the
+          sentence they meant.
+        target:
+          kanji: 日本に行くことがあります。
+          kana: にほんにいくことがあります。
+          romaji: nihon ni iku koto ga arimasu
+        accept:
+          - kanji: 日本に行ったことがあります。
+            kana: にほんにいったことがあります。
+            romaji: nihon ni itta koto ga arimasu
+        hint: 行く describes a habit; experience needs the plain past 行った.
+        explanation: >-
+          日本に行ったことがあります reports the experience. 日本に行くことがあります
+          is also valid Japanese, but it means "I sometimes go to Japan", which is a
+          different claim.
+      - id: u14-l1-6
+        kind: listening
+        concepts: [experience-ta-koto-ga-aru]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: 一度京都に行ったことがあります。
+          kana: いちどきょうとにいったことがあります。
+          romaji: ichido kyouto ni itta koto ga arimasu
+        accept_meanings:
+          - I have been to Kyoto once.
+          - I've been to Kyoto once.
+          - I have visited Kyoto once.
+        hint: 一度 is once; 行った plus ことがある marks the experience.
+        explanation: >-
+          一度京都に行ったことがあります reports a single past visit. 一度 is placed
+          before the verb, and 行った stays plain before ことがあります.
+      - id: u14-l1-7
+        kind: speaking
+        concepts: [experience-ta-koto-ga-aru]
+        prompt: Say you have been to Kyoto once. Speak aloud.
+        accept:
+          - kanji: 一度京都に行ったことがあります。
+            kana: いちどきょうとにいったことがあります。
+            romaji: ichido kyouto ni itta koto ga arimasu
+          - kanji: 京都に一度行ったことがあります。
+            kana: きょうとにいちどいったことがあります。
+            romaji: kyouto ni ichido itta koto ga arimasu
+        hint: 一度 is いちど; 行った stays plain before ことがあります.
+        explanation: >-
+          一度京都に行ったことがあります is いちどきょうとにいったことがあります.
+          A transcript may return the kanji, the kana, or the romaji, so all of those
+          are accepted. 行きましたことがあります would be the polite-inside-plain
+          error.
+      - id: u14-l1-8
+        kind: construction
+        concepts: [experience-ta-koto-ga-aru]
+        prompt: Ask a friend whether they have been to Japan.
+        accept:
+          - kanji: 日本に行ったことがありますか。
+            kana: にほんにいったことがありますか。
+            romaji: nihon ni itta koto ga arimasu ka
+        hint: The question adds か to 行ったことがあります.
+        explanation: >-
+          日本に行ったことがありますか asks about an experience. 日本に行きますか
+          asks whether they are going now or in the future, which is a different
+          question.
+      - id: u14-l1-9
+        kind: interpretation
+        concepts: [experience-ta-koto-ga-aru]
+        prompt: What does this mean?
+        target:
+          kanji: すしを二度食べたことがあります。
+          kana: すしをにどたべたことがあります。
+          romaji: sushi o nido tabeta koto ga arimasu
+        accept_meanings:
+          - I have eaten sushi twice.
+          - I've eaten sushi twice.
+          - I have had sushi twice.
+        hint: 二度 is twice, and 食べた plus ことがある is the experience.
+        explanation: >-
+          すしを二度食べたことがあります reports two occasions of eating sushi.
+          二度 is not "second time" here; it counts the experiences before the verb.
+
+  - id: u14-l2
+    title: 〜たほうがいいです — giving advice
+    objective: >-
+      Advise an action with plain past + ほうがいい and advise against one with plain
+      negative + ほうがいい, choosing the negative shape for a warning and keeping the
+      clause plain while the sentence stays polite.
+    anchors:
+      - kanji: 早く寝たほうがいいです
+        kana: はやくねたほうがいいです
+        romaji: hayaku neta hou ga ii desu
+      - kanji: 病院に行ったほうがいいです
+        kana: びょういんにいったほうがいいです
+        romaji: byouin ni itta hou ga ii desu
+      - kanji: お酒を飲まないほうがいいです
+        kana: おさけをのまないほうがいいです
+        romaji: osake o nomanai hou ga ii desu
+    teach:
+      - prose: >-
+          ほうがいい gives advice. Put the action in the plain past and add
+          ほうがいいです: 早く寝たほうがいいです, you should go to bed early;
+          病院に行ったほうがいいです, you should go to the hospital. The past form
+          here does not mean past time; it is the form the advice pattern takes. The
+          clause stays plain, and です carries the politeness.
+        examples:
+          - kanji: 早く寝たほうがいいです
+            kana: はやくねたほうがいいです
+            romaji: hayaku neta hou ga ii desu
+          - kanji: 病院に行ったほうがいいです
+            kana: びょういんにいったほうがいいです
+            romaji: byouin ni itta hou ga ii desu
+          - kanji: 薬を飲んだほうがいいです
+            kana: くすりをのんだほうがいいです
+            romaji: kusuri o nonda hou ga ii desu
+      - prose: >-
+          The negative advice is a separate shape: plain negative + ほうがいいです.
+          お酒を飲まないほうがいいです, you shouldn't drink alcohol; そのすしは
+          食べないほうがいいです, you shouldn't eat that sushi. 行かなかったほうがいい
+          です is not the negative advice: the past negative makes it "it would have
+          been better not to go", a comment on the past. For present advice use
+          行かないほうがいいです.
+        examples:
+          - kanji: お酒を飲まないほうがいいです
+            kana: おさけをのまないほうがいいです
+            romaji: osake o nomanai hou ga ii desu
+          - kanji: そのすしは食べないほうがいいです
+            kana: そのすしはたべないほうがいいです
+            romaji: sono sushi wa tabenai hou ga ii desu
+          - kanji: 行かないほうがいいです
+            kana: いかないほうがいいです
+            romaji: ikanai hou ga ii desu
+      - prose: >-
+          Choose by what you are recommending. To recommend an action, use the past
+          plain: 病院に行ったほうがいいです. To warn against one, use the plain
+          negative: 病院に行かないほうがいいです. The two are not interchangeable.
+          行くほうがいいです uses the non-past and states a preference rather than
+          advice; the advice shape is 行ったほうがいいです. 行きましたほうがいいです
+          puts the polite past inside the pattern and is wrong; politeness goes on the
+          final です.
+        examples:
+          - kanji: 病院に行ったほうがいいです
+            kana: びょういんにいったほうがいいです
+            romaji: byouin ni itta hou ga ii desu
+          - kanji: 病院に行かないほうがいいです
+            kana: びょういんにいかないほうがいいです
+            romaji: byouin ni ikanai hou ga ii desu
+          - kanji: 早く寝たほうがいいです
+            kana: はやくねたほうがいいです
+            romaji: hayaku neta hou ga ii desu
+    steps:
+      - id: u14-l2-1
+        kind: interpretation
+        concepts: [advice-ta-hou-ga-ii]
+        prompt: >-
+          One learner writes 早く寝たほうがいいです and another writes
+          早く寝るほうがいいです. Which one gives advice, and what does it mean?
+        target:
+          kanji: 早く寝たほうがいいです。
+          kana: はやくねたほうがいいです。
+          romaji: hayaku neta hou ga ii desu
+        accept_meanings:
+          - You should go to bed early.
+          - You'd better go to bed early.
+          - It would be better to go to bed early.
+        hint: Advice uses the plain past before ほうがいい.
+        explanation: >-
+          早く寝たほうがいいです gives advice with the past plain 寝た. 早く寝る
+          ほうがいいです uses the non-past and states a preference, not advice. The
+          past form here does not put the advice in the past.
+      - id: u14-l2-2
+        kind: interpretation
+        concepts: [advice-nai-hou-ga-ii]
+        prompt: What does this mean?
+        target:
+          kanji: お酒を飲まないほうがいいです。
+          kana: おさけをのまないほうがいいです。
+          romaji: osake o nomanai hou ga ii desu
+        accept_meanings:
+          - You shouldn't drink alcohol.
+          - You'd better not drink alcohol.
+          - It would be better not to drink alcohol.
+        hint: The plain negative before ほうがいい advises against the action.
+        explanation: >-
+          お酒を飲まないほうがいいです uses 飲まない, the plain negative, before
+          ほうがいい. 飲まなかったほうがいいです would comment on the past instead:
+          it would have been better not to drink.
+      - id: u14-l2-3
+        kind: interpretation
+        concepts: [advice-ta-hou-ga-ii]
+        prompt: >-
+          Your friend has a fever and wants to stay home. You think they should go to
+          the hospital, not stay home. Which do you say — 病院に行ったほうがいいです
+          or 病院に行かないほうがいいです — and what does it mean?
+        target:
+          kanji: 病院に行ったほうがいいです。
+          kana: びょういんにいったほうがいいです。
+          romaji: byouin ni itta hou ga ii desu
+        accept_meanings:
+          - You should go to the hospital.
+          - You'd better go to the hospital.
+          - It would be better to go to the hospital.
+        hint: You are recommending an action, so use the past plain before ほうがいい.
+        explanation: >-
+          病院に行ったほうがいいです recommends going to the hospital.
+          病院に行かないほうがいいです would advise against going, which is the
+          opposite of what you mean.
+      - id: u14-l2-4
+        kind: construction
+        concepts: [advice-ta-hou-ga-ii]
+        prompt: Your friend looks tired. Tell them they should go to bed early.
+        accept:
+          - kanji: 早く寝たほうがいいです。
+            kana: はやくねたほうがいいです。
+            romaji: hayaku neta hou ga ii desu
+        hint: Put 寝る in the plain past before ほうがいいです.
+        explanation: >-
+          早く寝たほうがいいです advises going to bed early. 早く寝るほうがいいです
+          would state a preference, and 早く寝ましたほうがいいです puts the polite
+          past inside the pattern.
+      - id: u14-l2-5
+        kind: transformation
+        concepts: [advice-ta-hou-ga-ii]
+        prompt: >-
+          A learner writes 薬を飲むほうがいいです for "You should take medicine."
+          Write the sentence they meant.
+        target:
+          kanji: 薬を飲むほうがいいです。
+          kana: くすりをのむほうがいいです。
+          romaji: kusuri o nomu hou ga ii desu
+        accept:
+          - kanji: 薬を飲んだほうがいいです。
+            kana: くすりをのんだほうがいいです。
+            romaji: kusuri o nonda hou ga ii desu
+        hint: The advice shape uses the past plain 飲んだ, not the dictionary form 飲む.
+        explanation: >-
+          薬を飲んだほうがいいです uses the past plain 飲んだ. 薬を飲むほうがいいです
+          uses the non-past and states a preference rather than advice.
+      - id: u14-l2-6
+        kind: construction
+        concepts: [advice-nai-hou-ga-ii]
+        prompt: The sushi is not fresh. Tell your friend they shouldn't eat it.
+        accept:
+          - kanji: そのすしは食べないほうがいいです。
+            kana: そのすしはたべないほうがいいです。
+            romaji: sono sushi wa tabenai hou ga ii desu
+          - kanji: そのすしを食べないほうがいいです。
+            kana: そのすしをたべないほうがいいです。
+            romaji: sono sushi o tabenai hou ga ii desu
+        hint: Put 食べる in the plain negative before ほうがいいです.
+        explanation: >-
+          そのすしは食べないほうがいいです warns against eating it. 食べなかった
+          ほうがいいです would comment on a past meal instead of advising now.
+          食べたほうがいいです would recommend eating it, the opposite advice.
+      - id: u14-l2-7
+        kind: transformation
+        concepts: [advice-nai-hou-ga-ii]
+        prompt: >-
+          A learner writes 行かなかったほうがいいです for "You shouldn't go." Write
+          the sentence they meant.
+        target:
+          kanji: 行かなかったほうがいいです。
+          kana: いかなかったほうがいいです。
+          romaji: ikanakatta hou ga ii desu
+        accept:
+          - kanji: 行かないほうがいいです。
+            kana: いかないほうがいいです。
+            romaji: ikanai hou ga ii desu
+        hint: Present advice uses the plain negative 行かない, not the past negative.
+        explanation: >-
+          行かないほうがいいです advises against going now. 行かなかったほうがいいです
+          uses the past negative, so it means "it would have been better not to go" —
+          a judgement about the past.
+      - id: u14-l2-8
+        kind: completion
+        concepts: [advice-nai-hou-ga-ii]
+        prompt: Fill the ending — "You shouldn't drink alcohol."
+        target:
+          kanji: お酒を飲ま＿ほうがいいです。
+          kana: おさけをのま＿ほうがいいです。
+          romaji: osake o noma _ hou ga ii desu
+        accept:
+          - kanji: ない
+            kana: ない
+            romaji: nai
+        hint: Use the plain negative of 飲む before ほうがいいです.
+        explanation: >-
+          お酒を飲まないほうがいいです needs ない to make 飲まない, the plain negative.
+          飲まなかった would make it past, and 飲んで would be the て-form.
+      - id: u14-l2-9
+        kind: listening
+        concepts: [advice-nai-hou-ga-ii]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: そのホテルは高いですから、予約しないほうがいいです。
+          kana: そのホテルはたかいですから、よやくしないほうがいいです。
+          romaji: sono hoteru wa takai desu kara, yoyaku shinai hou ga ii desu
+        accept_meanings:
+          - That hotel is expensive, so you shouldn't book it.
+          - The hotel is expensive, so you'd better not book it.
+          - That hotel is expensive, so it would be better not to book it.
+        hint: から gives the reason; しない before ほうがいい warns against booking.
+        explanation: >-
+          そのホテルは高いですから、予約しないほうがいいです gives the price as the
+          reason and advises against booking with しないほうがいい. 予約しなかった
+          ほうがいい would refer to a past booking instead.
+      - id: u14-l2-10
+        kind: speaking
+        concepts: [advice-ta-hou-ga-ii]
+        prompt: Advise your friend to see a doctor. Speak aloud.
+        accept:
+          - kanji: 病院に行ったほうがいいです。
+            kana: びょういんにいったほうがいいです。
+            romaji: byouin ni itta hou ga ii desu
+        hint: 病院 is びょういん; the advice verb is the past plain 行った.
+        explanation: >-
+          病院に行ったほうがいいです is びょういんにいったほうがいいです. A transcript
+          may return the kanji, the kana, or the romaji, so all of those are
+          accepted. 行くほうがいいです would state a preference rather than give
+          advice.
+      - id: u14-l2-11
+        kind: speaking
+        concepts: [advice-nai-hou-ga-ii]
+        prompt: Advise your friend not to eat that. Speak aloud.
+        accept:
+          - kanji: それを食べないほうがいいです。
+            kana: それをたべないほうがいいです。
+            romaji: sore o tabenai hou ga ii desu
+        hint: Use the plain negative 食べない before ほうがいいです.
+        explanation: >-
+          それを食べないほうがいいです is それをたべないほうがいいです. The plain
+          negative 食べない is the advice against. 食べなかったほうがいいです would
+          refer to the past.
+      - id: u14-l2-12
+        kind: transformation
+        concepts: [advice-ta-hou-ga-ii]
+        prompt: >-
+          A learner writes 行きましたほうがいいです for "You should go." Write the
+          sentence they meant.
+        target:
+          kanji: 行きましたほうがいいです。
+          kana: いきましたほうがいいです。
+          romaji: ikimashita hou ga ii desu
+        accept:
+          - kanji: 行ったほうがいいです。
+            kana: いったほうがいいです。
+            romaji: itta hou ga ii desu
+        hint: Keep the verb plain inside the advice and put the politeness on です.
+        explanation: >-
+          行ったほうがいいです keeps 行った plain before ほうがいい. 行きました
+          ほうがいいです puts the polite past inside the pattern, which is wrong.
+
+  - id: u14-l3
+    title: より・のほうが・一番 — comparing places, then talking travel
+    objective: >-
+      Compare two things with A は B より, pick one out with A のほうが B より, rank
+      three or more with A が 一番, and run a travel conversation that uses
+      experience, comparison and advice together.
+    anchors:
+      - kanji: 東京は大阪より大きいです
+        kana: とうきょうはおおさかよりおおきいです
+        romaji: toukyou wa oosaka yori ookii desu
+      - kanji: 東京のほうが大阪より大きいです
+        kana: とうきょうのほうがおおさかよりおおきいです
+        romaji: toukyou no hou ga oosaka yori ookii desu
+      - kanji: 富士山が日本で一番高いです
+        kana: ふじさんがにほんでいちばんたかいです
+        romaji: fujisan ga nihon de ichiban takai desu
+    teach:
+      - prose: >-
+          より marks the standard you compare against, and the thing before は is the
+          one being described: 東京は大阪より大きいです, Tokyo is bigger than Osaka.
+          大阪 is the standard, and 東京 is the one being described as bigger.
+          Reversing the nouns reverses the meaning: 大阪は東京より大きいです says Osaka
+          is bigger. The adjective stays in its usual predicative form: 大きいです,
+          高いです, 静かです.
+        examples:
+          - kanji: 東京は大阪より大きいです
+            kana: とうきょうはおおさかよりおおきいです
+            romaji: toukyou wa oosaka yori ookii desu
+          - kanji: 京都は東京より静かです
+            kana: きょうとはとうきょうよりしずかです
+            romaji: kyouto wa toukyou yori shizuka desu
+          - kanji: 東京は大阪より高いです
+            kana: とうきょうはおおさかよりたかいです
+            romaji: toukyou wa oosaka yori takai desu
+      - prose: >-
+          のほうが picks one out. 東京のほうが大阪より大きいです also says Tokyo is
+          the bigger one, but it answers "which one?" rather than only describing
+          Tokyo; より can be left out when the other item is already understood:
+          東京のほうが大きいです. The question is A と B とどちらが…ですか, and the
+          answer is A のほうが…です. With 好き: コーヒーよりお茶のほうが好きです, I
+          like tea more than coffee.
+        examples:
+          - kanji: 東京のほうが大阪より大きいです
+            kana: とうきょうのほうがおおさかよりおおきいです
+            romaji: toukyou no hou ga oosaka yori ookii desu
+          - kanji: 東京のほうが大きいです
+            kana: とうきょうのほうがおおきいです
+            romaji: toukyou no hou ga ookii desu
+          - kanji: コーヒーよりお茶のほうが好きです
+            kana: こーひーよりおちゃのほうがすきです
+            romaji: koohii yori ocha no hou ga suki desu
+      - prose: >-
+          一番 ranks three or more. The winner takes が, and 一番 goes before the
+          adjective: 富士山が日本で一番高いです, Mt Fuji is the highest in Japan;
+          すしが一番好きです, sushi is my favourite. Use で for the range, as in
+          日本で. The whole system is one decision: describing a comparison, A は B
+          より; answering which of two, A のほうが B より; ranking among three or
+          more, A が 一番. より always points back to the standard, never to the
+          winner.
+        examples:
+          - kanji: 富士山が日本で一番高いです
+            kana: ふじさんがにほんでいちばんたかいです
+            romaji: fujisan ga nihon de ichiban takai desu
+          - kanji: すしが一番好きです
+            kana: すしがいちばんすきです
+            romaji: sushi ga ichiban suki desu
+          - kanji: 京都が日本で一番好きです
+            kana: きょうとがにほんでいちばんすきです
+            romaji: kyouto ga nihon de ichiban suki desu
+    steps:
+      - id: u14-l3-1
+        kind: interpretation
+        concepts: [comparison-yori]
+        prompt: >-
+          Which city is bigger in 東京は大阪より大きいです, and which city is the
+          standard being compared against?
+        target:
+          kanji: 東京は大阪より大きいです。
+          kana: とうきょうはおおさかよりおおきいです。
+          romaji: toukyou wa oosaka yori ookii desu
+        accept_meanings:
+          - Tokyo is bigger than Osaka.
+          - Tokyo is larger than Osaka.
+          - Tokyo is bigger than Osaka, and Osaka is the standard.
+        hint: The thing before は is being described; より marks the standard.
+        explanation: >-
+          東京は大阪より大きいです describes Tokyo and takes Osaka as the standard.
+          大阪は東京より大きいです would say the opposite, because the noun before は
+          is the one being described.
+      - id: u14-l3-2
+        kind: interpretation
+        concepts: [comparison-yori]
+        prompt: >-
+          Someone asks 東京と大阪とどちらが大きいですか。 The answer is this. Which
+          city is being picked out, and what does it mean?
+        target:
+          kanji: 東京のほうが大阪より大きいです。
+          kana: とうきょうのほうがおおさかよりおおきいです。
+          romaji: toukyou no hou ga oosaka yori ookii desu
+        accept_meanings:
+          - Tokyo is the bigger one.
+          - Tokyo is bigger than Osaka.
+          - Tokyo is the larger one.
+        hint: のほうが picks out the winner of the two.
+        explanation: >-
+          東京のほうが大阪より大きいです picks Tokyo out as the bigger of the two.
+          The のほうが sits on Tokyo, the winner, while より marks Osaka as the
+          standard.
+      - id: u14-l3-3
+        kind: interpretation
+        concepts: [comparison-yori]
+        prompt: What does this mean?
+        target:
+          kanji: 富士山が日本で一番高いです。
+          kana: ふじさんがにほんでいちばんたかいです。
+          romaji: fujisan ga nihon de ichiban takai desu
+        accept_meanings:
+          - Mt Fuji is the highest mountain in Japan.
+          - Mt Fuji is the highest in Japan.
+          - Fuji is the highest mountain in Japan.
+        hint: 一番 before the adjective ranks it first; で marks the range.
+        explanation: >-
+          富士山が日本で一番高いです ranks Mt Fuji first among the mountains in
+          Japan. 一番 needs three or more to rank; for two, use のほうが.
+      - id: u14-l3-4
+        kind: transformation
+        concepts: [comparison-yori]
+        prompt: >-
+          You want to say Tokyo is bigger than Osaka, but you wrote
+          大阪は東京より大きいです。 Write the sentence you meant.
+        target:
+          kanji: 大阪は東京より大きいです。
+          kana: おおさかはとうきょうよりおおきいです。
+          romaji: oosaka wa toukyou yori ookii desu
+        accept:
+          - kanji: 東京は大阪より大きいです。
+            kana: とうきょうはおおさかよりおおきいです。
+            romaji: toukyou wa oosaka yori ookii desu
+        hint: The city before は is the one described; より marks the standard.
+        explanation: >-
+          大阪は東京より大きいです says Osaka is bigger, because 大阪 is before は.
+          東京は大阪より大きいです swaps the two so Tokyo is the one described and
+          Osaka is the standard.
+      - id: u14-l3-5
+        kind: construction
+        concepts: [comparison-yori]
+        prompt: Say "Tokyo is more expensive than Osaka."
+        accept:
+          - kanji: 東京は大阪より高いです。
+            kana: とうきょうはおおさかよりたかいです。
+            romaji: toukyou wa oosaka yori takai desu
+        hint: Put the standard after より and the described city before は.
+        explanation: >-
+          東京は大阪より高いです describes Tokyo with Osaka as the standard.
+          大阪は東京より高いです would say Osaka is the more expensive one.
+      - id: u14-l3-6
+        kind: construction
+        concepts: [comparison-yori]
+        prompt: >-
+          A friend asks コーヒーとお茶とどちらが好きですか。 Answer that you like tea
+          more.
+        accept:
+          - kanji: お茶のほうが好きです。
+            kana: おちゃのほうがすきです。
+            romaji: ocha no hou ga suki desu
+          - kanji: コーヒーよりお茶のほうが好きです。
+            kana: こーひーよりおちゃのほうがすきです。
+            romaji: koohii yori ocha no hou ga suki desu
+        hint: Pick tea out with のほうが; より can name the standard.
+        explanation: >-
+          お茶のほうが好きです picks tea out as the one you like more.
+          コーヒーよりお茶のほうが好きです adds より to name coffee as the standard,
+          which is the fuller answer.
+      - id: u14-l3-7
+        kind: construction
+        concepts: [comparison-yori]
+        prompt: Say sushi is your favourite food.
+        accept:
+          - kanji: すしが一番好きです。
+            kana: すしがいちばんすきです。
+            romaji: sushi ga ichiban suki desu
+        hint: 一番 goes before 好き, and the winner takes が.
+        explanation: >-
+          すしが一番好きです ranks sushi first with 一番 and marks it with が. For a
+          favourite, 一番 likes three or more; comparing two takes のほうが.
+      - id: u14-l3-8
+        kind: transformation
+        concepts: [comparison-yori]
+        prompt: >-
+          You want to say Tokyo is bigger than Osaka, but you wrote
+          大阪のほうが東京より大きいです。 Write the sentence you meant.
+        target:
+          kanji: 大阪のほうが東京より大きいです。
+          kana: おおさかのほうがとうきょうよりおおきいです。
+          romaji: oosaka no hou ga toukyou yori ookii desu
+        accept:
+          - kanji: 東京のほうが大阪より大きいです。
+            kana: とうきょうのほうがおおさかよりおおきいです。
+            romaji: toukyou no hou ga oosaka yori ookii desu
+        hint: のほうが must sit on the winner, Tokyo.
+        explanation: >-
+          大阪のほうが東京より大きいです picks Osaka out as the bigger one.
+          東京のほうが大阪より大きいです puts のほうが on Tokyo, which is the sentence
+          you meant.
+      - id: u14-l3-9
+        kind: listening
+        concepts: [comparison-yori]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: 京都は東京より静かです。
+          kana: きょうとはとうきょうよりしずかです。
+          romaji: kyouto wa toukyou yori shizuka desu
+        accept_meanings:
+          - Kyoto is quieter than Tokyo.
+          - Kyoto is more quiet than Tokyo.
+          - Kyoto is quieter than Tokyo is.
+        hint: より marks the standard; 静かです is the adjective.
+        explanation: >-
+          京都は東京より静かです describes Kyoto as quieter, with Tokyo as the
+          standard. 東京は京都より静かです would say Tokyo is the quieter one.
+      - id: u14-l3-10
+        kind: conversation
+        concepts: [experience-ta-koto-ga-aru, comparison-yori, advice-ta-hou-ga-ii, advice-nai-hou-ga-ii]
+        prompt: >-
+          You are talking with a friend about travel. They ask about your experience
+          in Japan, you compare two cities, and you give advice about when to visit
+          Kyoto.
+        scenario:
+          turns:
+            - speaker: npc
+              line:
+                kanji: 日本に行ったことがありますか。
+                kana: にほんにいったことがありますか。
+                romaji: nihon ni itta koto ga arimasu ka
+            - speaker: learner
+              accept:
+                - kanji: はい、一度行ったことがあります。
+                  kana: はい、いちどいったことがあります。
+                  romaji: hai, ichido itta koto ga arimasu
+                - kanji: はい、京都に行ったことがあります。
+                  kana: はい、きょうとにいったことがあります。
+                  romaji: hai, kyouto ni itta koto ga arimasu
+                - kanji: はい、二度行ったことがあります。
+                  kana: はい、にどいったことがあります。
+                  romaji: hai, nido itta koto ga arimasu
+            - speaker: npc
+              line:
+                kanji: 京都と東京とどちらが好きですか。
+                kana: きょうとととうきょうとどちらがすきですか。
+                romaji: kyouto to toukyou to dochira ga suki desu ka
+            - speaker: learner
+              accept:
+                - kanji: 京都のほうが好きです。
+                  kana: きょうとのほうがすきです。
+                  romaji: kyouto no hou ga suki desu
+                - kanji: 東京より京都のほうが好きです。
+                  kana: とうきょうよりきょうとのほうがすきです。
+                  romaji: toukyou yori kyouto no hou ga suki desu
+                - kanji: 京都のほうが東京より好きです。
+                  kana: きょうとのほうがとうきょうよりすきです。
+                  romaji: kyouto no hou ga toukyou yori suki desu
+            - speaker: npc
+              line:
+                kanji: 今度、京都に行きたいです。いつがいいですか。
+                kana: こんど、きょうとにいきたいです。いつがいいですか。
+                romaji: kondo, kyouto ni ikitai desu. itsu ga ii desu ka
+            - speaker: learner
+              accept:
+                - kanji: 春に行ったほうがいいです。
+                  kana: はるにいったほうがいいです。
+                  romaji: haru ni itta hou ga ii desu
+                - kanji: 春が一番いいです。
+                  kana: はるがいちばんいいです。
+                  romaji: haru ga ichiban ii desu
+            - speaker: npc
+              line:
+                kanji: 冬はどうですか。
+                kana: ふゆはどうですか。
+                romaji: fuyu wa dou desu ka
+            - speaker: learner
+              accept:
+                - kanji: 冬は寒いですから、行かないほうがいいです。
+                  kana: ふゆはさむいですから、いかないほうがいいです。
+                  romaji: fuyu wa samui desu kara, ikanai hou ga ii desu
+                - kanji: 冬に行かないほうがいいです。
+                  kana: ふゆにいかないほうがいいです。
+                  romaji: fuyu ni ikanai hou ga ii desu
+                - kanji: 冬は寒いですから、行かないほうがいいと思います。
+                  kana: ふゆはさむいですから、いかないほうがいいとおもいます。
+                  romaji: fuyu wa samui desu kara, ikanai hou ga ii to omoimasu
+            - speaker: npc
+              line:
+                kanji: わかりました。春に行きます。ありがとうございます。
+                kana: わかりました。はるにいきます。ありがとうございます。
+                romaji: wakarimashita. haru ni ikimasu. arigatou gozaimasu
+            - speaker: learner
+              accept:
+                - kanji: どういたしまして。
+                  kana: どういたしまして。
+                  romaji: dou itashimashite
+                - kanji: いいえ、どういたしまして。
+                  kana: いいえ、どういたしまして。
+                  romaji: iie, dou itashimashite
+        hint: >-
+          Answer the experience question with 〜たことがあります, pick a city with
+          のほうが, and use た or ない before ほうがいい for the two pieces of advice.
+        explanation: >-
+          The learner reports an experience with 行ったことがあります, compares Kyoto
+          and Tokyo with のほうが and より, recommends spring with 行ったほうがいい,
+          and warns against winter with 行かないほうがいい. 一番 appears when choosing
+          spring outright. The advice changes shape because one turn recommends an
+          action and the other warns against one.
+      - id: u14-l3-11
+        kind: speaking
+        concepts: [experience-ta-koto-ga-aru, comparison-yori, advice-ta-hou-ga-ii, advice-nai-hou-ga-ii]
+        prompt: >-
+          Talk about a place you have been to, compare it with another place, and
+          give one piece of advice to someone who wants to go there. Do not look back
+          at the lesson. Speak aloud.
+        rubric: >-
+          Does the learner report an experience with plain past + ことがある and keep
+          the clause plain? Is the past plain used, not the dictionary form or ました?
+          Does the learner compare with より in the right direction and pick one out
+          with のほうが? Does the learner use 一番 only for three or more, with が?
+          Does the learner give advice with たほうがいい and warn with ないほうがいい,
+          keeping the verb plain? Judge meaning, grammar, naturalness and register
+          separately. There is no model answer.
