@@ -1,0 +1,841 @@
+id: unit-13
+title: 予定と誘い — making plans and inviting someone
+taught: true
+concepts:
+  - id: invitation-masen-ka
+    label: 〜ませんか — an invitation that leaves the listener free
+  - id: invitation-ladder
+    label: ませんか・ましょう・ましょうか — who does the action
+  - id: decline-kara
+    label: から and the soft decline — ちょっと…, 忙しいんです, 予定があります
+  - id: plan-tsumori-yotei
+    label: つもり・予定 — intention and a plan on the calendar
+  - id: plain-to-omou
+    label: plain form + と思います — including だ after nouns and な-adjectives
+lessons:
+  - id: u13-l1
+    title: 一緒に行きませんか — the invitation, and saying no with a reason
+    objective: >-
+      Invite someone with 〜ませんか so the listener stays free to refuse, choose
+      between ませんか, ましょう and ましょうか by who acts, and decline with から
+      plus a softener instead of a bare いいえ.
+    anchors:
+      - kanji: 一緒に行きませんか
+        kana: いっしょにいきませんか
+        romaji: issho ni ikimasen ka
+      - kanji: 忙しいですから、行きません
+        kana: いそがしいですから、いきません
+        romaji: isogashii desu kara, ikimasen
+      - kanji: すみません、その日はちょっと…
+        kana: すみません、そのひはちょっと…
+        romaji: sumimasen, sono hi wa chotto
+    teach:
+      - prose: >-
+          ませんか is the invitation. Attach it to the ます stem: 行きます becomes
+          行きませんか, 食べます becomes 食べませんか. 一緒に行きませんか is literally
+          "won't you go together?" — a negative question, so it does not assume the
+          answer and leaves the listener free to say no. 一緒に行きますか is a
+          different sentence: it asks whether the listener is going, which is a
+          request for information, not an invitation.
+        examples:
+          - kanji: 一緒に行きませんか
+            kana: いっしょにいきませんか
+            romaji: issho ni ikimasen ka
+          - kanji: 一緒に映画を見ませんか
+            kana: いっしょにえいがをみませんか
+            romaji: issho ni eiga o mimasen ka
+          - kanji: 明日、一緒に行きませんか
+            kana: あした、いっしょにいきませんか
+            romaji: ashita, issho ni ikimasen ka
+      - prose: >-
+          The three endings are one decision about who acts. ませんか invites the
+          listener and leaves them free: 一緒に行きませんか. ましょう proposes doing
+          it together and assumes agreement: 一緒に行きましょう. ましょうか offers to
+          do something for the listener: 荷物を持ちましょうか, shall I carry the bag?
+          With the bag, 荷物を持ちませんか invites the listener to carry it and
+          荷物を持ちましょう proposes carrying it together, so the wrong ending
+          changes who does the work. The か on ましょうか is what makes it a
+          question.
+        examples:
+          - kanji: 荷物を持ちましょうか
+            kana: にもつをもちましょうか
+            romaji: nimotsu o mochimashou ka
+          - kanji: 荷物を持ちましょう
+            kana: にもつをもちましょう
+            romaji: nimotsu o mochimashou
+          - kanji: 荷物を持ちませんか
+            kana: にもつをもちませんか
+            romaji: nimotsu o mochimasen ka
+      - prose: >-
+          Declining has soft shapes. ちょっと… trailing off is a refusal: すみません、
+          その日はちょっと… is understood as no, not as "a little". 忙しいんです
+          presents being busy as your situation, using the んです from U12.
+          予定があります says a plan exists. から joins a reason to a result, reason
+          first: 忙しいですから、行きません, I am not going because I am busy. A bare
+          いいえ is not wrong, but it is blunt; adding a reason or trailing ちょっと
+          is what makes the refusal polite.
+        examples:
+          - kanji: すみません、その日はちょっと…
+            kana: すみません、そのひはちょっと…
+            romaji: sumimasen, sono hi wa chotto
+          - kanji: 忙しいんです
+            kana: いそがしいんです
+            romaji: isogashii n desu
+          - kanji: 予定がありますから、行きません
+            kana: よていがありますから、いきません
+            romaji: yotei ga arimasu kara, ikimasen
+    steps:
+      - id: u13-l1-1
+        kind: interpretation
+        concepts: [invitation-masen-ka]
+        prompt: >-
+          Two classmates say 一緒に行きませんか and 一緒に行きますか. Which one invites
+          you to come along, and what does it mean?
+        target:
+          kanji: 一緒に行きませんか
+          kana: いっしょにいきませんか
+          romaji: issho ni ikimasen ka
+        accept_meanings:
+          - Won't you come with me?
+          - Would you like to go together?
+          - Would you like to come along?
+          - Won't you go together with me?
+        hint: The invitation is the negative question ませんか, not ますか.
+        explanation: >-
+          一緒に行きませんか invites the listener and leaves them free to refuse.
+          一緒に行きますか only asks whether they are going, so it requests
+          information rather than inviting.
+      - id: u13-l1-2
+        kind: interpretation
+        concepts: [invitation-ladder]
+        prompt: >-
+          A coworker picks up your heavy bag and says 荷物を持ちましょうか。 What are
+          they doing?
+        target:
+          kanji: 荷物を持ちましょうか。
+          kana: にもつをもちましょうか。
+          romaji: nimotsu o mochimashou ka
+        accept_meanings:
+          - Offering to carry the bag.
+          - Asking whether they should carry the bag.
+          - Offering to carry the bag for you.
+        hint: ましょうか is the offer rung; it asks about doing something for you.
+        explanation: >-
+          荷物を持ちましょうか offers to do the carrying. 荷物を持ちませんか would
+          invite you to carry it, and 荷物を持ちましょう would propose carrying it
+          together — the same bag, a different person doing the work.
+      - id: u13-l1-3
+        kind: interpretation
+        concepts: [decline-kara]
+        prompt: What does this mean?
+        target:
+          kanji: 忙しいですから、行きません。
+          kana: いそがしいですから、いきません。
+          romaji: isogashii desu kara, ikimasen
+        accept_meanings:
+          - I'm not going because I'm busy.
+          - I won't go because I'm busy.
+          - Because I'm busy, I'm not going.
+        hint: から joins the reason to the result; the reason comes first.
+        explanation: >-
+          忙しいですから、行きません gives the reason first with から and the result
+          second. It is a refusal with a reason rather than a bare いいえ.
+      - id: u13-l1-4
+        kind: construction
+        concepts: [invitation-masen-ka]
+        prompt: Invite a friend to go to the station together.
+        accept:
+          - kanji: 一緒に駅に行きませんか。
+            kana: いっしょにえきにいきませんか。
+            romaji: issho ni eki ni ikimasen ka
+        hint: Use the stem 行き plus ませんか to invite.
+        explanation: >-
+          一緒に駅に行きませんか uses に for the destination and ませんか for the
+          invitation. 行きますか would ask whether they are going instead of inviting
+          them.
+      - id: u13-l1-5
+        kind: completion
+        concepts: [decline-kara]
+        prompt: Fill the connector — "I'm busy, so I'm not going."
+        target:
+          kanji: 忙しいです＿行きません。
+          kana: いそがしいです＿いきません。
+          romaji: isogashii desu _ ikimasen
+        accept:
+          - kanji: から
+            kana: から
+            romaji: kara
+        hint: The reason comes first and the result follows.
+        explanation: >-
+          忙しいですから、行きません needs から between the reason and the result.
+          が would mean "but", which reverses the relationship.
+      - id: u13-l1-6
+        kind: transformation
+        concepts: [invitation-masen-ka]
+        prompt: >-
+          A classmate writes 一緒に行きますか for "Won't you go together?" Write the
+          sentence they meant.
+        target:
+          kanji: 一緒に行きますか。
+          kana: いっしょにいきますか。
+          romaji: issho ni ikimasu ka
+        accept:
+          - kanji: 一緒に行きませんか。
+            kana: いっしょにいきませんか。
+            romaji: issho ni ikimasen ka
+        hint: An invitation is a negative question.
+        explanation: >-
+          一緒に行きませんか is the invitation. 一緒に行きますか asks whether the
+          listener is going, so it does not invite them.
+      - id: u13-l1-7
+        kind: construction
+        concepts: [invitation-ladder]
+        prompt: Your coworker is carrying a heavy bag. Offer to carry it for them.
+        accept:
+          - kanji: 荷物を持ちましょうか。
+            kana: にもつをもちましょうか。
+            romaji: nimotsu o mochimashou ka
+        hint: You are offering to do it yourself, so use the offer rung with か.
+        explanation: >-
+          荷物を持ちましょうか offers to carry the bag for the listener. 持ちませんか
+          would invite them to carry it, and 持ちましょう would propose doing it
+          together, so the ending decides who acts.
+      - id: u13-l1-8
+        kind: transformation
+        concepts: [invitation-ladder]
+        prompt: Make 一緒に行きませんか a decided proposal.
+        target:
+          kanji: 一緒に行きませんか。
+          kana: いっしょにいきませんか。
+          romaji: issho ni ikimasen ka
+        accept:
+          - kanji: 一緒に行きましょう。
+            kana: いっしょにいきましょう。
+            romaji: issho ni ikimashou
+        hint: Drop the negative question and propose with ましょう.
+        explanation: >-
+          一緒に行きましょう proposes going together. 一緒に行きませんか invited the
+          listener and left them free, which is a different amount of assumption.
+      - id: u13-l1-9
+        kind: construction
+        concepts: [decline-kara]
+        prompt: Say you have plans, so you won't go.
+        accept:
+          - kanji: 予定がありますから、行きません。
+            kana: よていがありますから、いきません。
+            romaji: yotei ga arimasu kara, ikimasen
+        hint: 予定があります is the reason; から joins it to the refusal.
+        explanation: >-
+          予定がありますから、行きません gives the plan as the reason with から.
+          予定があります alone only states that plans exist; the refusal needs the
+          second clause.
+      - id: u13-l1-10
+        kind: transformation
+        concepts: [decline-kara]
+        prompt: >-
+          Make 忙しいです softer by presenting it as your situation. Use んです.
+        target:
+          kanji: 忙しいです。
+          kana: いそがしいです。
+          romaji: isogashii desu
+        accept:
+          - kanji: 忙しいんです。
+            kana: いそがしいんです。
+            romaji: isogashii n desu
+        hint: The んです from U12 presents the reason as the situation behind your no.
+        explanation: >-
+          忙しいんです presents being busy as the situation behind the refusal, which
+          is softer than the flat 忙しいです. It is the same んです used at a counter
+          in U12.
+      - id: u13-l1-11
+        kind: listening
+        concepts: [decline-kara]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: すみません、その日はちょっと予定がありますから。
+          kana: すみません、そのひはちょっとよていがありますから。
+          romaji: sumimasen, sono hi wa chotto yotei ga arimasu kara
+        accept_meanings:
+          - Sorry, I have plans that day, so...
+          - Sorry, I have a bit of a plan that day.
+          - Sorry, I'm afraid I have plans that day.
+        hint: ちょっと softens it; から gives the reason and trails off.
+        explanation: >-
+          The speaker declines softly: すみません opens, ちょっと softens, 予定があります
+          gives the reason, and から trails off so the refusal is implied. Nothing
+          here says "a little"; ちょっと is doing politeness work.
+      - id: u13-l1-12
+        kind: speaking
+        concepts: [invitation-masen-ka]
+        prompt: Invite a friend to go to the station together. Speak aloud.
+        accept:
+          - kanji: 一緒に駅に行きませんか。
+            kana: いっしょにえきにいきませんか。
+            romaji: issho ni eki ni ikimasen ka
+        hint: 駅 is えき; invite with ませんか rather than asking with ますか.
+        explanation: >-
+          一緒に駅に行きませんか is いっしょにえきにいきませんか. A transcript may
+          return the kanji, the kana, or the romaji, so all of those are accepted.
+          ませんか leaves your friend free to refuse.
+
+  - id: u13-l2
+    title: 行くつもりです — plans, and the plain form inside a sentence
+    objective: >-
+      State an intention with つもり and a plan with 予定, and report a thought with
+      plain form + と思います, using the dictionary form for verbs, the plain
+      adjective for い-adjectives, and だ after nouns and な-adjectives.
+    anchors:
+      - kanji: 行くつもりです
+        kana: いくつもりです
+        romaji: iku tsumori desu
+      - kanji: 行くと思います
+        kana: いくとおもいます
+        romaji: iku to omoimasu
+      - kanji: 暇だと思います
+        kana: ひまだとおもいます
+        romaji: hima da to omoimasu
+    teach:
+      - prose: >-
+          つもり attaches to the plain verb and states an intention: 行くつもりです,
+          I intend to go; 食べるつもりです, I intend to eat. 予定 is a noun for a plan
+          on the calendar, so it appears with があります: 土曜日は予定があります, I have
+          plans on Saturday. 行く予定です says you are scheduled or planning to go;
+          行くつもりです says you intend to. Both take the dictionary form before them.
+        examples:
+          - kanji: 行くつもりです
+            kana: いくつもりです
+            romaji: iku tsumori desu
+          - kanji: 土曜日は予定があります
+            kana: どようびはよていがあります
+            romaji: doyoubi wa yotei ga arimasu
+          - kanji: 行く予定です
+            kana: いくよていです
+            romaji: iku yotei desu
+      - prose: >-
+          This is the unit's headline: the clause before と or つもり stays plain even
+          though the sentence ends politely. 行くと思います and 行くつもりです are
+          correct; 行きますと思います and 行きますつもりです mix the polite ます into
+          the clause and are wrong. Verbs take the dictionary form, 行く.
+          い-adjectives stay as they are: 忙しいと思います. Nouns and な-adjectives
+          need だ before と: 暇だと思います, 学生だと思います. 暇と思います and
+          学生と思います are missing that だ.
+        examples:
+          - kanji: 行くと思います
+            kana: いくとおもいます
+            romaji: iku to omoimasu
+          - kanji: 忙しいと思います
+            kana: いそがしいとおもいます
+            romaji: isogashii to omoimasu
+          - kanji: 暇だと思います
+            kana: ひまだとおもいます
+            romaji: hima da to omoimasu
+      - prose: >-
+          と思います reports what you think. Put the thought in plain form, add と,
+          then 思います: 行くと思います, 暇だと思います, 学生だと思います. The と marks
+          the thought as the thing you are thinking, so it is not optional. To ask
+          what someone thinks, the same shape takes か: 行くと思いますか.
+        examples:
+          - kanji: 学生だと思います
+            kana: がくせいだとおもいます
+            romaji: gakusei da to omoimasu
+          - kanji: 行くと思いますか
+            kana: いくとおもいますか
+            romaji: iku to omoimasu ka
+    steps:
+      - id: u13-l2-1
+        kind: interpretation
+        concepts: [plan-tsumori-yotei]
+        prompt: >-
+          Two learners write 行くつもりです and 行きますつもりです for "I intend to go."
+          Which is correct, and what does it mean?
+        target:
+          kanji: 行くつもりです
+          kana: いくつもりです
+          romaji: iku tsumori desu
+        accept_meanings:
+          - I intend to go.
+          - I'm planning to go.
+          - I plan to go.
+        hint: つもり takes the plain form 行く, not the polite 行きます.
+        explanation: >-
+          行くつもりです keeps the clause plain before つもり. 行きますつもりです mixes
+          the polite ending into that clause, and つもり cannot follow ます.
+      - id: u13-l2-2
+        kind: interpretation
+        concepts: [plain-to-omou]
+        prompt: What does this mean?
+        target:
+          kanji: 暇だと思います
+          kana: ひまだとおもいます
+          romaji: hima da to omoimasu
+        accept_meanings:
+          - I think I'll be free.
+          - I think I'll have time.
+          - I think I'm free.
+        hint: 暇 is a な-adjective, so it takes だ before と.
+        explanation: >-
+          暇だと思います puts the な-adjective 暇 in plain form with だ before と.
+          暇と思います is missing だ, because な-adjectives do not end in だ on their
+          own.
+      - id: u13-l2-3
+        kind: construction
+        concepts: [plan-tsumori-yotei]
+        prompt: Say "I intend to go to Japan next year."
+        accept:
+          - kanji: 来年、日本に行くつもりです。
+            kana: らいねん、にほんにいくつもりです。
+            romaji: rainen, nihon ni iku tsumori desu
+        hint: つもり follows the dictionary form 行く; に marks the destination.
+        explanation: >-
+          来年、日本に行くつもりです states the intention with 行くつもりです.
+          行きますつもりです would put the polite ending before つもり, which the
+          pattern does not allow.
+      - id: u13-l2-4
+        kind: transformation
+        concepts: [plain-to-omou]
+        prompt: >-
+          A learner writes 行きますと思います for "I think I'll go." Write the sentence
+          they meant.
+        target:
+          kanji: 行きますと思います。
+          kana: いきますとおもいます。
+          romaji: ikimasu to omoimasu
+        accept:
+          - kanji: 行くと思います。
+            kana: いくとおもいます。
+            romaji: iku to omoimasu
+        hint: The clause before と stays plain even when the sentence ends politely.
+        explanation: >-
+          行くと思います keeps the thought in plain form. 行きますと思います puts the
+          polite ます inside the quoted thought, which is the specific error this
+          unit is built to remove.
+      - id: u13-l2-5
+        kind: construction
+        concepts: [plain-to-omou]
+        prompt: Say "I think I'll be busy tomorrow."
+        accept:
+          - kanji: 明日は忙しいと思います。
+            kana: あしたはいそがしいとおもいます。
+            romaji: ashita wa isogashii to omoimasu
+        hint: い-adjectives stay plain before と; do not add だ.
+        explanation: >-
+          明日は忙しいと思います keeps 忙しい plain before と. Adding だ gives
+          忙しいだと思います, which is wrong for an い-adjective.
+      - id: u13-l2-6
+        kind: construction
+        concepts: [plain-to-omou]
+        prompt: Say "I think I'll be free that day."
+        accept:
+          - kanji: その日は暇だと思います。
+            kana: そのひはひまだとおもいます。
+            romaji: sono hi wa hima da to omoimasu
+        hint: 暇 needs だ before と, unlike an い-adjective.
+        explanation: >-
+          その日は暇だと思います puts だ between the な-adjective 暇 and と. Nouns
+          behave the same way: 学生だと思います. Without だ the plain clause is
+          incomplete.
+      - id: u13-l2-7
+        kind: transformation
+        concepts: [plain-to-omou]
+        prompt: >-
+          A learner writes 暇と思います for "I think I'll be free." Write the sentence
+          they meant.
+        target:
+          kanji: 暇と思います。
+          kana: ひまとおもいます。
+          romaji: hima to omoimasu
+        accept:
+          - kanji: 暇だと思います。
+            kana: ひまだとおもいます。
+            romaji: hima da to omoimasu
+        hint: A な-adjective is not complete without だ in plain form.
+        explanation: >-
+          暇だと思います needs だ because 暇 is a な-adjective. 暇と思います drops the
+          plain copula, the same error as 学生と思います for a noun.
+      - id: u13-l2-8
+        kind: completion
+        concepts: [plan-tsumori-yotei]
+        prompt: Fill the verb ending — "I intend to go."
+        target:
+          kanji: 行＿つもりです。
+          kana: い＿つもりです。
+          romaji: i _ tsumori desu
+        accept:
+          - kanji: く
+            kana: く
+            romaji: ku
+        hint: つもり follows the dictionary form, and the dictionary form of 行きます is 行く.
+        explanation: >-
+          行くつもりです needs the dictionary form 行く before つもり. 行きつもりです
+          uses the ます stem and is not a form Japanese uses.
+      - id: u13-l2-9
+        kind: interpretation
+        concepts: [plan-tsumori-yotei]
+        prompt: >-
+          Two learners want to say "I have plans on Saturday." One writes
+          土曜日は予定があります and the other 土曜日はつもりがあります. Which is correct,
+          and what does it mean?
+        target:
+          kanji: 土曜日は予定があります。
+          kana: どようびはよていがあります。
+          romaji: doyoubi wa yotei ga arimasu
+        accept_meanings:
+          - I have plans on Saturday.
+          - I have something planned on Saturday.
+          - I'm busy on Saturday.
+        hint: 予定 is a noun for a plan; つもり is an intention attached to a verb.
+        explanation: >-
+          土曜日は予定があります says a plan exists on Saturday. つもり is not a noun
+          you possess on a day; it attaches to a verb, as in 行くつもりです.
+      - id: u13-l2-10
+        kind: construction
+        concepts: [plan-tsumori-yotei]
+        prompt: Say "I have plans on Saturday."
+        accept:
+          - kanji: 土曜日は予定があります。
+            kana: どようびはよていがあります。
+            romaji: doyoubi wa yotei ga arimasu
+        hint: 予定 is the noun; があります says the plan exists.
+        explanation: >-
+          土曜日は予定があります marks Saturday with は and the plan with が.
+          予定があります is the shape for having plans; つもり does not work here.
+      - id: u13-l2-11
+        kind: listening
+        concepts: [plan-tsumori-yotei]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: 来年、日本に行くつもりです。
+          kana: らいねん、にほんにいくつもりです。
+          romaji: rainen, nihon ni iku tsumori desu
+        accept_meanings:
+          - I intend to go to Japan next year.
+          - I'm planning to go to Japan next year.
+          - I plan to go to Japan next year.
+        hint: 来年 is next year; つもり marks the intention.
+        explanation: >-
+          来年、日本に行くつもりです states an intention for next year. 行く stays
+          plain before つもり even though the sentence ends with です.
+      - id: u13-l2-12
+        kind: transformation
+        concepts: [plain-to-omou]
+        prompt: >-
+          A learner writes 行きますと思いますか for "Do you think you will go?" Write
+          the question they meant.
+        target:
+          kanji: 行きますと思いますか。
+          kana: いきますとおもいますか。
+          romaji: ikimasu to omoimasu ka
+        accept:
+          - kanji: 行くと思いますか。
+            kana: いくとおもいますか。
+            romaji: iku to omoimasu ka
+        hint: The clause before と stays plain, even inside a question.
+        explanation: >-
+          行くと思いますか keeps the thought plain before と. 行きますと思いますか puts
+          the polite ます inside the quoted thought — the same error as
+          行きますと思います, with か added to the outside.
+      - id: u13-l2-13
+        kind: speaking
+        concepts: [plan-tsumori-yotei]
+        prompt: Say "I intend to go to Japan next year." Speak aloud.
+        accept:
+          - kanji: 来年、日本に行くつもりです。
+            kana: らいねん、にほんにいくつもりです。
+            romaji: rainen, nihon ni iku tsumori desu
+        hint: 来年 is らいねん; 行く stays plain before つもり.
+        explanation: >-
+          来年、日本に行くつもりです is らいねん、にほんにいくつもりです. A transcript
+          may return the kanji, the kana, or the romaji, so all of those are
+          accepted. 行きますつもりです would be the polite-inside-plain error.
+
+  - id: u13-l3
+    title: その日はちょっと… — inviting, declining, rescheduling
+    objective: >-
+      Run the whole exchange: invite with ませんか, recognise a soft refusal, and
+      reschedule for another day without treating ちょっと… as "a little".
+    anchors:
+      - kanji: すみません、その日はちょっと…
+        kana: すみません、そのひはちょっと…
+        romaji: sumimasen, sono hi wa chotto
+      - kanji: 予定がありますから
+        kana: よていがありますから
+        romaji: yotei ga arimasu kara
+      - kanji: 来週は暇ですか
+        kana: らいしゅうはひまですか
+        romaji: raishuu wa hima desu ka
+    teach:
+      - prose: >-
+          The exchange has four moves. Invite with ませんか; accept with いいですね、
+          行きましょう; decline softly with すみません、その日はちょっと… or
+          予定がありますから; then reschedule by offering another day: じゃあ、
+          来週は暇ですか. If the answer is 大丈夫です, confirm with 行きましょう. The
+          invitation and the reschedule both leave the other person free to say no.
+        examples:
+          - kanji: 一緒に映画を見ませんか
+            kana: いっしょにえいがをみませんか
+            romaji: issho ni eiga o mimasen ka
+          - kanji: すみません、その日はちょっと…
+            kana: すみません、そのひはちょっと…
+            romaji: sumimasen, sono hi wa chotto
+          - kanji: じゃあ、来週は暇ですか
+            kana: じゃあ、らいしゅうはひまですか
+            romaji: jaa, raishuu wa hima desu ka
+      - prose: >-
+          Hear the soft no correctly. ちょっと… with nothing after it is a refusal;
+          忙しいんです and 予定がありますから are reasons. None of them is an
+          invitation to argue or to repeat the same question. The polite move is to
+          accept the no and offer a different day. A bare いいえ is not an error, but
+          it is blunt, which is why the lesson practises the softer shapes.
+        examples:
+          - kanji: 忙しいんです
+            kana: いそがしいんです
+            romaji: isogashii n desu
+          - kanji: 予定がありますから
+            kana: よていがありますから
+            romaji: yotei ga arimasu kara
+          - kanji: また今度お願いします
+            kana: またこんどおねがいします
+            romaji: mata kondo onegai shimasu
+      - prose: >-
+          Put the unit together: choose the rung by who acts, keep the clause before
+          と and つもり plain, and give a reason with から. 一緒に行きませんか invites;
+          行くつもりです states your intention; 暇だと思います states a thought with
+          the だ that な-adjectives need. In the conversation, the other person's
+          soft refusal is information, not an obstacle.
+        examples:
+          - kanji: 一緒に行きませんか
+            kana: いっしょにいきませんか
+            romaji: issho ni ikimasen ka
+          - kanji: 行くつもりです
+            kana: いくつもりです
+            romaji: iku tsumori desu
+          - kanji: 暇だと思います
+            kana: ひまだとおもいます
+            romaji: hima da to omoimasu
+    steps:
+      - id: u13-l3-1
+        kind: interpretation
+        concepts: [decline-kara]
+        prompt: Your friend answers your invitation with this. What do they mean?
+        target:
+          kanji: すみません、その日はちょっと…
+          kana: すみません、そのひはちょっと…
+          romaji: sumimasen, sono hi wa chotto
+        accept_meanings:
+          - Sorry, that day is a bit difficult.
+          - Sorry, that day doesn't work for me.
+          - Sorry, that day is a little…
+        hint: A trailing ちょっと is a soft no, not "a little".
+        explanation: >-
+          すみません、その日はちょっと… trails off after ちょっと, and the trailing
+          off is the refusal. It is polite because it does not say no outright, but
+          it is still a no.
+      - id: u13-l3-2
+        kind: interpretation
+        concepts: [decline-kara]
+        prompt: What does this mean?
+        target:
+          kanji: 忙しいんです。
+          kana: いそがしいんです。
+          romaji: isogashii n desu
+        accept_meanings:
+          - The thing is, I'm busy.
+          - I'm busy, you see.
+          - The thing is, I'm busy, so…
+        hint: んです presents the reason as your situation.
+        explanation: >-
+          忙しいんです presents being busy as the situation behind the refusal. It is
+          softer than 忙しいです because んです invites the listener to understand
+          rather than just receive a fact.
+      - id: u13-l3-3
+        kind: construction
+        concepts: [invitation-ladder]
+        prompt: A friend asks 一緒に行きませんか。 Accept and say you will go together.
+        accept:
+          - kanji: いいですね、行きましょう。
+            kana: いいですね、いきましょう。
+            romaji: ii desu ne, ikimashou
+        hint: Accept with ましょう, the proposal rung.
+        explanation: >-
+          いいですね、行きましょう accepts the invitation and proposes going together.
+          Repeating 行きませんか would invite them again instead of agreeing.
+      - id: u13-l3-4
+        kind: transformation
+        concepts: [decline-kara]
+        prompt: Make 予定があります the reason for a refusal.
+        target:
+          kanji: 予定があります。
+          kana: よていがあります。
+          romaji: yotei ga arimasu
+        accept:
+          - kanji: 予定がありますから。
+            kana: よていがありますから。
+            romaji: yotei ga arimasu kara
+        hint: Add the connector that marks a reason and trails off.
+        explanation: >-
+          予定がありますから adds から and leaves the result unsaid, which is how a
+          polite refusal often ends. 予定がありますが would mean "but", not "because".
+      - id: u13-l3-5
+        kind: construction
+        concepts: [invitation-masen-ka]
+        prompt: Invite a friend to see a movie together.
+        accept:
+          - kanji: 一緒に映画を見ませんか。
+            kana: いっしょにえいがをみませんか。
+            romaji: issho ni eiga o mimasen ka
+        hint: 映画 is えいが; invite with ませんか.
+        explanation: >-
+          一緒に映画を見ませんか invites with ませんか and leaves the friend free to
+          refuse. 見ますか would ask whether they watch a movie, not invite them.
+      - id: u13-l3-6
+        kind: completion
+        concepts: [invitation-masen-ka]
+        prompt: >-
+          Fill the ending — invite a friend to go together and leave them free to
+          say no.
+        target:
+          kanji: 一緒に行き＿か。
+          kana: いっしょにいき＿か。
+          romaji: issho ni iki _ ka
+        accept:
+          - kanji: ません
+            kana: ません
+            romaji: masen
+        hint: The invitation is a negative question.
+        explanation: >-
+          一緒に行きませんか is the invitation. 一緒に行きましょうか would offer to go
+          on their behalf, not invite them along.
+      - id: u13-l3-7
+        kind: listening
+        concepts: [decline-kara]
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: すみません、その日は予定がありますから、また今度お願いします。
+          kana: すみません、そのひはよていがありますから、またこんどおねがいします。
+          romaji: sumimasen, sono hi wa yotei ga arimasu kara, mata kondo onegai shimasu
+        accept_meanings:
+          - Sorry, I have plans that day, so another time, please.
+          - Sorry, I have plans that day, so maybe another time.
+          - Sorry, I have plans that day — another time, please.
+        hint: また今度 is the reschedule signal, not a yes.
+        explanation: >-
+          The refusal is complete: すみません softens it, 予定がありますから gives the
+          reason, and また今度お願いします asks for another time. また今度 is not
+          agreement to this invitation.
+      - id: u13-l3-8
+        kind: construction
+        concepts: [decline-kara]
+        prompt: They are busy this week. Ask whether next week is free.
+        accept:
+          - kanji: じゃあ、来週は暇ですか。
+            kana: じゃあ、らいしゅうはひまですか。
+            romaji: jaa, raishuu wa hima desu ka
+        hint: Offer another day with は and ask with ですか.
+        explanation: >-
+          じゃあ、来週は暇ですか accepts the refusal and moves to another day. 来週は
+          忙しいですか asks about being busy, which is not the same question as
+          whether they are free.
+      - id: u13-l3-9
+        kind: conversation
+        concepts: [invitation-masen-ka, invitation-ladder, decline-kara]
+        prompt: >-
+          You are inviting a coworker to a movie. Invite them, hear a soft refusal,
+          and reschedule for another day.
+        scenario:
+          turns:
+            - speaker: learner
+              accept:
+                - kanji: 一緒に映画を見ませんか。
+                  kana: いっしょにえいがをみませんか。
+                  romaji: issho ni eiga o mimasen ka
+                - kanji: 今度、一緒に映画を見ませんか。
+                  kana: こんど、いっしょにえいがをみませんか。
+                  romaji: kondo, issho ni eiga o mimasen ka
+                - kanji: 映画を見ませんか。
+                  kana: えいがをみませんか。
+                  romaji: eiga o mimasen ka
+            - speaker: npc
+              line:
+                kanji: いいですね。いつがいいですか。
+                kana: いいですね。いつがいいですか。
+                romaji: ii desu ne. itsu ga ii desu ka
+            - speaker: learner
+              accept:
+                - kanji: 土曜日は暇ですか。
+                  kana: どようびはひまですか。
+                  romaji: doyoubi wa hima desu ka
+                - kanji: じゃあ、土曜日は暇ですか。
+                  kana: じゃあ、どようびはひまですか。
+                  romaji: jaa, doyoubi wa hima desu ka
+                - kanji: 土曜日はどうですか。
+                  kana: どようびはどうですか。
+                  romaji: doyoubi wa dou desu ka
+            - speaker: npc
+              line:
+                kanji: すみません、土曜日はちょっと…。予定がありますから。
+                kana: すみません、どようびはちょっと…。よていがありますから。
+                romaji: sumimasen, doyoubi wa chotto. yotei ga arimasu kara
+            - speaker: learner
+              accept:
+                - kanji: じゃあ、日曜日は暇ですか。
+                  kana: じゃあ、にちようびはひまですか。
+                  romaji: jaa, nichiyoubi wa hima desu ka
+                - kanji: 日曜日は暇ですか。
+                  kana: にちようびはひまですか。
+                  romaji: nichiyoubi wa hima desu ka
+            - speaker: npc
+              line:
+                kanji: 日曜日は大丈夫です。一緒に行きましょう。
+                kana: にちようびはだいじょうぶです。いっしょにいきましょう。
+                romaji: nichiyoubi wa daijoubu desu. issho ni ikimashou
+            - speaker: learner
+              accept:
+                - kanji: じゃあ、日曜日に行きましょう。
+                  kana: じゃあ、にちようびにいきましょう。
+                  romaji: jaa, nichiyoubi ni ikimashou
+                - kanji: 日曜日に行きましょう。ありがとうございます。
+                  kana: にちようびにいきましょう。ありがとうございます。
+                  romaji: nichiyoubi ni ikimashou. arigatou gozaimasu
+                - kanji: よかったです。日曜日に会いましょう。
+                  kana: よかったです。にちようびにあいましょう。
+                  romaji: yokatta desu. nichiyoubi ni aimashou
+            - speaker: npc
+              line:
+                kanji: じゃあ、日曜日に駅で会いましょう。
+                kana: じゃあ、にちようびにえきであいましょう。
+                romaji: jaa, nichiyoubi ni eki de aimashou
+            - speaker: learner
+              accept:
+                - kanji: はい、わかりました。日曜日に会いましょう。
+                  kana: はい、わかりました。にちようびにあいましょう。
+                  romaji: hai, wakarimashita. nichiyoubi ni aimashou
+                - kanji: わかりました。ありがとうございます。
+                  kana: わかりました。ありがとうございます。
+                  romaji: wakarimashita. arigatou gozaimasu
+                - kanji: はい、日曜日に会いましょう。
+                  kana: はい、にちようびにあいましょう。
+                  romaji: hai, nichiyoubi ni aimashou
+        hint: >-
+          Invite with 映画を見ませんか, answer いつ with 土曜日は暇ですか, hear the soft
+          no in ちょっと… and 予定がありますから, then offer 日曜日.
+        explanation: >-
+          The learner invites with ませんか, proposes Saturday, hears
+          すみません、土曜日はちょっと… plus 予定がありますから, and reschedules to
+          Sunday rather than repeating Saturday. The npc's 大丈夫です is a yes, and
+          the exchange closes with 会いましょう.
+      - id: u13-l3-10
+        kind: speaking
+        concepts: [invitation-masen-ka, invitation-ladder, decline-kara, plan-tsumori-yotei, plain-to-omou]
+        prompt: >-
+          Invite a coworker out, hear a soft refusal, reschedule for another day,
+          and say what you intend to do. Do not look back at the lesson. Speak
+          aloud.
+        rubric: >-
+          Does the learner invite with 〜ませんか and leave the listener free? Does the
+          learner choose ましょう for agreeing rather than repeating the invitation?
+          Does the learner treat ちょっと… or 予定がありますから as a refusal and offer
+          another day instead of repeating the same proposal? Does the learner give a
+          reason with から or present it with んです? Does the learner keep the clause
+          plain before つもり or と, with だ after nouns and な-adjectives? Judge
+          meaning, grammar, naturalness and register separately. There is no model
+          answer.

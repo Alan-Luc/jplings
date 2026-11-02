@@ -3893,3 +3893,393 @@
 - step: u12-l3-9
   answer: I found a phone at the station.
   verdict: wrong
+- step: u13-l1-1
+  answer: Won't you come with me?
+  verdict: correct
+- step: u13-l1-1
+  answer: Would you like to go together?
+  verdict: correct
+- step: u13-l1-1
+  answer: Would you like to come along?
+  verdict: correct
+- step: u13-l1-1
+  answer: Won't you go together with me?
+  verdict: correct
+- step: u13-l1-1
+  answer: You are going together.
+  verdict: wrong
+- step: u13-l1-2
+  answer: Offering to carry the bag.
+  verdict: correct
+- step: u13-l1-2
+  answer: Asking whether they should carry the bag.
+  verdict: correct
+- step: u13-l1-2
+  answer: Offering to carry the bag for you.
+  verdict: correct
+- step: u13-l1-2
+  answer: Telling you to carry the bag.
+  verdict: wrong
+- step: u13-l1-3
+  answer: I'm not going because I'm busy.
+  verdict: correct
+- step: u13-l1-3
+  answer: I won't go because I'm busy.
+  verdict: correct
+- step: u13-l1-3
+  answer: Because I'm busy, I'm not going.
+  verdict: correct
+- step: u13-l1-3
+  answer: I'm going because I'm busy.
+  verdict: wrong
+- step: u13-l1-4
+  answer: 一緒に駅に行きませんか。
+  verdict: correct
+- step: u13-l1-4
+  answer: いっしょにえきにいきませんか。
+  verdict: correct
+- step: u13-l1-4
+  answer: issho ni eki ni ikimasen ka
+  verdict: correct
+- step: u13-l1-4
+  answer: 一緒に駅に行きますか。
+  verdict: wrong
+- step: u13-l1-5
+  answer: から
+  verdict: correct
+- step: u13-l1-5
+  answer: kara
+  verdict: correct
+- step: u13-l1-5
+  answer: が
+  verdict: wrong
+- step: u13-l1-6
+  answer: 一緒に行きませんか。
+  verdict: correct
+- step: u13-l1-6
+  answer: いっしょにいきませんか。
+  verdict: correct
+- step: u13-l1-6
+  answer: issho ni ikimasen ka
+  verdict: correct
+- step: u13-l1-6
+  answer: 一緒に行きましょう。
+  verdict: wrong
+- step: u13-l1-7
+  answer: 荷物を持ちましょうか。
+  verdict: correct
+- step: u13-l1-7
+  answer: にもつをもちましょうか。
+  verdict: correct
+- step: u13-l1-7
+  answer: nimotsu o mochimashou ka
+  verdict: correct
+- step: u13-l1-7
+  answer: 荷物を持ちませんか。
+  verdict: wrong
+- step: u13-l1-8
+  answer: 一緒に行きましょう。
+  verdict: correct
+- step: u13-l1-8
+  answer: いっしょにいきましょう。
+  verdict: correct
+- step: u13-l1-8
+  answer: issho ni ikimashou
+  verdict: correct
+- step: u13-l1-8
+  answer: 一緒に行きませんか。
+  verdict: wrong
+- step: u13-l1-9
+  answer: 予定がありますから、行きません。
+  verdict: correct
+- step: u13-l1-9
+  answer: よていがありますから、いきません。
+  verdict: correct
+- step: u13-l1-9
+  answer: yotei ga arimasu kara, ikimasen
+  verdict: correct
+- step: u13-l1-9
+  answer: 予定がありますから、行きます。
+  verdict: wrong
+- step: u13-l1-10
+  answer: 忙しいんです。
+  verdict: correct
+- step: u13-l1-10
+  answer: いそがしいんです。
+  verdict: correct
+- step: u13-l1-10
+  answer: isogashii n desu
+  verdict: correct
+- step: u13-l1-10
+  answer: 忙しいです。
+  verdict: wrong
+- step: u13-l1-11
+  answer: Sorry, I have plans that day, so...
+  verdict: correct
+- step: u13-l1-11
+  answer: Sorry, I have a bit of a plan that day.
+  verdict: correct
+- step: u13-l1-11
+  answer: Sorry, I'm afraid I have plans that day.
+  verdict: correct
+- step: u13-l1-11
+  answer: Sorry, I'm free that day.
+  verdict: wrong
+- step: u13-l1-12
+  answer: 一緒に駅に行きませんか。
+  verdict: correct
+- step: u13-l1-12
+  answer: いっしょにえきにいきませんか。
+  verdict: correct
+- step: u13-l1-12
+  answer: issho ni eki ni ikimasen ka
+  verdict: correct
+- step: u13-l1-12
+  answer: 一緒に駅に行きますか。
+  verdict: wrong
+- step: u13-l2-1
+  answer: I intend to go.
+  verdict: correct
+- step: u13-l2-1
+  answer: I'm planning to go.
+  verdict: correct
+- step: u13-l2-1
+  answer: I plan to go.
+  verdict: correct
+- step: u13-l2-1
+  answer: 行きますつもりです。
+  verdict: wrong
+- step: u13-l2-2
+  answer: I think I'll be free.
+  verdict: correct
+- step: u13-l2-2
+  answer: I think I'll have time.
+  verdict: correct
+- step: u13-l2-2
+  answer: I think I'm free.
+  verdict: correct
+- step: u13-l2-2
+  answer: I think I'll be busy.
+  verdict: wrong
+- step: u13-l2-3
+  answer: 来年、日本に行くつもりです。
+  verdict: correct
+- step: u13-l2-3
+  answer: らいねん、にほんにいくつもりです。
+  verdict: correct
+- step: u13-l2-3
+  answer: rainen, nihon ni iku tsumori desu
+  verdict: correct
+- step: u13-l2-3
+  answer: 来年、日本に行きますつもりです。
+  verdict: wrong
+- step: u13-l2-4
+  answer: 行くと思います。
+  verdict: correct
+- step: u13-l2-4
+  answer: いくとおもいます。
+  verdict: correct
+- step: u13-l2-4
+  answer: iku to omoimasu
+  verdict: correct
+- step: u13-l2-4
+  answer: 行きますと思います。
+  verdict: wrong
+- step: u13-l2-5
+  answer: 明日は忙しいと思います。
+  verdict: correct
+- step: u13-l2-5
+  answer: あしたはいそがしいとおもいます。
+  verdict: correct
+- step: u13-l2-5
+  answer: ashita wa isogashii to omoimasu
+  verdict: correct
+- step: u13-l2-5
+  answer: 明日は忙しいだと思います。
+  verdict: wrong
+- step: u13-l2-6
+  answer: その日は暇だと思います。
+  verdict: correct
+- step: u13-l2-6
+  answer: そのひはひまだとおもいます。
+  verdict: correct
+- step: u13-l2-6
+  answer: sono hi wa hima da to omoimasu
+  verdict: correct
+- step: u13-l2-6
+  answer: その日は暇と思います。
+  verdict: wrong
+- step: u13-l2-7
+  answer: 暇だと思います。
+  verdict: correct
+- step: u13-l2-7
+  answer: ひまだとおもいます。
+  verdict: correct
+- step: u13-l2-7
+  answer: hima da to omoimasu
+  verdict: correct
+- step: u13-l2-7
+  answer: 暇と思います。
+  verdict: wrong
+- step: u13-l2-8
+  answer: く
+  verdict: correct
+- step: u13-l2-8
+  answer: ku
+  verdict: correct
+- step: u13-l2-8
+  answer: き
+  verdict: wrong
+- step: u13-l2-9
+  answer: I have plans on Saturday.
+  verdict: correct
+- step: u13-l2-9
+  answer: I have something planned on Saturday.
+  verdict: correct
+- step: u13-l2-9
+  answer: I'm busy on Saturday.
+  verdict: correct
+- step: u13-l2-9
+  answer: I have no plans on Saturday.
+  verdict: wrong
+- step: u13-l2-10
+  answer: 土曜日は予定があります。
+  verdict: correct
+- step: u13-l2-10
+  answer: どようびはよていがあります。
+  verdict: correct
+- step: u13-l2-10
+  answer: doyoubi wa yotei ga arimasu
+  verdict: correct
+- step: u13-l2-10
+  answer: 土曜日はつもりがあります。
+  verdict: wrong
+- step: u13-l2-11
+  answer: I intend to go to Japan next year.
+  verdict: correct
+- step: u13-l2-11
+  answer: I'm planning to go to Japan next year.
+  verdict: correct
+- step: u13-l2-11
+  answer: I plan to go to Japan next year.
+  verdict: correct
+- step: u13-l2-11
+  answer: I went to Japan last year.
+  verdict: wrong
+- step: u13-l2-12
+  answer: 行くと思いますか。
+  verdict: correct
+- step: u13-l2-12
+  answer: いくとおもいますか。
+  verdict: correct
+- step: u13-l2-12
+  answer: iku to omoimasu ka
+  verdict: correct
+- step: u13-l2-12
+  answer: 行きますと思いますか。
+  verdict: wrong
+- step: u13-l2-13
+  answer: 来年、日本に行くつもりです。
+  verdict: correct
+- step: u13-l2-13
+  answer: らいねん、にほんにいくつもりです。
+  verdict: correct
+- step: u13-l2-13
+  answer: rainen, nihon ni iku tsumori desu
+  verdict: correct
+- step: u13-l2-13
+  answer: 来年、日本に行きますつもりです。
+  verdict: wrong
+- step: u13-l3-1
+  answer: Sorry, that day is a bit difficult.
+  verdict: correct
+- step: u13-l3-1
+  answer: Sorry, that day doesn't work for me.
+  verdict: correct
+- step: u13-l3-1
+  answer: Sorry, that day is a little…
+  verdict: correct
+- step: u13-l3-1
+  answer: Sorry, that day is fine.
+  verdict: wrong
+- step: u13-l3-2
+  answer: The thing is, I'm busy.
+  verdict: correct
+- step: u13-l3-2
+  answer: I'm busy, you see.
+  verdict: correct
+- step: u13-l3-2
+  answer: The thing is, I'm busy, so…
+  verdict: correct
+- step: u13-l3-2
+  answer: The thing is, I'm free.
+  verdict: wrong
+- step: u13-l3-3
+  answer: いいですね、行きましょう。
+  verdict: correct
+- step: u13-l3-3
+  answer: いいですね、いきましょう。
+  verdict: correct
+- step: u13-l3-3
+  answer: ii desu ne, ikimashou
+  verdict: correct
+- step: u13-l3-3
+  answer: いいですね、行きませんか。
+  verdict: wrong
+- step: u13-l3-4
+  answer: 予定がありますから。
+  verdict: correct
+- step: u13-l3-4
+  answer: よていがありますから。
+  verdict: correct
+- step: u13-l3-4
+  answer: yotei ga arimasu kara
+  verdict: correct
+- step: u13-l3-4
+  answer: 予定がありますが。
+  verdict: wrong
+- step: u13-l3-5
+  answer: 一緒に映画を見ませんか。
+  verdict: correct
+- step: u13-l3-5
+  answer: いっしょにえいがをみませんか。
+  verdict: correct
+- step: u13-l3-5
+  answer: issho ni eiga o mimasen ka
+  verdict: correct
+- step: u13-l3-5
+  answer: 一緒に映画を見ますか。
+  verdict: wrong
+- step: u13-l3-6
+  answer: ません
+  verdict: correct
+- step: u13-l3-6
+  answer: masen
+  verdict: correct
+- step: u13-l3-6
+  answer: ましょう
+  verdict: wrong
+- step: u13-l3-7
+  answer: Sorry, I have plans that day, so another time, please.
+  verdict: correct
+- step: u13-l3-7
+  answer: Sorry, I have plans that day, so maybe another time.
+  verdict: correct
+- step: u13-l3-7
+  answer: Sorry, I have plans that day — another time, please.
+  verdict: correct
+- step: u13-l3-7
+  answer: Sorry, I have plans that day, so I'll come.
+  verdict: wrong
+- step: u13-l3-8
+  answer: じゃあ、来週は暇ですか。
+  verdict: correct
+- step: u13-l3-8
+  answer: じゃあ、らいしゅうはひまですか。
+  verdict: correct
+- step: u13-l3-8
+  answer: jaa, raishuu wa hima desu ka
+  verdict: correct
+- step: u13-l3-8
+  answer: 来週は忙しいですか。
+  verdict: wrong
