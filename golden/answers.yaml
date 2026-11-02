@@ -3326,6 +3326,201 @@
 - step: u11-l4-5
   answer: The hotel is before the station. Go straight, then turn left at the signal.
   verdict: wrong
+- step: q2-1
+  answer: I did not watch a movie with a friend yesterday.
+  verdict: correct
+- step: q2-1
+  answer: I didn't watch a movie with a friend yesterday.
+  verdict: correct
+- step: q2-1
+  answer: Yesterday I did not watch a movie with a friend.
+  verdict: correct
+- step: q2-1
+  answer: I watched a movie with a friend yesterday.
+  verdict: wrong
+- step: q2-2
+  answer: 大きい袋はありますか
+  verdict: correct
+- step: q2-2
+  answer: おおきいふくろはありますか
+  verdict: correct
+- step: q2-2
+  answer: 大きいふくろはありますか
+  verdict: correct
+- step: q2-2
+  answer: ookii fukuro wa arimasu ka
+  verdict: correct
+- step: q2-2
+  answer: 小さい袋はありますか
+  verdict: wrong
+- step: q2-3
+  answer: Hayashi is not a company employee.
+  verdict: correct
+- step: q2-3
+  answer: Hayashi-san is not a company employee.
+  verdict: correct
+- step: q2-3
+  answer: Hayashi isn't a company employee.
+  verdict: correct
+- step: q2-3
+  answer: Hayashi is a company employee.
+  verdict: wrong
+- step: q2-4
+  answer: Do you have any allergies?
+  verdict: correct
+- step: q2-4
+  answer: Do you have allergies?
+  verdict: correct
+- step: q2-4
+  answer: Are there any allergies?
+  verdict: correct
+- step: q2-4
+  answer: Do you have a reservation?
+  verdict: wrong
+- step: q2-5
+  answer: 友達を待っています
+  verdict: correct
+- step: q2-5
+  answer: ともだちをまっています
+  verdict: correct
+- step: q2-5
+  answer: 友達をまっています
+  verdict: correct
+- step: q2-5
+  answer: tomodachi o matte imasu
+  verdict: correct
+- step: q2-5
+  answer: 友達を待ちます
+  verdict: wrong
+- step: q2-6
+  answer: このパソコンを使ってもいいですか
+  verdict: correct
+- step: q2-6
+  answer: このパソコンをつかってもいいですか
+  verdict: correct
+- step: q2-6
+  answer: kono pasokon o tsukatte mo ii desu ka
+  verdict: correct
+- step: q2-6
+  answer: このパソコンを使ってもいいです
+  verdict: wrong
+- step: q2-7
+  answer: I don't like fish very much.
+  verdict: correct
+- step: q2-7
+  answer: I do not like fish very much.
+  verdict: correct
+- step: q2-7
+  answer: I don't really like fish.
+  verdict: correct
+- step: q2-7
+  answer: I like fish very much.
+  verdict: wrong
+- step: q2-8
+  answer: 次の角を左に曲がってください
+  verdict: correct
+- step: q2-8
+  answer: つぎのかどをひだりにまがってください
+  verdict: correct
+- step: q2-8
+  answer: 次の角をひだりに曲がってください
+  verdict: correct
+- step: q2-8
+  answer: tsugi no kado o hidari ni magatte kudasai
+  verdict: correct
+- step: q2-8
+  answer: 次の角に左に曲がってください
+  verdict: wrong
+- step: q2-9
+  answer: 水が飲みたいです
+  verdict: correct
+- step: q2-9
+  answer: みずがのみたいです
+  verdict: correct
+- step: q2-9
+  answer: 水がのみたいです
+  verdict: correct
+- step: q2-9
+  answer: mizu ga nomitai desu
+  verdict: correct
+- step: q2-9
+  answer: 水が飲みたいですか
+  verdict: wrong
+- step: q2-10
+  answer: How long does it take to the airport?
+  verdict: correct
+- step: q2-10
+  answer: How long does it take to get to the airport?
+  verdict: correct
+- step: q2-10
+  answer: How long does it take to reach the airport?
+  verdict: correct
+- step: q2-10
+  answer: What time does the airport open?
+  verdict: wrong
+- step: q2-11
+  answer: What does ホーム mean?
+  verdict: correct
+- step: q2-11
+  answer: What does hoomu mean?
+  verdict: correct
+- step: q2-11
+  answer: What is ホーム?
+  verdict: correct
+- step: q2-11
+  answer: Where is the platform?
+  verdict: wrong
+- step: q2-12
+  answer: 銀行は郵便局の先です
+  verdict: correct
+- step: q2-12
+  answer: ぎんこうはゆうびんきょくのさきです
+  verdict: correct
+- step: q2-12
+  answer: 銀行は郵便局のさきです
+  verdict: correct
+- step: q2-12
+  answer: ginkou wa yuubinkyoku no saki desu
+  verdict: correct
+- step: q2-12
+  answer: 銀行は郵便局の手前です
+  verdict: wrong
+- step: q2-13
+  answer: ロビーで電話を使わないでください
+  verdict: correct
+- step: q2-13
+  answer: ロビーででんわをつかわないでください
+  verdict: correct
+- step: q2-13
+  answer: robii de denwa o tsukawanai de kudasai
+  verdict: correct
+- step: q2-13
+  answer: ロビーで電話を使ってください
+  verdict: wrong
+- step: q2-14
+  answer: It takes thirty minutes from Kyoto to Nara by train.
+  verdict: correct
+- step: q2-14
+  answer: It takes 30 minutes from Kyoto to Nara by train.
+  verdict: correct
+- step: q2-14
+  answer: The train takes thirty minutes from Kyoto to Nara.
+  verdict: correct
+- step: q2-14
+  answer: It takes thirty minutes from Nara to Kyoto by train.
+  verdict: wrong
+- step: q2-15
+  answer: 袋を二つください
+  verdict: correct
+- step: q2-15
+  answer: ふくろをふたつください
+  verdict: correct
+- step: q2-15
+  answer: fukuro o futatsu kudasai
+  verdict: correct
+- step: q2-15
+  answer: 袋を二つ買います
+  verdict: wrong
 - step: u11-l2-9
   answer: 真っ直ぐ行ってください
   verdict: correct

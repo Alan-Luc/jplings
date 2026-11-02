@@ -1,0 +1,220 @@
+id: quiz-2
+title: Q2 — cumulative gate (units 1–11)
+lessons:
+  - id: q2
+    title: Q2 — cumulative gate
+    steps:
+      - id: q2-1
+        kind: interpretation
+        prompt: What does this mean?
+        target:
+          kanji: 昨日は友達と映画を見ませんでした。
+          kana: きのうはともだちとえいがをみませんでした。
+          romaji: kinou wa tomodachi to eiga o mimasen deshita
+        accept_meanings:
+          - I did not watch a movie with a friend yesterday.
+          - I didn't watch a movie with a friend yesterday.
+          - Yesterday I did not watch a movie with a friend.
+        explanation: >-
+          見ませんでした is the past negative of 見ます, so the sentence says you did
+          not watch the movie. 見ました would say you did watch it, which is the
+          opposite.
+      - id: q2-2
+        kind: speaking
+        prompt: Ask the shop assistant whether they have a bigger bag.
+        accept:
+          - kanji: 大きい袋はありますか。
+            kana: おおきいふくろはありますか。
+            romaji: ookii fukuro wa arimasu ka
+          - kana: おおきいふくろはありますか。
+            romaji: ookii fukuro wa arimasu ka
+          - kanji: 大きいふくろはありますか。
+            kana: おおきいふくろはありますか。
+            romaji: ookii fukuro wa arimasu ka
+        explanation: >-
+          大きい袋はありますか asks whether a bigger bag exists. は marks the bag as
+          what you are asking about, and ありますか asks whether it is there.
+      - id: q2-3
+        kind: interpretation
+        prompt: What does this mean?
+        target:
+          kanji: 林さんは会社員じゃないです。
+          kana: はやしさんはかいしゃいんじゃないです。
+          romaji: hayashi san wa kaishain ja nai desu
+        accept_meanings:
+          - Hayashi is not a company employee.
+          - Hayashi-san is not a company employee.
+          - Hayashi isn't a company employee.
+        explanation: >-
+          会社員じゃないです is the polite negative of 会社員です, so the sentence says
+          Hayashi is not a company employee. 会社員です would say that he is one.
+      - id: q2-4
+        kind: listening
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: アレルギーはございますか。
+          kana: アレルギーはございますか。
+          romaji: arerugii wa gozaimasu ka
+        accept_meanings:
+          - Do you have any allergies?
+          - Do you have allergies?
+          - Are there any allergies?
+        explanation: >-
+          アレルギーはございますか asks whether you have any allergies. ございます is
+          the restaurant staff's polite あります, so this is a question you recognize
+          and answer in ordinary polite Japanese.
+      - id: q2-5
+        kind: speaking
+        prompt: Say that you are waiting for a friend.
+        accept:
+          - kanji: 友達を待っています。
+            kana: ともだちをまっています。
+            romaji: tomodachi o matte imasu
+          - kana: ともだちをまっています。
+            romaji: tomodachi o matte imasu
+          - kanji: 友達をまっています。
+            kana: ともだちをまっています。
+            romaji: tomodachi o matte imasu
+        explanation: >-
+          友達を待っています uses を for the person you are waiting for, and 待って
+          います says the waiting is in progress. 待ちます would say you will wait.
+      - id: q2-6
+        kind: speaking
+        prompt: Ask the front desk whether you may use this computer.
+        accept:
+          - kanji: このパソコンを使ってもいいですか。
+            kana: このパソコンをつかってもいいですか。
+            romaji: kono pasokon o tsukatte mo ii desu ka
+          - kana: このパソコンをつかってもいいですか。
+            romaji: kono pasokon o tsukatte mo ii desu ka
+        explanation: >-
+          使ってもいいですか asks permission to use the computer. 使って is the て
+          form of 使う, and もいいですか turns it into a question about whether it is
+          allowed.
+      - id: q2-7
+        kind: interpretation
+        prompt: What does this mean?
+        target:
+          kanji: 私はあまり魚が好きじゃないです。
+          kana: わたしはあまりさかながすきじゃないです。
+          romaji: watashi wa amari sakana ga suki ja nai desu
+        accept_meanings:
+          - I don't like fish very much.
+          - I do not like fish very much.
+          - I don't really like fish.
+        explanation: >-
+          あまり with a negative says "not very much", so the sentence means you do
+          not like fish very much. が marks fish as the thing liked or disliked, and
+          好きじゃないです makes it negative.
+      - id: q2-8
+        kind: speaking
+        prompt: Tell someone to turn left at the next corner.
+        accept:
+          - kanji: 次の角を左に曲がってください。
+            kana: つぎのかどをひだりにまがってください。
+            romaji: tsugi no kado o hidari ni magatte kudasai
+          - kana: つぎのかどをひだりにまがってください。
+            romaji: tsugi no kado o hidari ni magatte kudasai
+          - kanji: 次の角をひだりに曲がってください。
+            kana: つぎのかどをひだりにまがってください。
+            romaji: tsugi no kado o hidari ni magatte kudasai
+        explanation: >-
+          次の角を左に曲がってください marks the corner with を as the point you turn
+          at and the direction with に. 次の角 is the next corner, and 曲がってください
+          makes it a polite instruction.
+      - id: q2-9
+        kind: speaking
+        prompt: Say that you want to drink water.
+        accept:
+          - kanji: 水が飲みたいです。
+            kana: みずがのみたいです。
+            romaji: mizu ga nomitai desu
+          - kana: みずがのみたいです。
+            romaji: mizu ga nomitai desu
+          - kanji: 水がのみたいです。
+            kana: みずがのみたいです。
+            romaji: mizu ga nomitai desu
+        explanation: >-
+          飲みたいです is 飲み + たいです, and が marks water as the thing wanted.
+          飲みます would say that you drink water, not that you want to.
+      - id: q2-10
+        kind: listening
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: 空港までどのくらいかかりますか。
+          kana: くうこうまでどのくらいかかりますか。
+          romaji: kuukou made dono kurai kakarimasu ka
+        accept_meanings:
+          - How long does it take to the airport?
+          - How long does it take to get to the airport?
+          - How long does it take to reach the airport?
+        explanation: >-
+          空港までどのくらいかかりますか asks the duration of the trip to the
+          airport. まで marks the airport as the endpoint, and かかります reports how
+          long the journey takes.
+      - id: q2-11
+        kind: interpretation
+        prompt: What does this mean?
+        target:
+          kanji: 「ホーム」って何ですか。
+          kana: 「ホーム」ってなんですか。
+          romaji: hoomu tte nan desu ka
+        accept_meanings:
+          - What does ホーム mean?
+          - What does hoomu mean?
+          - What is ホーム?
+        explanation: >-
+          って quotes the word being asked about, so the question asks what ホーム
+          means. は would make it the topic and stop asking for the meaning of the
+          word itself.
+      - id: q2-12
+        kind: speaking
+        prompt: Say that the bank is past the post office.
+        accept:
+          - kanji: 銀行は郵便局の先です。
+            kana: ぎんこうはゆうびんきょくのさきです。
+            romaji: ginkou wa yuubinkyoku no saki desu
+          - kana: ぎんこうはゆうびんきょくのさきです。
+            romaji: ginkou wa yuubinkyoku no saki desu
+          - kanji: 銀行は郵便局のさきです。
+            kana: ぎんこうはゆうびんきょくのさきです。
+            romaji: ginkou wa yuubinkyoku no saki desu
+        explanation: >-
+          郵便局の先 means past the post office, so the bank is farther along the
+          same route. 手前 would put the bank before the post office instead.
+      - id: q2-13
+        kind: construction
+        prompt: Tell a guest not to use the phone in the lobby.
+        accept:
+          - kanji: ロビーで電話を使わないでください。
+            kana: ロビーででんわをつかわないでください。
+            romaji: robii de denwa o tsukawanai de kudasai
+        explanation: >-
+          ロビーで電話を使わないでください uses で for the lobby and を for the
+          phone. 使わないでください is the negative request, so it tells the guest not
+          to use it.
+      - id: q2-14
+        kind: listening
+        prompt: Listen, then say what you heard.
+        target:
+          kanji: 京都から奈良まで電車で三十分かかります。
+          kana: きょうとからならまででんしゃでさんじゅっぷんかかります。
+          romaji: kyouto kara nara made densha de sanjuppun kakarimasu
+        accept_meanings:
+          - It takes thirty minutes from Kyoto to Nara by train.
+          - It takes 30 minutes from Kyoto to Nara by train.
+          - The train takes thirty minutes from Kyoto to Nara.
+        explanation: >-
+          京都から奈良まで電車で三十分かかります names the route with から and まで,
+          the train with で, and the duration with 三十分 before かかります. 三十分 is
+          さんじゅっぷん, thirty minutes.
+      - id: q2-15
+        kind: construction
+        prompt: Ask for two bags.
+        accept:
+          - kanji: 袋を二つください。
+            kana: ふくろをふたつください。
+            romaji: fukuro o futatsu kudasai
+        explanation: >-
+          袋を二つください marks the bags with を and puts 二つ before ください.
+          二つ is ふたつ, and the counter stays between the thing and the request.
